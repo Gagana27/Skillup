@@ -56,6 +56,7 @@ const LandingPage = () => {
           </div>
           <PartnersSection/>
           {/* <TechnologySearchListSection/> */}
+          
           <TopCatagoriesListSection/>
           <Demo/>
         </div>
