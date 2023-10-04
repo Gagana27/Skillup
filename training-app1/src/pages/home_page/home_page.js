@@ -9,18 +9,20 @@ import VideoList from '../common/addvideo';
 import VideoList1 from '../common/addvideo';
 import VideoUploadForm from '../common/addvideo';
 
-
-export default function HomePage() {
+const HomePage = () => {
     return (
-        <section>
-            <HeroSection/>
-            {/* <TechnologySearchListSection/> */}
-            <MyTopCatagoriesListSection/>
-            {/* <CaseStudySection/> */}
-            {/* <TrendingTopicsSection/> */}
-            {/* <PartnersSection/> */}
-            <VideoUploadForm/>
-
-        </section>
-    )
+        <>
+            <section>
+                <HeroSection />
+                {/* <TechnologySearchListSection/> */}
+                <MyTopCatagoriesListSection />
+                {/* <CaseStudySection/> */}
+                {/* <TrendingTopicsSection/> */}
+                {/* <PartnersSection/> */}
+                <VideoUploadForm />
+            </section>
+        </>
+    );
 }
+
+export default HomePage;
