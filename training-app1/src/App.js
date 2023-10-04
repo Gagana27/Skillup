@@ -5,15 +5,11 @@ import Form from './Form';
 // import Videoplayer from './Videoplayer';
 
 function App() {
- 
+
   return (
-
-    <RoutePage/>
-
+    <RoutePage />
     // <Videoplayer/>
-    
-
-);
-  }
+  );
+}
 
 export default App;

@@ -3,13 +3,10 @@ import Header from './common/header';
 import Footer from './common/footer';
 import AboutPage from './about_page';
 // import Form from '../Form';
-
-
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-
 } from "react-router-dom";
 import LoginPage from './common/login_page';
 import SignUpPage from './common/signup_page';
@@ -35,10 +32,10 @@ export default function RoutePage() {
         <div className="relative overflow-hidden">
           <Header />
           <Routes>
-            {/* <Route exact path="/" element= {<LandingPage />} /> */}
+            <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signUp" element={<SignUpPage />} />
-            <Route path="/" element={<HomePage />} />
+            <Route path="/homepage" element={<HomePage />} />
             <Route path="/video" element={<VideoPlayerSample />} />
             {/* <VideoCoursePage/> */}
             {/* <VideoPlayerSampleApp/> */}

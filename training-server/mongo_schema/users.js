@@ -2,10 +2,12 @@
 const mongoose=require("mongoose");
 
 userSchema=new mongoose.Schema({
-    fname:String,
-	lname:String,
-    email:String,
-    password:String,
+    firstname: String,
+    lastName: String, 
+    email: String,
+    password: String,
+    address: String,
+    contact: Number
 },{
     collection:"UserDets",
 });

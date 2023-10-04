@@ -20,18 +20,20 @@ dotenv.config()
 
 //user
 
- require("./mongo_schema/users");
+require("./mongo_schema/users");
 const user=mongoose.model("UserDets");
 app.post("/register",async(req,res)=>{   
-    const {fname,lname,email,password} = req.body;
+    const {firstname, lastName, email, password, address, contact} = req.body;
     try{
-        await user.create({
-         fname,
-         lname,
-         email,
-         password,       
+        const signupUser = await user.create({
+          firstname,
+          lastName, 
+          email, 
+          password, 
+          address, 
+          contact      
         });
-        res.send({status:"ok"});
+        res.send({status:"ok",signupUser});
     }catch (error){
         res.send({status:"error"});
     }
