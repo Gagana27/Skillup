@@ -37,7 +37,7 @@ export default function RoutePage() {
            <Header/>
 
            <Routes>
-                  <Route exact path="/" element= {<LandingPage />} />
+                  {/* <Route exact path="/" element= {<LandingPage />} /> */}
 
                   <Route  path="/login" element={<LoginPage/>}/>
                      
@@ -45,7 +45,7 @@ export default function RoutePage() {
                   <Route  path="/signUp" element={ <SignUpPage/>} />
                      
 
-                  <Route  path="/homePage"  element={ <HomePage/>} />
+                  <Route  path="/"  element={ <HomePage/>} />
                       
         
                    <Route  path="/video" element={<VideoPlayerSample/>}/> 
