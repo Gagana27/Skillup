@@ -1,0 +1,30 @@
+syntax = "proto3"; 
+ 
+package com.training.people;
+ 
+ message TestArray {
+ 
+	 string arr1 = 1;
+	 string arr2 = 2;
+} 
+message Address {
+ 
+	 string addressLine1 = 1;
+	 string addressLine2 = 2;
+} 
+message People {
+ 
+	 string firstName = 1;
+	 string lastName = 2;
+	 int32 age = 3;
+	 bool isOld = 4;
+	 repeated TestArray testArray = 5;
+	 Address address = 6;
+} 
+
+
+service PeopleService { 
+
+ 	 rpc savePeople(People) returns (People) {};
+
+}
