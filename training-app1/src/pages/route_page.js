@@ -20,6 +20,7 @@ import VideoList from './common/videos';
 import AddCategory from './common/addcat';
 import Addvideo from './common/addvideo';
 import ContactPage from './Contact';
+import FreeTrail from './FreeTrail';
 
 
 import Marketing from '../Foote_pages/Marketing';
@@ -51,7 +52,7 @@ export default function RoutePage() {
             <Route path="/category" element={<CategoryList />} />
             <Route path="/categories/:categoryId/subcategories" element={<SubcategoryList />} />
             {/* <Route  path="/videos/:videoId/subcategories" element={<VideoList/>} /> */}
-
+            <Route path="/freetrial" element={<FreeTrail />} />
             <Route path="/catnew" element={<AddCategory />} />
             <Route path="/newvideo" element={<Addvideo />} />
             <Route path="/subcategories/:subcategoryId/videos" element={<VideoList />} />
