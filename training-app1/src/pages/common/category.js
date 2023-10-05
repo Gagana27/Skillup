@@ -8,18 +8,17 @@ import Container from 'react-bootstrap/Container';
 
 function CategoryList() {
   const [categories, setCategories] = useState([]);
-  const [imageUrl, setImageUrl] = useState([]);
+  // const [imageUrl, setImageUrl] = useState([]);
 
   useEffect(() => {
     async function fetchCategories() {
       const response = await axios.get('http://localhost:5000/categories');
       setCategories(response.data);
-      setImageUrl(response.data);
     }
     fetchCategories();
   }, []);
 
-  console.log("dead", imageUrl);
+  console.log("dead");
 
   return (
     <>
