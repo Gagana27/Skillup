@@ -7,7 +7,7 @@ import CaseStudySection from './case_study_section';
 import TrendingTopicsSection from './tranding_topics_section';
 import VideoList from '../common/addvideo';
 import VideoList1 from '../common/addvideo';
-import VideoUploadForm from '../common/addvideo';
+// import VideoUploadForm from '../common/addvideo';
 
 const HomePage = () => {
     return (
