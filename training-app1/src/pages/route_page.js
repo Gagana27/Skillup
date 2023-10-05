@@ -19,6 +19,7 @@ import SubcategoryList from './common/SubCategories';
 import VideoList from './common/videos';
 import AddCategory from './common/addcat';
 import Addvideo from './common/addvideo';
+import ContactPage from './Contact';
 
 export default function RoutePage() {
 
@@ -41,6 +42,7 @@ export default function RoutePage() {
             {/* <VideoPlayerSampleApp/> */}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/carees" element={<AboutPage />} />
+            <Route path="/contactus" element={<ContactPage />} />
             <Route path="/category" element={<CategoryList />} />
             <Route path="/categories/:categoryId/subcategories" element={<SubcategoryList />} />
             {/* <Route  path="/videos/:videoId/subcategories" element={<VideoList/>} /> */}
