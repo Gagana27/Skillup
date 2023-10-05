@@ -1,6 +1,6 @@
 import React from 'react';
 import FreeTrial from '../assets/freetrial.svg'
-import Iframe from 'react-iframe';
+
 
 const FreeTrail = () => {
 

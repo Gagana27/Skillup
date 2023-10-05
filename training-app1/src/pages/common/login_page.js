@@ -12,24 +12,7 @@ function LoginPage() {
     const password = e.target.password.value;
     console.log(email, "\n", password);
     login(email,password)
-
-  //   fetch("http://localhost:5000/login", {
-  //     method: "POST",
-  //     crossDomain: true,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //       "Access-Control-Allow-origin": "*",
-  //     },
-  //     body: JSON.stringify({
-
-  //       email,
-  //       password
-  //     }),
-  //   }).then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     })
+ 
    }
 
   return (
