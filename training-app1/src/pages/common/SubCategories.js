@@ -6,8 +6,10 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 function SubcategoryList() {
+
   const { categoryId } = useParams();
   const [subcategories, setSubcategories] = useState([]);
+
   useEffect(() => {
     async function fetchSubcategories() {
       const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
@@ -15,7 +17,7 @@ function SubcategoryList() {
     }
     fetchSubcategories();
   }, [categoryId]);
-  
+
   return (
     /*  <ul>
          {subcategories.map(subcategory => (
@@ -31,8 +33,10 @@ function SubcategoryList() {
       {
         subcategories.map(subcategory => (
           <Col key={subcategory._id}>
-            <Card >
-
+            <Card 
+                className="bg-secondary border-primary border-4" 
+                border="warning" 
+                style={{ width: '20rem', height: '20rem' }}>
               {/*      <Card.Img variant="top"  style={{ height: '85px' } } 
               
              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSW1earfT4VmVcmPvWfsrpBE4Saiv3WHVGaA&usqp=CAU" /> */}
@@ -53,7 +57,7 @@ function SubcategoryList() {
               </div>
 
               <Card.Body style={{ height: '100px' }}>
-                <Card.Text>
+                <Card.Text className="text-white">
                   <Link to={`/subcategories/${subcategory._id}/videos`}>
                     {subcategory.name}</Link>
                 </Card.Text>
