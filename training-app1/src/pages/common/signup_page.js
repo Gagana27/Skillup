@@ -14,6 +14,7 @@ function SignUpPage() {
   const checkValidation = (e) => {
     const newError = {};
     if (e.target.firstname.value === "") {
+      
       newError.firstname = "Enter your First Name";
     }
     if (e.target.lastName.value === "") {

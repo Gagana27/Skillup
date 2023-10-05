@@ -18,7 +18,7 @@ function CategoryList() {
     fetchCategories();
   }, []);
 
-  console.log("dead", imageUrl);
+  console.log("dead");
 
   return (
     <>
