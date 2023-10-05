@@ -21,7 +21,7 @@ dotenv.config()
 //user
 
 require("./mongo_schema/users");
-const user=mongoose.model("UserDets");
+// const user=mongoose.model("UserDets");
 app.post("/register",async(req,res)=>{   
     const {firstname, lastName, email, password, address, contact} = req.body;
     try{
@@ -41,7 +41,7 @@ app.post("/register",async(req,res)=>{
      
   }); 
   require("./mongo_schema/people");
-  const people=mongoose.model("People");
+  // const people=mongoose.model("People");
   app.post("/login",async(req,res)=>{   
       const {email,password} = req.body;
       try{
