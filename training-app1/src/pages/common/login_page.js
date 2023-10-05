@@ -1,31 +1,36 @@
 import React from 'react';
+import { useLogin } from '../../hooks/UserLogin';
+import LoginSvg from '../../assets/login.svg';
 
 function LoginPage() {
+
+  const {login, isLoading, error}=useLogin()
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, "\n", password);
+    login(email,password)
 
-    fetch("http://localhost:5000/login", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-origin": "*",
-      },
-      body: JSON.stringify({
+  //   fetch("http://localhost:5000/login", {
+  //     method: "POST",
+  //     crossDomain: true,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //       "Access-Control-Allow-origin": "*",
+  //     },
+  //     body: JSON.stringify({
 
-        email,
-        password
-      }),
-    }).then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      })
-  }
+  //       email,
+  //       password
+  //     }),
+  //   }).then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+   }
 
   return (
     <div class="min-h-screen bg-white flex">
@@ -45,7 +50,7 @@ function LoginPage() {
 
             </div>
             <div>
-              <form className="space-y-6" onSubmit={handleSubmit} action="/login" >
+              <form className="space-y-6" onSubmit={handleSubmit}  >
                 {/* <form action="http://localhost:3000/login" className="space-y-6" noValidate> */}
                 <div className="mt-6">
                   <div >
@@ -90,8 +95,8 @@ function LoginPage() {
           </div>
         </div>
       </div>
-      <div className="hidden lg:block relative w-0 flex-1 ">
-        <img className="absolute inset-0 h-full w-full object-cover" src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg?size=626&ext=jpg" alt="" />
+      <div className="hidden lg:block relative w-0 flex-1">
+        <img src={LoginSvg} alt="" height={350} width={500} />
       </div>
     </div>
   );

@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export default function HeroSection() {
     return (
         <div className="min-h-screen bg-white">
-         
-          <main>
-            <div>
+          <div>
               <div className="relative">
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100" />
                 <div className="max-w-7xl mx-auto">
@@ -27,7 +25,7 @@ export default function HeroSection() {
                           <a href="#" className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8">
                             Get started
                           </a>
-                          <a href="#" className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8">
+                          <a href="freetrial" className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8">
                             Free Trial
                           </a>
                         </div>
@@ -37,8 +35,6 @@ export default function HeroSection() {
                 </div>
               </div>             
             </div>
-            {/* More main page content here... */}
-          </main>
         </div>
     )
 }
