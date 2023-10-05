@@ -2,9 +2,14 @@ import React from 'react'
 import BrowsePage from '../browse_page';
 import CategoryList from './category';
 import VideoList from './videos';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 export default function Header() {
   return (
+    <>
 
     <header className="relative">
       <div className="bg-bright-white pt-6">
@@ -22,7 +27,7 @@ export default function Header() {
                     <path fill="#fff" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                   </svg>
-                  <a href="/" className="text-base font-medium font-bold text-black hover:text-black">Learn.</a>
+                  <a href="/" className="text-base font-bold text-black hover:text-black">Learn.</a>
                 </div>
 
               </a>
@@ -46,6 +51,9 @@ export default function Header() {
                 <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300">Home</a>
                 <a href="contactus" className="text-base font-medium text-gray-500 hover:text-gray-300">Contact</a>
                 <a href="about" className="text-base font-medium text-gray-500 hover:text-gray-300">About</a>
+
+
+
               </div>
             </div>
             <div className="hidden space-x-8 md:flex md:ml-10">
@@ -66,6 +74,26 @@ export default function Header() {
             <a href="signUp" className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-bright-orange hover:bg-gray-700">
               Sign up
             </a>
+            <a href="/" className="text-base font-medium text-gray-500 hover:text-gray-300"><img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar"/></a>
+          <NavDropdown title="Raji"  id="basic-nav-dropdown">
+         
+          <Dropdown.Item href="/profile">
+            profile
+          </Dropdown.Item>
+		    <Dropdown.Item href="/Setting">
+Setting
+        </Dropdown.Item>
+          <Dropdown.Item href="/PostForm">
+            Logout
+          </Dropdown.Item>
+          
+     
+      </NavDropdown>
+           
+          
+      
+
+            
 
           </div>
         </nav>
@@ -106,5 +134,6 @@ export default function Header() {
         </div>
       </div>
     </header>
+    </>
   )
 }
