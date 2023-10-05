@@ -1,27 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 import { useSignup } from "../../hooks/UserSignup";
-
-
 function SignUpPage() {
-
-  const { signup,  isLoading } = useSignup();
-  const [error, setError] = useState({});
-  const [firstname, setFirstname] = useState();
-
-  const checkValidation = (e) => {
-    const newError = {};
-    if (e.target.firstname.value === "") {
-      newError.firstname = "Enter your First Name";
-    }
-    if (e.target.lastName.value === "") {
-      console.log("hello");
-      newError.lastName = "Enter your Last Name";
-    }
-    setError(newError);
-    return newError;
-  };
-
+  const { signup, error, isLoading } = useSignup();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const firstname = e.target.firstname.value;
@@ -32,15 +12,7 @@ function SignUpPage() {
     const contact = e.target.contact.value;
     await signup(firstname, lastName, email, password, address, contact);
     console.log(firstname, "\n", lastName, "\n", email, "\n", password, "\n", contact,"\n", address);
-    
-    const newError = checkValidation(e);
-    if (Object.keys(newError).length == 0) {
-      console.log("Form submitted Successfully");
-    } else {
-      console.log("Validation Error");
-    }
   }
-  
   return (
     <div class="min-h-screen bg-white flex">
       <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
@@ -86,19 +58,16 @@ function SignUpPage() {
             <div>
               <form className="space-y-6" onSubmit={handleSubmit}>
                 {/* <form action="http://localhost:3000/login" className="space-y-6" noValidate> */}
-
                 <div className="mt-6">
                   <div className="space-y-1">
                     <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
                       First Name
                     </label>
                     <div className="mt-1">
-                      <input id="firstname" name="firstname" type="firstname" value={firstname} autocomplete="off"
-                       />
-                        {error.firstname && <span>{error.firstname}</span>}
+                      <input id="firstname" name="firstname" type="firstname" autocomplete="off"
+                        required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     </div>
                   </div>
-
                   <div className="space-y-1">
                     <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
                       Last Name
@@ -108,7 +77,6 @@ function SignUpPage() {
                         required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     </div>
                   </div>
-
                   <div >
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                       Email
@@ -117,9 +85,8 @@ function SignUpPage() {
                       <input id="email" name="email" type="email" autocomplete="off"
                         required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     </div>
-                  </div> 
+                  </div>
                   {/* <input type="text" name="password"  placeholder="Password" /><br/><br/> */}
-
                   <div className="space-y-1">
                     <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                       Password
@@ -129,7 +96,6 @@ function SignUpPage() {
                         required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     </div>
                   </div>
-
                   <div className="space-y-1">
                     <label htmlFor="address" className="block text-sm font-medium text-gray-700">
                       Address
@@ -139,7 +105,6 @@ function SignUpPage() {
                         required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     </div>
                   </div>
-
                   <div className="space-y-1">
                     <label htmlFor="contact" className="block text-sm font-medium text-gray-700">
                       Contact Number
@@ -149,7 +114,6 @@ function SignUpPage() {
                         required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     </div>
                   </div>
-
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <input id="remember_me" name="remember_me" type="checkbox" className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
