@@ -1,9 +1,26 @@
 import React from 'react';
+import { useState } from 'react';
 import { useSignup } from "../../hooks/UserSignup";
+
 
 function SignUpPage() {
 
-  const { signup, error, isLoading } = useSignup();
+  const { signup,  isLoading } = useSignup();
+  const [error, setError] = useState({});
+  const [firstname, setFirstname] = useState();
+
+  const checkValidation = (e) => {
+    const newError = {};
+    if (e.target.firstname.value === "") {
+      newError.firstname = "Enter your First Name";
+    }
+    if (e.target.lastName.value === "") {
+      console.log("hello");
+      newError.lastName = "Enter your Last Name";
+    }
+    setError(newError);
+    return newError;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +32,13 @@ function SignUpPage() {
     const contact = e.target.contact.value;
     await signup(firstname, lastName, email, password, address, contact);
     console.log(firstname, "\n", lastName, "\n", email, "\n", password, "\n", contact,"\n", address);
+    
+    const newError = checkValidation(e);
+    if (Object.keys(newError).length == 0) {
+      console.log("Form submitted Successfully");
+    } else {
+      console.log("Validation Error");
+    }
   }
   
   return (
@@ -69,8 +93,9 @@ function SignUpPage() {
                       First Name
                     </label>
                     <div className="mt-1">
-                      <input id="firstname" name="firstname" type="firstname" autocomplete="off"
-                        required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                      <input id="firstname" name="firstname" type="firstname" value={firstname} autocomplete="off"
+                       />
+                        {error.firstname && <span>{error.firstname}</span>}
                     </div>
                   </div>
 
