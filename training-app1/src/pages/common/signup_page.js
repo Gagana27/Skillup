@@ -14,24 +14,29 @@ function SignUpPage() {
   const checkValidation = (e) => {
     const newError = {};
     if (e.target.firstname.value === "") {
-      
-      newError.firstname = "Enter your First Name";
+       newError.firstname = "Enter your First Name";
     }
+
     if (e.target.lastName.value === "") {
      newError.lastName = "Enter your Last Name";
     }
+
     if (e.target.contact.value === "") {
      newError.contact = "Enter your Contact Number";
     }
+
     if (e.target.email.value === "") {
       newError.email = "Enter your Email";
     }
+
     if (e.target.password.value === "") {
       newError.password = "Enter your Password";
     }
+
     if (e.target.address.value === "") {
       newError.address = "Enter your Address";
     }
+    
 
     setError(newError);
     return newError;
