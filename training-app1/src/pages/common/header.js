@@ -58,6 +58,7 @@ export default function Header() {
                     style={{ marginLeft: "340px" }}>
                       Categories
                   </a>
+                  {/* <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{ marginLeft: "340px" }}>Categories</a> */}
                   {/* <CategoryList/>                 */}
                   <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300">Home</a>
                   <a href="contactus" className="text-base font-medium text-gray-500 hover:text-gray-300">Contact</a>
