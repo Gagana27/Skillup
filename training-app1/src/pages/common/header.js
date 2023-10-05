@@ -43,8 +43,8 @@ export default function Header() {
                 <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300">Categories</a>
 
                 {/* <CategoryList/>                 */}
-                <a href="Home" className="text-base font-medium text-gray-500 hover:text-gray-300">Home</a>
-                <a href="ContactUs" className="text-base font-medium text-gray-500 hover:text-gray-300">ContactUs</a>
+                <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300">Home</a>
+                <a href="contactus" className="text-base font-medium text-gray-500 hover:text-gray-300">Contact</a>
                 <a href="about" className="text-base font-medium text-gray-500 hover:text-gray-300">About</a>
               </div>
             </div>
@@ -60,7 +60,7 @@ export default function Header() {
               </div> </div>
           </div>
           <div className="hidden md:flex md:items-center md:space-x-6">
-            <a href="login" className="bg-emerald-600 inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-gray-700">
+            <a href="login" className="text-white bg-emerald-600 inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-gray-700">
               Log in
             </a>
             <a href="signUp" className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-bright-orange hover:bg-gray-700">
