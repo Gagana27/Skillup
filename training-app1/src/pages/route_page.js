@@ -20,6 +20,11 @@ import VideoList from './common/videos';
 import AddCategory from './common/addcat';
 import Addvideo from './common/addvideo';
 
+
+import Marketing from '../Foote_pages/Marketing';
+import { Pricing } from '../Foote_pages/Pricing';
+import { Claim } from '../Foote_pages/Claim';
+
 export default function RoutePage() {
 
   /*  const getdata=(name)=>{
@@ -48,6 +53,10 @@ export default function RoutePage() {
             <Route path="/catnew" element={<AddCategory />} />
             <Route path="/newvideo" element={<Addvideo />} />
             <Route path="/subcategories/:subcategoryId/videos" element={<VideoList />} />
+
+            <Route path="/marketing" element={<Marketing/>} />
+            <Route path="/pricing" element={<Pricing/>} />
+            <Route path="/claim" element={<Claim/>} />
           </Routes>
           {/* <Form onSubmit={getdata} name="raji"/> */}
           <Footer />
