@@ -40,7 +40,7 @@ export default function Header() {
             </div>
             <div>
               <div className="hidden space-x-8 md:flex md:ml-10">
-                <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{marginLeft:"460px"}}>categories</a>
+                <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{marginLeft:"460px"}}>Categories</a>
 
                 {/* <CategoryList/>                 */}
                 <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300">Home</a>
