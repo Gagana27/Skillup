@@ -1,32 +1,36 @@
 import React from 'react';
+import { useLogin } from '../../hooks/UserLogin';
 import LoginSvg from '../../assets/login.svg';
 
 function LoginPage() {
+
+  const {login, isLoading, error}=useLogin()
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, "\n", password);
+    login(email,password)
 
-    fetch("http://localhost:5000/login", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-origin": "*",
-      },
-      body: JSON.stringify({
+  //   fetch("http://localhost:5000/login", {
+  //     method: "POST",
+  //     crossDomain: true,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //       "Access-Control-Allow-origin": "*",
+  //     },
+  //     body: JSON.stringify({
 
-        email,
-        password
-      }),
-    }).then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      })
-  }
+  //       email,
+  //       password
+  //     }),
+  //   }).then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+   }
 
   return (
     <div class="min-h-screen bg-white flex">
@@ -46,7 +50,7 @@ function LoginPage() {
 
             </div>
             <div>
-              <form className="space-y-6" onSubmit={handleSubmit} action="/login" >
+              <form className="space-y-6" onSubmit={handleSubmit}  >
                 {/* <form action="http://localhost:3000/login" className="space-y-6" noValidate> */}
                 <div className="mt-6">
                   <div >

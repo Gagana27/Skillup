@@ -12,7 +12,7 @@ export const useLogin = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("http://localhost:5000/userLogin/", {
+    const response = await fetch("http://localhost:5000/api/user/userLogin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -20,6 +20,7 @@ export const useLogin = () => {
     const json = await response.json();
 
     if (!response.ok) {
+      console.log("Json",json)
       setIsLoading(false);
       setError(json.error);
     }
@@ -30,7 +31,6 @@ export const useLogin = () => {
       // update the auth context
       dispatch({ type: "LOGIN", payload: json });
 
-      navigate("/home");
       // update loading state
       setIsLoading(false);
     }
