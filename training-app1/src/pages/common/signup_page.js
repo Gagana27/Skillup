@@ -1,7 +1,40 @@
 import React from 'react';
 import { useSignup } from "../../hooks/UserSignup";
+import  { useState } from "react";
 function SignUpPage() {
-  const { signup, error, isLoading } = useSignup();
+  const { signup,  isLoading } = useSignup();
+  const [firstname, setFirstname] = useState();
+  const [lastName, setLastName] = useState();
+  const [contact, setContact] = useState();
+  const [email, setEmail] = useState();
+  const [address, setAddress] = useState();
+  const [password, setPassword] = useState();
+  const [error, setError] = useState({});
+
+  const checkValidation = (e) => {
+    const newError = {};
+    if (e.target.firstname.value === "") {
+      newError.firstname = "Enter your First Name";
+    }
+    if (e.target.lastName.value === "") {
+     newError.lastName = "Enter your Last Name";
+    }
+    if (e.target.contact.value === "") {
+     newError.contact = "Enter your Contact Number";
+    }
+    if (e.target.email.value === "") {
+      newError.email = "Enter your Email";
+    }
+    if (e.target.password.value === "") {
+      newError.password = "Enter your Password";
+    }
+    if (e.target.address.value === "") {
+      newError.address = "Enter your Address";
+    }
+
+    setError(newError);
+    return newError;
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const firstname = e.target.firstname.value;
@@ -10,8 +43,15 @@ function SignUpPage() {
     const password = e.target.password.value;
     const address = e.target.address.value;
     const contact = e.target.contact.value;
-    await signup(firstname, lastName, email, password, address, contact);
+   
     console.log(firstname, "\n", lastName, "\n", email, "\n", password, "\n", contact,"\n", address);
+    const newError = checkValidation(e);
+    if (Object.keys(newError).length == 0) {
+      console.log("Form submitted Successfully");
+      await signup(firstname, lastName, email, password, address, contact);
+    } else {
+      console.log("Validation Error");
+    }
   }
   return (
     <div class="min-h-screen bg-white flex">
@@ -56,16 +96,19 @@ function SignUpPage() {
               </div>
             </div>
             <div>
-              <form className="space-y-6" onSubmit={handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e)}>
                 {/* <form action="http://localhost:3000/login" className="space-y-6" noValidate> */}
                 <div className="mt-6">
                   <div className="space-y-1">
-                    <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
-                      First Name
+                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                    First Name
                     </label>
                     <div className="mt-1">
-                      <input id="firstname" name="firstname" type="firstname" autocomplete="off"
-                        required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    <input id='firstname' type="text" name="firstame" value={firstname} className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+ 
+                        
+        {error.firstname && <p>{error.firstname}</p>}
+        
                     </div>
                   </div>
                   <div className="space-y-1">
@@ -73,8 +116,9 @@ function SignUpPage() {
                       Last Name
                     </label>
                     <div className="mt-1">
-                      <input id="lastName" name="lastName" type="lastName" autocomplete="off"
-                        required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                      <input id="lastName" name="lastName" type="lastName" autocomplete="off" value={lastName}
+                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    {error.lastName && <p>{error.lastName}</p>}
                     </div>
                   </div>
                   <div >
@@ -82,8 +126,9 @@ function SignUpPage() {
                       Email
                     </label>
                     <div className="mt-1">
-                      <input id="email" name="email" type="email" autocomplete="off"
-                        required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                      <input id="email" name="email" type="email" autocomplete="off" value={email}
+                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    {error.email && <p>{error.email}</p>}
                     </div>
                   </div>
                   {/* <input type="text" name="password"  placeholder="Password" /><br/><br/> */}
@@ -92,8 +137,9 @@ function SignUpPage() {
                       Password
                     </label>
                     <div className="mt-1">
-                      <input id="password" name="password" type="password" autocomplete="off"
-                        required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                      <input id="password" name="password" type="password" autocomplete="off" value={password}
+                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    {error.password && <p>{error.password}</p>}
                     </div>
                   </div>
                   <div className="space-y-1">
@@ -101,8 +147,9 @@ function SignUpPage() {
                       Address
                     </label>
                     <div className="mt-1">
-                      <input id="address" name="address" type="address" autocomplete="off"
-                        required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                      <input id="address" name="address" type="address" autocomplete="off" value={address}
+                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    {error.address && <p>{error.address}</p>}
                     </div>
                   </div>
                   <div className="space-y-1">
@@ -110,8 +157,9 @@ function SignUpPage() {
                       Contact Number
                     </label>
                     <div className="mt-1">
-                      <input id="contact" name="contact" type="contact" autocomplete="off"
-                        required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                      <input id="contact" name="contact" type="contact" autocomplete="off" value={contact}
+                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    {error.contact && <p>{error.contact}</p>}
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
