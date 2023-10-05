@@ -1,4 +1,5 @@
 import React from 'react';
+import LoginSvg from '../../assets/login.svg';
 
 function LoginPage() {
   const handleSubmit = (e) => {
@@ -90,8 +91,8 @@ function LoginPage() {
           </div>
         </div>
       </div>
-      <div className="hidden lg:block relative w-0 flex-1 ">
-        <img className="absolute inset-0 h-full w-full object-cover" src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg?size=626&ext=jpg" alt="" />
+      <div className="hidden lg:block relative w-0 flex-1">
+        <img src={LoginSvg} alt="" height={350} width={500} />
       </div>
     </div>
   );
