@@ -1,7 +1,6 @@
 import React from 'react';
 import FreeTrial from '../assets/freetrial.svg'
 
-
 const FreeTrail = () => {
 
     return ( 
