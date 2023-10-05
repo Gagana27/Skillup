@@ -57,9 +57,15 @@ const AddCategory = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <> 
+        <div class="min-h-screen bg-white flex">
+        <div class="flex-1 flex flex-col py-12 px-4 sm:px-4 lg:flex-none lg:px-20 xl:px-24">
+            <div class="mx-auto w-full max-w-sm lg:w-96">
+
+        <form className="space-y-6 "onSubmit={handleSubmit}>
+
             <div>
-                <label htmlFor="category-name">Category name:</label>
+                <label htmlFor="category-name form-label ">Category name:</label>
                 <input
                     type="text"
                     id="category-name"
@@ -78,6 +84,8 @@ const AddCategory = () => {
                     required
                 />
             </div>
+            <label htmlFor="category-imageUrl">Price</label>
+
 
             <input
                 type="number"
@@ -85,12 +93,16 @@ const AddCategory = () => {
                 value={price}
                 onChange={(event) => setPrice(event.target.value)}
             />
+            <div>
+            <label htmlFor="category-imageUrl">Description:</label>
+
 
             <textarea
                 placeholder="Description"
                 value={description}
                 onChange={(event) => setDescription(event.target.value)}
             />
+            </div>
             {subcategoryName.map((subcategoryName, index) => (
                 <div key={index}>
                     <label htmlFor={`subcategory-name-${index}`}>Subcategory name:</label>
@@ -132,7 +144,15 @@ const AddCategory = () => {
             </button><br />
 
             <button type="submit">Add</button>
+            
         </form>
+        </div>
+        </div>
+        </div>
+        </>
+
+        
+        
     );
 };
 export default AddCategory;
