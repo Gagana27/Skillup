@@ -7,23 +7,29 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ProfileSvg from '../../assets/profilepic.svg';
+import { useAuthContext } from "../../hooks/UserAuthContext";
+import { useLogOut } from "../../hooks/UserLogout";
 // import VideoList from './videos';
 
 export default function Header() {
+
+  const { user } = useAuthContext();
+  const { logout } = useLogOut();
+
+  const handleClick = () => {
+    logout();
+  };
+
   return (
     <>
-
       <header className="relative">
         <div className="bg-bright-white pt-6">
           <nav className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
             <div className="flex items-center flex-1">
               <div className="flex items-center justify-between w-full md:w-auto">
-
                 <a href="/">
                   <div className="flex flex-row items-center justify-center ">
-
                     <span className="sr-only">Workflow</span>
-                    {/* <img className="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt /> */}
                     <svg className="mt-1 " width="80px"
                       height="80px" xmlns="http://www.w3.org/2000/svg" fill="orange" viewBox="0 0 24 24" stroke="currentColor">
                       <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -42,7 +48,6 @@ export default function Header() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                   </button>
-
                 </div>
               </div>
               <div>
@@ -73,20 +78,19 @@ export default function Header() {
                 Sign up
               </a>
               <a href="/" className="text-base font-medium text-gray-500 hover:text-gray-300"><img src={ProfileSvg} alt="Avatar" class="avatar" /></a>
-              <NavDropdown title="Raji" id="basic-nav-dropdown">
-
+              {user &&
+                <NavDropdown title={user ? user?.loginUser?.firstname : "Guest"} id="basic-nav-dropdown">
                 <Dropdown.Item href="/profile">
                   profile
                 </Dropdown.Item>
                 <Dropdown.Item href="/Setting">
                   Setting
                 </Dropdown.Item>
-                <Dropdown.Item href="/PostForm">
-                  Logout
+                <Dropdown.Item onClick={handleClick}>
+                  LogOut
                 </Dropdown.Item>
-
-
               </NavDropdown>
+              }
             </div>
           </nav>
         </div>
