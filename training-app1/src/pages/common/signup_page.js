@@ -36,7 +36,7 @@ function SignUpPage() {
     if (e.target.address.value === "") {
       newError.address = "Enter your Address";
     }
-    
+
 
     setError(newError);
     return newError;
@@ -113,7 +113,7 @@ function SignUpPage() {
                     <input id='firstname' type="text" name="firstame" value={firstname} className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
  
                         
-        {error.firstname && <p>{error.firstname}</p>}
+        {error.firstname && <span className='valid'>{error.firstname}</span>}
         
                     </div>
                   </div>
@@ -124,7 +124,7 @@ function SignUpPage() {
                     <div className="mt-1">
                       <input id="lastName" name="lastName" type="lastName" autocomplete="off" value={lastName}
                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                    {error.lastName && <p>{error.lastName}</p>}
+                    {error.lastName && <span className='valid'>{error.lastName}</span>}
                     </div>
                   </div>
                   <div >
@@ -134,7 +134,7 @@ function SignUpPage() {
                     <div className="mt-1">
                       <input id="email" name="email" type="email" autocomplete="off" value={email}
                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                    {error.email && <p>{error.email}</p>}
+                    {error.email && <span className='valid'>{error.email}</span>}
                     </div>
                   </div>
                   {/* <input type="text" name="password"  placeholder="Password" /><br/><br/> */}
@@ -145,7 +145,7 @@ function SignUpPage() {
                     <div className="mt-1">
                       <input id="password" name="password" type="password" autocomplete="off" value={password}
                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                    {error.password && <p>{error.password}</p>}
+                    {error.password && <span className='valid'>{error.password}</span>}
                     </div>
                   </div>
                   <div className="space-y-1">
@@ -155,7 +155,7 @@ function SignUpPage() {
                     <div className="mt-1">
                       <input id="address" name="address" type="address" autocomplete="off" value={address}
                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                    {error.address && <p>{error.address}</p>}
+                    {error.address && <span className='valid'>{error.address}</span>}
                     </div>
                   </div>
                   <div className="space-y-1">
@@ -165,7 +165,7 @@ function SignUpPage() {
                     <div className="mt-1">
                       <input id="contact" name="contact" type="contact" autocomplete="off" value={contact}
                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                    {error.contact && <p>{error.contact}</p>}
+                    {error.contact && <span className='valid'>{error.contact}</span>}
                     </div>
                   </div>
                   <div className="flex items-center justify-between">

@@ -1,10 +1,31 @@
 import React from 'react';
 import { useLogin } from '../../hooks/UserLogin';
 import LoginSvg from '../../assets/login.svg';
+import  { useState } from "react";
 
 function LoginPage() {
 
-  const {login, isLoading, error}=useLogin()
+  const {login, isLoading}=useLogin()
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [error, setError] = useState({});
+
+  const checkValidation = (e) => {
+    const newError = {};
+
+    if (e.target.email.value === "") {
+      newError.email = "Enter your Email";
+    }
+
+    if (e.target.password.value === "") {
+      newError.password = "Enter your Password";
+    }
+    setError(newError);
+    return newError;
+  };
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -12,6 +33,13 @@ function LoginPage() {
     const password = e.target.password.value;
     console.log(email, "\n", password);
     login(email,password)
+
+    const newError = checkValidation(e);
+    if (Object.keys(newError).length == 0) {
+      console.log("Form submitted Successfully");
+    } else {
+      console.log("Validation Error");
+    }
 
   //   fetch("http://localhost:5000/login", {
   //     method: "POST",
@@ -54,12 +82,13 @@ function LoginPage() {
                 {/* <form action="http://localhost:3000/login" className="space-y-6" noValidate> */}
                 <div className="mt-6">
                   <div >
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="email"  className="block text-sm font-medium text-gray-700">
                       Email
                     </label>
                     <div className="mt-1">
-                      <input id="email" name="email" type="email" autocomplete="off"
-                        required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                      <input id="email" name="email" type="email" autocomplete="off" value={email}
+                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    {error.email && <span className="valid">{error.email}</span>}
                     </div>
                   </div> {/* <input type="text" name="password"  placeholder="Password" /><br/><br/> */}
                   <div className="space-y-1">
@@ -67,8 +96,9 @@ function LoginPage() {
                       Password
                     </label>
                     <div className="mt-1">
-                      <input id="password" name="password" type="password" autocomplete="off"
-                        required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                      <input id="password" name="password" type="password" autocomplete="off" value={password}
+                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                     {error.password && <span className="valid">{error.password}</span>}
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
