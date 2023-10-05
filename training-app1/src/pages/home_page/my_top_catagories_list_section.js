@@ -13,7 +13,7 @@ export default function TrendingTopicsSection(props){
           </h2>
 
         </div>
-        <CategoryList/>
+        {/* <CategoryList/> */}
 
         <div className="mt-12 bg-opacity-5 max-w-3xl mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
           <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
