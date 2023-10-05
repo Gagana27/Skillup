@@ -1,7 +1,7 @@
 import React from 'react'
-import BrowsePage from '../browse_page';
+// import BrowsePage from '../browse_page';
 import CategoryList from './category';
-import VideoList from './videos';
+// import VideoList from './videos';
 
 export default function Header() {
   return (
@@ -13,7 +13,8 @@ export default function Header() {
             <div className="flex items-center justify-between w-full md:w-auto">
 
               <a href="/">
-                <div class="flex flex-row items-center justify-center ">
+              <div className="flex flex-row items-center justify-center ">
+
                   <span className="sr-only">Workflow</span>
                   {/* <img className="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt /> */}
                   <svg className="mt-1 " width="80px"
@@ -39,12 +40,11 @@ export default function Header() {
             </div>
             <div>
               <div className="hidden space-x-8 md:flex md:ml-10">
-
-                <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300">Categories</a>
+                <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{marginLeft:"460px"}}>Categories</a>
 
                 {/* <CategoryList/>                 */}
-                <a href="Home" className="text-base font-medium text-gray-500 hover:text-gray-300">Home</a>
-                <a href="ContactUs" className="text-base font-medium text-gray-500 hover:text-gray-300">ContactUs</a>
+                <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300">Home</a>
+                <a href="contactus" className="text-base font-medium text-gray-500 hover:text-gray-300">Contact</a>
                 <a href="about" className="text-base font-medium text-gray-500 hover:text-gray-300">About</a>
               </div>
             </div>
@@ -60,7 +60,7 @@ export default function Header() {
               </div> </div>
           </div>
           <div className="hidden md:flex md:items-center md:space-x-6">
-            <a href="login" className="bg-emerald-600 inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-gray-700">
+            <a href="login" className="text-white bg-emerald-600 inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-gray-700">
               Log in
             </a>
             <a href="signUp" className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-bright-orange hover:bg-gray-700">

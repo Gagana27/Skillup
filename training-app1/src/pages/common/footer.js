@@ -16,13 +16,13 @@ export default function Footer(props) {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <a href="/" className="text-base text-gray-300 hover:text-white">
+                    <a href="/marketing" className="text-base text-gray-300 hover:text-white">
                       Marketing
                     </a>
                   </li>
 
                   <li>
-                    <a href="/" className="text-base text-gray-300 hover:text-white">
+                    <a href="/analytics" className="text-base text-gray-300 hover:text-white">
                       Analytics
                     </a>
                   </li>
@@ -46,7 +46,7 @@ export default function Footer(props) {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <a href="/" className="text-base text-gray-300 hover:text-white">
+                    <a href="/pricing" className="text-base text-gray-300 hover:text-white">
                       Pricing
                     </a>
                   </li>
@@ -78,7 +78,7 @@ export default function Footer(props) {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <a href="/" className="text-base text-gray-300 hover:text-white">
+                    <a href="/about" className="text-base text-gray-300 hover:text-white">
                       About
                     </a>
                   </li>
@@ -114,7 +114,7 @@ export default function Footer(props) {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <a href="/" className="text-base text-gray-300 hover:text-white">
+                    <a href="/claim" className="text-base text-gray-300 hover:text-white">
                       Claim
                     </a>
                   </li>
@@ -143,7 +143,7 @@ export default function Footer(props) {
             </p>
             <form className="mt-4 sm:flex sm:max-w-md">
               <label htmlFor="emailAddress" className="sr-only">Email address</label>
-              <input type="email" name="emailAddress" id="emailAddress" autocomplete="email" required className="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400" placeholder="Enter your email" />
+              <input type="email" name="emailAddress" id="emailAddress" autoComplete="email" required className="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400" placeholder="Enter your email" />
               <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                 <button type="submit" className="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">
                   Subscribe

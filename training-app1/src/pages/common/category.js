@@ -19,7 +19,7 @@ function CategoryList() {
     fetchCategories();
   }, []);
 
-  console.log("dead",categories);
+  console.log("dead", imageUrl);
 
   return (
     <>
@@ -31,21 +31,24 @@ function CategoryList() {
               <Col>
                 <a class="thumbnail" href="">
                   <Link to={`/categories/${category._id}/subcategories`}>
-                  <Card className="bg-secondary border-primary border-4" border="info" style={{ width: '20rem', height: '12rem' }}>
-                    <Card.Img variant="top" style={{ height: '130px', width: '100%' }}
-                      src={category?.image}
-                    />
-                    <Card.Body style={{ height: '50px' }}>
-                      <Card.Text className="text-white">
-                      {category.name}
-                      {category.imageUrl}
-                        {/* <Link to={`/categories/${category._id}/subcategories`} >
+                    <Card 
+                        className="bg-secondary border-primary border-4" 
+                        border="warning" 
+                        style={{ width: '20rem', height: '12rem' }}>
+                      <Card.Img 
+                        variant="top" 
+                        style={{ height: '135px', width: '100%' }}
+                        src={category?.image}
+                      />
+                      <Card.Body 
+                        style={{ height: '50px'}}>
+                        <Card.Text 
+                          className="text-white">
                           {category.name}
-                          {category.imageUrl}
-                        </Link> */}
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
+                          {/* {category.description} */}
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
                   </Link>
                 </a>
               </Col>
@@ -55,4 +58,5 @@ function CategoryList() {
     </>
   );
 }
+
 export default CategoryList;
