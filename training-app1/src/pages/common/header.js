@@ -20,7 +20,6 @@ export default function Header() {
   const handleClick = () => {
     logout();
   };
-
   
   return (
     <>
