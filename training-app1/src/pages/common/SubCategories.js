@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import VideoList from './videos';
 
 
 function SubcategoryList() {
@@ -35,7 +36,7 @@ function SubcategoryList() {
       {
         subcategories.map(subcategory => (
           <Col key={subcategory._id}>
-            <Card 
+            <Card
                 className="bg-secondary border-primary border-4" 
                 border="warning" 
                 style={{ width: '20rem', height: '20rem' }}>

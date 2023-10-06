@@ -9,6 +9,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import ProfileSvg from '../../assets/profilepic.svg';
 import { useAuthContext } from "../../hooks/UserAuthContext";
 import { useLogOut } from "../../hooks/UserLogout";
+import { Link } from 'react-router-dom';
 // import VideoList from './videos';
 
 export default function Header() {
@@ -19,7 +20,6 @@ export default function Header() {
   const handleClick = () => {
     logout();
   };
-
   
   return (
     <>
@@ -28,7 +28,7 @@ export default function Header() {
           <nav className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
             <div className="flex items-center flex-1">
               <div className="flex items-center justify-between w-full md:w-auto">
-                <a href="/">
+                <Link to="/">
                   <div className="flex flex-row items-center justify-center ">
                     <span className="sr-only">Workflow</span>
                     <svg className="mt-1 " width="80px"
@@ -37,10 +37,10 @@ export default function Header() {
                       <path fill="#fff" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                     </svg>
-                    <a href="/" className="text-base font-bold text-black hover:text-black">Learn.</a>
+                    <Link to="/" className="text-base font-bold text-black hover:text-black">Learn.</Link>
                   </div>
 
-                </a>
+                </Link>
                 <div className="-mr-2 flex items-center md:hidden">
                   <button type="button" className="bg-gray-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white" id="main-menu" aria-haspopup="true">
                     <span className="sr-only">Open main menu</span>
@@ -54,20 +54,20 @@ export default function Header() {
               <div>
                 <div className="hidden space-x-8 md:flex md:ml-10">
                   <div>
-                  <a 
-                    href={`category`} 
+                  <Link
+                    to={`category`} 
                     className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" 
                     style={{ marginLeft: "420px",marginRight:"25px" }}>
                       {user ? "Categories" : "" }
-                  </a>
+                  </Link>
                   </div>
                   
                   {/* <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{ marginLeft: "340px" }}>Categories</a> */}
                   {/* <CategoryList/>                 */}
-                  <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300"
-                 style={{ marginLeft: user ? "0px" : "220px" }} >Home</a>
-                  <a href="contactus" className="text-base font-medium text-gray-500 hover:text-gray-300">Contact</a>
-                  <a href="about" className="text-base font-medium text-gray-500 hover:text-gray-300">About</a>
+                  <Link to="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300"
+                 style={{ marginLeft: user ? "0px" : "220px" }} >Home</Link>
+                  <Link to="contactus" className="text-base font-medium text-gray-500 hover:text-gray-300">Contact</Link>
+                  <Link to="about" className="text-base font-medium text-gray-500 hover:text-gray-300">About</Link>
                 </div>
               </div>
               <div className="hidden space-x-8 md:flex md:ml-10">
@@ -82,20 +82,20 @@ export default function Header() {
                 </div> </div>
             </div>
             <div className="hidden md:flex md:items-center md:space-x-6" style={{marginRight:"-110px"}}>
-              <a href="login" className="text-white bg-emerald-600 inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-gray-700">
+              <Link to="login" className="text-white bg-emerald-600 inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-gray-700">
                 Log in
-              </a>
-              <a href="signUp" className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-bright-orange hover:bg-gray-700">
+              </Link>
+              <Link to="signUp" className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-bright-orange hover:bg-gray-700">
                 Sign up
-              </a>
-              <a href="/" className="text-base font-medium text-gray-500 hover:text-gray-300">
+              </Link>
+              <Link to="/" className="text-base font-medium text-gray-500 hover:text-gray-300">
                 {user && 
                   <img 
                   src={ProfileSvg} 
                   alt="Avatar" 
                   class="avatar" />
                 }
-              </a>
+              </Link>
               {user &&
                 <NavDropdown 
                   title={user ? user?.loginUser?.firstname : "Guest"} 
@@ -142,10 +142,10 @@ export default function Header() {
                 <CategoryList />
               </div>
               <div role="none" className="mt-6 px-5">
-                <a href="/category" className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700">Start free trial</a>
+                <Link to="/category" className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700">Start free trial</Link>
               </div>
               <div role="none" className="mt-6 px-5">
-                <p className="text-center text-base font-medium text-gray-500">Existing customer? <a href="#" className="text-gray-900 hover:underline">Login</a></p>
+                <p className="text-center text-base font-medium text-gray-500">Existing customer? <Link to="/" className="text-gray-900 hover:underline">Login</Link></p>
               </div>
             </div>
           </div>
