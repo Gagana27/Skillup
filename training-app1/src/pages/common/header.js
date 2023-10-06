@@ -56,14 +56,15 @@ export default function Header() {
                   <a 
                     href={`category`} 
                     className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" 
-                    style={{ marginLeft: "340px" }}>
+                    style={{ marginLeft: "410px" }}>
                       {user ? "Categories" : "" }
                   </a>
                   </div>
                   
                   {/* <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{ marginLeft: "340px" }}>Categories</a> */}
                   {/* <CategoryList/>                 */}
-                  <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300">Home</a>
+                  <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300"
+                  >Home</a>
                   <a href="contactus" className="text-base font-medium text-gray-500 hover:text-gray-300">Contact</a>
                   <a href="about" className="text-base font-medium text-gray-500 hover:text-gray-300">About</a>
                 </div>
@@ -79,7 +80,7 @@ export default function Header() {
                   {/* </a> */}
                 </div> </div>
             </div>
-            <div className="hidden md:flex md:items-center md:space-x-6">
+            <div className="hidden md:flex md:items-center md:space-x-6" style={{marginRight:"-110px"}}>
               <a href="login" className="text-white bg-emerald-600 inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-gray-700">
                 Log in
               </a>
