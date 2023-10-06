@@ -20,6 +20,7 @@ export default function Header() {
     logout();
   };
 
+  
   return (
     <>
       <header className="relative">
@@ -56,7 +57,7 @@ export default function Header() {
                   <a 
                     href={`category`} 
                     className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" 
-                    style={{ marginLeft: "410px" }}>
+                    style={{ marginLeft: "420px",marginRight:"25px" }}>
                       {user ? "Categories" : "" }
                   </a>
                   </div>
@@ -64,7 +65,7 @@ export default function Header() {
                   {/* <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{ marginLeft: "340px" }}>Categories</a> */}
                   {/* <CategoryList/>                 */}
                   <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300"
-                  >Home</a>
+                 style={{ marginLeft: user ? "0px" : "220px" }} >Home</a>
                   <a href="contactus" className="text-base font-medium text-gray-500 hover:text-gray-300">Contact</a>
                   <a href="about" className="text-base font-medium text-gray-500 hover:text-gray-300">About</a>
                 </div>
