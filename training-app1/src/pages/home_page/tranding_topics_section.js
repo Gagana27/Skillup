@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 export default function MyTopCatagoriesListSection(props){
     return (
       <div className="relative bg-gray-50  pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
@@ -22,11 +23,11 @@ export default function MyTopCatagoriesListSection(props){
               <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-indigo-600">
-                    <a href="/" className="hover:underline">
+                    <Link to="/" className="hover:underline">
                       
-                    </a>
+                    </Link>
                   </p>
-                  <a href="/" className="block mt-2">
+                  <Link to="/" className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900">
                       Python Programming Langauge
                     </p>
@@ -34,20 +35,20 @@ export default function MyTopCatagoriesListSection(props){
                     Python supports arbitrary precision integers, meaning you're able to represent larger numbers than a normal 32 or 64 bit integer type. 
                     The L tells you when a literal is of this type and not a regular integer.
                     </p>
-                  </a>
+                  </Link>
                 </div>
                 <div className="mt-6 flex items-center">
                   <div className="flex-shrink-0">
-                    <a href="/">
+                    <Link to="/">
                       <span className="sr-only">Roel Aufderehar</span>
                       <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="ml-3">
                     <p className="text-sm font-medium text-gray-900">
-                      <a href="/" className="hover:underline">
+                      <Link to="/" className="hover:underline">
                         Roel Aufderehar
-                      </a>
+                      </Link>
                     </p>
                     <div className="flex space-x-1 text-sm text-gray-500">
                       <time dateTime="2020-03-16">
@@ -72,31 +73,31 @@ export default function MyTopCatagoriesListSection(props){
               <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-indigo-600">
-                    <a href="/" className="hover:underline">
+                    <Link to="/" className="hover:underline">
                       
-                    </a>
+                    </Link>
                   </p>
-                  <a href="/" className="block mt-2">
+                  <Link to="/" className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900">
                       Digital Maketing
                     </p>
                     <p className="mt-3 text-base text-gray-500">
                     Digital marketing is the use of the Internet, mobile devices, social media, search engines, and other channels to reach consumers.
                     </p>
-                  </a>
+                  </Link>
                 </div>
                 <div className="mt-6 flex items-center">
                   <div className="flex-shrink-0">
-                    <a href="/">
+                    <Link to="/">
                       <span className="sr-only">Brenna Goyette</span>
                       <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="ml-3">
                     <p className="text-sm font-medium text-gray-900">
-                      <a href="/" className="hover:underline">
+                      <Link to="/" className="hover:underline">
                         Brenna Goyette
-                      </a>
+                      </Link>
                     </p>
                     <div className="flex space-x-1 text-sm text-gray-500">
                       <time dateTime="2020-03-10">
@@ -121,31 +122,31 @@ export default function MyTopCatagoriesListSection(props){
               <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-indigo-600">
-                    <a href="/" className="hover:underline">
+                    <Link to="/" className="hover:underline">
                     
-                    </a>
+                    </Link>
                   </p>
-                  <a href="/" className="block mt-2">
+                  <Link to="/" className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900">
                       Financial Accounting
                     </p>
                     <p className="mt-3 text-base text-gray-500">
                     Financial accounting is the field of accounting concerned with the summary, analysis and reporting of financial transactions related to a business.
                     </p>
-                  </a>
+                  </Link>
                 </div>
                 <div className="mt-6 flex items-center">
                   <div className="flex-shrink-0">
-                    <a href="/">
+                    <Link to="/">
                       <span className="sr-only">Daniela Metz</span>
                       <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="ml-3">
                     <p className="text-sm font-medium text-gray-900">
-                      <a href="/" className="hover:underline">
+                      <Link to="/" className="hover:underline">
                         Daniela Metz
-                      </a>
+                      </Link>
                     </p>
                     <div className="flex space-x-1 text-sm text-gray-500">
                       <time dateTime="2020-02-12">
