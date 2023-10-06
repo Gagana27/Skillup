@@ -20,6 +20,7 @@ export default function Header() {
     logout();
   };
 
+  
   return (
     <>
       <header className="relative">
@@ -52,9 +53,19 @@ export default function Header() {
               </div>
               <div>
                 <div className="hidden space-x-8 md:flex md:ml-10">
-                  <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{ marginLeft: "340px" }}>Categories</a>
+                  <div>
+                  <a 
+                    href={`category`} 
+                    className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" 
+                    style={{ marginLeft: "420px",marginRight:"25px" }}>
+                      {user ? "Categories" : "" }
+                  </a>
+                  </div>
+                  
+                  {/* <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{ marginLeft: "340px" }}>Categories</a> */}
                   {/* <CategoryList/>                 */}
-                  <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300">Home</a>
+                  <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300"
+                 style={{ marginLeft: user ? "0px" : "220px" }} >Home</a>
                   <a href="contactus" className="text-base font-medium text-gray-500 hover:text-gray-300">Contact</a>
                   <a href="about" className="text-base font-medium text-gray-500 hover:text-gray-300">About</a>
                 </div>
@@ -70,26 +81,35 @@ export default function Header() {
                   {/* </a> */}
                 </div> </div>
             </div>
-            <div className="hidden md:flex md:items-center md:space-x-6">
+            <div className="hidden md:flex md:items-center md:space-x-6" style={{marginRight:"-110px"}}>
               <a href="login" className="text-white bg-emerald-600 inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-gray-700">
                 Log in
               </a>
               <a href="signUp" className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-bright-orange hover:bg-gray-700">
                 Sign up
               </a>
-              <a href="/" className="text-base font-medium text-gray-500 hover:text-gray-300"><img src={ProfileSvg} alt="Avatar" class="avatar" /></a>
+              <a href="/" className="text-base font-medium text-gray-500 hover:text-gray-300">
+                {user && 
+                  <img 
+                  src={ProfileSvg} 
+                  alt="Avatar" 
+                  class="avatar" />
+                }
+              </a>
               {user &&
-                <NavDropdown title={user ? user?.loginUser?.firstname : "Guest"} id="basic-nav-dropdown">
-                <Dropdown.Item href="/profile">
-                  profile
-                </Dropdown.Item>
-                <Dropdown.Item href="/Setting">
-                  Setting
-                </Dropdown.Item>
-                <Dropdown.Item onClick={handleClick}>
-                  LogOut
-                </Dropdown.Item>
-              </NavDropdown>
+                <NavDropdown 
+                  title={user ? user?.loginUser?.firstname : "Guest"} 
+                  id="basic-nav-dropdown">
+                  <Dropdown.Item href="/profile">
+                    Profile
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/Setting">
+                    Setting
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={handleClick}>
+                    LogOut
+                  </Dropdown.Item>
+                </NavDropdown>
               }
             </div>
           </nav>

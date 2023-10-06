@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 /* signup */
-p{
+.valid{
     color: red;
 }
 
