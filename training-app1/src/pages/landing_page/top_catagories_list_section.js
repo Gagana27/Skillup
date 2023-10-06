@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function TopCatagoriesListSection(props) {
   return (
@@ -24,25 +25,25 @@ export default function TopCatagoriesListSection(props) {
             <div className="flex-1 bg-grey p-6 flex flex-row justify-between">
               <div className="flex-1">
                 <p className="text-sm font-bold text-indigo-600">
-                  <a href="/" className="hover:underline">
+                  <Link to="/" className="hover:underline">
                     Courses
-                  </a>
+                  </Link>
                 </p>
-                <a href="/" className="block mt-2">
+                <Link to="/" className="block mt-2">
                   <p className="text-xl font-semibold text-grey-800">
                     React Native With Essentials
                   </p>
                   <p className="mt-3 text-base text-gray-500">
                     React Native is an open-source mobile application framework created by Facebook, Inc. It is used to develop applications for Android, Android TV, iOS, macOS, tvOS, Web, Windows and UWP by enabling developers to use React's framework.
                   </p>
-                </a>
+                </Link>
               </div>
               <div className="mt-6 flex items-center">
                 <div className="py-4 flex-shrink-0">
-                  <a href="/">
+                  <Link to="/">
                     {/* <span className="sr-only">Roel Aufderehar</span> */}
                     {/* <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
-                  </a>
+                  </Link>
                 </div>
                 {/* <div className="ml-3">
                     <p className="text-sm font-medium text-gray-900">
@@ -74,11 +75,11 @@ export default function TopCatagoriesListSection(props) {
             <div className="flex-1 bg-grey p-6 flex flex-col justify-between">
               <div className="flex-1">
                 <p className="text-sm font-bold text-indigo-600">
-                  <a href="/" className="hover:underline">
+                  <Link to="/" className="hover:underline">
                     Courses
-                  </a>
+                  </Link>
                 </p>
-                <a href="/" className="block mt-1">
+                <Link to="/" className="block mt-1">
                   <p className="text-xl font-semibold text-grey-800">
                     Web Development
                   </p>
@@ -88,14 +89,14 @@ export default function TopCatagoriesListSection(props) {
                     On the JavaScript side you should learn at least one modern framework:
                     React.js  /  Angular.js  /  Vue.js   /  W3.JS
                   </p>
-                </a>
+                </Link>
               </div>
               <div className="mt-6 flex items-center">
                 <div className="py-4 flex-shrink-0">
-                  <a href="/">
+                  <Link to="/">
                     {/* <span className="sr-only">Roel Aufderehar</span> */}
                     {/* <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
-                  </a>
+                  </Link>
                 </div>
                 {/* <div className="ml-3">
                     <p className="text-sm font-medium text-gray-900">
@@ -129,18 +130,18 @@ export default function TopCatagoriesListSection(props) {
             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
               <div className="flex-1">
                 <p className="text-sm font-medium text-indigo-600">
-                  <a href="/" className="hover:underline">
+                  <Link to="/" className="hover:underline">
                     Courses
-                  </a>
+                  </Link>
                 </p>
-                <a href="/" className="block mt-2">
+                <Link to="/" className="block mt-2">
                   <p className="text-xl font-semibold text-gray-900">
                     JavaScript For Beginners & Intermediate Levels
                   </p>
                   <p className="mt-3 text-base text-gray-500">
                     JavaScript is high-level, often just-in-time compiled, and multi-paradigm. It has curly-bracket syntax, dynamic typing, prototype-based object-orientation, and first-class functions
                   </p>
-                </a>
+                </Link>
               </div>
               <div className="mt-6 flex items-center">
                 {/* <div className="flex-shrink-0">
@@ -179,18 +180,18 @@ export default function TopCatagoriesListSection(props) {
             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
               <div className="flex-1">
                 <p className="text-sm font-medium text-indigo-600">
-                  <a href="/" className="hover:underline">
+                  <Link to="/" className="hover:underline">
                     Courses
-                  </a>
+                  </Link>
                 </p>
-                <a href="/" className="block mt-2">
+                <Link to="/" className="block mt-2">
                   <p className="text-xl font-semibold text-gray-900">
                     Programming - Beginners & Experts
                   </p>
                   <p className="mt-3 text-base text-gray-500">
                     Cloud computing is the on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user.
                   </p>
-                </a>
+                </Link>
               </div>
               <div className="mt-6 flex items-center">
                 {/* <div className="flex-shrink-0">
@@ -229,18 +230,18 @@ export default function TopCatagoriesListSection(props) {
             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
               <div className="flex-1">
                 <p className="text-sm font-medium text-indigo-600">
-                  <a href="/" className="hover:underline">
+                  <Link to="/" className="hover:underline">
                     Courses
-                  </a>
+                  </Link>
                 </p>
-                <a href="/" className="block mt-2">
+                <Link to="/" className="block mt-2">
                   <p className="text-xl font-semibold text-gray-900">
                     Angular - Beginners & Experts
                   </p>
                   <p className="mt-3 text-base text-gray-500">
                     Angular is a TypeScript-based open-source web application framework led by the Angular Team at Google and by a community of individuals and corporations.
                   </p>
-                </a>
+                </Link>
               </div>
               <div className="mt-6 flex items-center">
                 {/* <div className="flex-shrink-0">
@@ -278,18 +279,18 @@ export default function TopCatagoriesListSection(props) {
             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
               <div className="flex-1">
                 <p className="text-sm font-medium text-indigo-600">
-                  <a href="/" className="hover:underline">
+                  <Link to="/" className="hover:underline">
                     Courses
-                  </a>
+                  </Link>
                 </p>
-                <a href="/" className="block mt-2">
+                <Link to="/" className="block mt-2">
                   <p className="text-xl font-semibold text-gray-900">
                     Python - intermediate Levels
                   </p>
                   <p className="mt-3 text-base text-gray-500">
                     Python is an interpreted, high-level and general-purpose programming language. Python's design philosophy emphasizes code readability with its notable use of significant indentation.
                   </p>
-                </a>
+                </Link>
               </div>
               <div className="mt-6 flex items-center">
                 {/* <div className="flex-shrink-0">
