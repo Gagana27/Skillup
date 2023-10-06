@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
+
 function SubcategoryList() {
 
   const { categoryId } = useParams();
@@ -19,7 +20,8 @@ function SubcategoryList() {
   }, [categoryId]);
 
   return (
-    /*  <ul>
+    <>
+     {/* <ul>
          {subcategories.map(subcategory => (
              <li key={subcategory._id}>
                  <Link to={`/subcategories/${subcategory._id}/videos`}>
@@ -27,7 +29,7 @@ function SubcategoryList() {
                  </Link>
              </li>
          ))}
-     </ul> */
+     </ul>  */}
 
     <Row xs={1} md={3} className="g-4">
       {
@@ -66,6 +68,7 @@ function SubcategoryList() {
           </Col>
         ))}
     </Row>
+    </>
 
   );
 }
