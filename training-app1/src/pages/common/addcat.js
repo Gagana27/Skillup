@@ -9,8 +9,11 @@ const AddCategory = () => {
     const [subcategoryName, setSubcategoryName] = useState([]);
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState([]);
-    const[description,setDescription]=useState('');
-    const[author,setAuthor]=useState('');
+    const [author, setAuthor] = useState('');
+    const [priceDetails, setPriceDetails] = useState([]);
+    const [reviews, setReviews] = useState([]);
+    const [ratings, setRatings] = useState([]);
+    const [image, setImage] = useState([]);
 
 
     //subcategory
@@ -44,14 +47,20 @@ const AddCategory = () => {
                 img: imageUrl,
                 subcategories: subcategoryName.filter(Boolean),
             });
+
+            console.log("category111",categoryResponse)
             const subcategoryId = categoryResponse.data.subcategories[0]._id;
             // Add the new video to the subcategory
             const videoResponse = await axios.post(`http://localhost:5000/subcategories/${subcategoryId}/videos`, {
                 title,
                 url,
                 author,
+                description,
+                priceDetails,
+                reviews,
+                ratings,
+                image
             });
-            console.log(videoResponse.data);
             setCategoryName('');
 
         } catch (error) {
@@ -96,16 +105,6 @@ const AddCategory = () => {
                 value={price}
                 onChange={(event) => setPrice(event.target.value)}
             />
-            <div>
-            <label htmlFor="category-imageUrl">Description:</label>
-
-
-            <textarea
-                placeholder="Description"
-                value={description}
-                onChange={(event) => setDescription(event.target.value)}
-            />
-            </div>
             {subcategoryName.map((subcategoryName, index) => (
                 <div key={index}>
                     <label htmlFor={`subcategory-name-${index}`}>Subcategory name:</label>
@@ -131,6 +130,42 @@ const AddCategory = () => {
                     required
                 />
             </div>
+            <div>
+                <label htmlFor="category-imageUrl">ImageUrl:</label>
+                <input
+                    type="text"
+                    id="category-imageUrl"
+                    value={image}
+                    onChange={(event) => setImage(event.target.value)}
+                    required
+                />
+            </div>
+            <textarea
+                placeholder="Description"
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+            />
+            <textarea
+                placeholder="Author"
+                value={author}
+                onChange={(event) => setAuthor(event.target.value)}
+            />
+            <input
+                type="number"
+                placeholder="PriceDetails"
+                value={priceDetails}
+                onChange={(event) => setPriceDetails(event.target.value)}
+            />
+              <textarea
+                placeholder="Reviews"
+                value={reviews}
+                onChange={(event) => setReviews(event.target.value)}
+            />
+              <textarea
+                placeholder="Ratings"
+                value={ratings}
+                onChange={(event) => setRatings(event.target.value)}
+            />
             {url.map((url, index) => (
                 <div key={index}>
                     <label htmlFor={`url-${index}`}>video url:</label>
