@@ -13,6 +13,7 @@ const AddCategory = () => {
     const [priceDetails, setPriceDetails] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [ratings, setRatings] = useState([]);
+    const [image, setImage] = useState([]);
 
 
     //subcategory
@@ -58,6 +59,7 @@ const AddCategory = () => {
                 priceDetails,
                 reviews,
                 ratings,
+                image
             });
             setCategoryName('');
 
@@ -125,6 +127,16 @@ const AddCategory = () => {
                     id="title"
                     value={title}
                     onChange={(event) => setTitle(event.target.value)}
+                    required
+                />
+            </div>
+            <div>
+                <label htmlFor="category-imageUrl">ImageUrl:</label>
+                <input
+                    type="text"
+                    id="category-imageUrl"
+                    value={image}
+                    onChange={(event) => setImage(event.target.value)}
                     required
                 />
             </div>

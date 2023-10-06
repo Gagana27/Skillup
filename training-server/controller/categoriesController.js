@@ -13,12 +13,13 @@ const getAllCategories=async (req,res)=>{
 
 const postCategories=async (req,res)=>{
     try {
-        const { name,price ,description ,subcategories } = req.body;
+        const { name,price ,description ,subcategories,img } = req.body;
         const category = new Category({
             name,
             price,
             description,
             subcategories: [],
+            image:img
         });
         await category.save();
         const newSubcategories = [];
@@ -53,9 +54,10 @@ const postVideosInSubcategories=async (req,res)=>{
             description: req.body.description,
             priceDetails: req.body.priceDetails,
             reviews: req.body.reviews,
-            ratings : req.body.reviews,
+            ratings : req.body.ratings,
             subcategory: subcategoryId,
-            category: subcategory.category
+            category: subcategory.category,
+            image: req.body.image
         });
         await video.save();
         subcategory.videos.push(video);
