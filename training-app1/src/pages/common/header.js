@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import BrowsePage from '../browse_page';
 import CategoryList from './category';
 import VideoList from './videos';
@@ -18,6 +18,15 @@ export default function Header() {
 
   const handleClick = () => {
     logout();
+  };
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  const handleProfileClick = () => {
+    setShowProfileMenu(true);
+  };
+
+  const handleSettingClick = () => {
+    setShowProfileMenu(false);
   };
 
   
@@ -97,10 +106,9 @@ export default function Header() {
                 }
               </a>
               {user &&
-                <NavDropdown 
-                  title={user ? user?.loginUser?.firstname : "Guest"} 
-                  id="basic-nav-dropdown">
-                  <Dropdown.Item href="/profile">
+                <NavDropdown title={user ? user?.loginUser?.firstname : "Guest"} id="basic-nav-dropdown">
+
+                  {/* <Dropdown.Item onClick={handleClick}>
                     Profile
                   </Dropdown.Item>
                   <Dropdown.Item href="/Setting">
@@ -109,6 +117,37 @@ export default function Header() {
                   <Dropdown.Item onClick={handleClick}>
                     LogOut
                   </Dropdown.Item>
+                  
+                  <Dropdown.Item href="/Setting">
+                    My Learning
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/Setting">
+                    My cart
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/Setting">
+                    Subscription
+                  </Dropdown.Item> */}
+
+               {showProfileMenu ? (
+              <>
+                <Dropdown.Item href="/my-cart"  className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+               >My Cart</Dropdown.Item>
+                <Dropdown.Item href="/my-learning"  className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                >My Learning</Dropdown.Item>
+                <Dropdown.Item href="/subscription"  className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                >Subscription</Dropdown.Item>
+                <Dropdown.Item onClick={handleSettingClick}  className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                >Setting</Dropdown.Item>
+                <Dropdown.Item onClick={handleClick}  className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                >Logout</Dropdown.Item>
+              </>
+            ) : (
+              <>
+                <Dropdown.Item onClick={handleProfileClick}>Profile</Dropdown.Item>
+                <Dropdown.Item onClick={handleSettingClick}>Setting</Dropdown.Item>
+                <Dropdown.Item onClick={handleClick}>Logout</Dropdown.Item>
+              </>
+            )}
                 </NavDropdown>
               }
             </div>
