@@ -4,10 +4,12 @@ import { findDOMNode } from "react-dom";
 import screenfull from "screenfull";
 
 import ReactPlayer from "react-player";
+import VideoCoursePage from "./video_course_page";
+import CourseVideoViewSection from "./course_video_view_section";
 
 class VideoPlayerSample extends Component {
   state = {
-    url: "videos/Sample_video.mp4",
+    url: "https://www.youtube.com/watch?v=5i3U90PNiRE&ab_channel=ABitOfMusic",
     pip: false,
     playing: true,
     controls: false,
@@ -150,6 +152,7 @@ class VideoPlayerSample extends Component {
       duration,
       playbackRate,
       pip,
+      src
     } = this.state;
     const SEPARATOR = " · ";
 
@@ -157,10 +160,13 @@ class VideoPlayerSample extends Component {
       <div>
         <section className="section">
           <div className="mb-20 relative h-80v">
+            <section>
+              <VideoCoursePage/>
+            </section>
             <ReactPlayer
               ref={this.ref}
               className="absolute top-0 right-0"
-              width="100%"
+              width="60%"
               height="100%"
               url={url}
               pip={pip}
