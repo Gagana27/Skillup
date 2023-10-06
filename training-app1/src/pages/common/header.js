@@ -52,24 +52,19 @@ export default function Header() {
               </div>
               <div>
                 <div className="hidden space-x-8 md:flex md:ml-10">
-<<<<<<< HEAD
-                  
-                  <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{ marginLeft: "430px" }}>Categories</a>
-                
-=======
                   <div>
                   <a 
                     href={`category`} 
                     className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" 
-                    style={{ marginLeft: "340px" }}>
+                    style={{ marginLeft: "410px" }}>
                       {user ? "Categories" : "" }
                   </a>
                   </div>
                   
                   {/* <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{ marginLeft: "340px" }}>Categories</a> */}
->>>>>>> 28dd2d3d644bfa635eaef8680ef4f067719ab9ac
                   {/* <CategoryList/>                 */}
-                  <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300">Home</a>
+                  <a href="homepage" className="text-base font-medium text-gray-500 hover:text-gray-300"
+                  >Home</a>
                   <a href="contactus" className="text-base font-medium text-gray-500 hover:text-gray-300">Contact</a>
                   <a href="about" className="text-base font-medium text-gray-500 hover:text-gray-300">About</a>
                 </div>
