@@ -15,6 +15,7 @@ function CategoryList() {
     async function fetchCategories() {
       const response = await axios.get('http://localhost:5000/categories');
       setCategories(response.data);
+      console.log("iii",response.data);
     }
     fetchCategories();
   }, []);

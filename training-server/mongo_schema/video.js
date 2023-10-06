@@ -5,8 +5,13 @@ const videoSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    url: {
+    image: { 
         type: String,
+        required: true
+
+    },
+    url: {
+        type: Array,
         required: true,
     },
     author: {
@@ -17,16 +22,12 @@ const videoSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    priceDetails: {
-        
-        currency: String,
-        amount: Number,
+    priceDetails: {  
+        type: String,
     },
-    reviews: [{
-        text: String,
-        author: String,  // Author of the review
-        rating: Number,  // Rating for the video
-    }],
+    reviews: {
+        type: String,  // Author of the review
+    },
     ratings: {
         type: Number,
         default: 0,  // Default rating value
