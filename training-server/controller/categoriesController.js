@@ -49,6 +49,11 @@ const postVideosInSubcategories=async (req,res)=>{
         const video = new Video({
             title: req.body.title,
             url: req.body.url,
+            author: req.body.author,
+            description: req.body.description,
+            priceDetails: req.body.priceDetails,
+            reviews: req.body.reviews,
+            ratings : req.body.reviews,
             subcategory: subcategoryId,
             category: subcategory.category
         });
