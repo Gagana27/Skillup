@@ -5,10 +5,12 @@ const AddCategory = () => {
     const [categoryName, setCategoryName] = useState('');
     const [imageUrl, setImageUrl] = useState([]);
     const [price, setPrice] = useState('');
-    const [description, setDescription] = useState('');
+    // const [description, setDescription] = useState('');
     const [subcategoryName, setSubcategoryName] = useState([]);
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState([]);
+    const[description,setDescription]=useState('');
+    const[author,setAuthor]=useState('');
 
 
     //subcategory
@@ -47,6 +49,7 @@ const AddCategory = () => {
             const videoResponse = await axios.post(`http://localhost:5000/subcategories/${subcategoryId}/videos`, {
                 title,
                 url,
+                author,
             });
             console.log(videoResponse.data);
             setCategoryName('');
@@ -138,7 +141,19 @@ const AddCategory = () => {
                         onChange={(event) => handleVideoChange(index, event.target.value)}
                     />
                 </div>
+                
             ))}
+             
+            <div>
+                <label htmlFor="title">Author</label>
+                <input
+                    type="text"
+                    id="title"
+                    value={author}
+                    onChange={(event) => setAuthor(event.target.value)}
+                    required
+                />
+            </div>
             <button type="button" onClick={handleAddVideo}>
                 Add url
             </button><br />

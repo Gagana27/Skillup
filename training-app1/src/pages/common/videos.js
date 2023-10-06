@@ -55,6 +55,8 @@ import axios from 'axios';
 
                         
                          {video.title} 
+                         {video.author}
+                         {/* {video.description} */}
                     </li>
                 ))}
             </ul>      </div>

@@ -12,4 +12,7 @@ categoriesRouter.post('/categories',postCategories);
 
 categoriesRouter.post('/subcategories/:subcategoryId/videos',postVideosInSubcategories);
 
+categoriesRouter.post('/categories/:categoryId/subcategories', postCategories);
+
+
 module.exports=categoriesRouter;
