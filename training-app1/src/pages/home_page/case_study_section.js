@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function CaseStudySection(props){
   return (
     <div className="px-8 mt-16 mb-8 " >
@@ -13,7 +15,7 @@ export default function CaseStudySection(props){
           </div>
           <div className="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
             <div className="flex-1 px-4 py-2 text-sm truncate">
-              <a href="/" className="text-gray-900 font-medium hover:text-gray-600"> Software Automation</a>
+              <Link to="/" className="text-gray-900 font-medium hover:text-gray-600"> Software Automation</Link>
               <p className="text-gray-500">200 Members</p>
             </div>
             <div className="flex-shrink-0 pr-2">
@@ -32,7 +34,7 @@ export default function CaseStudySection(props){
           </div>
           <div className="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
             <div className="flex-1 px-4 py-2 text-sm truncate">
-              <a href="/" className="text-gray-900 font-medium hover:text-gray-600">Deveops Engineer</a>
+              <Link to="/" className="text-gray-900 font-medium hover:text-gray-600">Deveops Engineer</Link>
               <p className="text-gray-500">500 Members</p>
             </div>
             <div className="flex-shrink-0 pr-2">
@@ -52,7 +54,7 @@ export default function CaseStudySection(props){
           </div>
           <div className="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
             <div className="flex-1 px-4 py-2 text-sm truncate">
-              <a href="/" className="text-gray-900 font-medium hover:text-gray-600">AngularTemplates</a>
+              <Link to="/" className="text-gray-900 font-medium hover:text-gray-600">AngularTemplates</Link>
               <p className="text-gray-500">600 Members</p>
             </div>
             <div className="flex-shrink-0 pr-2">
@@ -72,7 +74,7 @@ export default function CaseStudySection(props){
           </div>
           <div className="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
             <div className="flex-1 px-4 py-2 text-sm truncate">
-              <a href="/" className="text-gray-900 font-medium hover:text-gray-600">ReactJS </a>
+              <Link to="/" className="text-gray-900 font-medium hover:text-gray-600">ReactJS </Link>
               <p className="text-gray-500">8 Members</p>
             </div>
             <div className="flex-shrink-0 pr-2">

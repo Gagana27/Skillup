@@ -2,6 +2,7 @@ import React from 'react';
 import { useLogin } from '../../hooks/UserLogin';
 import LoginSvg from '../../assets/login.svg';
 import  { useState } from "react";
+import { Link } from 'react-router-dom';
 
 function LoginPage() {
 
@@ -109,9 +110,9 @@ function LoginPage() {
                       </label>
                     </div>
                     <div className="text-sm">
-                      <a href="/" className="font-medium text-indigo-600 hover:text-indigo-500">
+                      <Link to="/" className="font-medium text-indigo-600 hover:text-indigo-500">
                         Forgot your password?
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div>

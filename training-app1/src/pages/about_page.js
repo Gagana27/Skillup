@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card } from 'antd';
+import { Link } from 'react-router-dom';
 
 
 export default function AboutPage() {
@@ -21,16 +22,16 @@ export default function AboutPage() {
             <div className="p-6 flex flex-row justify-between">
               <div className="mt-6 flex flex-col items-center text-center">
                 <div className="flex-shrink-0">
-                  <a href="/">
+                 <Link to="/">
                     <span className="sr-only">Lava kumar</span>
                     <img className="h-20 w-20 rounded-full" src="https://images.unsplash.com/photo-1587554801471-37976a256db0?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
-                  </a>
+                 </Link>
                 </div>
                 <div className="ml-3">
                   <p className="p-2 text-sm font-medium text-blue-700">
-                    <a href="/" className="hover:underline">
+                   <Link to="/" className="hover:underline">
                       Lava kumar
-                    </a>
+                   </Link>
                   </p>
                   <div className="text-sm font-medium text-blue-700">
                     <span>
@@ -41,16 +42,16 @@ export default function AboutPage() {
               </div>
               <div className="mt-6 flex flex-col items-center text-center">
                 <div className="flex-shrink-0">
-                  <a href="/">
+                 <Link to="/">
                     <span className="sr-only">Mark zuck</span>
                     <img className="h-20 w-20 rounded-full" src="https://images.unsplash.com/photo-1615945524151-d41b869675ec?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
-                  </a>
+                 </Link>
                 </div>
                 <div className="ml-3">
                   <p className="p-2 text-sm font-medium text-blue-700">
-                    <a href="/" className="hover:underline">
+                    <Link to="/" className="hover:underline">
                       Mark zuck
-                    </a>
+                    </Link>
                   </p>
                   <div className="text-sm font-medium text-blue-700">
                     <span>
@@ -61,16 +62,20 @@ export default function AboutPage() {
               </div>
               <div className="mt-6 flex flex-col items-center text-center">
                 <div className="flex-shrink-0">
-                  <a href="/">
+                 <Link to="/">
+                
                     <span className="sr-only">james franlin</span>
                     <img className="h-20 w-20 rounded-full" src="https://images.unsplash.com/photo-1611095973362-88e8e2557e58?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyOHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
-                  </a>
+                  
+                 </Link>
                 </div>
                 <div className="ml-3">
                   <p className="p-2 text-sm font-medium text-blue-700">
-                    <a href="/" className="hover:underline">
+                   <Link to="/"  className="hover:underline">
+                  
                       james franlin
-                    </a>
+                  
+                   </Link>
                   </p>
                   <div className="text-sm font-medium text-blue-700">
                     <span aria-hidden="true">
