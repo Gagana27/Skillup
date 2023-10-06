@@ -5,6 +5,11 @@ const videoSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    image: { 
+        type: String,
+        required: true
+
+    },
     url: {
         type: Array,
         required: true,
@@ -23,10 +28,10 @@ const videoSchema = new mongoose.Schema({
     reviews: {
         type: String,  // Author of the review
     },
-    // ratings: {
-    //     type: Number,
-    //     default: 0,  // Default rating value
-    // },
+    ratings: {
+        type: Number,
+        default: 0,  // Default rating value
+    },
     subcategory: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Subcategory',
