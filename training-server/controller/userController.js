@@ -96,7 +96,12 @@ const verifyEmailAccount=async (req,res)=>{
 //forgetPassword and logic for generate OTP
 const forgetPassword=async (req,res)=>{
   const {recoveryEmail}=req.body
-  const user=await SignupUserModel.findOne({email:recoveryEmail})
+  try {
+    const user=await SignupUserModel.findOne({email:recoveryEmail})
+  if(!user)
+  {
+    throw Error("Invalid Recovery Email")
+  }
   console.log("user",user)
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -137,6 +142,12 @@ const forgetPasswordHtml=forgetPasswordRecovey.replace("{{OTP}}",OTP)
   //  console.log("Otp deleted Successfully")
   // },100000)
   res.status(200).json({Msg: "OTP send successfully",emailData});
+  } catch (error) {
+    if(error)
+    {
+      res.status(400).json(error.message)
+    }
+  }
 }
 
 //verifyOTP
