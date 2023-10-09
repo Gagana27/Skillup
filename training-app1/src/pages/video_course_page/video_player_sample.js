@@ -160,14 +160,14 @@ class VideoPlayerSample extends Component {
       <div>
         <section className="section">
           <div className="mb-20 relative h-80v">
-            <section>
+            {/* <section>
               <VideoCoursePage/>
-            </section>
+            </section> */}
             <ReactPlayer
               ref={this.ref}
               className="absolute top-0 right-0"
-              width="60%"
-              height="100%"
+              width="100%"
+              height="114%"
               url={url}
               pip={pip}
               playing={playing}
@@ -194,10 +194,10 @@ class VideoPlayerSample extends Component {
             />
           </div>
 
-          <div className="bg-red-400">
+          <div className="bg-gray-400">
             {" "}
             <input
-              style={{ width: "60vw", background: "434343" }}
+              style={{ width: "100vw", background: "434343" }}
               type="range"
               min={0}
               max={0.999999}
@@ -234,7 +234,7 @@ class VideoPlayerSample extends Component {
                 />
               </svg>
             </div>
-            <div className="ml-5 mr-2">
+            {/* <div className="ml-5 mr-2" onClick={this.handlePlayPause}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -250,7 +250,7 @@ class VideoPlayerSample extends Component {
                   d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-            </div>
+            </div> */}
             <div className="ml-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -290,7 +290,7 @@ class VideoPlayerSample extends Component {
                 />
               </svg>
             </div>
-            <div className="ml-96">
+            <div className="ml-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -313,7 +313,7 @@ class VideoPlayerSample extends Component {
                 />
               </svg>
             </div>
-            <div>
+            <div className="ml-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -338,7 +338,7 @@ class VideoPlayerSample extends Component {
               </svg>
             </div>
 
-            <div>
+            <div className="ml-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -356,7 +356,7 @@ class VideoPlayerSample extends Component {
               </svg>
             </div>
             <div
-              class="cursor-pointer ..."
+              class="cursor-pointer ml-2 ..."
               onClick={this.handleClickFullscreen}
             >
               <svg
@@ -376,7 +376,7 @@ class VideoPlayerSample extends Component {
               </svg>
             </div>
           </div>
-          <table>
+          {/* <table>
             <tbody>
               <tr>
                 <th>Controls</th>
@@ -519,7 +519,7 @@ class VideoPlayerSample extends Component {
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> */}
         </section>
       </div>
     );
