@@ -21,6 +21,8 @@ function SubcategoryList() {
         {
           subcategories.map(subcategory => (
             <Col key={subcategory._id}>
+             <Link to={`/subcategories/${subcategory._id}/videos`}>
+
               <Card
                 className="bg-secondary border-primary border-4 m-4 "
                 border="warning"
@@ -32,11 +34,11 @@ function SubcategoryList() {
                 />
                 <Card.Body style={{ height: '50px' }}>
                   <Card.Text className="text-white">
-                    <Link to={`/subcategories/${subcategory._id}/videos`}>
-                      {subcategory.name}</Link>
+                      {subcategory.name}
                   </Card.Text>
                 </Card.Body>
               </Card>
+              </Link>
             </Col>
           ))}
       </Row>

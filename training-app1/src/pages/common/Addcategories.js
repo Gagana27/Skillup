@@ -15,7 +15,6 @@ const AddCategory = () => {
     const [ratings, setRatings] = useState([]);
     const [image, setImage] = useState([]);
 
-
     //subcategory
     const handleAddSubcategory = () => {
         setSubcategoryName([...subcategoryName, '']);
@@ -43,7 +42,7 @@ const AddCategory = () => {
             const categoryResponse = await axios.post('http://localhost:5000/categories', {
                 name: categoryName,
                 price: price,
-                image: imageUrl,
+                img: imageUrl,
                 subcategories: subcategoryName.filter(Boolean),
             });
 
@@ -114,6 +113,17 @@ const AddCategory = () => {
                     />
                 </div>
             ))}
+             <div>
+                <label htmlFor="title">subcategory image:</label>
+                <input
+                    type="text"
+                    id="title"
+                    value={imageUrl}
+                    onChange={(event) => setImageUrl(event.target.value)}
+                    required
+                />
+            </div>
+
             
             <button type="button" onClick={handleAddSubcategory}>
                 Add subcategory

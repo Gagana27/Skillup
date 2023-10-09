@@ -21,11 +21,14 @@ const postCategories=async (req,res)=>{
             image:img
         });
         await category.save();
+
         const newSubcategories = [];
         for (const  subcategoryName of subcategories) {
+            // const { images } = req.body;
+
             const subcategory = new Subcategory({
                 name: subcategoryName,
-                ima:img,
+                image: img,
                 videos: [],
                 category: category._id
             });
@@ -37,6 +40,7 @@ const postCategories=async (req,res)=>{
         res.status(201).json({
             category,
             subcategories: newSubcategories,
+
         });
     } catch (err) {
         res.status(400).json({ message: err.message });
