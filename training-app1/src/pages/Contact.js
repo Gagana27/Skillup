@@ -19,9 +19,9 @@ function ContactPage() {
     //   }
 
     return (
-        <div class="min-h-screen bg-white flex">
-            <div class="flex-1 flex flex-col py-12 px-4 sm:px-4 lg:flex-none lg:px-20 xl:px-24">
-                <div class="mx-auto w-full max-w-sm lg:w-96">
+        <div className="min-h-screen bg-white flex">
+            <div className="flex-1 flex flex-col py-12 px-4 sm:px-4 lg:flex-none lg:px-20 xl:px-24">
+                <div className="mx-auto w-full max-w-sm lg:w-96">
                     <div>
                         <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
                             Contact Us
@@ -39,7 +39,7 @@ function ContactPage() {
                                             Name
                                         </label>
                                         <div className="mt-1">
-                                            <input id="name" name="name" type="name" autocomplete="off"
+                                            <input id="name" name="name" type="name" autoComplete="off"
                                                 required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@ function ContactPage() {
                                             Address
                                         </label>
                                         <div className="mt-1">
-                                            <input id="address" name="address" type="address" autocomplete="off"
+                                            <input id="address" name="address" type="address" autoComplete="off"
                                                 required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                         </div>
                                     </div>
@@ -59,7 +59,7 @@ function ContactPage() {
                                             Email
                                         </label>
                                         <div className="mt-1">
-                                            <input id="email" name="email" type="email" autocomplete="off"
+                                            <input id="email" name="email" type="email" autoComplete="off"
                                                 required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                         </div>
                                     </div>
@@ -69,7 +69,7 @@ function ContactPage() {
                                             Contact Number
                                         </label>
                                         <div className="mt-1">
-                                            <input id="contact" name="contact" type="contact" autocomplete="off"
+                                            <input id="contact" name="contact" type="contact" autoComplete="off"
                                                 required className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                                         </div>
                                     </div>
@@ -91,7 +91,7 @@ function ContactPage() {
                     {/* Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ */}
                     <img
                         className="w-full lg:inset-y-0 lg:left-0 ml-40 lg:h-full lg:w-auto lg:max-w-none"
-                        src={ContactImage} alt />
+                        src={ContactImage} />
 
                     {/* <img className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/cloud-illustration-indigo-400.svg" alt /> */}
                 </div>
