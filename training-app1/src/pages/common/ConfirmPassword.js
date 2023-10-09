@@ -18,12 +18,12 @@ const handleConfirmPassword = async (e) => {
 }
     return (
         <>
-            <div class="card ">
-                <div class="cardforget ">
-                    <h3 class="card-titlefor align-center ">Password Change</h3>
-                    <div class="card-text">
+            <div className="card ">
+                <div className="cardforget ">
+                    <h3 className="card-titlefor align-center ">Password Change</h3>
+                    <div className="card-text">
                         <form onSubmit={handleConfirmPassword}>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label
                                     for="exampleInputEmail1">
                                     Enter your email address and we will send you a link to reset your password.
@@ -31,7 +31,7 @@ const handleConfirmPassword = async (e) => {
                                 
                                 <input
                                     type="email"
-                                    class="form-control form-control-sm"
+                                    className="form-control form-control-sm"
                                     placeholder="new Password"
                                     value={resetPassword}
                                     onChange={(e)=>{setConfirm(e.target.value)}}
@@ -39,7 +39,7 @@ const handleConfirmPassword = async (e) => {
                                 <br/>
                                 <input
                                     type="email"
-                                    class="form-control form-control-sm"
+                                    className="form-control form-control-sm"
                                     placeholder="confirm Password"
                                     onChange={(e)=>{setConfirm(e.target.value)}}
 
@@ -48,7 +48,7 @@ const handleConfirmPassword = async (e) => {
                             <br />
                             <button onClick={handleConfirmPassword}
                                 type="submit"
-                                class="forgotbutton btn-block mt-4">
+                                className="forgotbutton btn-block mt-4">
                                 Confirm Password
                             </button>
                         </form>

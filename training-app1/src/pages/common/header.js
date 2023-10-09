@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // import BrowsePage from '../browse_page';
 import CategoryList from "./category";
+import { Link } from 'react-router-dom';
 import VideoList from "./videos";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -38,7 +39,7 @@ export default function Header() {
           >
             <div className="flex items-center flex-1">
               <div className="flex items-center justify-between w-full md:w-auto">
-                <a href="/">
+                <Link to="/">
                   <div className="flex flex-row items-center justify-center ">
                     <span className="sr-only">Workflow</span>
                     <svg
@@ -62,14 +63,14 @@ export default function Header() {
                         d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
                       />
                     </svg>
-                    <a
-                      href="/"
+                    <Link
+                      to="/"
                       className="text-base font-bold text-black hover:text-black"
                     >
                       Learn.
-                    </a>
+                    </Link>
                   </div>
-                </a>
+                </Link>
                 <div className="-mr-2 flex items-center md:hidden">
                   <button
                     type="button"
@@ -100,72 +101,65 @@ export default function Header() {
               <div>
                 <div className="hidden space-x-8 md:flex md:ml-10">
                   <div>
-                    <a
-                      href={`category`}
+                    <Link
+                      to={`category`}
                       className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300"
                       style={{ marginLeft: "420px", marginRight: "25px" }}
                     >
                       {user ? "Categories" : ""}
-                    </a>
+                    </Link>
                   </div>
 
-                  {/* <a href={`category`} className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300" style={{ marginLeft: "340px" }}>Categories</a> */}
-                  {/* <CategoryList/>                 */}
-                  <a
-                    href="/"
+         
+                  <Link
+                    to="/"
                     className="text-base font-medium text-gray-500 hover:text-gray-300"
                     style={{ marginLeft: user ? "0px" : "220px" }}
                   >
                     Home
-                  </a>
-                  <a
-                    href="contactus"
+                  </Link>
+                  <Link
+                    to="contactus"
                     className="text-base font-medium text-gray-500 hover:text-gray-300"
                   >
                     Contact
-                  </a>
-                  <a
-                    href="about"
+                  </Link>
+                  <Link
+                    to="about"
                     className="text-base font-medium text-gray-500 hover:text-gray-300"
                   >
                     About
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="hidden space-x-8 md:flex md:ml-10">
                 <div>
-                  {/* <a href="/Category" className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300">Categories<svg className="mt-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"> */}
-                  {/* <CategoryList/>  */}
-                  {/* <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /> */}
-
-                  {/* </svg> */}
-
-                  {/* </a> */}
-                </div>{" "}
+              
+                </div>
               </div>
             </div>
             <div
               className="hidden md:flex md:items-center md:space-x-6"
               style={{ marginRight: "-110px" }}
             >
-              <a
-                href="login"
+              <Link
+                to="login"
                 className="text-white bg-emerald-600 inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-gray-700"
               >
                 Log in
-              </a>
-              <a
-                href="signUp"
+              </Link>
+              <Link
+                to="signUp"
                 className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-bright-orange hover:bg-gray-700"
               >
                 Sign up
-              </a>
-              <a
-                href="/"
+              </Link>
+              <Link
+                to="/"
                 className="text-base font-medium text-gray-500 hover:text-gray-300"
               >
-                {user && <img src={ProfileSvg} alt="Avatar" class="avatar" />}
-              </a>
+                {user && <img src={ProfileSvg} alt="Avatar" className="avatar" />}
+              </Link>
               {user && (
                 <NavDropdown
                   title={user ? user?.loginUser?.firstname : "Guest"}
@@ -274,19 +268,19 @@ export default function Header() {
                 <CategoryList />
               </div>
               <div role="none" className="mt-6 px-5">
-                <a
-                  href="/category"
+                <Link
+                  to="/category"
                   className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700"
                 >
                   Start free trial
-                </a>
+                </Link>
               </div>
               <div role="none" className="mt-6 px-5">
                 <p className="text-center text-base font-medium text-gray-500">
                   Existing customer?{" "}
-                  <a href="#" className="text-gray-900 hover:underline">
+                  <Link to="#" className="text-gray-900 hover:underline">
                     Login
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>

@@ -24,19 +24,19 @@ const ForgotPassword = () => {
     
     return (
         <>
-            <div class="container-fluid card ">
-                <div class="cardforget ">
-                    <h3 class="card-titlefor align-center ">Reset password</h3>
-                    <div class="card-text">
+            <div className="container-fluid card ">
+                <div className="cardforget ">
+                    <h3 className="card-titlefor align-center ">Reset password</h3>
+                    <div className="card-text">
                         <form className="space-y-6" onSubmit={handleResetPassword}>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label
                                     for="exampleInputEmail1">
                                     Enter your email address and we will send you a link to reset your password.
                                 </label>
                                 <input
                                     type="email"
-                                    class="form-control form-control-sm"
+                                    className="form-control form-control-sm"
                                     placeholder="Enter your email address"
                                     value={recoveryEmail}
                                     onChange={(e)=>{setEmail(e.target.value)}}
@@ -46,7 +46,7 @@ const ForgotPassword = () => {
                             <button
                               
                                 type="submit"
-                                class="forgotbutton btn-block mt-4">
+                                className="forgotbutton btn-block mt-4">
                                 Send password reset email
                             </button>
                         </form>
