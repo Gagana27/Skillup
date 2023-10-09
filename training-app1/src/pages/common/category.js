@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
+import VideoList from './videos';
 
 function CategoryList() {
   const [categories, setCategories] = useState([]);
@@ -14,6 +15,7 @@ function CategoryList() {
     async function fetchCategories() {
       const response = await axios.get('http://localhost:5000/categories');
       setCategories(response.data);
+      console.log("iii",response.data);
     }
     fetchCategories();
   }, []);

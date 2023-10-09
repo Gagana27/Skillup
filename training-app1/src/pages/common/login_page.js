@@ -2,6 +2,9 @@ import React from 'react';
 import { useLogin } from '../../hooks/UserLogin';
 import LoginSvg from '../../assets/login.svg';
 import  { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { Link } from 'react-router-dom';
 
 function LoginPage() {
 
@@ -9,6 +12,9 @@ function LoginPage() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState({});
+
+  const navigate = useNavigate();
+
 
   const checkValidation = (e) => {
     const newError = {};
@@ -59,6 +65,9 @@ function LoginPage() {
   //       console.log(data);
   //     })
    }
+   const forgot = () => {
+    navigate("/forgotPassword");
+}
 
   return (
     <div class="min-h-screen bg-white flex">
@@ -109,10 +118,11 @@ function LoginPage() {
                       </label>
                     </div>
                     <div className="text-sm">
-                      <a href="/" className="font-medium text-indigo-600 hover:text-indigo-500">
+                      <Link to="/ForgotPassword" className="font-medium text-indigo-600 hover:text-indigo-500">
                         Forgot your password?
-                      </a>
+                      </Link>
                     </div>
+                  
                   </div>
                   <div>
                     <button type='Submit' className="w-full flex justify-center  mt-3 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bright-orange hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

@@ -1,25 +1,28 @@
-import { useState, useEffect } from 'react';
-import { useParams} from 'react-router-dom';
-import ReactPlayer from 'react-player';
-import React, { useRef } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import ReactPlayer from "react-player";
+import React, { useRef } from "react";
+import axios from "axios";
 
- function VideoList() {
-    const playerRef = useRef(null);
 
-    const { categoryId, subcategoryId } = useParams();
-    const [videos, setVideos] = useState([]);
-    useEffect(() => {
-        async function fetchVideos() {
-            const response = await axios.get(`http://localhost:5000/subcategories/${subcategoryId}/videos`);
-            setVideos(response.data);
-        }
-        fetchVideos();
-    }, [categoryId, subcategoryId]);
-    return (
-       <div className='added'>
-          
-            {/* <h1>DigitalMarketing</h1>
+function VideoList() {
+  const playerRef = useRef(null);
+
+  const { categoryId, subcategoryId } = useParams();
+  const [videos, setVideos] = useState([]);
+  useEffect(() => {
+    async function fetchVideos() {
+      const response = await axios.get(
+        `http://localhost:5000/subcategories/${subcategoryId}/videos`
+      );
+      setVideos(response.data);
+      console.log("KKK",response.data);  // videos data
+    }
+    fetchVideos();
+  }, [categoryId, subcategoryId]);
+  return (
+    <div className="added">
+      {/* <h1>DigitalMarketing</h1>
             <ul>
                 {videos.map(video => (
                     <li key={video._id}>
@@ -30,64 +33,74 @@ import axios from 'axios';
                     </li>
                 ))}
             </ul>  */}
-            <div className="flex items-center justify-between p-8">
-      <div className="w-1/2 pr-8">
-        {/* Author details */}
-        <h2 className="text-2xl font-semibold mb-2">Author Name:mark Zuck
-</h2>
-        <p className="text-gray-600">Bio and author description goes here.</p>
-        <time dateTime="2023-03-16">
-                      Mar 16, 2023
-                    </time>
-                    <span aria-hidden="true">
-                      &middot;
-                    </span>
-                    <span>
-                      10 hours 
-                    </span>
-      </div>
-      <div className="w-1/2">
-        {/* Course image */}
-        <ul>
-                {videos.map(video => (
-                    <li key={video._id}>
-                        <ReactPlayer ref={playerRef} url={video.url} controls={true} height={250} width={350} />
+      <div className="flex items-center justify-between p-8">
+        <div className="w-1/2 pr-8">
+          {/* Author details */}
+          {videos.map((video) => (
+            <li key={video._id}>
+          <h2 className="text-2xl font-semibold mb-2"> {video.author}</h2>
+          <p className="text-gray-600">{video.author}</p>
+          <p className="text-gray-600">{video.description}</p>
+          </li>
+          ))}
+          {/* <time dateTime="2023-03-16">Mar 16, 2023</time> */}
+          <span aria-hidden="true">&middot;</span>
+          {/* <span>10 hours</span> */}
+        </div>
+        <div className="w-1/2">
+          {/* Course image */}
+          <ul>
+            {videos.map((video) => (
+              <li key={video._id}>
+                <ReactPlayer
+                  ref={playerRef}
+                  url={video.url}
+                  controls={true}
+                  height={250}
+                  width={350}
+                />
 
-                        
-                         {video.title} 
-                    </li>
-                ))}
-            </ul>      </div>
-    </div>
-    <div className="flex p-4 border rounded-lg shadow-md">
-      {/* Image */}
-      <div className="w-1/2 pr-4">
-        {/* <img alt={video.title} className="h-auto w-full" /> */}
-      </div>
-      {/* Author Details */}
-      <div className="w-1/2">
-        <h2 className="text-xl font-semibold">DigitalMarketing</h2>
-        <p className="text-gray-600">mark Zuck</p>
-        <div className="flex items-center mt-2">
-          {/* Star Rating */}
-          <div className="flex">
-            <span className="text-yellow-500">&#9733;</span>
-            <span className="text-yellow-500">&#9733;</span>
-            <span className="text-yellow-500">&#9733;</span>
-            <span className="text-yellow-500">&#9733;</span>
-            <span className="text-yellow-500">&#9734;</span>
-          </div>
-          <span className="text-gray-600 ml-2">(4 Reviews)</span>
+                {video.title}
+                <br/>
+                {video.description}
+                <br/>
+                {video.author}
+               
+              </li>
+            ))}
+          </ul>{" "}
         </div>
       </div>
+      <div className="flex p-4 border rounded-lg shadow-md">
+        {/* Image */}
+        <div className="w-1/2 pr-4">
+          {/* <img alt={video.title} className="h-auto w-full" /> */}
+        </div>
+        {/* Author Details */}
+        {videos.map((video) => (
+              <li key={video._id}>
+        <div className="w-1/2">
+          <h2 className="text-xl font-semibold">{video.title}</h2>
+          <p className="text-gray-600"> {video.author}</p>
+          <div className="flex items-center mt-2">
+            {/* Star Rating */}
+            <div className="flex">
+              <span className="text-yellow-500">&#9733;</span>
+              <span className="text-yellow-500">&#9733;</span>
+              <span className="text-yellow-500">&#9733;</span>
+              <span className="text-yellow-500">&#9733;</span>
+              <span className="text-yellow-500">&#9734;</span>
+            </div>
+            <span className="text-gray-600 ml-2">({video.reviews} Reviews)</span>
+          </div>
+        </div>
+        </li>
+        ))}
+      </div>
     </div>
-            
-                </div>
-            
-      
-    );
-} 
-export default VideoList; 
+  );
+}
+export default VideoList;
 
 /* import React, { useState, useEffect } from 'react';
 
@@ -138,4 +151,4 @@ setVideos(selectedVideo);
   );
 }
 
-export default VideoList; */ 
+export default VideoList; */

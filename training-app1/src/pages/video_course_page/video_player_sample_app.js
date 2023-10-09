@@ -11,6 +11,7 @@ import './App.css'
 import { version } from '../../package.json'
 import ReactPlayer from '../index'
 import Duration from './Duration'
+import { Link } from 'react-router-dom'
 
 class VideoPlayerSampleApp extends Component {
   state = {
@@ -416,9 +417,9 @@ class VideoPlayerSampleApp extends Component {
         <footer className='footer'>
           Version <strong>{version}</strong>
           {SEPARATOR}
-          <a href='https://github.com/CookPete/react-player'>GitHub</a>
+          <Link to='https://github.com/CookPete/react-player'>GitHub</Link>
           {SEPARATOR}
-          <a href='https://www.npmjs.com/package/react-player'>npm</a>
+          <Link to='https://www.npmjs.com/package/react-player'>npm</Link>
         </footer>
       </div>
     )
