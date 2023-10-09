@@ -12,31 +12,8 @@ function LoginPage() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState({});
-  const[isSuccess,setIsSuccess]=useState(true);
-  const[isFailure,setIsFailure]=useState(false);
 
   const navigate = useNavigate();
-
-
-  const handleSignUp= async()=>{
-    
-   
-    const response = await fetch("http://localhost:5000/api/user/userLogin", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-    const json = await response.json();
-          const isSuccessfullSignyUp=false;
-          if(isSuccessfullSignyUp){
-            setIsSuccess(true);
-            setIsFailure(false);
-          }else{
-            setIsSuccess(false);
-            setIsFailure(true);
-          }
-
-  }
 
 
   const checkValidation = (e) => {
@@ -148,19 +125,9 @@ function LoginPage() {
                   
                   </div>
                   <div>
-                    <button type='Submit' onClick={handleSignUp} className="w-full flex justify-center  mt-3 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bright-orange hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <button type='Submit' className="w-full flex justify-center  mt-3 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bright-orange hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Login
                     </button>
-                    {isSuccess && (
-                      <div className='bg-green-500 text-white p-2 mt-2 rounded-md'>
-                        Sign up Successfully
-                        </div>
-                    )}
-                    {isFailure && (
-                      <div className='bg-red-500 text-white p-2 mt-2 rounded-md'>
-                        Sign up Failure
-                        </div>
-                    )}
                   </div>
                 </div>
               </form>
