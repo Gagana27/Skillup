@@ -4,8 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import VideoList from './videos';
-
+import Container from 'react-bootstrap/Container';
 function SubcategoryList() {
   const { categoryId } = useParams();
   const [subcategories, setSubcategories] = useState([]);
@@ -17,54 +16,31 @@ function SubcategoryList() {
     fetchSubcategories();
   }, [categoryId]);
   return (
-    /*  <ul>
-         {subcategories.map(subcategory => (
-             <li key={subcategory._id}>
-                 <Link to={`/subcategories/${subcategory._id}/videos`}>
-                     {subcategory.name}
-                 </Link>
-             </li>
-         ))}
-     </ul> */
-
-    <Row xs={1} md={3} className="g-4">
-      {
-        subcategories.map(subcategory => (
-          <Col key={subcategory._id}>
-            <Card
-                className="bg-secondary border-primary border-4" 
-                border="warning" 
-                style={{ width: '20rem', height: '20rem' }}>
-              {/*      <Card.Img variant="top"  style={{ height: '85px' } } 
-              
-             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSW1earfT4VmVcmPvWfsrpBE4Saiv3WHVGaA&usqp=CAU" /> */}
-              {/*   <Card.Header> <i class="bi bi-caret-right" padding="100px"></i>
-            </Card.Header>  */}
-              {/* <i class="bi bi-caret-right"></i> */}
-              <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-              <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-              <div class="row">
-                <div class='col-sm-4 col-xs-12 col-md-12 col-lg-12'>
-                  <a class="thumbnail" href="/subcategories/${subcategory._id}/videos">
-                    <div class="img">
-                      <img class="img-responsive" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSW1earfT4VmVcmPvWfsrpBE4Saiv3WHVGaA&usqp=CAU" width={600} />
-                      <i class="fa fa-play-circle-o fa-4x"></i>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <Card.Body style={{ height: '100px' }}>
-                <Card.Text className="text-white">
-                  <Link to={`/subcategories/${subcategory._id}/videos`}>
-                    {subcategory.name}</Link>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-    </Row>
-
+    <Container>
+      <Row xs={1} md={4} className="g-4">
+        {
+          subcategories.map(subcategory => (
+            <Col key={subcategory._id}>
+              <Card
+                className="bg-secondary border-primary border-4 m-4 "
+                border="warning"
+                style={{ width: '22rem', height: '12rem' }}>
+                <Card.Img
+                  variant="top"
+                  style={{ height: '135px', width: '100%' }}
+                  src={subcategory?.image}
+                />
+                <Card.Body style={{ height: '50px' }}>
+                  <Card.Text className="text-white">
+                    <Link to={`/subcategories/${subcategory._id}/videos`}>
+                      {subcategory.name}</Link>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+      </Row>
+    </Container>
   );
 }
 
