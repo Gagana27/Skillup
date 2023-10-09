@@ -108,25 +108,7 @@ export default function Header() {
               {user &&
                 <NavDropdown title={user ? user?.loginUser?.firstname : "Guest"} id="basic-nav-dropdown">
 
-                  {/* <Dropdown.Item onClick={handleClick}>
-                    Profile
-                  </Dropdown.Item>
-                  <Dropdown.Item href="/Setting">
-                    Setting
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={handleClick}>
-                    LogOut
-                  </Dropdown.Item>
-                  
-                  <Dropdown.Item href="/Setting">
-                    My Learning
-                  </Dropdown.Item>
-                  <Dropdown.Item href="/Setting">
-                    My cart
-                  </Dropdown.Item>
-                  <Dropdown.Item href="/Setting">
-                    Subscription
-                  </Dropdown.Item> */}
+               
 
                {showProfileMenu ? (
               <>
