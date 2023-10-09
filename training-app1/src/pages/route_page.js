@@ -28,6 +28,7 @@ import Marketing from '../Foote_pages/Marketing';
 import { Pricing } from '../Foote_pages/Pricing';
 import { Claim } from '../Foote_pages/Claim';
 
+
 export default function RoutePage() {
 
   /*  const getdata=(name)=>{
@@ -67,6 +68,8 @@ export default function RoutePage() {
             <Route path="/marketing" element={<Marketing/>} />
             <Route path="/pricing" element={<Pricing/>} />
             <Route path="/claim" element={<Claim/>} />
+
+
           </Routes>
           {/* <Form onSubmit={getdata} name="raji"/> */}
           <Footer />
