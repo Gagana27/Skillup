@@ -61,15 +61,9 @@ export default function RoutePage() {
             <Route path="/forgotPassword" element={<ForgotPassword />} />
             <Route path="/otp" element={<OTPPage/>}/>
             <Route path="/resetpassword" element={<ConfirmPassword/>}/>
-
-
-
-
             <Route path="/marketing" element={<Marketing/>} />
             <Route path="/pricing" element={<Pricing/>} />
             <Route path="/claim" element={<Claim/>} />
-
-
           </Routes>
           {/* <Form onSubmit={getdata} name="raji"/> */}
           <Footer />
