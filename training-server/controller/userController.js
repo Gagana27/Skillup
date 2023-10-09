@@ -146,12 +146,14 @@ const verifyOTP=async (req,res)=>{
  
   try {
     const user=await forgetPasswordModel.findById({_id:userId});
+   
     if(!user)
     {
        throw Error("OTP expired")
     }
-  else if(user.OTP=== otp)
+  else if(user.OTP == otp)
   {
+    console.log(otp)
     res.status(200).json({Validate:true,userId})
   }
   else{
