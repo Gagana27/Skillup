@@ -44,34 +44,7 @@ function SignUpPage() {
 
   
  
-  // const handleSignup = () => {
-  //   // Basic validation
-  //   if (!firstname || !lastName || !address || !password || !email || !password) {
-  //     alert('Please enter all required fields.');
-  //   } else {
-  //     signup(firstname, lastName, email, password, address, contact)
-  //       .then((signupSuccess) => {
-  //         if (signupSuccess) {
-  //           // Show a success message using the browser's native alert
-  //           window.alert('Signup successful!');
-  //           // Clear the form after successful signup if needed
-  //           setFirstname('');
-  //           setLastName('');
-  //           setContact('');
-  //           setEmail('');
-  //           setAddress('');
-  //           setPassword('');
-  //         } else {
-  //           alert('Signup failed. Please try again.');
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.error('Error during signup:', error);
-  //         alert('Signup failed. Please try again.');
-  //       });
-  //   }
-  // };
-
+  
   
 
   const handleSubmit = async (e) => {

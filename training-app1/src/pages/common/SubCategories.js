@@ -43,6 +43,7 @@ function SubcategoryList() {
     </Container>
   );
 }
+
 export default SubcategoryList;
 
 
