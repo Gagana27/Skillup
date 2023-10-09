@@ -41,6 +41,12 @@ function SignUpPage() {
     setError(newError);
     return newError;
   };
+
+  
+ 
+  
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const firstname = e.target.firstname.value;
@@ -58,6 +64,16 @@ function SignUpPage() {
     } else {
       console.log("Validation Error");
     }
+
+    if (!firstname || !lastName || !address || !password || !email || !password) {
+      alert('Please enter all required fields.');
+    } else {
+      
+            alert('Signup successfull.');
+          }
+        
+        
+    
   }
   return (
     <div class="min-h-screen bg-white flex">
@@ -131,7 +147,7 @@ function SignUpPage() {
                   </div>
                   <div className="space-y-1">
                     <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                      Address
+                     - Address
                     </label>
                     <div className="mt-1">
                       <input id="address" name="address" type="address" autocomplete="off" value={address}
@@ -159,15 +175,16 @@ function SignUpPage() {
 
                   </div>
                   <div>
-                    <button type='Submit' className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bright-orange hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <button type='Submit'  onSubmit={(e) => handleSubmit(e)} className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bright-orange hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Sign up
                     </button>
                   </div>
                 </div>
               </form>
+              
             </div>
           </div>
-        </div>
+        </div> 
       </div>
       <div className="hidden lg:block relative w-0 flex-1">
         <img className="absolute inset-0 h-full w-full object-cover" src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg?size=626&ext=jpg" alt="" />
