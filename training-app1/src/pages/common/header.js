@@ -165,42 +165,39 @@ export default function Header() {
                   title={user ? user?.loginUser?.firstname : "Guest"}
                   id="basic-nav-dropdown"
                 >
-                 
-                    <>
-                      <Dropdown.Item
-                        href="/my-cart"
-                        className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                      >
-                        My Cart
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        href="/my-learning"
-                        className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                      >
-                        My Learning
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        href="/subscription"
-                        className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                      >
-                        Subscription
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={handleSettingClick}
-                        className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                      >
-                        Setting
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={handleClick}
-                        className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                      >
-                        Logout
-                      </Dropdown.Item>
-                    </>
-                 
-                
-                 
+                  <>
+                    <Dropdown.Item
+                      href="/my-cart"
+                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                    >
+                      My Cart
+                    </Dropdown.Item>
+
+                    <Dropdown.Item
+                      href="/my-learning"
+                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                    >
+                      Learning
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      href="/subscription"
+                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                    >
+                      Subscription
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={handleSettingClick}
+                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                    >
+                      Setting
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={handleClick}
+                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                    >
+                      Logout
+                    </Dropdown.Item>
+                  </>
                 </NavDropdown>
               )}
             </div>
