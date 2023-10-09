@@ -9,7 +9,6 @@ import SignUpPage from "./common/signup_page";
 import LandingPage from "./landing_page/landing_page";
 import HomePage from "./home_page/home_page";
 // import VideoCoursePage from './video_course_page/video_course_page';
-<<<<<<< HEAD
 import VideoPlayerSample from './video_course_page/video_player_sample';
 import CategoryList from './common/category';
 import SubcategoryList from './common/SubCategories';
@@ -28,29 +27,6 @@ import { Claim } from '../Foote_pages/Claim';
 
 export default function RoutePage() {
 
-=======
-import VideoPlayerSample from "./video_course_page/video_player_sample";
-import CategoryList from "./common/category";
-import SubcategoryList from "./common/SubCategories";
-import VideoList from "./common/videos";
-import AddCategory from "./common/addcat";
-import Addvideo from "./common/addvideo";
-import ContactPage from "./Contact";
-import FreeTrail from "./FreeTrail";
-import ForgotPassword from "./common/ForgotPassword";
-import OTPPage from "./common/OTP";
-import ConfirmPassword from "./common/ConfirmPassword";
-import Marketing from "../Foote_pages/Marketing";
-import { Pricing } from "../Foote_pages/Pricing";
-import { Claim } from "../Foote_pages/Claim";
-import MyCart from "./common/Mycart";
-import MyLearn from "./common/Mylearn";
-import Subscription from "./common/Subscription";
-
-export default function RoutePage() {
-  /*  const getdata=(name)=>{
-     console.log("from route",name)
->>>>>>> a3af59eb87b6d74d775f9fab840ca739d8bdd312
  
   return (
     <Router>
