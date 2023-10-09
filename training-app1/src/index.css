@@ -18,7 +18,6 @@
   .cardforget{
     width: 100%;
     height: 100%;
-    /* margin-left: 35%; */
     margin-top: 5px;
     margin-bottom: 20px;
   
@@ -31,6 +30,11 @@
     color: white;
     background:blue;
     font-size: 18px;
+  }
+  .categoryprice{
+    /* display: flex; */
+    justify-content: space-between;
+    float: right;
   }
 
   

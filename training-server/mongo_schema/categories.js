@@ -10,19 +10,19 @@ const categorySchema = new mongoose.Schema({
         required: true
 
     },
-    description: {
-        type: String,
-        required: true,
-    },
+    // description: {
+    //     type: String,
+    //     required: true,
+    // },
     price: {
         type: Number,
         required: true,
     },
-    reviews: 
-    [{ 
-        user: String, 
-        comment: String
-     }],
+    // reviews: 
+    // [{ 
+    //     user: String, 
+    //     comment: String
+    //  }],
 
     subcategories: [{
         type: mongoose.Schema.Types.ObjectId,

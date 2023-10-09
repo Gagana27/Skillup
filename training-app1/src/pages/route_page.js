@@ -17,7 +17,7 @@ import VideoPlayerSample from './video_course_page/video_player_sample';
 import CategoryList from './common/category';
 import SubcategoryList from './common/SubCategories';
 import VideoList from './common/videos';
-import AddCategory from './common/addcat';
+import AddCategory from './common/Addcategories';
 import Addvideo from './common/addvideo';
 import ContactPage from './Contact';
 import FreeTrail from './FreeTrail';
@@ -30,10 +30,7 @@ import { Claim } from '../Foote_pages/Claim';
 
 export default function RoutePage() {
 
-  /*  const getdata=(name)=>{
-     console.log("from route",name)
  
-   } */
   return (
     <Router>
       <div className="min-h-screen">
@@ -54,21 +51,17 @@ export default function RoutePage() {
             <Route path="/categories/:categoryId/subcategories" element={<SubcategoryList />} />
             {/* <Route  path="/videos/:videoId/subcategories" element={<VideoList/>} /> */}
             <Route path="/freetrial" element={<FreeTrail />} />
-            <Route path="/catnew" element={<AddCategory />} />
+            <Route path="/addcategories" element={<AddCategory />} />
             <Route path="/newvideo" element={<Addvideo />} />
             <Route path="/subcategories/:subcategoryId/videos" element={<VideoList />} />
             <Route path="/forgotPassword" element={<ForgotPassword />} />
             <Route path="/otp" element={<OTPPage/>}/>
             <Route path="/resetpassword" element={<ConfirmPassword/>}/>
-
-
-
-
             <Route path="/marketing" element={<Marketing/>} />
             <Route path="/pricing" element={<Pricing/>} />
             <Route path="/claim" element={<Claim/>} />
           </Routes>
-          {/* <Form onSubmit={getdata} name="raji"/> */}
+       
           <Footer />
         </div>
       </div>

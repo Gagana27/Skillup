@@ -9,7 +9,6 @@ import VideoList from './videos';
 
 function CategoryList() {
   const [categories, setCategories] = useState([]);
-  // const [imageUrl, setImageUrl] = useState([]);
 
   useEffect(() => {
     async function fetchCategories() {
@@ -45,9 +44,10 @@ function CategoryList() {
                         style={{ height: '50px'}}>
                         <Card.Text 
                           className="text-white">
-                          {category.name}
-                          {/* {category.description} */}
-                        </Card.Text>
+                          {category.name}<span className='categoryprice'>
+                          ₹ {category.price}</span>
+                          </Card.Text>
+
                       </Card.Body>
                     </Card>
                   </Link>
@@ -55,6 +55,7 @@ function CategoryList() {
               </Col>
             ))}
         </Row>
+        
       </Container>
     </>
   );

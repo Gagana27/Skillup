@@ -13,19 +13,19 @@ const getAllCategories=async (req,res)=>{
 
 const postCategories=async (req,res)=>{
     try {
-        const { name,price ,description ,subcategories,img } = req.body;
+        const { name,price ,subcategories,img } = req.body;
         const category = new Category({
             name,
             price,
-            description,
             subcategories: [],
             image:img
         });
         await category.save();
         const newSubcategories = [];
-        for (const subcategoryName of subcategories) {
+        for (const  subcategoryName of subcategories) {
             const subcategory = new Subcategory({
                 name: subcategoryName,
+                ima:img,
                 videos: [],
                 category: category._id
             });
