@@ -97,10 +97,16 @@ const verifyEmailAccount=async (req,res)=>{
 const forgetPassword=async (req,res)=>{
   const {recoveryEmail}=req.body
   try {
+    
     const user=await SignupUserModel.findOne({email:recoveryEmail})
   if(!user)
   {
     throw Error("Invalid Recovery Email")
+  }
+  const forgetOTP=await forgetPasswordModel.findById({_id:user._id})
+  if(forgetOTP)
+  {
+    throw Error("OTP already sent to your email address")
   }
   console.log("user",user)
   const transporter = nodemailer.createTransport({
