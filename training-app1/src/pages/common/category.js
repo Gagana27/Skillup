@@ -29,8 +29,8 @@ function CategoryList() {
         <Row xs={1} md={4} className="g-5">
           {
             categories.map(category => (
-              <Col>
-                <a class="thumbnail" href="">
+              <Col key={category._id}>
+              <Link className="thumbnail" to="">
                   <Link to={`/categories/${category._id}/subcategories`}>
                     <Card 
                         className="bg-secondary border-primary border-4" 
@@ -51,7 +51,7 @@ function CategoryList() {
                       </Card.Body>
                     </Card>
                   </Link>
-                </a>
+                </Link>
               </Col>
             ))}
         </Row>
