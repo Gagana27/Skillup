@@ -70,9 +70,9 @@ function LoginPage() {
 }
 
   return (
-    <div class="min-h-screen bg-white flex">
-      <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div class="mx-auto w-full max-w-sm lg:w-96">
+    <div className="min-h-screen bg-white flex">
+      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="mx-auto w-full max-w-sm lg:w-96">
           <div>
             <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
               Login
@@ -95,7 +95,7 @@ function LoginPage() {
                       Email
                     </label>
                     <div className="mt-1">
-                      <input id="email" name="email" type="email" autocomplete="off" value={email}
+                      <input id="email" name="email" type="email" autoComplete="off" value={email}
                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     {error.email && <span className="valid">{error.email}</span>}
                     </div>
@@ -105,7 +105,7 @@ function LoginPage() {
                       Password
                     </label>
                     <div className="mt-1">
-                      <input id="password" name="password" type="password" autocomplete="off" value={password}
+                      <input id="password" name="password" type="password" autoComplete="off" value={password}
                          className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                      {error.password && <span className="valid">{error.password}</span>}
                     </div>

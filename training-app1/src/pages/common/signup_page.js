@@ -76,9 +76,9 @@ function SignUpPage() {
     
   }
   return (
-    <div class="min-h-screen bg-white flex">
-      <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div class="mx-auto w-full max-w-sm lg:w-96">
+    <div className="min-h-screen bg-white flex">
+      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="mx-auto w-full max-w-sm lg:w-96">
           <div>
             <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
               Sign up
@@ -119,7 +119,7 @@ function SignUpPage() {
                       Last Name
                     </label>
                     <div className="mt-1">
-                      <input id="lastName" name="lastName" type="lastName" autocomplete="off" value={lastName}
+                      <input id="lastName" name="lastName" type="lastName" autoComplete="off" value={lastName}
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                       {error.lastName && <span className='valid'>{error.lastName}</span>}
                     </div>
@@ -129,7 +129,7 @@ function SignUpPage() {
                       Email
                     </label>
                     <div className="mt-1">
-                      <input id="email" name="email" type="email" autocomplete="off" value={email}
+                      <input id="email" name="email" type="email" autoComplete="off" value={email}
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                       {error.email && <span className='valid'>{error.email}</span>}
                     </div>
@@ -140,7 +140,7 @@ function SignUpPage() {
                       Password
                     </label>
                     <div className="mt-1">
-                      <input id="password" name="password" type="password" autocomplete="off" value={password}
+                      <input id="password" name="password" type="password" autoComplete="off" value={password}
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                       {error.password && <span className='valid'>{error.password}</span>}
                     </div>
@@ -150,7 +150,7 @@ function SignUpPage() {
                      - Address
                     </label>
                     <div className="mt-1">
-                      <input id="address" name="address" type="address" autocomplete="off" value={address}
+                      <input id="address" name="address" type="address" autoComplete="off" value={address}
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                       {error.address && <span className='valid'>{error.address}</span>}
                     </div>
@@ -160,7 +160,7 @@ function SignUpPage() {
                       Contact Number
                     </label>
                     <div className="mt-1">
-                      <input id="contact" name="contact" type="contact" autocomplete="off" value={contact}
+                      <input id="contact" name="contact" type="contact" autoComplete="off" value={contact}
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                       {error.contact && <span className='valid'>{error.contact}</span>}
                     </div>

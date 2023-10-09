@@ -15,12 +15,12 @@ const [otp,setOTP]=useState();
 
     return (
         <>
-            <div class="container-fluid card ">
-                <div class="cardforget ">
-                    <h3 class="card-titlefor align-center ">Reset password</h3>
-                    <div class="card-text">
+            <div className="container-fluid card ">
+                <div className="cardforget ">
+                    <h3 className="card-titlefor align-center ">Reset password</h3>
+                    <div className="card-text">
                         <form onSubmit={handleOtpSubmit}>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label
                                     for="exampleInputEmail1">
                                     Enter your email address and we will send you a link to reset your password.
