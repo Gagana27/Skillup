@@ -13,10 +13,9 @@ const getAllCategories=async (req,res)=>{
 
 const postCategories=async (req,res)=>{
     try {
-        const { name,price ,subcategories,img } = req.body;
+        const { name ,subcategories,img } = req.body;
         const category = new Category({
             name,
-            price,
             subcategories: [],
             image:img
         });
@@ -29,6 +28,7 @@ const postCategories=async (req,res)=>{
             const subcategory = new Subcategory({
                 name: subcategoryName,
                 image: img,
+                price:price,
                 videos: [],
                 category: category._id
             });

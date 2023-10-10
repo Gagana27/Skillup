@@ -10,6 +10,10 @@ const subcategorySchema = new mongoose.Schema({
         required: true
 
     },
+    price:{
+        type:String,
+        require:true
+    },
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
