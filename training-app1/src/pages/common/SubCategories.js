@@ -46,7 +46,18 @@ function SubcategoryList() {
                       Rs. {subcategory.price}
                     </Card.Text> &nbsp;
 
-                    <Button style={{width: '5rem', height: '2rem', position: "absolute", right: 75 , top: 145 , backgroundColor: 'green'}} variant="primary">Add</Button>
+                    <Button 
+                      style={{
+                        width: '5rem', 
+                        height: '2rem', 
+                        position: "absolute", 
+                        right: 75 , 
+                        top: 145 , 
+                        backgroundColor: 'green'
+                      }} 
+                      variant="primary">
+                        Add
+                    </Button>
                     
                   </Card.Body>
                 </Card>

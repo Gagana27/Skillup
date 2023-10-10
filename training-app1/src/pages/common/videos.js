@@ -4,10 +4,21 @@ import ReactPlayer from "react-player";
 import React, { useRef } from "react";
 import axios from "axios";
 
-
 function VideoList() {
+  const [state, setState] = useState({
+    pip: false,
+    playing: true,
+    VideoControls: true,
+    muted: false,
+    played: 0,
+    duration: 0,
+    playbackRate: 1.0,
+    volume: 1,
+  });
   const playerRef = useRef(null);
-
+  const playerContainerRef = useRef(null);
+  const VideoControlsRef = useRef(null);
+  const { playing, muted, playbackRate, pip, volume } = state;
   const { categoryId, subcategoryId } = useParams();
   const [videos, setVideos] = useState([]);
   useEffect(() => {
@@ -16,10 +27,22 @@ function VideoList() {
         `http://localhost:5000/subcategories/${subcategoryId}/videos`
       );
       setVideos(response.data);
-      console.log("KKK",response.data);  // videos data
+      console.log("KKK", response.data); // videos data
     }
     fetchVideos();
   }, [categoryId, subcategoryId]);
+
+  const handleMouseMove = () => {
+    console.log("mousemove");
+    VideoControlsRef.current.style.visibility = "visible";
+    count = 0;
+  };
+
+  const hanldeMouseLeave = () => {
+    VideoControlsRef.current.style.visibility = "hidden";
+    count = 0;
+  };
+
   return (
     <div className="added">
       {/* <h1>DigitalMarketing</h1>
@@ -38,10 +61,10 @@ function VideoList() {
           {/* Author details */}
           {videos.map((video) => (
             <li key={video._id}>
-          <h2 className="text-2xl font-semibold mb-2"> {video.author}</h2>
-          <p className="text-gray-600">{video.author}</p>
-          <p className="text-gray-600">{video.description}</p>
-          </li>
+              <h2 className="text-2xl font-semibold mb-2"> {video.author}</h2>
+              <p className="text-gray-600">{video.author}</p>
+              <p className="text-gray-600">{video.description}</p>
+            </li>
           ))}
           {/* <time dateTime="2023-03-16">Mar 16, 2023</time> */}
           <span aria-hidden="true">&middot;</span>
@@ -49,26 +72,39 @@ function VideoList() {
         </div>
         <div className="w-1/2">
           {/* Course image */}
-          <ul>
-            {videos.map((video) => (
-              <li key={video._id}>
-                <ReactPlayer
-                  ref={playerRef}
-                  url={video.url}
-                  controls={true}
-                  height={250}
-                  width={350}
-                />
+          <div
+            className="flex h-75v flex-col    "
+            onMouseMove={handleMouseMove}
+            onMouseLeave={hanldeMouseLeave}
+            ref={playerContainerRef}
+          >
+            <div className="flex justify-end items-end h-70v "></div>
+            <ul>
+              {videos.map((video) => (
+                <li key={video._id}>
+                  <ReactPlayer
+                    width="100%"
+                    height="100%"
+                    ref={playerRef}
+                    url={video.url}
+                    controls={true}
+                    pip={pip}
+                    playing={playing}
+                    VideoControls={true}
+                    playbackRate={playbackRate}
+                    volume={volume}
+                    muted={muted}
+                  />
 
-                {video.title}
-                <br/>
-                {video.description}
-                <br/>
-                {video.author}
-               
-              </li>
-            ))}
-          </ul>{" "}
+                  {video.title}
+                  <br />
+                  {video.description}
+                  <br />
+                  {video.author}
+                </li>
+              ))}
+            </ul>
+          </div>{" "}
         </div>
       </div>
       <div className="flex p-4 border rounded-lg shadow-md">
@@ -78,23 +114,25 @@ function VideoList() {
         </div>
         {/* Author Details */}
         {videos.map((video) => (
-              <li key={video._id}>
-        <div className="w-1/2">
-          <h2 className="text-xl font-semibold">{video.title}</h2>
-          <p className="text-gray-600"> {video.author}</p>
-          <div className="flex items-center mt-2">
-            {/* Star Rating */}
-            <div className="flex">
-              <span className="text-yellow-500">&#9733;</span>
-              <span className="text-yellow-500">&#9733;</span>
-              <span className="text-yellow-500">&#9733;</span>
-              <span className="text-yellow-500">&#9733;</span>
-              <span className="text-yellow-500">&#9734;</span>
+          <li key={video._id}>
+            <div className="w-1/2">
+              <h2 className="text-xl font-semibold">{video.title}</h2>
+              <p className="text-gray-600"> {video.author}</p>
+              <div className="flex items-center mt-2">
+                {/* Star Rating */}
+                <div className="flex">
+                  <span className="text-yellow-500">&#9733;</span>
+                  <span className="text-yellow-500">&#9733;</span>
+                  <span className="text-yellow-500">&#9733;</span>
+                  <span className="text-yellow-500">&#9733;</span>
+                  <span className="text-yellow-500">&#9734;</span>
+                </div>
+                <span className="text-gray-600 ml-2">
+                  ({video.reviews} Reviews)
+                </span>
+              </div>
             </div>
-            <span className="text-gray-600 ml-2">({video.reviews} Reviews)</span>
-          </div>
-        </div>
-        </li>
+          </li>
         ))}
       </div>
     </div>

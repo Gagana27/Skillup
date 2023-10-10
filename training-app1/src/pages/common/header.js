@@ -142,18 +142,18 @@ export default function Header() {
               className="hidden md:flex md:items-center md:space-x-6"
               style={{ marginRight: "-40px" }}
             >
-              <Link
+              {!user && <Link
                 to="login"
                 className="text-white bg-emerald-600 inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-gray-700"
               >
                 Log in
-              </Link>
-              <Link
+              </Link>}
+              {!user && <Link
                 to="signUp"
                 className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-bright-orange hover:bg-gray-700"
               >
                 Sign up
-              </Link>
+              </Link>}
               <Link
                 to="/"
                 className="text-base font-medium text-gray-500 hover:text-gray-300"
@@ -165,42 +165,39 @@ export default function Header() {
                   title={user ? user?.loginUser?.firstname : "Guest"}
                   id="basic-nav-dropdown"
                 >
-                 
-                    <>
-                      <Dropdown.Item
-                        href="/my-cart"
-                        className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                      >
-                        My Cart
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        href="/my-learning"
-                        className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                      >
-                        My Learning
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        href="/subscription"
-                        className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                      >
-                        Subscription
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={handleSettingClick}
-                        className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                      >
-                        Setting
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={handleClick}
-                        className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                      >
-                        Logout
-                      </Dropdown.Item>
-                    </>
-                 
-                
-                 
+                  <>
+                    <Dropdown.Item
+                      href="/my-cart"
+                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                    >
+                      My Cart
+                    </Dropdown.Item>
+
+                    <Dropdown.Item
+                      href="/my-learning"
+                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                    >
+                      Learning
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      href="/subscription"
+                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                    >
+                      Subscription
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={handleSettingClick}
+                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                    >
+                      Setting
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={handleClick}
+                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
+                    >
+                      Logout
+                    </Dropdown.Item>
+                  </>
                 </NavDropdown>
               )}
             </div>
