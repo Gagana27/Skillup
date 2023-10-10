@@ -31,7 +31,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative">
+      <header className="realative">
         <div className="bg-bright-white pt-6">
           <nav
             className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6"
@@ -204,85 +204,7 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top md:hidden">
-          <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-            <div className="px-5 pt-4 flex items-center justify-between">
-              <div>
-                <svg
-                  className="mt-1 "
-                  width="80px"
-                  height="80px"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="white"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
-                  <path
-                    fill="#fff"
-                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                  />
-                </svg>{" "}
-              </div>
-              <div className="-mr-2">
-                <button
-                  type="button"
-                  className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-                >
-                  <span className="sr-only">Close menu</span>
-                  {/* Heroicon name: outline/x */}
-                  <svg
-                    className="h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div
-              className="pt-5 pb-6"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="main-menu"
-            >
-              <div className="px-2 space-y-1" role="menu">
-                <CategoryList />
-              </div>
-              <div role="none" className="mt-6 px-5">
-                <Link
-                  to="/category"
-                  className="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700"
-                >
-                  Start free trial
-                </Link>
-              </div>
-              <div role="none" className="mt-6 px-5">
-                <p className="text-center text-base font-medium text-gray-500">
-                  Existing customer?{" "}
-                  <Link to="#" className="text-gray-900 hover:underline">
-                    Login
-                  </Link>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </header>
     </>
   );
