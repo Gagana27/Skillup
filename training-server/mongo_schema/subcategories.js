@@ -5,6 +5,15 @@ const subcategorySchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    image: { 
+        type: String,
+        required: true
+
+    },
+    price:{
+        type:String,
+        require:true
+    },
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',

@@ -13,7 +13,7 @@ import VideoPlayerSample from "./video_course_page/video_player_sample";
 import CategoryList from "./common/category";
 import SubcategoryList from "./common/SubCategories";
 import VideoList from "./common/videos";
-import AddCategory from "./common/addcat";
+import AddCategory from "./common/Addcategories";
 import Addvideo from "./common/addvideo";
 import ContactPage from "./Contact";
 import FreeTrail from "./FreeTrail";
@@ -31,7 +31,6 @@ import RazorPay from "./common/RazorPay";
 export default function RoutePage() {
   /*  const getdata=(name)=>{
      console.log("from route",name)
- 
    } */
   return (
     <Router>
@@ -56,7 +55,7 @@ export default function RoutePage() {
             />
             {/* <Route  path="/videos/:videoId/subcategories" element={<VideoList/>} /> */}
             <Route path="/freetrial" element={<FreeTrail />} />
-            <Route path="/catnew" element={<AddCategory />} />
+            <Route path="/Addcategories" element={<AddCategory />} />
             <Route path="/newvideo" element={<Addvideo />} />
             <Route
               path="/subcategories/:subcategoryId/videos"
@@ -84,3 +83,8 @@ export default function RoutePage() {
     </Router>
   );
 }
+
+
+
+
+

@@ -9,10 +9,19 @@ const [otp,setOTP]=useState();
     const handleOtpSubmit =async  (e) => {
    e.preventDefault();
    const response=await axios.post(`http://localhost:5000/api/user/verifyOTP/651fd674978b8633df8ec25f`,{otp})
+   setTimeout(() => {
+    setOtpSent(true);
+  }, 2000);
+   
+   
+   setTimeout(() => {
+    setOtpSent(false);
+  }, 5000); 
    console.log("hhhh",response)
         navigate("/resetpassword");
     };
-
+   
+    
     return (
         <>
             <div className="container-fluid card ">
@@ -33,17 +42,24 @@ const [otp,setOTP]=useState();
                                         onChange={(e)=>{setOTP(e.target.value)}}
                                         
                                     />
-                                    <button onClick={handleOtpSubmit}>Submit</button>
+                                    <button  onClick={handleOtpSubmit}>Submit</button>
+                                    {otpSent && (
+        <div className="alert alert-success">
+          OTP has been sent successfully! Check your email or phone.
+        </div>
+      )}
                                 </div>
 
                             </div>
                             <br />
                         </form>
+      
                     </div>
                 </div>
             </div>
         </>
     );
+      
 }
 
 export default OTPPage;
