@@ -104,7 +104,7 @@ export default function Header() {
                     <Link
                       to={`category`}
                       className="inline-flex text-base font-medium text-gray-500  hover:text-gray-300"
-                      style={{ marginLeft: "420px", marginRight: "25px" }}
+                      style={{ marginLeft: "350px", marginRight: "25px" }}
                     >
                       {user ? "Categories" : ""}
                     </Link>
@@ -140,7 +140,7 @@ export default function Header() {
             </div>
             <div
               className="hidden md:flex md:items-center md:space-x-6"
-              style={{ marginRight: "-110px" }}
+              style={{ marginRight: "-40px" }}
             >
               {!user && <Link
                 to="login"

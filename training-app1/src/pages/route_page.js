@@ -26,6 +26,8 @@ import { Claim } from "../Foote_pages/Claim";
 import MyCart from "./common/Mycart";
 import MyLearn from "./common/Mylearn";
 import Subscription from "./common/Subscription";
+import RazorPay from "./common/RazorPay";
+
 export default function RoutePage() {
   /*  const getdata=(name)=>{
      console.log("from route",name)
@@ -68,13 +70,13 @@ export default function RoutePage() {
             <Route path="/my-cart" element={<MyCart />} />
             <Route path="/my-learning" element={<MyLearn />} />
             <Route path="/subscription" element={<Subscription />} />
-            <Route path="/otp" element={<OTPPage/>}/>
-            <Route path="/resetpassword" element={<ConfirmPassword/>}/>
-            <Route path="/marketing" element={<Marketing/>} />
-            <Route path="/pricing" element={<Pricing/>} />
-            <Route path="/claim" element={<Claim/>} />
+            <Route path="/razorpay" element={<RazorPay />} />
+            <Route path="/otp" element={<OTPPage />} />
+            <Route path="/resetpassword" element={<ConfirmPassword />} />
+            <Route path="/marketing" element={<Marketing />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/claim" element={<Claim />} />
           </Routes>
-          {/* <Form onSubmit={getdata} name="raji"/> */}
           <Footer />
         </div>
       </div>
