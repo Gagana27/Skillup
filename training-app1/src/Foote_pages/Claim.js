@@ -1,5 +1,5 @@
 import React from 'react'
-import img from '../assets/privacy.svg'
+import img from '../assets/claim.svg'
 
 export const Claim = () => {
   
@@ -30,13 +30,13 @@ marginTop:'20px'
       <div className="two-column-layout" style={{ display: "flex" }}>
         {/* Left Column */}
         <div className="left-column" style={heroLeftStyles} >
-          <h1>Privacy</h1>
+          <h1>Claim</h1>
           <h3>Lorem Ipsum is simply dummy text</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
             been the industrys standard dummy text ever since the 1500s.
           </p>
-          <button style={{borderRadius:"6px",width:"auto",padding:"5px",border:"2px solid black"}}>Privacy</button>
+          <button style={{borderRadius:"6px",width:"auto",padding:"5px",border:"2px solid black"}}>Claim</button>
         </div>
 
         {/* Right Column */}
