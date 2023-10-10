@@ -44,8 +44,9 @@ function VideoList() {
   };
 
   return (
-    <div className="added">
-      {/* <h1>DigitalMarketing</h1>
+    <>
+      <div className="added">
+        {/* <h1>DigitalMarketing</h1>
             <ul>
                 {videos.map(video => (
                     <li key={video._id}>
@@ -56,86 +57,94 @@ function VideoList() {
                     </li>
                 ))}
             </ul>  */}
-      <div className="flex items-center justify-between p-8">
-        <div className="w-1/2 pr-8">
-          {/* Author details */}
-          {videos.map((video) => (
-            <li key={video._id}>
-              <h2 className="text-2xl font-semibold mb-2"> {video.author}</h2>
-              <p className="text-gray-600">{video.author}</p>
-              <p className="text-gray-600">{video.description}</p>
-            </li>
-          ))}
-          {/* <time dateTime="2023-03-16">Mar 16, 2023</time> */}
-          <span aria-hidden="true">&middot;</span>
-          {/* <span>10 hours</span> */}
-        </div>
-        <div className="w-1/2">
-          {/* Course image */}
-          <div
-            className="flex h-75v flex-col    "
-            onMouseMove={handleMouseMove}
-            onMouseLeave={hanldeMouseLeave}
-            ref={playerContainerRef}
-          >
-            <div className="flex justify-end items-end h-70v "></div>
-            <ul>
-              {videos.map((video) => (
-                <li key={video._id}>
-                  <ReactPlayer
-                    width="100%"
-                    height="100%"
-                    ref={playerRef}
-                    url={video.url}
-                    controls={true}
-                    pip={pip}
-                    playing={playing}
-                    VideoControls={true}
-                    playbackRate={playbackRate}
-                    volume={volume}
-                    muted={muted}
-                  />
+        <div className="flex items-center justify-between p-8">
+          <div className="w-96 pr-8">
+            {/* Author details */}
+            {videos.map((video) => (
+              <li style={{ listStyleType: "none" }} key={video._id}>
+                <h2 className="text-2xl font-semibold mb-2"> {video.author}</h2>
+                <p className="text-gray-600">{video.title}</p>
+                <p className="text-gray-600">{video.description}</p>
+              </li>
+            ))}
+            {/* <time dateTime="2023-03-16">Mar 16, 2023</time> */}
+            {/* <span aria-hidden="true">&middot;</span> */}
+            {/* <span>10 hours</span> */}
 
-                  {video.title}
-                  <br />
-                  {video.description}
-                  <br />
-                  {video.author}
+            {/* Author Details */}
+            {videos.map((video) => (
+              <li style={{ listStyleType: "none" }} key={video._id}>
+                <div className="w-1/2">
+                  <h2 className="text-xl font-semibold">{video.title}</h2>
+                  <p className="text-gray-600"> {video.author}</p>
+                  <div className="flex items-center mt-2">
+                    {/* Star Rating */}
+                    <div className="flex">
+                      <span className="text-yellow-500">&#9733;</span>
+                      <span className="text-yellow-500">&#9733;</span>
+                      <span className="text-yellow-500">&#9733;</span>
+                      <span className="text-yellow-500">&#9733;</span>
+                      <span className="text-yellow-500">&#9734;</span>
+                    </div>
+                    <span className="text-gray-600 ml-2">
+                      ({video.reviews}Reviews)
+                      <br />
+                      <span className="text-gray-600 ml-2">
+                        ({video.ratings}Ratings)
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </div>
+          <div className="w-full">
+            {/* Course image */}
+            <div
+              className="flex h-75v flex-col    "
+              onMouseMove={handleMouseMove}
+              onMouseLeave={hanldeMouseLeave}
+              ref={playerContainerRef}
+            >
+              {videos.map((video) => (
+                <li style={{ listStyleType: "none" }} key={video._id}>
+                  <div className="flex-1  h-80v justify-end    ">
+                    {/* <ul> */}
+                    <ReactPlayer
+                      width="100%"
+                      height="100%"
+                      ref={playerRef}
+                      url={video.url}
+                      controls={true}
+                      pip={pip}
+                      playing={playing}
+                      VideoControls={true}
+                      playbackRate={playbackRate}
+                      volume={volume}
+                      muted={muted}
+                    />
+
+                    <h2 className="text-xl font-semibold">{video.title}</h2>
+                    <br />
+                    {video.description}
+                    {/* <br />
+                  {video.author}  */}
+
+                    {/* </ul> */}
+                  </div>
                 </li>
               ))}
-            </ul>
-          </div>{" "}
+            </div>{" "}
+          </div>
+        </div>
+        <div className="flex p-4 border rounded-lg shadow-md">
+          {/* Image */}
+          <div className="w-1/2 pr-4">
+            {/* <img alt={video.title} className="h-auto w-full" /> */}
+          </div>
         </div>
       </div>
-      <div className="flex p-4 border rounded-lg shadow-md">
-        {/* Image */}
-        <div className="w-1/2 pr-4">
-          {/* <img alt={video.title} className="h-auto w-full" /> */}
-        </div>
-        {/* Author Details */}
-        {videos.map((video) => (
-          <li key={video._id}>
-            <div className="w-1/2">
-              <h2 className="text-xl font-semibold">{video.title}</h2>
-              <p className="text-gray-600"> {video.author}</p>
-              <div className="flex items-center mt-2">
-                {/* Star Rating */}
-                <div className="flex">
-                  <span className="text-yellow-500">&#9733;</span>
-                  <span className="text-yellow-500">&#9733;</span>
-                  <span className="text-yellow-500">&#9733;</span>
-                  <span className="text-yellow-500">&#9733;</span>
-                  <span className="text-yellow-500">&#9734;</span>
-                </div>
-                <span className="text-gray-600 ml-2">
-                  ({video.reviews} Reviews)
-                </span>
-              </div>
-            </div>
-          </li>
-        ))}
-      </div>
-    </div>
+    </>
   );
 }
 export default VideoList;
