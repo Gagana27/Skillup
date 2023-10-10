@@ -44,8 +44,7 @@ function CategoryList() {
                         style={{ height: '50px'}}>
                         <Card.Text 
                           className="text-white">
-                          {category.name}<span className='categoryprice'>
-                          ₹ {category.price}</span>
+                          {category.name}
                           </Card.Text>
 
                       </Card.Body>
