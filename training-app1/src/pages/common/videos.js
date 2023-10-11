@@ -21,6 +21,11 @@ function VideoList() {
   const { playing, muted, playbackRate, pip, volume } = state;
   const { categoryId, subcategoryId } = useParams();
   const [videos, setVideos] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
   useEffect(() => {
     async function fetchVideos() {
       const response = await axios.get(
@@ -46,39 +51,74 @@ function VideoList() {
   return (
     <>
       <div className="added">
-        {/* <h1>DigitalMarketing</h1>
-            <ul>
-                {videos.map(video => (
-                    <li key={video._id}>
-                        <ReactPlayer ref={playerRef} url={video.url} controls={true} height={250} width={350} />
-
-                        
-                         {video.title} 
-                    </li>
-                ))}
-            </ul>  */}
-        <div className="flex items-center justify-between p-8">
+        <div className="flex justify-between p-8">
           <div className="w-96 pr-8">
+            {/* Course Content drop down */}
+            <div className="relative inline-block text-left">
+              <button
+                onClick={toggleDropdown}
+                className="px-8 py-2 w-64 text-sm font-medium text-gray-700 bg-gray-200 rounded focus:outline-none focus:ring grid-rows-4"
+              >
+                Web Development
+              </button>
+              {isOpen && (
+                <div className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                  {/* Dropdown Content */}
+                  <div className="py-1">
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      HTML
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      CSS
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Javascript
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Node JS
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Mongo DB
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+            <br />
+            <br />
+            <br />
+
             {/* Author details */}
-            {videos.map((video) => (
+            {/* {videos.map((video) => (
               <li style={{ listStyleType: "none" }} key={video._id}>
                 <h2 className="text-2xl font-semibold mb-2"> {video.author}</h2>
                 <p className="text-gray-600">{video.title}</p>
                 <p className="text-gray-600">{video.description}</p>
               </li>
-            ))}
-            {/* <time dateTime="2023-03-16">Mar 16, 2023</time> */}
-            {/* <span aria-hidden="true">&middot;</span> */}
-            {/* <span>10 hours</span> */}
-
+            ))} */}
             {/* Author Details */}
-            {videos.map((video) => (
+            {/* {videos.map((video) => (
               <li style={{ listStyleType: "none" }} key={video._id}>
                 <div className="w-1/2">
                   <h2 className="text-xl font-semibold">{video.title}</h2>
                   <p className="text-gray-600"> {video.author}</p>
                   <div className="flex items-center mt-2">
-                    {/* Star Rating */}
+                   
                     <div className="flex">
                       <span className="text-yellow-500">&#9733;</span>
                       <span className="text-yellow-500">&#9733;</span>
@@ -96,7 +136,7 @@ function VideoList() {
                   </div>
                 </div>
               </li>
-            ))}
+            ))} */}
           </div>
           <div className="w-full">
             {/* Course image */}
@@ -124,19 +164,32 @@ function VideoList() {
                       muted={muted}
                     />
 
-                    <h2 className="text-xl font-semibold">{video.title}</h2>
-                    <br />
-                    {video.description}
-                    {/* <br />
-                  {video.author}  */}
-
                     {/* </ul> */}
                   </div>
+                  <h2 className="text-xl font-semibold">{video.title}</h2>
+                  <br />
+                  {video.description}
+                  <br />
+                  <h1 className="text-xl font-semibold">
+                    Author: {video.author}
+                  </h1>
+                  <br />
+                  <h1 className="text-xl font-semibold">
+                    Reviews: {video.reviews}
+                  </h1>
+                  <br />
+                  <h1 className="text-xl font-semibold">
+                    Ratings: {video.ratings}
+                  </h1>
                 </li>
               ))}
             </div>{" "}
           </div>
         </div>
+
+        <br />
+        <br />
+
         <div className="flex p-4 border rounded-lg shadow-md">
           {/* Image */}
           <div className="w-1/2 pr-4">
