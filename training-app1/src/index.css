@@ -37,7 +37,17 @@
     float: right;
   }
 
+  @media (max-width: 767px) {
+    .homecard {
+      flex-wrap: wrap;
+    }
+    .homecard.lg\:justify-between {
+      justify-content: space-between;
+    }
+
   
+}
+/* pb-20 px-4  sm:px-6 lg:pt-24 lg:pb-28 lg:px-8" */
   
   
   
