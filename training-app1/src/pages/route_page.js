@@ -13,7 +13,7 @@ import VideoPlayerSample from "./video_course_page/video_player_sample";
 import CategoryList from "./common/category";
 import SubcategoryList from "./common/SubCategories";
 import VideoList from "./common/videos";
-import AddCategory from "./common/addcat";
+import AddCategory from "./common/Addcategories";
 import Addvideo from "./common/addvideo";
 import ContactPage from "./Contact";
 import FreeTrail from "./FreeTrail";
@@ -26,11 +26,11 @@ import { Claim } from "../Foote_pages/Claim";
 import MyCart from "./common/Mycart";
 import MyLearn from "./common/Mylearn";
 import Subscription from "./common/Subscription";
+import RazorPay from "./common/RazorPay";
 
 export default function RoutePage() {
   /*  const getdata=(name)=>{
      console.log("from route",name)
- 
    } */
   return (
     <Router>
@@ -55,7 +55,7 @@ export default function RoutePage() {
             />
             {/* <Route  path="/videos/:videoId/subcategories" element={<VideoList/>} /> */}
             <Route path="/freetrial" element={<FreeTrail />} />
-            <Route path="/catnew" element={<AddCategory />} />
+            <Route path="/Addcategories" element={<AddCategory />} />
             <Route path="/newvideo" element={<Addvideo />} />
             <Route
               path="/subcategories/:subcategoryId/videos"
@@ -64,23 +64,27 @@ export default function RoutePage() {
             <Route path="/forgotPassword" element={<ForgotPassword />} />
             <Route path="/otp" element={<OTPPage />} />
             <Route path="/resetpassword" element={<ConfirmPassword />} />
-
             <Route path="/marketing" element={<Marketing />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/claim" element={<Claim />} />
             <Route path="/my-cart" element={<MyCart />} />
             <Route path="/my-learning" element={<MyLearn />} />
             <Route path="/subscription" element={<Subscription />} />
-            <Route path="/otp" element={<OTPPage/>}/>
-            <Route path="/resetpassword" element={<ConfirmPassword/>}/>
-            <Route path="/marketing" element={<Marketing/>} />
-            <Route path="/pricing" element={<Pricing/>} />
-            <Route path="/claim" element={<Claim/>} />
+            <Route path="/razorpay" element={<RazorPay />} />
+            <Route path="/otp" element={<OTPPage />} />
+            <Route path="/resetpassword" element={<ConfirmPassword />} />
+            <Route path="/marketing" element={<Marketing />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/claim" element={<Claim />} />
           </Routes>
-          {/* <Form onSubmit={getdata} name="raji"/> */}
           <Footer />
         </div>
       </div>
     </Router>
   );
 }
+
+
+
+
+
