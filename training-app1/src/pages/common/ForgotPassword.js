@@ -21,7 +21,7 @@ const ForgotPassword = () => {
         console.log("OTP",response.data);
         console.log("OTP",response.data.emailData._id);
         setUserId(response.data.emailData._id)
-        navigate("/otp",{state:{userId}});
+        navigate("/otp",{state:{userId:response.data.emailData._id}});
     };
     console.log("aaaa",userId)
 
@@ -52,7 +52,7 @@ const ForgotPassword = () => {
                               
                                 type="submit"
                                 className="forgotbutton btn-block mt-4">
-                                Send password reset email
+                                send otp
                             </button>
                         </form>
 
