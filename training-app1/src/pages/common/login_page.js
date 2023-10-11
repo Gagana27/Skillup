@@ -144,7 +144,7 @@ function LoginPage() {
           </div>
         </div>
       </div>
-      <div className="hidden lg:block relative w-0 flex-1">
+      <div className=" relative w-0 flex-1">
         <img src={LoginSvg} alt="" height={350} width={500} />
       </div>
     </div>

@@ -17,9 +17,8 @@ export default function TopCatagoriesListSection(props) {
             Technologies selected by top corporate's globally at any platform.
           </p>
         </div>
-        <div className="relative bg-gray-50 pb-20 px-4 sm:px-6 lg:pt-24  lg:pb-28 lg:px-8">
-         {/* <div className=" relative mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3  lg:grid-row lg:max-w-none"> */}
-          <div className=" homecard flex flex-col m-7 rounded-lg shadow-lg overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-8 justify-items-center mt-20">
+                  <div className=" homecard flex flex-col m-7 rounded-lg shadow-lg overflow-hidden">
             <div className="flex-shrink-0">
               <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="" />
             </div>
