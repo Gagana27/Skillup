@@ -70,9 +70,9 @@ function LoginPage() {
   return (
     <div className="min-h-screen bg-white flex">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="mx-auto w-full max-w-sm lg:w-96">
+        <div className="mx-auto w-full max-w-sm lg:w-96 mt-2">
           <div>
-            <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
+            <h2 className="mt-0 text-3xl font-extrabold text-center text-gray-900">
               Login
             </h2>
           </div>
@@ -85,7 +85,7 @@ function LoginPage() {
 
             </div>
             <div>
-              <form className="space-y-6" onSubmit={handleSubmit}  >
+              <form className="space-y-6 " onSubmit={handleSubmit}  >
                 {/* <form action="http://localhost:3000/login" className="space-y-6" noValidate> */}
                 <div className="mt-6">
                   <div >

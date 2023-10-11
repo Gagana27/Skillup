@@ -5,10 +5,12 @@ import axios from 'axios'
 
 const ForgotPassword = () => {
     const [recoveryEmail, setEmail] = useState('');
-    const [isPopupOpen, setPopupOpen] = useState(false);
+    const [isPopupOpen, setPopupOpen] = useState(true);
+    const [userId, setUserId] = useState(null);
     const [otp, setOtp] = useState('');
     const navigate = useNavigate();
 
+    
     
 
     const handleResetPassword = async (e) => {
@@ -16,9 +18,12 @@ const ForgotPassword = () => {
         const response=await axios.post("http://localhost:5000/api/user/forgetPassword",{
             recoveryEmail
         })
-        console.log("OTP",response);
-        navigate("/otp");
+        console.log("OTP",response.data);
+        console.log("OTP",response.data.emailData._id);
+        setUserId(response.data.emailData._id)
+        navigate("/otp",{state:{userId:response.data.emailData._id}});
     };
+    console.log("aaaa",userId)
 
    
     
@@ -47,15 +52,12 @@ const ForgotPassword = () => {
                               
                                 type="submit"
                                 className="forgotbutton btn-block mt-4">
-                                Send password reset email
+                                send otp
                             </button>
                         </form>
 
                     </div>
-                    {isPopupOpen && (
-                        <OTPPage/>
-                       
-                    )}
+                   
                 </div>
 
             </div>
