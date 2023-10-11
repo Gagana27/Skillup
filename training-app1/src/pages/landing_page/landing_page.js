@@ -9,6 +9,7 @@ import Study from '../../assets/study.svg';
 
 const LandingPage = () => {
   return (
+    <>
         <div className="pt-10 bg-bright-white sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
           <div className="mx-auto max-w-7xl lg:px-8">
             <div className="lg:grid lg:grid-cols-2 lg:gap-8">
@@ -45,7 +46,7 @@ const LandingPage = () => {
                 <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
                   {/* Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ */}
                   <img 
-                    className="w-full lg:absolute lg:inset-y-0 lg:left-0 ml-40 lg:h-full lg:w-auto lg:max-w-none" 
+                    className="w-full lg:absolute lg:inset-y-0 lg:left-0  lg:h-full lg:w-auto lg:max-w-none mx-auto" 
                     src={Study}  />
 
                   {/* <img className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/cloud-illustration-indigo-400.svg" alt /> */}
@@ -57,7 +58,9 @@ const LandingPage = () => {
           {/* <TechnologySearchListSection/> */}
           
           <TopCatagoriesListSection/>
+        
         </div>
+      </>
   );
 }
 
