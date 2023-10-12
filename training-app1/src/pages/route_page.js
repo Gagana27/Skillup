@@ -27,6 +27,7 @@ import MyCart from "./common/Mycart";
 import MyLearn from "./common/Mylearn";
 import Subscription from "./common/Subscription";
 import RazorPay from "./common/RazorPay";
+import Rating from "./common/AddReview";
 
 export default function RoutePage() {
   /*  const getdata=(name)=>{
@@ -69,13 +70,14 @@ export default function RoutePage() {
             <Route path="/claim" element={<Claim />} />
             <Route path="/my-cart" element={<MyCart />} />
             <Route path="/my-learning" element={<MyLearn />} />
-            <Route path="/subscription" element={<Subscription />} />
+            <Route path="/subscription/categoryId" element={<Subscription />} />
             <Route path="/razorpay" element={<RazorPay />} />
             <Route path="/otp" element={<OTPPage />} />
             <Route path="/resetpassword" element={<ConfirmPassword />} />
             <Route path="/marketing" element={<Marketing />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/claim" element={<Claim />} />
+            <Route path="/review" element={<Rating />} />
           </Routes>
           <Footer />
         </div>
