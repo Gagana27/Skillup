@@ -36,5 +36,14 @@
     justify-content: space-between;
     float: right;
   }
+@media only screen and (max-width:900px) {
+  .subcategory{
+    min-Width: 18rem;
+     max-Width: 28rem;
+      min-Height: 10rem;
+      max-Height: 16rem
+  }
+}
+  
 
   

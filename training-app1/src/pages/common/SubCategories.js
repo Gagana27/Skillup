@@ -34,57 +34,46 @@ function SubcategoryList() {
           subcategories.map(subcategory => (
             <Col key={subcategory._id}>
               <Link to={`/subcategories/${subcategory._id}/videos`}>
-                <Card
-                  className="bg-secondary border-primary border-4 m-4 "
-                  border="warning"
-                  style={{ width: '28rem', height: '12rem' }}>
-                  <Card.Img
-                    variant="top"
-                    style={{ height: '135px', width: '100%' }}
-                    src={subcategory?.image}
-                  />
+              <Card
+      className=" subcategory bg-secondary border-primary border-4 m-4 relative"
+      
+    >
+      <Card.Img
+        variant="top"
+        className="w-full h-40 object-cover"
+        src={subcategory?.image}
+      />
 
-                  <Card.Body style={{ height: '50px' }}>
-                    <Card.Text className="text-white">
-                      {subcategory.name}
-                      - Rs. {subcategory.price}
-                    </Card.Text>&nbsp;
+<Card.Body
+        className="flex flex-col justify-between"
+        style={{ minHeight: '2rem' }} 
+      >
+        <div>
+          <Card.Text className="text-white ">
+            {subcategory.name} - Rs. {subcategory.price}
+          </Card.Text>
+        </div>
 
-                    {/* <Card.Text style={{ position: "absolute", bottom: 0, right: 10 , top: 150 }} className="text-white">
-                      Rs. {subcategory.price}
-                    </Card.Text> &nbsp; */}
+        <div className="flex justify-between items-center mt-2">
+          <Button
+            className="w-1/1"
+            variant="primary"
+            onClick={openPayModal}
+          >
+            Buy Now
+          </Button>
 
-                    <Button
-                      style={{
-                        width: '7rem',
-                        height: '2rem',
-                        position: "absolute",
-                        right: 20,
-                        top: 145,
-                        backgroundColor: 'green'
-                      }}
-                      variant="primary"
-                      onClick={openPayModal}>
-                      Buy Now
-                    </Button>
-
-                    <Link to="/subscription">
-                      <Button
-                        style={{
-                          width: '7rem',
-                          height: '2rem',
-                          position: "absolute",
-                          right: 160,
-                          top: 145,
-                          backgroundColor: 'gray'
-                        }}
-                        variant="primary">
-                        Add to Cart
-                      </Button>&nbsp;
-                    </Link>
-
-                  </Card.Body>
-                </Card>
+          <Link to="/subscription">
+            <Button
+              className="w-1/1"
+              variant="primary"
+            >
+              Add to Cart
+            </Button>
+          </Link>
+        </div>
+      </Card.Body>
+    </Card>
               </Link>
             </Col>
           ))}
