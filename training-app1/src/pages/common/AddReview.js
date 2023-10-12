@@ -9,7 +9,7 @@ function StarRating({ selectedRating, onStarClick }) {
             numberOfStar={5}
             colorFilledStar="red"
             colorEmptyStar="black"
-            starSize="20px"
+            starSize="30px"
             spaceBetweenStar="10px"
             onSelectStar={onStarClick}
             disableOnSelect={false}

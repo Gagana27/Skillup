@@ -6,8 +6,13 @@ import axios from "axios";
 import Rating from "./AddReview";
 import ReviewComp from "./Reviewcomp";
 import StarRating from "./AddReview";
+// import ReviewComp from "./AddReview";
+import DropDown from "./DropDown";
+import CourseVideoViewSection from "../video_course_page/course_video_view_section";
+import CourseDetailsTabsSection from "../video_course_page/course_details_tabs_section";
+import CourseContentListSection from "../video_course_page/course_content_list_section";
 
-function VideoList() {
+function VideoList(props) {
   const [state, setState] = useState({
     pip: false,
     playing: true,
@@ -31,13 +36,13 @@ function VideoList() {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  
   useEffect(() => {
     async function fetchVideos() {
       const response = await axios.get(
         `http://localhost:5000/subcategories/${subcategoryId}/videos`
       );
       setVideos(response.data);
-      console.log("KKK", response.data); // videos data
     }
     fetchVideos();
   }, [categoryId, subcategoryId]);
@@ -73,9 +78,10 @@ function VideoList() {
       <div className="added">
         <div className="flex justify-between p-8">
           <div className="w-96 pr-8">
-            {/* Course Content drop down */}
+            
             <div className="relative inline-block text-left">
-              <button
+            <DropDown name="ggggg" desc="reactjs"/>
+              {/* <button
                 onClick={toggleDropdown}
                 className="px-8 py-2 w-64 text-sm font-medium text-gray-700 bg-gray-200 rounded focus:outline-none focus:ring grid-rows-4"
               >
@@ -83,7 +89,7 @@ function VideoList() {
               </button>
               {isOpen && (
                 <div className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                  {/* Dropdown Content */}
+                  
                   <div className="py-1">
                     <a
                       href="#"
@@ -117,7 +123,7 @@ function VideoList() {
                     </a>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
             <br />
             <br />

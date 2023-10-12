@@ -29,8 +29,8 @@ function SubcategoryList() {
   const subCatData =
     subcategories.map((dead) => {
       dead.name,
-      dead.price,
-      dead.image
+        dead.price,
+        dead.image
       console.log("dem1", dead);
     })
 
@@ -41,53 +41,53 @@ function SubcategoryList() {
           subcategories.map(subcategory => (
             <Col key={subcategory._id}>
               <Link to={`/subcategories/${subcategory._id}/videos`}>
-              <Card
-      className=" subcategory bg-secondary border-primary border-4 m-4 relative"
-      
-    >
-      <Card.Img
-        variant="top"
-        className="w-full h-40 object-cover"
-        src={subcategory?.image}
-      />
+                <Card
+                  className=" subcategory bg-secondary border-primary border-4 m-4 relative"
 
-<Card.Body
-        className="flex flex-col justify-between"
-        style={{ minHeight: '2rem' }} 
-      >
-        <div>
-          <Card.Text className="text-white ">
-            {subcategory.name} - Rs. {subcategory.price}
-          </Card.Text>
-        </div>
+                >
+                  <Card.Img
+                    variant="top"
+                    className="w-full h-40 object-cover"
+                    src={subcategory?.image}
+                  />
 
-        <div className="flex justify-between items-center mt-2">
-          <Button
-            className="w-1/1"
-            variant="primary"
-            onClick={openPayModal}
-          >
-            Buy Now
-          </Button>
+                  <Card.Body
+                    className="flex flex-col justify-between"
+                    style={{ minHeight: '2rem' }}
+                  >
+                    <div>
+                      <Card.Text className="text-white ">
+                        {subcategory.name} - Rs. {subcategory.price}
+                      </Card.Text>
+                    </div>
 
-          <Link to="/subscription">
-            <Button
-              className="w-1/1"
-              variant="primary"
-            >
-              Add to Cart
-            </Button>
-          </Link>
-        </div>
-      </Card.Body>
-    </Card>
+                    <div className="flex justify-between items-center mt-2">
+                      <Button
+                        className="w-1/1"
+                        variant="primary"
+                        onClick={openPayModal}
+                      >
+                        Buy Now
+                      </Button>
+
+                      <Link to="/subscription/categoryId" state={subCatData}>
+                        <Button
+                          className="w-1/1"
+                          variant="primary"
+                        >
+                          Add to Cart
+                        </Button>
+                      </Link>
+                    </div>
+                  </Card.Body>
+                </Card>
               </Link>
             </Col>
           ))}
         {subcategories.map(subcategory => (
           <Col key={subcategory._id}>
             <Link to={`/subcategories/${subcategory._id}/videos`}>
-              
+
             </Link>
           </Col>
         ))}
