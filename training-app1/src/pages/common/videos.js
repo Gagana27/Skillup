@@ -4,7 +4,8 @@ import ReactPlayer from "react-player";
 import React, { useRef } from "react";
 import axios from "axios";
 import Rating from "./AddReview";
-import ReviewComp from "./AddReview";
+import ReviewComp from "./Reviewcomp";
+import StarRating from "./AddReview";
 
 function VideoList() {
   const [state, setState] = useState({
@@ -24,6 +25,8 @@ function VideoList() {
   const { categoryId, subcategoryId } = useParams();
   const [videos, setVideos] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [reviewData, setReviewData] = useState([]);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -49,7 +52,22 @@ function VideoList() {
   //   VideoControlsRef.current.style.visibility = "hidden";
   //   count = 0;
   // };
+  const fetchReviewData = (rating) => {
+    // fetching review data from an API later
+    const data = [
+      { rating: 1, text: "Poor" },
+      { rating: 2, text: "Not great" },
+      { rating: 3, text: "Average" },
+      { rating: 4, text: "Good" },
+      { rating: 5, text: "Excellent" },
+    ];
 
+    const selectedReview = data.find((review) => review.rating === rating);
+    setReviewData(selectedReview ? [selectedReview] : []);
+  };
+  useEffect(() => {
+    fetchReviewData(selectedRating);
+  }, [selectedRating]);
   return (
     <>
       <div className="added">
@@ -168,6 +186,7 @@ function VideoList() {
 
                     {/* </ul> */}
                   </div>
+                  
                   <h2 className="text-xl font-semibold">{video.title}</h2>
                   <br />
                   {video.description}
@@ -177,11 +196,17 @@ function VideoList() {
                   </h1>
                   <br />
                   <h1 className="text-xl font-semibold">
-                    Reviews: <ReviewComp props={video.review}/> 
+                    Ratings: <StarRating 
+                    props={video.review}
+                    selectedRating={selectedRating}
+                    onStarClick={setSelectedRating}
+                    /> 
+                    <br />
+                    <ReviewComp reviews={reviewData} />
                   </h1>
                   <br />
                   <h1 className="text-xl font-semibold">
-                    Ratings: {video.ratings}
+                    {/* Ratings: {video.ratings} */}
                   </h1>
                 </li>
               ))}
