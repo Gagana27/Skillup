@@ -177,7 +177,7 @@ function VideoList() {
                   </h1>
                   <br />
                   <h1 className="text-xl font-semibold">
-                    Reviews: <ReviewComp/> 
+                    Reviews: <ReviewComp props={video.review}/> 
                   </h1>
                   <br />
                   <h1 className="text-xl font-semibold">
