@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import React, { useRef } from "react";
 import axios from "axios";
+import Rating from "./AddReview";
+import ReviewComp from "./AddReview";
 
 function VideoList() {
   const [state, setState] = useState({
@@ -175,7 +177,7 @@ function VideoList() {
                   </h1>
                   <br />
                   <h1 className="text-xl font-semibold">
-                    Reviews: {video.reviews}
+                    Reviews: <ReviewComp/> 
                   </h1>
                   <br />
                   <h1 className="text-xl font-semibold">
