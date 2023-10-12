@@ -19,7 +19,7 @@ function VideoList() {
   });
   const playerRef = useRef(null);
   const playerContainerRef = useRef(null);
-  const VideoControlsRef = useRef(null);
+  // const VideoControlsRef = useRef(null);
   const { playing, muted, playbackRate, pip, volume } = state;
   const { categoryId, subcategoryId } = useParams();
   const [videos, setVideos] = useState([]);
@@ -39,15 +39,16 @@ function VideoList() {
     fetchVideos();
   }, [categoryId, subcategoryId]);
 
-  const handleMouseMove = () => {
-    VideoControlsRef.current.style.visibility = "visible";
-    count = 0;
-  };
+  // const handleMouseMove = () => {
+  //   // console.log("mousemove");
+  //   VideoControlsRef.current.style.visibility = "visible";
+  //   count = 0;
+  // };
 
-  const hanldeMouseLeave = () => {
-    VideoControlsRef.current.style.visibility = "hidden";
-    count = 0;
-  };
+  // const hanldeMouseLeave = () => {
+  //   VideoControlsRef.current.style.visibility = "hidden";
+  //   count = 0;
+  // };
 
   return (
     <>
@@ -143,8 +144,8 @@ function VideoList() {
             {/* Course image */}
             <div
               className="flex h-75v flex-col    "
-              onMouseMove={handleMouseMove}
-              onMouseLeave={hanldeMouseLeave}
+              // onMouseMove={handleMouseMove}
+              // onMouseLeave={hanldeMouseLeave}
               ref={playerContainerRef}
             >
               {videos.map((video) => (
@@ -159,7 +160,7 @@ function VideoList() {
                       controls={true}
                       pip={pip}
                       playing={playing}
-                      VideoControls={true}
+                      // VideoControls={true}
                       playbackRate={playbackRate}
                       volume={volume}
                       muted={muted}
