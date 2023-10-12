@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require("cors");
 const userRouter = require("./router/userRouter");
 const categoriesRouter = require("./router/categoriesRouter");
+const paymentRouter = require("./router/paymentRouter");
 const dotenv = require("dotenv").config();
 
 //express instance and middleware
@@ -16,6 +17,9 @@ app.use("/api/user",userRouter)
 
 //categories router
 app.use("/",categoriesRouter)
+
+//payment router
+app.use("/",paymentRouter)
 
 
 //Database connection
