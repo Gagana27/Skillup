@@ -1,19 +1,22 @@
-import { useState } from "react";
-import ReactStars from 'react-rating-star-with-type'
+import React from "react";
+import ReactDOM from "react-dom";
+import ReactStarRating from "react-star-ratings-component";
 
-export default function StarRating() {
-    const [star, setStar] = useState(5);
-
-    const onChange = (nextValue) => {
-        setStar(nextValue)
-    }
-
+function StarRating() {
     return (
-        <ReactStars
-            onChange={onChange}
-            value={4.2}
-            edit={true}
-            activeColors={["red", "orange", "#FFCE00", "#9177FF", "#8568FC",]}
+        <ReactStarRating
+            numberOfStar={5}
+            numberOfSelectedStar={2}
+            colorFilledStar="red"
+            colorEmptyStar="black"
+            starSize="20px"
+            spaceBetweenStar="10px"
+            disableOnSelect={false}
+            onSelectStar={val => {
+                console.log(val);
+            }}
         />
-    )
+    );
 }
+
+export default StarRating;
