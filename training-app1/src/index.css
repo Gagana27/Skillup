@@ -46,6 +46,19 @@
 }
   
 
+ 
+  @media only screen and (max-width: 900px) {
+    form {
+      width: 100% !important;
+    }
+    .categorycard{
+      margin-left: 3px;
+
+    }
+   
+  }
+
+  
   .StarRating {
     font-family: sans-serif;
     text-align: center;

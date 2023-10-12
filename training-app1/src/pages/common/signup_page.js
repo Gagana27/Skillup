@@ -69,14 +69,15 @@ function SignUpPage() {
       alert('Please enter all required fields.');
     } else {
       
-            alert('Signup successfull.');
+      alert({ status: "Verification mail send Successfully",signupUser });
           }
         
         
     
   }
   return (
-    <div className="min-h-screen bg-white flex">
+    <div className="  g-8 flex h-full flex-wrap items-center justify-center lg:justify-between  ">
+
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div>
@@ -99,7 +100,7 @@ function SignUpPage() {
               </div>
             </div>
             <div>
-              <form onSubmit={(e) => handleSubmit(e)}>
+              <form onSubmit={(e) => handleSubmit(e)} className='bg-white shadow-md rounded px-10 pb-8 mb-4'>
                 {/* <form action="http://localhost:3000/login" className="space-y-6" noValidate> */}
                 <div className="mt-6">
                   <div className="space-y-1">
@@ -147,7 +148,7 @@ function SignUpPage() {
                   </div>
                   <div className="space-y-1">
                     <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                     - Address
+                     Address
                     </label>
                     <div className="mt-1">
                       <input id="address" name="address" type="address" autoComplete="off" value={address}
@@ -186,9 +187,11 @@ function SignUpPage() {
           </div>
         </div> 
       </div>
-      <div className=" relative w-0 flex-1">
-        <img className="absolute inset-0 h-full w-full object-cover" src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg?size=626&ext=jpg" alt="" />
+      <div className="  w-full md:w-1/2 md:pl-2 mr-14">
+        <img className="  shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-10/12 " src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-125.jpg?size=626&ext=jpg" alt="" />
       </div>
+    
+
     </div>
   );
 }
