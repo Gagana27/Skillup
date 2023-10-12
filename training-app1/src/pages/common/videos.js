@@ -39,16 +39,16 @@ function VideoList() {
     fetchVideos();
   }, [categoryId, subcategoryId]);
 
-  const handleMouseMove = () => {
-    console.log("mousemove");
-    VideoControlsRef.current.style.visibility = "visible";
-    count = 0;
-  };
+  // const handleMouseMove = () => {
+  //   // console.log("mousemove");
+  //   VideoControlsRef.current.style.visibility = "visible";
+  //   count = 0;
+  // };
 
-  const hanldeMouseLeave = () => {
-    VideoControlsRef.current.style.visibility = "hidden";
-    count = 0;
-  };
+  // const hanldeMouseLeave = () => {
+  //   VideoControlsRef.current.style.visibility = "hidden";
+  //   count = 0;
+  // };
 
   return (
     <>
@@ -144,8 +144,8 @@ function VideoList() {
             {/* Course image */}
             <div
               className="flex h-75v flex-col    "
-              onMouseMove={handleMouseMove}
-              onMouseLeave={hanldeMouseLeave}
+              // onMouseMove={handleMouseMove}
+              // onMouseLeave={hanldeMouseLeave}
               ref={playerContainerRef}
             >
               {videos.map((video) => (
