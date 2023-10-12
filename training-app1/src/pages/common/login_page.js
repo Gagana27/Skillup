@@ -4,47 +4,33 @@ import LoginSvg from '../../assets/login.svg';
 import  { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert } from 'antd';
-
 import { Link } from 'react-router-dom';
-
 function LoginPage() {
-
   const {login, error,isLoading}=useLogin()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error1, setError1] = useState({});
-
   const navigate = useNavigate();
-
-
   const checkValidation = (e) => {
     const newError = {};
-
     if (e.target.email.value === "") {
       newError.email = "Enter your Email";
     }
-
     if (e.target.password.value === "") {
       newError.password = "Enter your Password";
     }
     setError1(newError);
     return newError;
   };
-
-
-
   const handleSubmit = async(e) => {
     e.preventDefault();
-
    await login(email,password);
-
     const newError = checkValidation(e);
     if (Object.keys(newError).length == 0) {
       console.log("Form submitted Successfully");
     } else {
       console.log("Validation Error");
     }
-
   //   fetch("http://localhost:5000/login", {
   //     method: "POST",
   //     crossDomain: true,
@@ -54,7 +40,6 @@ function LoginPage() {
   //       "Access-Control-Allow-origin": "*",
   //     },
   //     body: JSON.stringify({
-
   //       email,
   //       password
   //     }),
@@ -66,13 +51,12 @@ function LoginPage() {
    const forgot = () => {
     navigate("/forgotPassword");
 }
-
   return (
-    <div className="min-h-screen bg-white flex">
+    <div className=" g-8 flex h-full flex-wrap items-center justify-center lg:justify-between  mt-8 mb-20">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="mx-auto w-full max-w-sm lg:w-96">
+        <div className="mx-auto w-full max-w-sm lg:w-96 mt-2">
           <div>
-            <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
+            <h2 className="mt-0 text-3xl font-extrabold text-center  text-gray-900">
               Login
             </h2>
           </div>
@@ -82,10 +66,9 @@ function LoginPage() {
                 <div className="mt-1 grid grid-cols-2 gap-3">
                 </div>
               </div>
-
             </div>
             <div>
-              <form className="space-y-6" onSubmit={handleSubmit}  >
+              <form className="space-y-6 " onSubmit={handleSubmit}  >
                 {/* <form action="http://localhost:3000/login" className="space-y-6" noValidate> */}
                 <div className="mt-6">
                   <div >
@@ -120,7 +103,6 @@ function LoginPage() {
                         Forgot your password?
                       </Link>
                     </div>
-                  
                   </div>
                   <div>
                                 {/* <Button disabled={isLoading} type="primary">Login</Button> */}
@@ -144,11 +126,16 @@ function LoginPage() {
           </div>
         </div>
       </div>
-      <div className=" relative w-0 flex-1">
+      <div className="w-full md:w-1/2 md:pl-2 mr-1">
         <img src={LoginSvg} alt="" height={350} width={500} />
       </div>
     </div>
   );
 }
-
 export default LoginPage;
+
+
+
+
+
+

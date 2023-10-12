@@ -36,5 +36,30 @@
     justify-content: space-between;
     float: right;
   }
+@media only screen and (max-width:900px) {
+  .subcategory{
+    min-Width: 18rem;
+     max-Width: 28rem;
+      min-Height: 10rem;
+      max-Height: 16rem;
+  }
+}
+  
+
+ 
+  @media only screen and (max-width: 900px) {
+    form {
+      width: 100% !important;
+    }
+    .categorycard{
+      margin-left: 3px;
+
+    }
+   
+  }
 
   
+  .StarRating {
+    font-family: sans-serif;
+    text-align: center;
+  }
