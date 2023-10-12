@@ -3,19 +3,24 @@ import ReactDOM from "react-dom";
 import ReactStarRating from "react-star-ratings-component";
 
 function StarRating() {
+
+    const SelectStar = (val) => {
+        console.log("first",val);
+    }
+
     return (
-        <ReactStarRating
+        <>
+         <ReactStarRating
             numberOfStar={5}
             numberOfSelectedStar={2}
-            colorFilledStar="red"
+            colorFilledStar="orange"
             colorEmptyStar="black"
-            starSize="20px"
+            starSize="30px"
             spaceBetweenStar="10px"
             disableOnSelect={false}
-            onSelectStar={val => {
-                console.log(val);
-            }}
-        />
+            onSelectStar={SelectStar}
+         />
+        </>
     );
 }
 
