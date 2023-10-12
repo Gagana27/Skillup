@@ -19,7 +19,7 @@ function VideoList() {
   });
   const playerRef = useRef(null);
   const playerContainerRef = useRef(null);
-  const VideoControlsRef = useRef(null);
+  // const VideoControlsRef = useRef(null);
   const { playing, muted, playbackRate, pip, volume } = state;
   const { categoryId, subcategoryId } = useParams();
   const [videos, setVideos] = useState([]);
@@ -160,7 +160,7 @@ function VideoList() {
                       controls={true}
                       pip={pip}
                       playing={playing}
-                      VideoControls={true}
+                      // VideoControls={true}
                       playbackRate={playbackRate}
                       volume={volume}
                       muted={muted}
