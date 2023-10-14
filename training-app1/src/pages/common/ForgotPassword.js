@@ -29,31 +29,31 @@ const ForgotPassword = () => {
     
     return (
         <>
-            <div className="container-fluid card ">
+     <h1 className=" text-center mt-4 text-blue-600 font-extrabold ">Reset Password</h1>
+
+            <div className="forgotforms bg-gray-300 shadow-md rounded container-fluid card w-4/12 mt-6 mb-10 ">
                 <div className="cardforget ">
-                    <h3 className="card-titlefor align-center ">Reset password</h3>
                     <div className="card-text">
                         <form className="space-y-6" onSubmit={handleResetPassword}>
-                            <div className="form-group">
+                            <div className="form-group mt-4">
                                 <label
-                                    for="exampleInputEmail1">
+                                    htmlFor="exampleInputEmail1">
                                     Enter your email address and we will send you a link to reset your password.
                                 </label>
                                 <input
                                     type="email"
-                                    className="form-control form-control-sm"
+                                    className="form-control mt-4"
                                     placeholder="Enter your email address"
                                     value={recoveryEmail}
                                     onChange={(e)=>{setEmail(e.target.value)}}
                                 />
                             </div>
                             <br />
-                            <button
-                              
-                                type="submit"
-                                className="forgotbutton btn-block mt-4">
-                                send otp
-                            </button>
+                            <div className="flex justify-center items-center ">
+  <button className="bg-green-700 hover:bg-red-700 text-white font-bold py-2 px-4 mb-2 rounded-lg">
+    Click Me
+  </button>
+</div>
                         </form>
 
                     </div>
