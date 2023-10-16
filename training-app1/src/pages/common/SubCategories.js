@@ -12,10 +12,7 @@ function SubcategoryList() {
   const { categoryId } = useParams();
   const [subcategories, setSubcategories] = useState([]);
 
-  const openPayModal = options => {
-    var rzp1 = new window.Razorpay(options);
-    rzp1.open();
-  };
+ 
 
 
   useEffect(() => {
@@ -27,11 +24,11 @@ function SubcategoryList() {
   }, [categoryId]);
 
   const subCatData =
-    subcategories.map((dead) => {
-      dead.name,
-        dead.price,
-        dead.image
-      console.log("dem1", dead);
+    subcategories.map((subCategory) => {
+      subCategory.name,
+      subCategory.price,
+      subCategory.image
+      console.log("subCategories", subCategory);
     })
 
   return (
@@ -65,7 +62,7 @@ function SubcategoryList() {
                       <Button
                         className="w-1/1"
                         variant="primary"
-                        onClick={openPayModal}
+                      
                       >
                         Buy Now
                       </Button>
