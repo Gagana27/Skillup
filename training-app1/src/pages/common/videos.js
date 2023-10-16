@@ -4,7 +4,9 @@ import ReactPlayer from "react-player";
 import React, { useRef } from "react";
 import axios from "axios";
 import Rating from "./AddReview";
-import ReviewComp from "./AddReview";
+import ReviewComp from "./Reviewcomp";
+import StarRating from "./AddReview";
+// import ReviewComp from "./AddReview";
 import DropDown from "./DropDown";
 import CourseVideoViewSection from "../video_course_page/course_video_view_section";
 import CourseDetailsTabsSection from "../video_course_page/course_details_tabs_section";
@@ -28,6 +30,8 @@ function VideoList(props) {
   const { categoryId, subcategoryId } = useParams();
   const [videos, setVideos] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [reviewData, setReviewData] = useState([]);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -43,6 +47,32 @@ function VideoList(props) {
     fetchVideos();
   }, [categoryId, subcategoryId]);
 
+  // const handleMouseMove = () => {
+  //   // console.log("mousemove");
+  //   VideoControlsRef.current.style.visibility = "visible";
+  //   count = 0;
+  // };
+
+  // const hanldeMouseLeave = () => {
+  //   VideoControlsRef.current.style.visibility = "hidden";
+  //   count = 0;
+  // };
+  const fetchReviewData = (rating) => {
+    // fetching review data from an API later
+    const data = [
+      { rating: 1, text: "Poor" },
+      { rating: 2, text: "Not great" },
+      { rating: 3, text: "Average" },
+      { rating: 4, text: "Good" },
+      { rating: 5, text: "Excellent" },
+    ];
+
+    const selectedReview = data.find((review) => review.rating === rating);
+    setReviewData(selectedReview ? [selectedReview] : []);
+  };
+  useEffect(() => {
+    fetchReviewData(selectedRating);
+  }, [selectedRating]);
   return (
     <>
       <div className="added">
@@ -162,6 +192,7 @@ function VideoList(props) {
 
                     {/* </ul> */}
                   </div>
+                  
                   <h2 className="text-xl font-semibold">{video.title}</h2>
                   <br />
                   {video.description}
@@ -171,11 +202,17 @@ function VideoList(props) {
                   </h1>
                   <br />
                   <h1 className="text-xl font-semibold">
-                    Reviews: {video.reviews} <ReviewComp /> 
+                    Ratings: <StarRating 
+                    props={video.review}
+                    selectedRating={selectedRating}
+                    onStarClick={setSelectedRating}
+                    /> 
+                    <br />
+                    <ReviewComp reviews={reviewData} />
                   </h1>
                   <br />
                   <h1 className="text-xl font-semibold">
-                    Ratings: {video.ratings}
+                    {/* Ratings: {video.ratings} */}
                   </h1>
                 </li>
               ))}
