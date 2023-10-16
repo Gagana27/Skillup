@@ -23,14 +23,6 @@ const LandingPage = () => {
                   </h1>
                   <div className="mt-10 sm:mt-12">
                     <form action="#" className="sm:max-w-xl sm:mx-auto lg:mx-0">
-                      {/* <div className="hidden md:flex md:items-center md:space-x-6">
-                        <a href="/homePage" className="inline-flex items-center px-4 py-2 border  border-gray-500 text-base font-medium rounded-md text-black bg-emerald-600 hover:bg-gray-700 ">
-                          Log in
-                        </a>
-                        <a href="/freetrial" className="inline-flex items-center px-4 py-2 border  border-transparent text-base font-medium rounded-md text-white bg-bright-orange hover:bg-gray-700">
-                          Start free trial
-                        </a>
-                      </div> */}
                       <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                         Learn about technology, build your skills and advance your career.
                       </p>
