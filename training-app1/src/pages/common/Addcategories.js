@@ -44,7 +44,7 @@ const AddCategory = () => {
           name: categoryName,
           img: imageUrl,
           subcategories: subcategoryName.filter(Boolean),
-          price: subcategoryName.price
+          priceDetails:priceDetails
         }
       );
 
@@ -125,8 +125,8 @@ const AddCategory = () => {
                   className="form-control"
                   type="number"
                   placeholder="Price"
-                  value={price}
-                  onChange={(event) => setPrice(event.target.value)}
+                  value={priceDetails}
+                  onChange={(event) => setPriceDetails(event.target.value)}
                 />
                 <div>
                   <label htmlFor="subcategory-imageUrl">ImageUrl:</label>

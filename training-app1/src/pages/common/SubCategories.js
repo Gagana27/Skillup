@@ -44,7 +44,9 @@ function SubcategoryList() {
                 >
                   <Card.Img
                     variant="top"
-                    className="w-full h-40 object-cover"
+                    // className="w-full h-40 object-cover"
+                    style={{ height: '135px', width: '100%' }}
+
                     src={subcategory?.image}
                   />
 
@@ -54,7 +56,7 @@ function SubcategoryList() {
                   >
                     <div>
                       <Card.Text className="text-white ">
-                        {subcategory.name} - Rs. {subcategory.price}
+                        {subcategory.name} - Rs. {subcategory.priceDetails}
                       </Card.Text>
                     </div>
 
