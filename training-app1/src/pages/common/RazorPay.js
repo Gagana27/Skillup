@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-const RazorPay = () => {
+const RazorPay = (props) => {
 
-
+    const [width, setWidth] = React.useState(window.raz);
+    const [height, setHeight] = React.useState(window.innerHeight);
+    
     const displayRazorPay=async ()=>{
         const result=await axios.post("http://localhost:5000/order")
     if (!result) {
@@ -52,6 +54,7 @@ const RazorPay = () => {
         },
     };
     var paymentObject = new window.Razorpay(options);
+
         paymentObject.open();
 
    

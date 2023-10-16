@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios'
 import { useLocation } from "react-router";
+import { Button, message } from 'antd';
 
 
 
@@ -17,57 +18,64 @@ const handleConfirmPassword = async (e) => {
     const response=await axios.post(`http://localhost:5000/api/user/resetPassword/${userId}`,{
         resetPassword
      })
+     message.success('Password Created Successfully', 4); // '3' is the duration in seconds
+
     console.log("yyyy",response);
-    const result = window.confirm('Are you sure you want to confirm your password?');
-    if (result) {
-      alert('Password confirmed!');
-    } else {
-      alert('Password not confirmed.');
-    }
+    // const result = window.confirm('Are you sure you want to confirm your password?');
+    // if (result) {
+    //   alert('Password confirmed!');
+    // } else {
+    //   alert('Password not confirmed.');
+    // }
   
 
 }
     return (
         <>
-            <div className="card ">
-                <div className="cardforget ">
-                    <h3 className="card-titlefor align-center ">Password Change</h3>
-                    <div className="card-text">
-                        <form onSubmit={handleConfirmPassword}>
-                            <div className="form-group">
-                                <label
-                                    for="exampleInputEmail1">
-                                    Enter your email address and we will send you a link to reset your password.
-                                </label>
-                                
-                                <input
-                                    type="email"
-                                    className="form-control form-control-sm"
-                                    placeholder="new Password"
-                                    value={resetPassword}
-                                    onChange={(e)=>{setConfirm(e.target.value)}}
-                                />
-                                <br/>
-                                <input
-                                    type="email"
-                                    className="form-control form-control-sm"
-                                    placeholder="confirm Password"
-                                    onChange={(e)=>{setConfirm(e.target.value)}}
+             <p className=" text-center mt-4 mb-4 text-green-800 font-extrabold "> Password Change</p>
 
-                                />
-                            </div>
-                            <br />
-                            <button onClick={handleConfirmPassword}
-                                type="submit"
-                                className="forgotbutton btn-block mt-4">
-                                Confirm Password
-                            </button>
+             <div class="w-full max-w-sm mx-auto">
+  <form class="bg-gray-500 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleConfirmPassword}>
+
+                       
+  <div class="mb-4">
+      <label class="block text-black text-sm font-bold mb-2" for="password">
+        Password
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Password"
+       value={resetPassword}
+       onChange={(e)=>{setConfirm(e.target.value)}}/>
+    </div>
+
+    <div class="mb-6">
+      <label class="block text-black text-sm font-bold mb-2" for="confirmPassword">
+        Confirm Password
+      </label>
+      <input class="
+      shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="confirmPassword" type="password" placeholder="Confirm Password"
+      value={resetPassword}
+      onChange={(e)=>{setConfirm(e.target.value)}}
+      />
+    </div>
+    <div class="mb-6 text-center">
+      <button class="bg-green-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+      onClick={handleConfirmPassword}
+      type="submit">
+        ConfirmPassword
+      </button>
+    </div>
+                                
+                               
+                          
+                          
+                          
                         </form>
                     </div>
-                </div>
+             
+           
 
-            </div>
         </>
+        
     );
 }
 

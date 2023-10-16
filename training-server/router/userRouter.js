@@ -1,10 +1,13 @@
 const express=require("express");
-const { userSignup, userLogin, verifyEmailAccount, forgetPassword, verifyOTP, resetPassword } = require("../controller/userController");
+const { userSignup, userLogin, verifyEmailAccount, forgetPassword, verifyOTP, resetPassword , userEnterEmail } = require("../controller/userController");
 
 const userRouter=express.Router();
 
 //user signup router
 userRouter.post("/userSignup",userSignup)
+
+//user enteremail router
+userRouter.post("/enterEmail",userEnterEmail)
 
 //user login router
 userRouter.post("/userLogin",userLogin)

@@ -1,61 +1,79 @@
-import { CaretRightOutlined } from '@ant-design/icons';
-import React from 'react';
-import { Collapse, theme } from 'antd';
-
-const text = `
-React is a free and open-source front-end JavaScript library for building user interfaces based on 
-components. It is maintained by Meta and a community of individual developers and companies. 
-React can be used to develop single-page, mobile, or server-rendered applications with frameworks 
-like Next.js..
-`;
-
-const getItems = (panelStyle) => [
-    {
-        key: '1',
-        label: <h1 style={{ color: 'black' , font: 'bold' }}>REACT</h1>,
-        children: 
-        <ol style={{ listStyleType: 'decimal' }}>
-                <li>{text}</li>
-                <li>{text}</li>
-                <li>{text}</li>
-        </ol>,
-        style: panelStyle
-    }
-];
+import { CaretRightOutlined } from "@ant-design/icons";
+import React from "react";
+import { Collapse, theme } from "antd";
 
 const DropDown = (props) => {
+  const { name, desc, price, image, videos } = props;
+  const { token } = theme.useToken();
 
-    const { name , desc , price , image } = props;
-    const { token } = theme.useToken();
+  const getItems = (panelStyle, description, video) => [
+    {
+      key: "1",
+      label: <h2 style={{ color: "black", font: "bold" }}>{video.title}</h2>,
+      children: (
+        <ol style={{ listStyleType: "decimal" }}>
+          <li>{description}</li>
+          <li>{description}</li>
+          <li>{description}</li>
+        </ol>
+      ),
+      style: panelStyle,
+    },
+    {
+        key: "2",
+        label: <h2 style={{ color: "black", font: "bold" }}>{video.title}</h2>,
+        children: (
+          <ol style={{ listStyleType: "decimal" }}>
+            <li>{description}</li>
+            <li>{description}</li>
+            <li>{description}</li>
+          </ol>
+        ),
+        style: panelStyle,
+      },
+      {
+        key: "3",
+        label: <h2 style={{ color: "black", font: "bold" }}>{video.title}</h2>,
+        children: (
+          <ol style={{ listStyleType: "decimal" }}>
+            <li>{description}</li>
+            <li>{description}</li>
+            <li>{description}</li>
+          </ol>
+        ),
+        style: panelStyle,
+      },
+      ];
 
-    const panelStyle = {
-        marginBottom: 24,
-        background: token.colorWarning,
-        borderRadius: token.borderRadiusLG,
-        outerWidth: 25,
-        textColor: token.colorWhite
-    };
+  const panelStyle = {
+    marginBottom: 24,
+    background: token.colorWarning,
+    borderRadius: token.borderRadiusLG,
+    outerWidth: 25,
+    textColor: token.colorWhite,
+  };
 
-    return (
-        <>
-            <Collapse
-            bordered={false}
-            defaultActiveKey={['0']}
-            expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
-            style={{
-                background: token.colorBgContainer,
-                width: "20rem",
-                height: "10rem"
-            }}
-         
-            items={getItems(panelStyle)}
+  return (
+    <>
+      {videos.map((video) => (
+        <Collapse
+          bordered={false}
+          defaultActiveKey={["0"]}
+          expandIcon={({ isActive }) => (
+            <CaretRightOutlined rotate={isActive ? 90 : 0} />
+          )}
+          style={{
+            background: token.colorBgContainer,
+            width: "20rem",
+            height: "10rem",
+          }}
+          key={video._id}
+          video={video.description}
+          items={getItems(panelStyle, video.description, video)}
         />
-        <p>{name}</p>
-        <p>{desc}</p>
-        </>
-        
-        
-    );
+      ))}
+    </>
+  );
 };
 
 export default DropDown;

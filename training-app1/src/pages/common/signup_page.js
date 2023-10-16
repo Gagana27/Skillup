@@ -36,16 +36,9 @@ function SignUpPage() {
     if (e.target.address.value === "") {
       newError.address = "Enter your Address";
     }
-
-
     setError(newError);
     return newError;
   };
-
-  
- 
-  
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,10 +64,9 @@ function SignUpPage() {
       
       alert({ status: "Verification mail send Successfully",signupUser });
           }
-        
-        
     
   }
+
   return (
     <div className="  g-8 flex h-full flex-wrap items-center justify-center lg:justify-between  ">
 
