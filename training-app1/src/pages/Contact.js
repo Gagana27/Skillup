@@ -19,7 +19,8 @@ function ContactPage() {
     //   }
 
     return (
-        <div className="min-h-screen bg-white flex">
+        <div className="  g-8 flex h-full flex-wrap items-center justify-center lg:justify-between  ">
+
             <div className="flex-1 flex flex-col py-12 px-4 sm:px-4 lg:flex-none lg:px-20 xl:px-24">
                 <div className="mx-auto w-full max-w-sm lg:w-96">
                     <div>
@@ -30,7 +31,7 @@ function ContactPage() {
                     <div className="mt-8">
 
                         <div>
-                            <form className="space-y-6">
+                            <form className="space-y-6 px-10 pb-8 mb-4 bg-white shadow-md rounded ">
                                 {/* <form action="http://localhost:3000/login" className="space-y-6" noValidate> */}
 
                                 <div className="mt-6">
@@ -86,17 +87,17 @@ function ContactPage() {
                 </div>
             </div>
 
-            <div className="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
-                <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
-                    {/* Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ */}
+            
+                    <div className="  w-full md:w-1/2 md:pl-2 mr-14">
+
                     <img
-                        className="w-full lg:inset-y-0 lg:left-0 ml-40 lg:h-full lg:w-auto lg:max-w-none"
+                        className="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-10/12"
                         src={ContactImage} />
 
                     {/* <img className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/cloud-illustration-indigo-400.svg" alt /> */}
                 </div>
             </div>
-        </div>
+       
     );
 }
 export default ContactPage;
