@@ -6,6 +6,7 @@ const DropDown = (props) => {
   const { name, desc, price, image, videos } = props;
   const { token } = theme.useToken();
 
+<<<<<<< HEAD
   const getItems = (panelStyle, description, video) => [
     {
       key: "1",
@@ -44,6 +45,10 @@ const DropDown = (props) => {
         style: panelStyle,
       },
       ];
+=======
+    const { name , desc , price , image ,} = props;
+    const { token } = theme.useToken();
+>>>>>>> 2871085f68bd88dfb858c788735de06ca295ce7f
 
   const panelStyle = {
     marginBottom: 24,

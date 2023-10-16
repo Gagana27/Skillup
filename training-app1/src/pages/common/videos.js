@@ -81,7 +81,11 @@ function VideoList(props) {
         <div className="flex justify-between p-8">
           <div className="w-96 pr-8">
             <div className="relative inline-block text-left">
-              <DropDown name="ggggg" desc="reactjs" videos={videos} />
+            {videos.map((descVideo) => {
+             return (
+              <DropDown name="ggggg" items={descVideo.description} width={300} height={500}/>
+             )
+            })}
               {/* <button
                 onClick={toggleDropdown}
                 className="px-8 py-2 w-64 text-sm font-medium text-gray-700 bg-gray-200 rounded focus:outline-none focus:ring grid-rows-4"
