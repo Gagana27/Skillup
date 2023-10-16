@@ -10,7 +10,7 @@ const subcategorySchema = new mongoose.Schema({
         required: true
 
     },
-    price:{
+    priceDetails:{
         type:String,
         require:true
     },

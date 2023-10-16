@@ -36,14 +36,15 @@
       max-Height: 16rem;
   }
   .freetrial{
-    margin-bottom: 8rem;
+    margin-bottom: 13rem;
+    width:100%;
+    height: 100%;
+   
+
     
 
   }
-  .freetrial1{
-    width: fit-content;
-    height: fit-content;
-  }
+  
   .contactimg{
     margin-bottom: 8rem;
     justify-items: right;
@@ -73,6 +74,16 @@
     margin-left: 10%;
     width: 80%;
    }
+   .topcategory{
+    margin-right: 5px;
+
+  }
+  /* .topcard{
+    row-gap: 10;
+    column-gap: 5;
+    width: 100%;
+    height: 100%;
+  } */
     
    
   }
