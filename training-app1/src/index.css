@@ -35,6 +35,22 @@
       min-Height: 10rem;
       max-Height: 16rem;
   }
+  .freetrial{
+    margin-bottom: 8rem;
+    
+
+  }
+  .freetrial1{
+    width: fit-content;
+    height: fit-content;
+  }
+  .contactimg{
+    margin-bottom: 8rem;
+    justify-items: right;
+   
+    
+  }
+  
 }
   
 
