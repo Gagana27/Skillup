@@ -6,6 +6,7 @@ const fs=require("fs")
 const path=require("path")
 const jwt=require("jsonwebtoken");
 const forgetPasswordModel = require("../mongo_schema/forgetPasswordModel");
+const enterEmail = require("../mongo_schema/enterEmail");
 
 
 //generate token for signup user
@@ -61,6 +62,18 @@ const userSignup=async (req,res)=>{
     } catch (error) {
       res.send({ status: "error" });
     }
+}
+
+//user email subscription controller
+const userEnterEmail=async (req,res)=>{
+  const { email } = req.body;
+  console.log(email)
+  try {
+    const enterUser = await enterEmail.create({email})
+    res.send({ status: "Mail Added to DB",enterUser });
+  } catch (error) {
+    res.send({ status: "error" });
+  }
 }
 
 //user Login Controller
@@ -203,4 +216,4 @@ const resetPassword=async (req,res)=>{
 }
 
 
-module.exports={userSignup,userLogin,verifyEmailAccount,forgetPassword,verifyOTP,resetPassword}
+module.exports={userSignup,userLogin,verifyEmailAccount,forgetPassword,verifyOTP,resetPassword,userEnterEmail}

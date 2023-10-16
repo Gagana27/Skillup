@@ -25,7 +25,7 @@ const getItems = (panelStyle) => [
 
 const DropDown = (props) => {
 
-    const { name , desc , price , image } = props;
+    const { name , desc , price , image ,} = props;
     const { token } = theme.useToken();
 
     const panelStyle = {
