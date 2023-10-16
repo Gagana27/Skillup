@@ -41,34 +41,14 @@ export default function TopCatagoriesListSection(props) {
               </div>
               <div className="mt-6 flex items-center">
                 <div className="py-4 flex-shrink-0">
-                  <Link to="/">
-                    {/* <span className="sr-only">Roel Aufderehar</span> */}
-                    {/* <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
-                  </Link>
+
                 </div>
-                {/* <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-900">
-                      <a href="/" className="hover:underline">
-                        Roel Aufderehar
-                      </a>
-                    </p>
-                    <div className="flex space-x-1 text-sm text-gray-500">
-                      <time dateTime="2020-03-16">
-                        Mar 16, 2020
-                      </time>
-                      <span aria-hidden="true">
-                        &middot;
-                      </span>
-                      <span>
-                        6 min read
-                      </span>
-                    </div>
-                  </div> */}
+                
               </div>
             </div>
-            {/* reactnative */}
+            
           </div>
-          {/* Web Developm */}
+        
           <div className="flex flex-col m-7 rounded-lg shadow-lg overflow-hidden">
             <div className="flex-shrink-0">
               <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1612732127517-61509d7ceb33?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=334&q=80" alt="" />
@@ -94,36 +74,12 @@ export default function TopCatagoriesListSection(props) {
               </div>
               <div className="mt-6 flex items-center">
                 <div className="py-4 flex-shrink-0">
-                  <Link to="/">
-                    {/* <span className="sr-only">Roel Aufderehar</span> */}
-                    {/* <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" /> */}
-                  </Link>
+                 
                 </div>
-                {/* <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-900">
-                      <a href="/" className="hover:underline">
-                        Roel Aufderehar
-                      </a>
-                    </p>
-                    <div className="flex space-x-1 text-sm text-gray-500">
-                      <time dateTime="2020-03-16">
-                        Mar 16, 2020
-                      </time>
-                      <span aria-hidden="true">
-                        &middot;
-                      </span>
-                      <span>
-                        6 min read
-                      </span>
-                    </div>
-                  </div> */}
+               
               </div>
             </div>
           </div>
-          {/* web develp */}
-
-
-          {/* // Javascript */}
           <div className="flex flex-col m-7 rounded-lg shadow-lg overflow-hidden">
             <div className="flex-shrink-0">
               <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="" />
@@ -145,35 +101,10 @@ export default function TopCatagoriesListSection(props) {
                 </Link>
               </div>
               <div className="mt-6 flex items-center">
-                {/* <div className="flex-shrink-0">
-                    <a href="/">
-                      <span className="sr-only">Brenna Goyette</span>
-                      <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                    </a>
-                  </div> */}
-                {/* <div className="ml-3">
-                    <p className="text-sm font-medium text-gray-900">
-                      <a href="/" className="hover:underline">
-                        Brenna Goyette
-                      </a>
-                    </p>
-                    <div className="flex space-x-1 text-sm text-gray-500">
-                      <time dateTime="2020-03-10">
-                        Mar 10, 2020
-                      </time>
-                      <span aria-hidden="true">
-                        &middot;
-                      </span>
-                      <span>
-                        4 min read
-                      </span>
-                    </div>
-                  </div> */}
               </div>
 
             </div>
           </div>
-          {/* Cloud Computing */}
           <div className="flex flex-col m-7 rounded-lg shadow-lg overflow-hidden">
             <div className="flex-shrink-0">
               <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8cHl0aG9ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
@@ -195,35 +126,15 @@ export default function TopCatagoriesListSection(props) {
                 </Link>
               </div>
               <div className="mt-6 flex items-center">
-                {/* <div className="flex-shrink-0">
-                    <a href="/">
-                      <span className="sr-only">Daniela Metz</span>
-                      <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                    </a>
-                  </div> */}
+               
                 <div className="ml-3">
-                  {/* <p className="text-sm font-medium text-gray-900">
-                      <a href="/" className="hover:underline">
-                        Daniela Metz
-                      </a>
-                    </p> */}
-                  {/* <div className="flex space-x-1 text-sm text-gray-500">
-                      <time dateTime="2020-02-12">
-                        Feb 12, 2020
-                      </time>
-                      <span aria-hidden="true">
-                        &middot;
-                      </span>
-                      <span>
-                        11 min read
-                      </span>
-                    </div> */}
+                 
+                 
                 </div>
               </div>
             </div>
           </div>
-          {/* cloud com */}
-          {/* // Angular */}
+         
           <div className="flex flex-col m-7 rounded-lg shadow-lg overflow-hidden">
             <div className="flex-shrink-0">
               <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1561883088-039e53143d73?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YW5ndWxhciUyMGpzfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
@@ -245,34 +156,13 @@ export default function TopCatagoriesListSection(props) {
                 </Link>
               </div>
               <div className="mt-6 flex items-center">
-                {/* <div className="flex-shrink-0">
-                    <a href="/">
-                      <span className="sr-only">Daniela Metz</span>
-                      <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                    </a>
-                  </div> */}
+               
                 <div className="ml-3">
-                  {/* <p className="text-sm font-medium text-gray-900">
-                      <a href="/" className="hover:underline">
-                        Daniela Metz
-                      </a>
-                    </p> */}
-                  {/* <div className="flex space-x-1 text-sm text-gray-500">
-                      <time dateTime="2020-02-12">
-                        Feb 12, 2020
-                      </time>
-                      <span aria-hidden="true">
-                        &middot;
-                      </span>
-                      <span>
-                        11 min read
-                      </span>
-                    </div> */}
                 </div>
               </div>
             </div>
           </div>
-          {/* // Python */}
+      
           <div className="flex flex-col m-7 rounded-lg shadow-lg overflow-hidden">
             <div className="flex-shrink-0">
               <img className="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="" />
@@ -294,29 +184,10 @@ export default function TopCatagoriesListSection(props) {
                 </Link>
               </div>
               <div className="mt-6 flex items-center">
-                {/* <div className="flex-shrink-0">
-                    <a href="/">
-                      <span className="sr-only">Daniela Metz</span>
-                      <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixqx=UgujetFY6E&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                    </a>
-                  </div> */}
+              
                 <div className="ml-3">
-                  {/* <p className="text-sm font-medium text-gray-900">
-                      <a href="/" className="hover:underline">
-                        Daniela Metz
-                      </a>
-                    </p> */}
-                  {/* <div className="flex space-x-1 text-sm text-gray-500">
-                      <time dateTime="2020-02-12">
-                        Feb 12, 2020
-                      </time>
-                      <span aria-hidden="true">
-                        &middot;
-                      </span>
-                      <span>
-                        11 min read
-                      </span>
-                    </div> */}
+                  
+                 
                 </div>
               </div>
             </div>

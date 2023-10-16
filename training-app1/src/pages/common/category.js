@@ -19,7 +19,7 @@ function CategoryList() {
     fetchCategories();
   }, []);
 
-  console.log("dead");
+
 
   return (
     <>
