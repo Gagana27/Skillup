@@ -11,6 +11,7 @@ import DropDown from "./DropDown";
 import CourseVideoViewSection from "../video_course_page/course_video_view_section";
 import CourseDetailsTabsSection from "../video_course_page/course_details_tabs_section";
 import CourseContentListSection from "../video_course_page/course_content_list_section";
+import CourseDetailsSection from "../video_course_page/course_details_section";
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -36,12 +37,13 @@ function VideoList(props) {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  
+
   useEffect(() => {
     async function fetchVideos() {
       const response = await axios.get(
         `http://localhost:5000/subcategories/${subcategoryId}/videos`
       );
+      console.log("ggg", response.data);
       setVideos(response.data);
     }
     fetchVideos();
@@ -78,13 +80,8 @@ function VideoList(props) {
       <div className="added">
         <div className="flex justify-between p-8">
           <div className="w-96 pr-8">
-            
             <div className="relative inline-block text-left">
-            {videos.map((descVideo) => {
-             return (
-              <DropDown name="ggggg" items={descVideo.description} width={300} height={500}/>
-             )
-            })}
+              <DropDown name="ggggg" desc="reactjs" videos={videos} />
               {/* <button
                 onClick={toggleDropdown}
                 className="px-8 py-2 w-64 text-sm font-medium text-gray-700 bg-gray-200 rounded focus:outline-none focus:ring grid-rows-4"
@@ -196,21 +193,22 @@ function VideoList(props) {
 
                     {/* </ul> */}
                   </div>
-                  
+
                   <h2 className="text-xl font-semibold">{video.title}</h2>
                   <br />
-                  {video.description}
+                  {/* {video.description} */}
                   <br />
                   <h1 className="text-xl font-semibold">
                     Author: {video.author}
                   </h1>
                   <br />
                   <h1 className="text-xl font-semibold">
-                    Ratings: <StarRating 
-                    props={video.review}
-                    selectedRating={selectedRating}
-                    onStarClick={setSelectedRating}
-                    /> 
+                    Ratings:{" "}
+                    <StarRating
+                      props={video.review}
+                      selectedRating={selectedRating}
+                      onStarClick={setSelectedRating}
+                    />
                     <br />
                     <ReviewComp reviews={reviewData} />
                   </h1>
@@ -228,11 +226,16 @@ function VideoList(props) {
         <br />
 
         <div className="flex p-4 border rounded-lg shadow-md">
-          {/* Image */}
+          {/* Image
           <div className="w-1/2 pr-4">
-            {/* <img alt={video.title} className="h-auto w-full" /> */}
-          </div>
-        </div>
+            <img alt={video.title} className="h-auto w-full" />
+          </div> */}
+      
+      
+     <div className=" flex items-start h-90v   ">
+      <div><CourseDetailsSection/></div>
+   </div>
+   </div>
       </div>
     </>
   );
