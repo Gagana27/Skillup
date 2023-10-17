@@ -8,10 +8,7 @@ import ReviewComp from "./Reviewcomp";
 import StarRating from "./AddReview";
 // import ReviewComp from "./AddReview";
 import DropDown from "./DropDown";
-import CourseVideoViewSection from "../video_course_page/course_video_view_section";
-import CourseDetailsTabsSection from "../video_course_page/course_details_tabs_section";
-import CourseContentListSection from "../video_course_page/course_content_list_section";
-import CourseDetailsSection from "../video_course_page/course_details_section";
+import Comments from './Comments'
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -33,6 +30,7 @@ function VideoList(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewData, setReviewData] = useState([]);
+  const [CommentLists, setCommentLists] = useState([])
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -59,6 +57,10 @@ function VideoList(props) {
   //   VideoControlsRef.current.style.visibility = "hidden";
   //   count = 0;
   // };
+  const updateComment =  (newComment) => {
+    setCommentLists(CommentLists.concat(newComment))
+}
+
   const fetchReviewData = (rating) => {
     // fetching review data from an API later
     const data = [
@@ -174,7 +176,7 @@ function VideoList(props) {
               ref={playerContainerRef}
             >
               {videos.map((video) => (
-                <li style={{ listStyleType: "none" }} key={video._id}>
+                <li key={video._id}>
                   <div className="flex-1  h-80v justify-end    ">
                     {/* <ul> */}
                     <ReactPlayer
@@ -194,14 +196,12 @@ function VideoList(props) {
                     {/* </ul> */}
                   </div>
 
-                  <h2 className="text-xl font-semibold">{video.title}</h2>
-                  <br />
+                 <div className="grid grid-cols-4">
+                 <h2 className="text-xl font-semibold">{video.title}</h2>
                   {/* {video.description} */}
-                  <br />
                   <h1 className="text-xl font-semibold">
-                    Author: {video.author}
+                    {video.author}
                   </h1>
-                  <br />
                   <h1 className="text-xl font-semibold">
                     Ratings:{" "}
                     <StarRating
@@ -209,34 +209,31 @@ function VideoList(props) {
                       selectedRating={selectedRating}
                       onStarClick={setSelectedRating}
                     />
-                    <br />
-                    <ReviewComp reviews={reviewData} />
                   </h1>
-                  <br />
                   <h1 className="text-xl font-semibold">
-                    {/* Ratings: {video.ratings} */}
+                  <ReviewComp reviews={reviewData} />
                   </h1>
+                 </div>
+             
+
                 </li>
+                
               ))}
+              
             </div>{" "}
           </div>
+          
         </div>
-
-        <br />
-        <br />
-
-        <div className="flex p-4 border rounded-lg shadow-md">
+        <Comments CommentLists={CommentLists}  refreshFunction={updateComment} />
+        <div className="flex border rounded-lg shadow-md">
           {/* Image
           <div className="w-1/2 pr-4">
             <img alt={video.title} className="h-auto w-full" />
           </div> */}
-      
-      
-     <div className=" flex items-start h-90v   ">
-      <div><CourseDetailsSection/></div>
    </div>
-   </div>
+   
       </div>
+      
     </>
   );
 }
