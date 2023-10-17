@@ -17,15 +17,15 @@ const OTPPage = () => {
 
 
 
-    // useEffect(() => {
-    //     if (showPopup) {
-    //         const timeoutId = setTimeout(() => {
-    //             setShowPopup(false);
-    //         }, 1000);
+    useEffect(() => {
+        if (showPopup) {
+            const timeoutId = setTimeout(() => {
+                setShowPopup(false);
+            }, 1000);
 
-    //         return () => clearTimeout(timeoutId);
-    //     }
-    // }, [showPopup]);
+            return () => clearTimeout(timeoutId);
+        }
+    }, [showPopup]);
 
     const handleOtpSubmit = async (e) => {
         e.preventDefault();
