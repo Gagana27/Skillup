@@ -9,6 +9,8 @@ import StarRating from "./AddReview";
 // import ReviewComp from "./AddReview";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
+import ListGroup from 'react-bootstrap/ListGroup';
+import { Divider } from 'antd';
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -192,15 +194,21 @@ function VideoList(props) {
                       volume={volume}
                       muted={muted}
                     />
-
-                    {/* </ul> */}
                   </div>
 
-                  <div className="grid grid-cols-4">
-                    <h2 className="text-xl font-semibold">{video.title}</h2>
+                  <div className="grid grid-cols-1">
+                    <h2 className="text-l font-semibold">Course : {video.title}</h2>
                     {/* {video.description} */}
-                    <h1 className="text-xl font-semibold">{video.author}</h1>
-                    <h1 className="text-xl font-semibold">
+                    <h1 className="text-l font-semibold">Author : {video.author}</h1>
+                    <ListGroup>
+                      <ListGroup.Item>
+                        <h1 className="text-l font-semibold">
+                          Description : <br />
+                          {video.description}</h1>
+                      </ListGroup.Item>
+                    </ListGroup>
+
+                    <h1 className="text-l font-semibold">
                       Ratings:{" "}
                       <StarRating
                         props={video.review}
@@ -208,18 +216,20 @@ function VideoList(props) {
                         onStarClick={setSelectedRating}
                       />
                     </h1>
-                    <h1 className="text-xl font-semibold">
+
+                    <h1 className="text-l font-semibold">
                       <ReviewComp reviews={reviewData} />
+                      <Comments CommentLists={CommentLists} refreshFunction={updateComment} />
                     </h1>
-                    
+
                   </div>
-                  <Comments CommentLists={CommentLists}  refreshFunction={updateComment} />
+
                 </li>
               ))}
             </div>{" "}
           </div>
         </div>
-        
+
         <div className="flex border rounded-lg shadow-md">
           {/* Image
           <div className="w-1/2 pr-4">
