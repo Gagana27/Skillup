@@ -93,3 +93,7 @@
     font-family: sans-serif;
     text-align: center;
   }
+
+  .text-margin {
+    margin: 16px;
+  }

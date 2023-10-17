@@ -2,17 +2,36 @@ import React from 'react';
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import { useEnterEmail } from '../../hooks/useEnterEmail';
+import { Button, message } from 'antd';
 
 export default function Footer(props) {
 
   const { enterEmail, isLoading,error } = useEnterEmail();
   const [email, setEmail] = useState();
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = 'updatable';
 
   const handleSubmit = async (e) => {
+
+    messageApi.open({
+      key,
+      type: 'loading',
+      content: 'Loading...',
+    });
+    setTimeout(() => {
+      messageApi.open({
+        key,
+        type: 'success',
+        content: 'Loaded!',
+        duration: 2,
+      });
+    }, 1000);
+
     console.log("submit")
     e.preventDefault();
     console.log("Form submitted Successfully");
     await enterEmail( email );
+
   }
 
   return (
@@ -164,8 +183,9 @@ export default function Footer(props) {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400"
-                placeholder="Enter your email" />
+                className="text-margin appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400"
+                placeholder="Enter your email" /> {contextHolder}
+                
               <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                 <button type="submit" className="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">
                   Subscribe

@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllCategories, postCategories, postVideosInSubcategories, getAllSubcategories, getSubCategoriesVideo } = require('../controller/categoriesController');
+const { getAllCategories, postCategories, postVideosInSubcategories, getAllSubcategories, getSubCategoriesVideo,postCarts } = require('../controller/categoriesController');
 const categoriesRouter=express.Router();
 
 categoriesRouter.get('/categories',getAllCategories);
@@ -13,6 +13,10 @@ categoriesRouter.post('/categories',postCategories);
 categoriesRouter.post('/subcategories/:subcategoryId/videos',postVideosInSubcategories);
 
 categoriesRouter.post('/categories/:categoryId/subcategories', postCategories);
+
+categoriesRouter.post('/cart',postCarts);
+
+
 
 
 module.exports=categoriesRouter;

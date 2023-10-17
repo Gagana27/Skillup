@@ -1,6 +1,7 @@
 const Category=require("../mongo_schema/categories")
 const Subcategory=require("../mongo_schema/subcategories")
 const Video=require("../mongo_schema/video")
+const Cart=require("../mongo_schema/cart")
 
 const getAllCategories=async (req,res)=>{
     try {
@@ -92,4 +93,27 @@ const getSubCategoriesVideo=async (req,res)=>{
     }
 }
 
-module.exports={getAllCategories,postCategories,postVideosInSubcategories,getAllSubcategories,getSubCategoriesVideo}
+const postCarts = async (req, res) => {
+    try {
+      const { coursename } = req.body;
+  
+      const cart = new Cart({
+         coursename,
+      });
+  
+      await cart.save();
+  
+      res.status(201).json({
+        message: 'Cart created successfully',
+        cart: cart,
+      });
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  };
+
+
+
+
+
+module.exports={getAllCategories,postCategories,postVideosInSubcategories,getAllSubcategories,getSubCategoriesVideo,postCarts}

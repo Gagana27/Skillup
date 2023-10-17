@@ -7,9 +7,9 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useParams , useLocation } from 'react-router-dom';
 
-function Subscription() {
+function Subscription({coursename,children}) {
 
-  const { categoryId } = useParams();
+  const { categoryId,subcategoryId } = useParams();
   const [subcategories, setSubcategories] = useState([]);
   const location  = useLocation();
   const Data = location.state;
@@ -18,13 +18,13 @@ function Subscription() {
 
   useEffect(() => {
     async function fetchSubcategories() {
-      const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
+      const response = await axios.get("http://localhost:5000/cart");
       setSubcategories(response.data);
       console.log("state",subcategories)
     }
     fetchSubcategories();
 
-  }, [categoryId]);
+  }, [categoryId,subcategoryId]);
 
   return (
     <>
@@ -69,9 +69,7 @@ function Subscription() {
                 <Card.Body>
                   <Card.Title>Card title</Card.Title>
                   <Card.Text>
-                    This is a longer card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
+                   {coursename}
                   </Card.Text>
                 </Card.Body>
                 <RazorPay />
