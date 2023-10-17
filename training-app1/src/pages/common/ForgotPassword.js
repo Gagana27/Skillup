@@ -21,6 +21,7 @@ const ForgotPassword = () => {
         console.log("OTP",response.data);
         console.log("OTP",response.data.emailData._id);
         setUserId(response.data.emailData._id)
+        
         navigate("/otp",{state:{userId:response.data.emailData._id}});
     };
     console.log("aaaa",userId)

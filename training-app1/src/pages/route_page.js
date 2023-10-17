@@ -70,7 +70,7 @@ export default function RoutePage() {
             <Route path="/claim" element={<Claim />} />
             <Route path="/my-cart" element={<MyCart />} />
             <Route path="/my-learning" element={<MyLearn />} />
-            <Route path="/subscription/categoryId" element={<Subscription />} />
+            <Route path="/subscription/:subcategoryId" element={<Subscription />} />
             <Route path="/razorpay" element={<RazorPay />} />
             <Route path="/otp" element={<OTPPage />} />
             <Route path="/resetpassword" element={<ConfirmPassword />} />

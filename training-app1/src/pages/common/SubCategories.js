@@ -69,7 +69,7 @@ function SubcategoryList() {
                         Buy Now
                       </Button>
 
-                      <Link to="/subscription/categoryId" state={subCatData}>
+                      <Link to="/subscription/:subcategoryId" state={subCatData}>
                         <Button
                           className="w-1/1"
                           variant="primary"
