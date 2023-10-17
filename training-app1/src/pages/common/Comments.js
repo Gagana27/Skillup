@@ -1,7 +1,6 @@
-import React , {useState} from 'react'
+import React, { useState } from 'react'
 import { Button, Input } from 'antd';
 import axios from 'axios';
-
 
 const { TextArea } = Input;
 
@@ -16,40 +15,42 @@ function Comments(props) {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const variables = { 
+        const variables = {
             content: Comment,
             writer: user.userData._id,
-            postId: props.postId   
-         }
+            postId: props.postId
+        }
 
         axios.post('/api/comment/saveComment', variables)
-        .then(response=> {
-            if(response.data.success) {
-                setComment("")
-                props.refreshFunction(response.data.result)
-            } else {
-                alert('Failed to save Comment')
-            }
-        })
+            .then(response => {
+                if (response.data.success) {
+                    setComment("")
+                    props.refreshFunction(response.data.result)
+                } else {
+                    alert('Failed to save Comment')
+                }
+            })
     }
 
     return (
         <div>
             <br />
             <p> Comments Section</p>
-        
+
             {/* Comment Lists  */}
-            
+
 
             {/* Root Comment Form */}
-            <form  onSubmit={onSubmit}>
+            <form onSubmit={onSubmit}>
                 <TextArea
-                    style={{ width: '50%',height:100, borderRadius: '5px' }}
+                    style={{ width: '50%', height: 100, borderRadius: '5px' }}
                     onChange={handleChange}
                     value={Comment}
                     placeholder="write some comments"
-                />
-                <Button style={{ width: '20%', height: '52px', backgroundColor: 'orange', marginLeft:20 }} onClick={onSubmit}>Submit</Button>
+                /><br />
+                <Button
+                    style={{ width: '15%', height: '40px', backgroundColor: 'orange' }}
+                    onClick={onSubmit}>Submit</Button>
             </form>
 
         </div>
