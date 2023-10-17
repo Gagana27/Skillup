@@ -10,7 +10,7 @@ import StarRating from "./AddReview";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
 import ListGroup from 'react-bootstrap/ListGroup';
-import { Divider } from 'antd';
+import { Avatar, List } from 'antd';
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -197,13 +197,31 @@ function VideoList(props) {
                   </div>
 
                   <div className="grid grid-cols-1">
-                    <h2 className="text-l font-semibold">Course : {video.title}</h2>
+                    {/* <h2 className="text-l font-semibold">Course : {video.title}</h2> */}
                     {/* {video.description} */}
-                    <h1 className="text-l font-semibold">Author : {video.author}</h1>
-                    <ListGroup>
+                    <h1 className="text-l font-semibold">
+                      <ListGroup.Item style={{ padding: 10 }} className="my-3" variant="secondary">
+                        Course : {video.title}<br /><br />
+                        Author : {video.author}<br /><br />
+                        Description : {video.description}<br /><br />
+                        Ratings:{" "}
+                        <StarRating
+                          props={video.review}
+                          selectedRating={selectedRating}
+                          onStarClick={setSelectedRating}
+                        /><br /><br />
+                        <h1 className="text-l font-semibold">
+                          <ReviewComp reviews={reviewData} />
+                          <Comments CommentLists={CommentLists} refreshFunction={updateComment} />
+                        </h1><br /><br />
+                      </ListGroup.Item>
+                    </h1>
+
+                    {/* <ListGroup>
                       <ListGroup.Item>
                         <h1 className="text-l font-semibold">
                           Description : <br />
+                          <br />
                           {video.description}</h1>
                       </ListGroup.Item>
                     </ListGroup>
@@ -220,8 +238,7 @@ function VideoList(props) {
                     <h1 className="text-l font-semibold">
                       <ReviewComp reviews={reviewData} />
                       <Comments CommentLists={CommentLists} refreshFunction={updateComment} />
-                    </h1>
-
+                    </h1> */}
                   </div>
 
                 </li>
