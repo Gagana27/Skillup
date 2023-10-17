@@ -1,19 +1,17 @@
-const {model,Schema}=require("mongoose");
-const bcrypt=require("bcrypt")
+const { model, Schema } = require("mongoose");
+const bcrypt = require("bcrypt")
 
 //signup user schema
-const userEnterSchema=new Schema({
+const userEnterSchema = new Schema({
     email: {
-        type:String
+        type: String
     }
-},{
-    collection:"enterEmail",
+}, {
+    collection: "enterEmail",
 });
 
 
-module.exports=model("enterEmail",userEnterSchema)
-
-
+module.exports = model("enterEmail", userEnterSchema);
 
 
 
