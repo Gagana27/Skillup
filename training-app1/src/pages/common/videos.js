@@ -8,9 +8,7 @@ import ReviewComp from "./Reviewcomp";
 import StarRating from "./AddReview";
 // import ReviewComp from "./AddReview";
 import DropDown from "./DropDown";
-import CourseVideoViewSection from "../video_course_page/course_video_view_section";
-import CourseDetailsTabsSection from "../video_course_page/course_details_tabs_section";
-import CourseContentListSection from "../video_course_page/course_content_list_section";
+import Comments from './Comments'
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -32,16 +30,18 @@ function VideoList(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewData, setReviewData] = useState([]);
+  const [CommentLists, setCommentLists] = useState([])
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  
+
   useEffect(() => {
     async function fetchVideos() {
       const response = await axios.get(
         `http://localhost:5000/subcategories/${subcategoryId}/videos`
       );
+      console.log("ggg", response.data);
       setVideos(response.data);
     }
     fetchVideos();
@@ -57,6 +57,10 @@ function VideoList(props) {
   //   VideoControlsRef.current.style.visibility = "hidden";
   //   count = 0;
   // };
+  const updateComment =  (newComment) => {
+    setCommentLists(CommentLists.concat(newComment))
+}
+
   const fetchReviewData = (rating) => {
     // fetching review data from an API later
     const data = [
@@ -78,13 +82,8 @@ function VideoList(props) {
       <div className="added">
         <div className="flex justify-between p-8">
           <div className="w-96 pr-8">
-            
             <div className="relative inline-block text-left">
-            {videos.map((descVideo) => {
-             return (
-              <DropDown name="ggggg" items={descVideo.description} width={300} height={500}/>
-             )
-            })}
+              <DropDown name="ggggg" desc="reactjs" videos={videos} />
               {/* <button
                 onClick={toggleDropdown}
                 className="px-8 py-2 w-64 text-sm font-medium text-gray-700 bg-gray-200 rounded focus:outline-none focus:ring grid-rows-4"
@@ -177,7 +176,7 @@ function VideoList(props) {
               ref={playerContainerRef}
             >
               {videos.map((video) => (
-                <li style={{ listStyleType: "none" }} key={video._id}>
+                <li key={video._id}>
                   <div className="flex-1  h-80v justify-end    ">
                     {/* <ul> */}
                     <ReactPlayer
@@ -196,44 +195,45 @@ function VideoList(props) {
 
                     {/* </ul> */}
                   </div>
-                  
-                  <h2 className="text-xl font-semibold">{video.title}</h2>
-                  <br />
-                  {video.description}
-                  <br />
+
+                 <div className="grid grid-cols-4">
+                 <h2 className="text-xl font-semibold">{video.title}</h2>
+                  {/* {video.description} */}
                   <h1 className="text-xl font-semibold">
-                    Author: {video.author}
+                    {video.author}
                   </h1>
-                  <br />
                   <h1 className="text-xl font-semibold">
-                    Ratings: <StarRating 
-                    props={video.review}
-                    selectedRating={selectedRating}
-                    onStarClick={setSelectedRating}
-                    /> 
-                    <br />
-                    <ReviewComp reviews={reviewData} />
+                    Ratings:{" "}
+                    <StarRating
+                      props={video.review}
+                      selectedRating={selectedRating}
+                      onStarClick={setSelectedRating}
+                    />
                   </h1>
-                  <br />
                   <h1 className="text-xl font-semibold">
-                    {/* Ratings: {video.ratings} */}
+                  <ReviewComp reviews={reviewData} />
                   </h1>
+                 </div>
+             
+
                 </li>
+                
               ))}
+              
             </div>{" "}
           </div>
+          
         </div>
-
-        <br />
-        <br />
-
-        <div className="flex p-4 border rounded-lg shadow-md">
-          {/* Image */}
+        <Comments CommentLists={CommentLists}  refreshFunction={updateComment} />
+        <div className="flex border rounded-lg shadow-md">
+          {/* Image
           <div className="w-1/2 pr-4">
-            {/* <img alt={video.title} className="h-auto w-full" /> */}
-          </div>
-        </div>
+            <img alt={video.title} className="h-auto w-full" />
+          </div> */}
+   </div>
+   
       </div>
+      
     </>
   );
 }
