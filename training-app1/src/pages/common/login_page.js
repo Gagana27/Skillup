@@ -55,7 +55,7 @@ function LoginPage() {
     navigate("/forgotPassword");
   }
 
-  console.log("object",userId)
+  // console.log("object",userId)
   return (
     <div className=" g-8 flex h-full flex-wrap items-center justify-center lg:justify-between  mt-8 mb-20">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">

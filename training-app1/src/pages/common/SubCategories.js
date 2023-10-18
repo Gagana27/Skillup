@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import AddCartButton from './AddToCart';
 import Button from 'react-bootstrap/Button';
 import { useAuthContext } from "../../hooks/UserAuthContext";
+import RazorPay from './RazorPay';
 
 
 function SubcategoryList() {
@@ -49,19 +50,6 @@ function SubcategoryList() {
     fetchSubcategories();
   }, [categoryId]);
 
-  // console.log("sub", userId)
-
-  // const subCatData =
-  //   subcategories.map((subCategory) => {
-  //     subCategory.name,
-  //       subCategory.price,
-  //       subCategory.image
-      
-  //   })
-
-  //   console.log("subCategories", subCatData);
-  //   console.log("dead",subcategories);
-
   return (
     <Container>
       <Row xs={1} md={4} className="g-4">
@@ -91,14 +79,16 @@ function SubcategoryList() {
                     <div className="flex justify-between items-center mt-2">
                       <Button
                         className="w-1/1"
-                        variant="primary">
+                        variant="primary"
+                        style={{ background: "orange" }}
+                        active>
                         Buy Now
                       </Button>
-
                      
                         <Button
                           className="w-1/1"
                           variant="primary"
+                          active
                           onClick={(event)=>{AddtoCart(event,subcategory, user.loginUser._id)}}
                         >
                           Add to Cart
