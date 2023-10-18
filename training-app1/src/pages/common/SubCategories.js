@@ -91,7 +91,7 @@ function SubcategoryList() {
                         Buy Now
                       </Button>
 
-                      <Link to="/subscription" state={subcategories}>
+                      <Link to="/my-cart" state={subcategories}>
                         <Button
                           className="w-1/1"
                           variant="primary"
