@@ -22,9 +22,9 @@ const videoSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    priceDetails: {  
-        type: String,
-    },
+    // priceDetails: {  
+    //     type: String,
+    // },
     reviews: {
         type: String,  // Author of the review
     },

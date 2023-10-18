@@ -4,7 +4,6 @@ import Container from "react-bootstrap/esm/Container";
 const AddCategory = () => {
   const [categoryName, setCategoryName] = useState("");
   const [imageUrl, setImageUrl] = useState([]);
-  const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [subcategoryName, setSubcategoryName] = useState([]);
   const [title, setTitle] = useState("");
@@ -58,7 +57,7 @@ const AddCategory = () => {
           url,
           author,
           description,
-          priceDetails,
+          // priceDetails,
           reviews,
           ratings,
           image,
@@ -185,7 +184,7 @@ const AddCategory = () => {
                   value={author}
                   onChange={(event) => setAuthor(event.target.value)}
                 />
-                <label htmlFor="title">Price:</label>
+                {/* <label htmlFor="title">Price:</label>
 
                 <input
                   className="form-control"
@@ -193,7 +192,7 @@ const AddCategory = () => {
                   placeholder="PriceDetails"
                   value={priceDetails}
                   onChange={(event) => setPriceDetails(event.target.value)}
-                />
+                /> */}
                 <label htmlFor="title">Reviews:</label>
 
                 <textarea
