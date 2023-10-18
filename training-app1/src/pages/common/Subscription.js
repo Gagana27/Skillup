@@ -7,10 +7,12 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useParams , useLocation } from 'react-router-dom';
 
-function Subscription({coursename,children}) {
+function Subscription() {
 
   const { categoryId,subcategoryId } = useParams();
-  const [subcategories, setSubcategories] = useState([]);
+  // const [subcategories, setSubcategories] = useState([]);
+  const [cart, setCart] = useState([]);
+
   const location  = useLocation();
   const Data = location.state;
 
@@ -19,8 +21,8 @@ function Subscription({coursename,children}) {
   useEffect(() => {
     async function fetchSubcategories() {
       const response = await axios.get("http://localhost:5000/cart");
-      setSubcategories(response.data);
-      console.log("state",subcategories)
+      setCart(response.data);
+      console.log("state",response.data)
     }
     fetchSubcategories();
 
@@ -35,29 +37,36 @@ function Subscription({coursename,children}) {
           justifyContent: "center",
           
         }}>
-          {/* {subcategories?.map(locnames => (
-            <Col key={subcategory._id}>
+           {cart?.map(cart => (
+            <Col key={cart._id}>
+              {/* <Link to={`/categories/${cart._id}/subcategories`}> */}
+
                  <Card
                   className="bg-secondary border-primary border-4 m-4 "
                   border="warning"
                   style={{ width: '28rem', height: '12rem' }}>
-                  <Card.Img
-                    variant="top"
-                    style={{ height: '135px', width: '100%' }}
-                    src={locnames?.image}
-                  />
 
+                   <Card.Img
+                    variant="top"
+                    // className="w-full h-40 object-cover"
+                    style={{ height: '135px', width: '100%' }}
+                    src={cart?.image}
+                  />
+                
                   <Card.Body style={{ height: '50px' }}>
                     <Card.Text className="text-white">
-                      {locnames.name}
-                      - Rs. {locnames.price}
+                      {cart.courseName}
+                      {cart.priceDetails}
+                      {cart.description}
+
                     </Card.Text>&nbsp;
                   </Card.Body>
                 </Card>
+                {/* </Link> */}
             </Col>
-          ))} */}
+          ))} 
 
-          {Array.from({ length: 4 }).map((_, idx) => (
+          {/* {Array.from({ length: 4 }).map((_, idx) => (
             <Col key={idx} style={{
               display: "flex",
               alignItems: "center",
@@ -75,7 +84,7 @@ function Subscription({coursename,children}) {
                 <RazorPay />
               </Card>
             </Col>
-          ))}
+          ))} */}
         </Row>
       </div>
     </>

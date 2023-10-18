@@ -19,12 +19,12 @@ const subcategorySchema = new mongoose.Schema({
         ref: 'Category',
         required: true
     }, 
-    videos: [
+    videos: 
         
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Video',
         },
-    ],
+    
 });
 module.exports = mongoose.model('Subcategory', subcategorySchema);

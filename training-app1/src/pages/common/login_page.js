@@ -5,12 +5,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert } from 'antd';
 import { Link } from 'react-router-dom';
+
 function LoginPage() {
   const { login, error, isLoading } = useLogin()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error1, setError1] = useState({});
   const navigate = useNavigate();
+
   const checkValidation = (e) => {
     const newError = {};
     if (e.target.email.value === "") {
@@ -22,6 +24,7 @@ function LoginPage() {
     setError1(newError);
     return newError;
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);
@@ -51,6 +54,8 @@ function LoginPage() {
   const forgot = () => {
     navigate("/forgotPassword");
   }
+
+  console.log("object",userId)
   return (
     <div className=" g-8 flex h-full flex-wrap items-center justify-center lg:justify-between  mt-8 mb-20">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">

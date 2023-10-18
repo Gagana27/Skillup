@@ -1,15 +1,40 @@
 const mongoose = require('mongoose');
+
 const cartSchema = new mongoose.Schema({
-    coursename: {
+    courseName: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
+    userId:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'SignupUsers',
+        required: true,
 
-
-    // subcategories: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Subcategory'
-    // }]
+    },
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
+    },
+    subcategory: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subcategory',
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: true
+    },
 });
+
 module.exports = mongoose.model('cart', cartSchema);

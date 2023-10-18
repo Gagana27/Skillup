@@ -57,7 +57,7 @@ const postVideosInSubcategories=async (req,res)=>{
             url: req.body.url,
             author: req.body.author,
             description: req.body.description,
-            priceDetails: req.body.priceDetails,
+            // priceDetails: req.body.priceDetails,
             reviews: req.body.reviews,
             ratings : req.body.ratings,
             subcategory: subcategoryId,
@@ -94,14 +94,14 @@ const getSubCategoriesVideo=async (req,res)=>{
 }
 
 const postCarts = async (req, res) => {
+    
     try {
-      const { coursename } = req.body;
+      const { courseName , price , description ,userId ,image,subcategoryId,categoryId} = req.body;
+
+      console.log("dummy",{ courseName , price , description ,userId ,image,subcategoryId,categoryId})
+    
+      const cart = await Cart.create({ courseName , price , description ,userId ,image,subcategory:subcategoryId,category:categoryId})
   
-      const cart = new Cart({
-         coursename,
-      });
-  
-      await cart.save();
   
       res.status(201).json({
         message: 'Cart created successfully',
@@ -112,8 +112,25 @@ const postCarts = async (req, res) => {
     }
   };
 
+  const getallcart=async (req,res)=>{
+    try {
+        // const { categoryId } = req.params;
+        // const { subcategoryId } = req.params;
+
+        const cart = await Cart.find();
+        res.json(cart);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}
+
+
+
+  
 
 
 
 
-module.exports={getAllCategories,postCategories,postVideosInSubcategories,getAllSubcategories,getSubCategoriesVideo,postCarts}
+
+
+module.exports={getAllCategories,postCategories,postVideosInSubcategories,getAllSubcategories,getSubCategoriesVideo,postCarts,getallcart}
