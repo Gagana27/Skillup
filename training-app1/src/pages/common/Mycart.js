@@ -7,16 +7,17 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useParams, useLocation } from 'react-router-dom';
 import DeleteButton from './Trash';
+import {useAuthContext} from "../../hooks/UserAuthContext"
 
 function MyCart() {
   const { categoryId, subcategoryId } = useParams();
+  const {user}=useAuthContext()
   // const [subcategories, setSubcategories] = useState([]);
   const [cart, setCart] = useState([]);
 
   const location = useLocation();
   const Data = location.state;
 
-  console.log("demo", Data);
 
   useEffect(() => {
     async function fetchSubcategories() {
@@ -66,7 +67,7 @@ function MyCart() {
                       width: '100%' ,
                       marginTop: -280 , 
                       marginLeft: 280}}>
-                      <DeleteButton/>
+                      <DeleteButton cartId={cart._id} userId={user?.loginUser._id}/>
                     </Card.Text>
                   </Card.Text>&nbsp;
                 </Card.Body>

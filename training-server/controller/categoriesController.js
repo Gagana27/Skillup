@@ -124,13 +124,23 @@ const postCarts = async (req, res) => {
     }
 }
 
-
-
+const deletecartItem=async(req,res)=>{
+  const {userId,cartId}=req.params
+ try {
+    const deletedItem=await Cart.deleteOne({userId:userId,_id:cartId})
+    if(deletedItem)
+    {
+        res.status(200).json({
+            status:"Cart Deleted Successfully",
+            deletedItem
+        })
+    }
+ } catch (error) {
+    if(error) throw error
+    res.status(504).json(error.message)
+ }
   
+}
 
-
-
-
-
-
-module.exports={getAllCategories,postCategories,postVideosInSubcategories,getAllSubcategories,getSubCategoriesVideo,postCarts,getallcart}
+module.exports={getAllCategories,postCategories,postVideosInSubcategories,
+    getAllSubcategories,getSubCategoriesVideo,postCarts,getallcart,deletecartItem}
