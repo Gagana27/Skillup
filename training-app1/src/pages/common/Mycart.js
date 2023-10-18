@@ -6,7 +6,6 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useParams, useLocation } from 'react-router-dom';
-import Trash from '../../assets/trash.svg';
 import DeleteButton from './Trash';
 
 function MyCart() {
