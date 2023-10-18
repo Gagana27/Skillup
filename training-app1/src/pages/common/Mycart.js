@@ -6,6 +6,8 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useParams, useLocation } from 'react-router-dom';
+import Trash from '../../assets/trash.svg';
+import DeleteButton from './Trash';
 
 function MyCart() {
   const { categoryId, subcategoryId } = useParams();
@@ -48,7 +50,7 @@ function MyCart() {
                   style={{ height: '135px', width: '100%' }}
                   src={cart?.image}
                 />
-
+              
                 <Card.Body style={{ height: '60px' }}>
                   <Card.Text className="text-white">
                     {cart.courseName}
@@ -58,6 +60,14 @@ function MyCart() {
                       marginTop: -25 , 
                       marginLeft: 280}}>
                         Rs . {cart.price}
+                    </Card.Text>
+
+                    <Card.Text className="text-white"
+                      style={{ height: '135px',
+                      width: '100%' ,
+                      marginTop: -280 , 
+                      marginLeft: 280}}>
+                      <DeleteButton/>
                     </Card.Text>
                   </Card.Text>&nbsp;
                 </Card.Body>
