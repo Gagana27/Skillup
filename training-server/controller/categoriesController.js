@@ -127,7 +127,9 @@ const postCarts = async (req, res) => {
 const deletecartItem=async(req,res)=>{
   const {userId,cartId}=req.params
  try {
-    const deletedItem=await Cart.deleteOne({userId:userId,_id:cartId})
+    console.log(userId,cartId)
+    const deletedItem=await Cart.findOneAndDelete({userId:userId,_id:cartId})
+    console.log(deletedItem)
     if(deletedItem)
     {
         res.status(200).json({

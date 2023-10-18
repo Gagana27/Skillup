@@ -8,12 +8,16 @@ import Row from 'react-bootstrap/Row';
 import { useParams, useLocation } from 'react-router-dom';
 import DeleteButton from './Trash';
 import {useAuthContext} from "../../hooks/UserAuthContext"
+import {CartContextHook} from "../../hooks/CartContextHook"
 
 function MyCart() {
+  const [cart, setCart] = useState([]);
+
+
   const { categoryId, subcategoryId } = useParams();
   const {user}=useAuthContext()
-  // const [subcategories, setSubcategories] = useState([]);
-  const [cart, setCart] = useState([]);
+  const {dispatch,cartItems}=CartContextHook();
+  console.log("first",cartItems)
 
   const location = useLocation();
   const Data = location.state;
@@ -23,6 +27,7 @@ function MyCart() {
     async function fetchSubcategories() {
       const response = await axios.get("http://localhost:5000/cart");
       setCart(response.data);
+      dispatch({type:'GET_ALL_CARTS',payload:response.data})
     }
     fetchSubcategories();
 
@@ -37,7 +42,7 @@ function MyCart() {
           // justifyContent: "center",
 
         }}>
-          {cart?.map(cart => (
+          {cartItems?.map(cart => (
             <Col key={cart._id}>
               <Card
                 className="bg-secondary border-primary border-4 m-4 "
