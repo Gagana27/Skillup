@@ -209,9 +209,9 @@ function VideoList(props) {
                           props={video.review}
                           selectedRating={selectedRating}
                           onStarClick={setSelectedRating}
-                        /><br /><br />
+                        /><br />
                         <h1 className="text-l font-semibold">
-                          <ReviewComp reviews={reviewData} />
+                          {/* <ReviewComp reviews={reviewData} /> */}
                           <Comments CommentLists={CommentLists} refreshFunction={updateComment} />
                         </h1><br /><br />
                       </ListGroup.Item>
