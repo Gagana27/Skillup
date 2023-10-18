@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useParams, useLocation } from 'react-router-dom';
+import DeleteButton from './Trash';
 
 function MyCart() {
   const { categoryId, subcategoryId } = useParams();
@@ -21,7 +22,6 @@ function MyCart() {
     async function fetchSubcategories() {
       const response = await axios.get("http://localhost:5000/cart");
       setCart(response.data);
-      console.log("state", response.data)
     }
     fetchSubcategories();
 
@@ -41,7 +41,7 @@ function MyCart() {
               <Card
                 className="bg-secondary border-primary border-4 m-4 "
                 border="warning"
-                style={{ width: '26rem', height: '12rem' }}>
+                style={{ width: '24rem', height: '12rem' }}>
 
                 <Card.Img
                   variant="top"
@@ -49,14 +49,25 @@ function MyCart() {
                   style={{ height: '135px', width: '100%' }}
                   src={cart?.image}
                 />
-
-                <Card.Body style={{ height: '50px' }}>
+              
+                <Card.Body style={{ height: '60px' }}>
                   <Card.Text className="text-white">
                     {cart.courseName}
-                  </Card.Text>&nbsp;
+                    <Card.Text className="text-white"
+                      style={{ height: '135px',
+                      width: '100%' ,
+                      marginTop: -25 , 
+                      marginLeft: 280}}>
+                        Rs . {cart.price}
+                    </Card.Text>
 
-                  <Card.Text style={{ height: '50px', marginTop: -50, textAlign: 'right' }} className="text-white">
-                    Rs . {cart.price}
+                    <Card.Text className="text-white"
+                      style={{ height: '135px',
+                      width: '100%' ,
+                      marginTop: -280 , 
+                      marginLeft: 280}}>
+                      <DeleteButton/>
+                    </Card.Text>
                   </Card.Text>&nbsp;
                 </Card.Body>
               </Card>
