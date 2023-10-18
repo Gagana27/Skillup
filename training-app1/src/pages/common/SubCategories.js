@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link, useLocation ,useNavigate} from 'react-router-dom';
+import { useParams, Link ,useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import AddCartButton from './AddToCart';
 import Button from 'react-bootstrap/Button';
-import { useAuthContext } from "../../hooks/UserAuthContext"
+import { useAuthContext } from "../../hooks/UserAuthContext";
+
 
 function SubcategoryList() {
   const { categoryId } = useParams();
@@ -15,9 +16,11 @@ function SubcategoryList() {
   const userId = localStorage.getItem('user');
   const { user } = useAuthContext();
   const navigate=useNavigate()
+ 
   console.log("object", user)
 
-  const AddtoCart =async (subCatData, userId) => {
+  const AddtoCart =async (event,subCatData, userId) => {
+    event.preventDefault(); 
     console.log("ffff", subCatData, userId)
     // navigate(`/subscription/${subCatData._id}`)
     const categoryResponse = await axios.post(
@@ -34,6 +37,7 @@ function SubcategoryList() {
       }
     );
     console.log("demos", categoryResponse.data);
+   navigate("/my-cart")
   }
 
  
@@ -65,7 +69,7 @@ function SubcategoryList() {
           subcategories.map(subcategory => (
             <Col key={subcategory._id}>
               <Link to={`/subcategories/${subcategory._id}/videos`}>
-                <Card
+                <Card 
                   className=" subcategory bg-secondary border-primary border-4 m-4 relative">
                   <Card.Img
                     variant="top"
@@ -91,15 +95,15 @@ function SubcategoryList() {
                         Buy Now
                       </Button>
 
-                      <Link to="/subscription" state={subcategories}>
+                     
                         <Button
                           className="w-1/1"
                           variant="primary"
-                          onClick={() => AddtoCart(subcategory, user.loginUser._id)}
+                          onClick={(event)=>{AddtoCart(event,subcategory, user.loginUser._id)}}
                         >
                           Add to Cart
                         </Button>
-                      </Link>
+                      
                     </div>
                   </Card.Body>
                 </Card>
