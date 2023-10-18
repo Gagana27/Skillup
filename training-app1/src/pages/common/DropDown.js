@@ -19,31 +19,7 @@ const DropDown = (props) => {
       ),
       style: panelStyle,
     },
-    {
-        key: "2",
-        label: <h2 style={{ color: "black", font: "bold" }}>{video.title}</h2>,
-        children: (
-          <ol style={{ listStyleType: "decimal" }}>
-            <li>{description}</li>
-            <li>{description}</li>
-            <li>{description}</li>
-          </ol>
-        ),
-        style: panelStyle,
-      },
-      {
-        key: "3",
-        label: <h2 style={{ color: "black", font: "bold" }}>{video.title}</h2>,
-        children: (
-          <ol style={{ listStyleType: "decimal" }}>
-            <li>{description}</li>
-            <li>{description}</li>
-            <li>{description}</li>
-          </ol>
-        ),
-        style: panelStyle,
-      },
-      ];
+  ];
 
   const panelStyle = {
     marginBottom: 24,
