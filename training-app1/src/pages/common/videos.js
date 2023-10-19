@@ -172,14 +172,14 @@ function VideoList(props) {
           <div className="w-full">
             {/* Course image */}
             <div
-              className="flex h-75v flex-col    "
+              className="flex h-75v flex-col "
               // onMouseMove={handleMouseMove}
               // onMouseLeave={hanldeMouseLeave}
               ref={playerContainerRef}
             >
               {videos.map((video) => (
                 <li key={video._id}>
-                  <div className="flex-1  h-80v justify-end    ">
+                  <div className="flex-1  h-80v justify-end ">
                     {/* <ul> */}
                     <ReactPlayer
                       width="100%"
