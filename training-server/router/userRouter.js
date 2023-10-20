@@ -24,4 +24,11 @@ userRouter.post("/verifyOTP/:userId",verifyOTP)
 //resetPassword
 userRouter.post("/resetPassword/:userId",resetPassword)
 
+
+
+
+
+
+
+
 module.exports=userRouter

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
+import Comments from "./Comments";
 const AddCategory = () => {
   const [categoryName, setCategoryName] = useState("");
   const [imageUrl, setImageUrl] = useState([]);
@@ -13,6 +14,7 @@ const AddCategory = () => {
   const [reviews, setReviews] = useState([]);
   const [ratings, setRatings] = useState([]);
   const [image, setImage] = useState([]);
+  const[comments,setcomments]=useState("");
 
   //subcategory
   const handleAddSubcategory = () => {
@@ -200,6 +202,12 @@ const AddCategory = () => {
                   placeholder="Reviews"
                   value={reviews}
                   onChange={(event) => setReviews(event.target.value)}
+                />
+                 <textarea
+                  className="form-control"
+                  placeholder="comments"
+                  value={comments}
+                  onChange={(event) => setcomments(event.target.value)}
                 />
                 <label htmlFor="title">Ratings</label>
 

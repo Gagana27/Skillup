@@ -1,60 +1,69 @@
-import React, { useState } from 'react'
-import { Button, Input } from 'antd';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { useAuthContext } from "../../hooks/UserAuthContext";
 
-const { TextArea } = Input;
 
-function Comments(props) {
-    // const user = useSelector(state => state.user)
-    const [Comment, setComment] = useState("")
 
-    const handleChange = (e) => {
-        setComment(e.currentTarget.value)
-    }
+function Comments({ CommentLists, refreshFunction }) {
+  const [comment, setComment] = useState("");
+  const { user } = useAuthContext();
+  const userId = localStorage.getItem('user');
 
-    const onSubmit = (e) => {
-        e.preventDefault();
 
-        const variables = {
-            content: Comment,
-            writer: user.userData._id,
-            postId: props.postId
+  const handleChange = (e) => {
+    setComment(e.currentTarget.value);
+  };
+  const onSubmit = async (e, userId) => {
+    e.preventDefault();
+    console.log("rrr",  userId,comment)
+
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/comments/add`,
+        {
+          content: comment,
+          userId: userId,
+          // videos:_id,
+          // rating: selectedRating,
+
+          
         }
+        
+      );
 
-        axios.post('/api/comment/saveComment', variables)
-            .then(response => {
-                if (response.data.success) {
-                    setComment("")
-                    props.refreshFunction(response.data.result)
-                } else {
-                    alert('Failed to save Comment')
-                }
-            })
+      if (response.data && response.data.comment) {
+        // Assuming Comment is the property you want to access
+        setComment([response.data.comment, ...comment]);
+      } else {
+        console.error('Invalid response data:', response.data);
+        // Handle the error appropriately
+      }
+    } catch (error) {
+      console.error('Error submitting comment:', error);
     }
-
-    return (
-        <div>
-            <br />
-            <p> Comments Section</p>
-
-            {/* Comment Lists  */}
-
-
-            {/* Root Comment Form */}
-            <form onSubmit={onSubmit}>
-                <TextArea
-                    style={{ width: '50%', height: 100, borderRadius: '5px' }}
-                    onChange={handleChange}
-                    value={Comment}
-                    placeholder="write some comments"
-                /><br />
-                <Button
-                    style={{ width: '15%', height: '40px', backgroundColor: 'orange' }}
-                    onClick={onSubmit}>Submit</Button>
-            </form>
-
-        </div>
-    )
+  };
+  return (
+    <div>
+      {CommentLists &&
+        CommentLists.map((comment, index) => (
+          <div key={index}>
+            <p>{comment.content}</p>
+          </div>
+        ))}
+      <form style={{ display: "flex" }} onSubmit={onSubmit}>
+        <textarea
+          style={{ width: "100%", borderRadius: "5px" }}
+          onChange={handleChange}
+          value={comment}
+          placeholder="Write a comment..."
+        />
+        <br />
+        <button style={{ width: "20%", height: "52px" }} onClick={(e)=>{onSubmit(e,user.loginUser._id)}}
+>
+          Submit
+        </button>
+      </form>
+    </div>
+  );
 }
-
-export default Comments
+export default Comments;

@@ -34,6 +34,7 @@ function VideoList(props) {
   const [reviewData, setReviewData] = useState([]);
   const [CommentLists, setCommentLists] = useState([]);
 
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -81,180 +82,69 @@ function VideoList(props) {
   }, [selectedRating]);
   return (
     <>
-      <div className="added">
-        <div className="flex justify-between p-8">
-          <div className="w-96 pr-8">
-            <div className="relative inline-block text-left">
-              <DropDown name="ggggg" desc="reactjs" videos={videos} />
-              {/* <button
-                onClick={toggleDropdown}
-                className="px-8 py-2 w-64 text-sm font-medium text-gray-700 bg-gray-200 rounded focus:outline-none focus:ring grid-rows-4"
-              >
-                Web Development
-              </button>
-              {isOpen && (
-                <div className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                  
-                  <div className="py-1">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      HTML
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      CSS
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Javascript
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Node JS
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Mongo DB
-                    </a>
-                  </div>
-                </div>
-              )} */}
-            </div>
-            <br />
-            <br />
-            <br />
-
-            {/* Author details */}
-            {/* {videos.map((video) => (
-              <li style={{ listStyleType: "none" }} key={video._id}>
-                <h2 className="text-2xl font-semibold mb-2"> {video.author}</h2>
-                <p className="text-gray-600">{video.title}</p>
-                <p className="text-gray-600">{video.description}</p>
-              </li>
-            ))} */}
-            {/* Author Details */}
-            {/* {videos.map((video) => (
-              <li style={{ listStyleType: "none" }} key={video._id}>
-                <div className="w-1/2">
-                  <h2 className="text-xl font-semibold">{video.title}</h2>
-                  <p className="text-gray-600"> {video.author}</p>
-                  <div className="flex items-center mt-2">
-                   
-                    <div className="flex">
-                      <span className="text-yellow-500">&#9733;</span>
-                      <span className="text-yellow-500">&#9733;</span>
-                      <span className="text-yellow-500">&#9733;</span>
-                      <span className="text-yellow-500">&#9733;</span>
-                      <span className="text-yellow-500">&#9734;</span>
-                    </div>
-                    <span className="text-gray-600 ml-2">
-                      ({video.reviews}Reviews)
-                      <br />
-                      <span className="text-gray-600 ml-2">
-                        ({video.ratings}Ratings)
-                      </span>
-                    </span>
-                  </div>
-                </div>
-              </li>
-            ))} */}
+    <div className="added">
+      <div className="flex justify-between p-8">
+        <div className="w-96 pr-8">
+          <div className="relative inline-block text-left">
+            <DropDown name="ggggg" desc="reactjs" videos={videos} />
           </div>
-          <div className="w-full">
-            {/* Course image */}
-            <div
-              className="flex h-75v flex-col    "
-              // onMouseMove={handleMouseMove}
-              // onMouseLeave={hanldeMouseLeave}
-              ref={playerContainerRef}
-            >
-              {videos.map((video) => (
-                <li key={video._id}>
-                  <div className="flex-1  h-80v justify-end    ">
-                    {/* <ul> */}
-                    <ReactPlayer
-                      width="100%"
-                      height="100%"
-                      ref={playerRef}
-                      url={video.url}
-                      controls={true}
-                      pip={pip}
-                      playing={playing}
-                      // VideoControls={true}
-                      playbackRate={playbackRate}
-                      volume={volume}
-                      muted={muted}
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1">
-                    {/* <h2 className="text-l font-semibold">Course : {video.title}</h2> */}
-                    {/* {video.description} */}
-                    <h1 className="text-l font-semibold">
-                      <ListGroup.Item style={{ padding: 10 }} className="my-3" variant="secondary">
-                        Course : {video.title}<br /><br />
-                        Author : {video.author}<br /><br />
-                        Description : {video.description}<br /><br />
-                        Ratings:{" "}
-                        <StarRating
-                          props={video.review}
-                          selectedRating={selectedRating}
-                          onStarClick={setSelectedRating}
-                        /><br />
-                        <h1 className="text-l font-semibold">
-                          {/* <ReviewComp reviews={reviewData} /> */}
-                          <Comments CommentLists={CommentLists} refreshFunction={updateComment} />
-                        </h1><br /><br />
-                      </ListGroup.Item>
-                    </h1>
-
-                    {/* <ListGroup>
-                      <ListGroup.Item>
-                        <h1 className="text-l font-semibold">
-                          Description : <br />
-                          <br />
-                          {video.description}</h1>
-                      </ListGroup.Item>
-                    </ListGroup>
-
-                    <h1 className="text-l font-semibold">
+          <br />
+          <br />
+          <br />
+        </div>
+        <div className="w-full">
+          {/* Course image */}
+          <div className="flex h-75v flex-col " ref={playerContainerRef}>
+            {videos.map((video) => (
+              <li key={video._id}>
+                <div className="flex-1 h-80v justify-end">
+                  <ReactPlayer
+                    width="100%"
+                    height="100%"
+                    ref={playerRef}
+                    url={video.url}
+                    controls={true}
+                    pip={pip}
+                    playing={playing}
+                    playbackRate={playbackRate}
+                    volume={volume}
+                    muted={muted}
+                  />
+                </div>
+                <div className="grid grid-cols-1">
+                  <h1 className="text-l font-semibold">
+                    <ListGroup.Item
+                      style={{ padding: 10 }}
+                      className="my-3"
+                      variant="secondary"
+                    >
+                      Course : {video.title}<br /><br />
+                      Author : {video.author}<br /><br />
+                      Description : {video.description}<br /><br />
                       Ratings:{" "}
                       <StarRating
                         props={video.review}
                         selectedRating={selectedRating}
                         onStarClick={setSelectedRating}
-                      />
-                    </h1>
-
-                    <h1 className="text-l font-semibold">
-                      <ReviewComp reviews={reviewData} />
-                      <Comments CommentLists={CommentLists} refreshFunction={updateComment} />
-                    </h1> */}
-                  </div>
-
-                </li>
-              ))}
-            </div>{" "}
-          </div>
-        </div>
-
-        <div className="flex border rounded-lg shadow-md">
-          {/* Image
-          <div className="w-1/2 pr-4">
-            <img alt={video.title} className="h-auto w-full" />
-          </div> */}
+                      /><br /><br />
+                      <h1 className="text-l font-semibold">
+                        <ReviewComp reviews={reviewData} />
+                        <Comments
+                          CommentLists={CommentLists}
+                          refreshFunction={updateComment}
+                        />
+                      </h1><br /><br />
+                    </ListGroup.Item>
+                  </h1>
+                </div>
+              </li>
+            ))}
+          </div>{" "}
         </div>
       </div>
-    </>
+      <div className="flex border rounded-lg shadow-md"></div>
+    </div>
+  </>
   );
 }
 export default VideoList;
