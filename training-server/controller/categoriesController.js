@@ -144,5 +144,20 @@ const deletecartItem=async(req,res)=>{
   
 }
 
+  const addComment = async (req, res) => {
+    try {
+      const { content,userId } = req.body;
+      console.log("dy",{ content,userId})
+
+      const newComment = new comment({ content,userId });
+
+      const savedComment = await newComment.save();
+      res.status(201).json(savedComment);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
+
 module.exports={getAllCategories,postCategories,postVideosInSubcategories,
-    getAllSubcategories,getSubCategoriesVideo,postCarts,getallcart,deletecartItem}
+    getAllSubcategories,getSubCategoriesVideo,postCarts,getallcart,deletecartItem,addComment}
