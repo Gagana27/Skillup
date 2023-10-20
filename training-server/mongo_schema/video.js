@@ -65,7 +65,7 @@ const videoSchema = new mongoose.Schema({
 }, { timestamps: true });
 module.exports = {
   Video: mongoose.model('Video', videoSchema),
-//   Comment: comment,
+  Comment: Comment,
 }
 
 // module.exports = mongoose.model('Video', videoSchema);
