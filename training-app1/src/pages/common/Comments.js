@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {useParams} from "react-router-dom"
 import { useAuthContext } from "../../hooks/UserAuthContext";
 
 
@@ -7,24 +8,26 @@ import { useAuthContext } from "../../hooks/UserAuthContext";
 function Comments({ CommentLists, refreshFunction }) {
   const [comment, setComment] = useState("");
   const { user } = useAuthContext();
+  const { videoId } = useParams();
+
   const userId = localStorage.getItem('user');
 
 
   const handleChange = (e) => {
     setComment(e.currentTarget.value);
   };
-  const onSubmit = async (e, userId) => {
+  const onSubmit = async (e, userId,subCommData) => {
     e.preventDefault();
-    console.log("rrr",  userId,comment)
+    console.log("rrr",  userId,comment,subCommData)
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/comments/add`,
+        `http://localhost:5000/comments`,
         {
           content: comment,
           userId: userId,
-          // videos:_id,
-          // rating: selectedRating,
+          // videos: [videoId],
+         
 
           
         }
@@ -46,8 +49,8 @@ function Comments({ CommentLists, refreshFunction }) {
     <div>
       {CommentLists &&
         CommentLists.map((comment, index) => (
-          <div key={index}>
-            <p>{comment.content}</p>
+          <div key={comment._id}>
+          <p>{comment.content}</p>
           </div>
         ))}
       <form style={{ display: "flex" }} onSubmit={onSubmit}>

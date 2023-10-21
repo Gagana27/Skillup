@@ -18,7 +18,7 @@ categoriesRouter.post('/cart',postCarts);
 
 categoriesRouter.delete("/deleteCartItem/:userId/:cartId",deletecartItem)
 
-categoriesRouter.post("/comments/add", addComment);
+categoriesRouter.post("/comments", addComment);
 
 categoriesRouter.get('/cart',getallcart);
 

@@ -14,7 +14,6 @@ const AddCategory = () => {
   const [reviews, setReviews] = useState([]);
   const [ratings, setRatings] = useState([]);
   const [image, setImage] = useState([]);
-  const[comments,setcomments]=useState("");
 
   //subcategory
   const handleAddSubcategory = () => {
@@ -203,12 +202,7 @@ const AddCategory = () => {
                   value={reviews}
                   onChange={(event) => setReviews(event.target.value)}
                 />
-                 <textarea
-                  className="form-control"
-                  placeholder="comments"
-                  value={comments}
-                  onChange={(event) => setcomments(event.target.value)}
-                />
+               
                 <label htmlFor="title">Ratings</label>
 
                 <textarea
