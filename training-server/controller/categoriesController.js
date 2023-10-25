@@ -2,6 +2,7 @@ const Category=require("../mongo_schema/categories")
 const Subcategory=require("../mongo_schema/subcategories")
 const Video=require("../mongo_schema/video")
 const Cart=require("../mongo_schema/cart")
+const Comment = require("../mongo_schema/comment")
 
 const getAllCategories=async (req,res)=>{
     try {
@@ -146,10 +147,13 @@ const deletecartItem=async(req,res)=>{
 
   const addComment = async (req, res) => {
     try {
-      const { content,userId } = req.body;
-      console.log("dy",{ content,userId})
+      const { content,userId ,videoId} = req.body;
+      console.log("dy",{ content,userId,videoId})
+      
 
-      const newComment = new comment({ content,userId });
+    //   const newComment = new Comment({ content,userId,videos:videoId});
+      const newComment = await Comment.create({ content,userId,videos:videoId})
+
 
       const savedComment = await newComment.save();
       res.status(201).json(savedComment);

@@ -32,13 +32,14 @@ function VideoList(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewData, setReviewData] = useState([]);
-  const [CommentLists, setCommentLists] = useState([]);
+  const [comment, setCommentLists] = useState([]);
 
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
+  
   useEffect(() => {
     async function fetchVideos() {
       const response = await axios.get(
@@ -61,7 +62,7 @@ function VideoList(props) {
   //   count = 0;
   // };
   const updateComment = (newComment) => {
-    setCommentLists(CommentLists.concat(newComment));
+    setCommentLists(comment.concat(newComment));
   };
 
   const fetchReviewData = (rating) => {
@@ -130,8 +131,8 @@ function VideoList(props) {
                       <h1 className="text-l font-semibold">
                         <ReviewComp reviews={reviewData} />
                         <Comments
-                          CommentLists={CommentLists}
-                          refreshFunction={updateComment}
+                          comment={comment}
+                          refreshFunction={updateComment} 
                         />
                       </h1><br /><br />
                     </ListGroup.Item>
