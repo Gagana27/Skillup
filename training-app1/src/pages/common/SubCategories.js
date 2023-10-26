@@ -77,23 +77,24 @@ function SubcategoryList() {
                     </div>
 
                     <div className="flex justify-between items-center mt-2">
-                      <Button
+                      {/* <Button
                         className="w-1/1"
                         variant="primary"
                         style={{ background: "orange" }}
                         active>
                         Buy Now
-                      </Button>
-
-                      <Button
-                        className="w-1/1"
-                        variant="primary"
-                        active
-                        onClick={(event) => { AddtoCart(event, subcategory, user.loginUser._id) }}
-                      >
-                        Add to Cart
-                      </Button>
-
+                      </Button> */}
+                      <RazorPay amount={subcategory.priceDetails}/>
+                     
+                        <Button
+                          className="w-1/1"
+                          variant="primary"
+                          active
+                          onClick={(event)=>{AddtoCart(event,subcategory, user.loginUser._id)}}
+                        >
+                          Add to Cart
+                        </Button>
+                      
                     </div>
                   </Card.Body>
                 </Card>
