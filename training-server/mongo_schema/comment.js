@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const commentSchema = new mongoose.Schema({
     content: { type: String, required: true },
     // rating: { type: Number, required: true },
@@ -12,14 +11,12 @@ const commentSchema = new mongoose.Schema({
 
     },
     videos: [
-        
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Video',
             required: true,
 
         },
-        
     ]
    
     

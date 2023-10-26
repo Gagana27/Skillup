@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link ,useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -16,12 +16,12 @@ function SubcategoryList() {
   const [subcategories, setSubcategories] = useState([]);
   const userId = localStorage.getItem('user');
   const { user } = useAuthContext();
-  const navigate=useNavigate()
- 
+  const navigate = useNavigate()
+
   console.log("object", user)
 
-  const AddtoCart =async (event,subCatData, userId) => {
-    event.preventDefault(); 
+  const AddtoCart = async (event, subCatData, userId) => {
+    event.preventDefault();
     console.log("ffff", subCatData, userId)
     // navigate(`/subscription/${subCatData._id}`)
     const categoryResponse = await axios.post(
@@ -29,19 +29,19 @@ function SubcategoryList() {
       {
         courseName: subCatData.name,
         image: subCatData.videos.image,
-        description:subCatData.videos.description,
+        description: subCatData.videos.description,
         userId: userId,
-        categoryId:subCatData.category,
+        categoryId: subCatData.category,
         subcategoryId: subCatData._id,
-        price:subCatData.priceDetails
+        price: subCatData.priceDetails
 
       }
     );
     console.log("demos", categoryResponse.data);
-   navigate("/my-cart")
+    navigate("/my-cart")
   }
 
- 
+
   useEffect(() => {
     async function fetchSubcategories() {
       const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
@@ -57,7 +57,7 @@ function SubcategoryList() {
           subcategories.map(subcategory => (
             <Col key={subcategory._id}>
               <Link to={`/subcategories/${subcategory._id}/videos`}>
-                <Card 
+                <Card
                   className=" subcategory bg-secondary border-primary border-4 m-4 relative">
                   <Card.Img
                     variant="top"
@@ -84,16 +84,16 @@ function SubcategoryList() {
                         active>
                         Buy Now
                       </Button>
-                     
-                        <Button
-                          className="w-1/1"
-                          variant="primary"
-                          active
-                          onClick={(event)=>{AddtoCart(event,subcategory, user.loginUser._id)}}
-                        >
-                          Add to Cart
-                        </Button>
-                      
+
+                      <Button
+                        className="w-1/1"
+                        variant="primary"
+                        active
+                        onClick={(event) => { AddtoCart(event, subcategory, user.loginUser._id) }}
+                      >
+                        Add to Cart
+                      </Button>
+
                     </div>
                   </Card.Body>
                 </Card>
