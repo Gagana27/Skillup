@@ -18,7 +18,7 @@ function SubcategoryList() {
   const { user } = useAuthContext();
   const navigate=useNavigate()
  
-  console.log("object", user)
+  console.log("object", subcategories)
 
   const AddtoCart =async (event,subCatData, userId) => {
     event.preventDefault(); 
@@ -28,8 +28,8 @@ function SubcategoryList() {
       "http://localhost:5000/cart",
       {
         courseName: subCatData.name,
-        image: subCatData.videos.image,
-        description:subCatData.videos.description,
+        image: subCatData.videos[0].image,
+        description:subCatData.videos[0].description,
         userId: userId,
         categoryId:subCatData.category,
         subcategoryId: subCatData._id,
