@@ -2,6 +2,8 @@ const razorPay = require('razorpay')
 const crypto = require("crypto")
 
 const orders = async (req, res) => {
+
+    const {payment}=req.body
     try {
         const instance = new razorPay({
             key_id: process.env.RAZORPAY_KEY_ID,
@@ -9,7 +11,7 @@ const orders = async (req, res) => {
         })
 
         const options = {
-            amount: 60000,
+            amount: payment*100,
             currency: "INR",
             receipt: crypto.randomBytes(10).toString("hex")
         }
