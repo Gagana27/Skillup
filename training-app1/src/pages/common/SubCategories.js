@@ -77,13 +77,14 @@ function SubcategoryList() {
                     </div>
 
                     <div className="flex justify-between items-center mt-2">
-                      <Button
+                      {/* <Button
                         className="w-1/1"
                         variant="primary"
                         style={{ background: "orange" }}
                         active>
                         Buy Now
-                      </Button>
+                      </Button> */}
+                      <RazorPay amount={subcategory.priceDetails}/>
                      
                         <Button
                           className="w-1/1"

@@ -1,25 +1,27 @@
 import React, { useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { useNavigate } from "react-router";
 
-const RazorPay = (props) => {
+const RazorPay = ({amount}) => {
 
     const [width, setWidth] = React.useState(window.raz);
     const [height, setHeight] = React.useState(window.innerHeight);
+    const navigate=useNavigate()
     
-    const displayRazorPay=async ()=>{
-        const result=await axios.post("http://localhost:5000/order")
+    const displayRazorPay=async (e,payment)=>{
+        e.preventDefault();
+        console.log("first",amount)
+        const result=await axios.post("http://localhost:5000/order",{payment})
     if (!result) {
         alert("Server error. Are you online?");
         return;
     }
 
     console.log("order",result)
-    const { amount, id, currency } = result.data;
+    const {  id, currency } = result.data;
     const options = {
         key: "rzp_test_ZQPw1lzZZHR076",
-        amount: amount,
-        currency:currency,
         name: "IPrimoFocus Technologies",
         description: "Test transaction",
         image: "https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png",
@@ -36,6 +38,7 @@ const RazorPay = (props) => {
             };
             const value=await axios.post("http://localhost:5000/success",{data})
             console.log("ggggg",value.data)
+            navigate("/subscription")
            } catch (error) {
             console.log(error)
            }
@@ -56,6 +59,7 @@ const RazorPay = (props) => {
     var paymentObject = new window.Razorpay(options);
 
         paymentObject.open();
+       
 
    
     }
@@ -71,9 +75,9 @@ const RazorPay = (props) => {
         <>
             <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={() => displayRazorPay()}
+                onClick={(e) => displayRazorPay(e,amount)}
                 variant="primary">
-                Pay
+                Buy Now
             </button>
         </>
     );
