@@ -155,7 +155,9 @@ const forgetPasswordHtml=forgetPasswordRecovey.replace("{{OTP}}",OTP)
     if (err) throw err;
     console.log("Email send successfully");
   });
-  const emailData=await forgetPasswordModel.create({_id:user._id,OTP:OTP})
+ 
+    const emailData=await forgetPasswordModel.create({_id:user._id,OTP:OTP})
+  
   // setTimeout(async()=>{
   //  await  forgetPasswordOtpModel.deleteOne({_id:userId})
   //  console.log("Otp deleted Successfully")
@@ -215,5 +217,72 @@ const resetPassword=async (req,res)=>{
  }
 }
 
+const resendOTP=async (req,res)=>{
+ 
+    const {userId}=req.params
+    try {
+      const user=await SignupUserModel.findById({_id:userId})
+    if(!user)
+    {
+      throw Error("Invalid Recovery Email")
+    }
+    console.log(user)
+   
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "dineshlogan31@gmail.com",
+        pass: "pjkv fzll lpjh wgtn",
+      },
+      tls: {
+        rejectUnauthorized: false,
+      }
+    });
+  let OTP=Math.floor(Math.random()*10000);
+  while(OTP < 999)
+  {
+    OTP=Math.floor(Math.random()*10000)
+  }
+  
+  const forgetPasswordRecovey = fs.readFileSync(
+    path.join(__dirname, "../public/pages/forgetPasswordOTP.html"),
+    "utf-8"
+  );
+  
+  const forgetPasswordHtml=forgetPasswordRecovey.replace("{{OTP}}",OTP)
+    const mailContent = {
+      from: "dineshlogan31@gmail.com",
+      to: user.email,
+      subject: "Reset Password",
+      html: forgetPasswordHtml,
+    };
+  
+    transporter.sendMail(mailContent, (err, info) => {
+      if (err) throw err;
+      console.log("Email send successfully");
+    });
+   
+    const OTPuser=await forgetPasswordModel.findById({_id:userId})
+    if(OTPuser)
+    {
+   
+     OTPuser.OTP=OTP
+     OTPuser.save()
+      console.log("first",OTPuser)
+      res.status(200).json({Msg: "OTP send successfully",OTPuser});
+    }
+     else{
+      const emailData=await forgetPasswordModel.create({_id:user._id,OTP:OTP})
+      res.status(200).json({Msg: "OTP send successfully",emailData});
+     }
+    } catch (error) {
+      if(error)
+      {
+        res.status(400).json(error.message)
+      }
+    }
+  }
 
-module.exports={userSignup,userLogin,verifyEmailAccount,forgetPassword,verifyOTP,resetPassword,userEnterEmail}
+
+
+module.exports={userSignup,userLogin,verifyEmailAccount,forgetPassword,verifyOTP,resetPassword, resendOTP,userEnterEmail}
