@@ -1,31 +1,46 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const OTPPage = () => {
     const [otp, setOTP] = useState("");
     const [otpSent, setOtpSent] = useState(true);
     const [showPopup, setShowPopup] = useState(true);
-
+    const [seconds,setSeconds]=useState(10);
+    const [resendOtpButton,setResendOtpButton]=useState(true)
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
-    const { userId } = location.state
-    console.log("location", userId)
+    const { userId,res } = location.state
+    console.log("location", res)
 
-
+const handleResendOtp=async ()=>{
+   try {
+    const response=await axios.post(`http://localhost:5000/api/user/resendOTP/${userId}`)
+    console.log(response)
+   } catch (error) {
+    console.log(error)
+   }
+}
 
 
 
     useEffect(() => {
-        if (showPopup) {
-            const timeoutId = setTimeout(() => {
-                setShowPopup(false);
+        if (userId) {
+            const timeout = setInterval(() => {
+                if(seconds>0)
+                {
+                    setSeconds(seconds-1)
+                }
+                else{
+                    clearInterval(timeout)
+                    setResendOtpButton(false)
+                }
             }, 1000);
 
-            return () => clearTimeout(timeoutId);
+            return () => clearTimeout(timeout);
         }
-    }, [showPopup]);
+    }, [userId,seconds]);
 
     const handleOtpSubmit = async (e) => {
         e.preventDefault();
@@ -71,9 +86,12 @@ const OTPPage = () => {
 
                             <br />
                         </form>
+                        
                     </div>
                 </div>
             </div>
+            <button disabled={resendOtpButton} hidden={resendOtpButton} onClick={()=>handleResendOtp()} >Resend Otp?</button>
+            <h4>00:{seconds}</h4>
             {showPopup && (
                 <div className="popup">
 

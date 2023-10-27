@@ -28,10 +28,10 @@ const ForgotPassword = () => {
       console.log('OTP', response.data);
       console.log('OTP', response.data.emailData._id);
       setUserId(response.data.emailData._id);
-      navigate('/otp', { state: { userId: response.data.emailData._id } });
+      navigate('/otp', { state: { userId: response.data.emailData._id,res:response.data} });
     } catch (error) {
-      console.error('Error sending reset password email:', error);
-      setError('Invalid recovery email. Please try again.');
+      console.error('Error sending reset password email:', error.response.data);
+      setError(error.response.data);
     }
   };
 
