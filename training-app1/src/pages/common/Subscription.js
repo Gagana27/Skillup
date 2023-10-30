@@ -17,6 +17,7 @@ function Subscription() {
   const Data = location.state;
 
   console.log("demo",Data);
+  console.log("demmmmmm",cart);
 
   useEffect(() => {
     async function fetchSubcategories() {
