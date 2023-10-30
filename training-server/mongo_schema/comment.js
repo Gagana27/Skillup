@@ -11,7 +11,7 @@ const commentSchema = new mongoose.Schema({
         required: true,
 
     },
-    videos: [
+    videos: 
         
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -20,7 +20,6 @@ const commentSchema = new mongoose.Schema({
 
         },
         
-    ]
    
     
   }, { timestamps: true });

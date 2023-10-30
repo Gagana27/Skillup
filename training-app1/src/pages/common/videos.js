@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useLocation } from "react-router-dom";
 import ReactPlayer from "react-player";
 import React, { useRef } from "react";
 import axios from "axios";
@@ -34,6 +34,9 @@ function VideoList(props) {
   const [reviewData, setReviewData] = useState([]);
   const [comment, setCommentLists] = useState([]);
 
+  const location=useLocation();
+
+  console.log("111",location.state.video)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -133,6 +136,7 @@ function VideoList(props) {
                         <Comments
                           comment={comment}
                           refreshFunction={updateComment} 
+                          videoId={location.state.video}
                         />
                       </h1><br /><br />
                     </ListGroup.Item>
