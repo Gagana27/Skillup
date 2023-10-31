@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link ,useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -20,8 +20,8 @@ function SubcategoryList() {
  
   console.log("object", subcategories)
 
-  const AddtoCart =async (event,subCatData, userId) => {
-    event.preventDefault(); 
+  const AddtoCart = async (event, subCatData, userId) => {
+    event.preventDefault();
     console.log("ffff", subCatData, userId)
     // navigate(`/subscription/${subCatData._id}`)
     const categoryResponse = await axios.post(
@@ -31,17 +31,17 @@ function SubcategoryList() {
         image: subCatData.videos[0].image,
         description:subCatData.videos[0].description,
         userId: userId,
-        categoryId:subCatData.category,
+        categoryId: subCatData.category,
         subcategoryId: subCatData._id,
-        price:subCatData.priceDetails
+        price: subCatData.priceDetails
 
       }
     );
     console.log("demos", categoryResponse.data);
-   navigate("/my-cart")
+    navigate("/my-cart")
   }
 
- 
+
   useEffect(() => {
     async function fetchSubcategories() {
       const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
