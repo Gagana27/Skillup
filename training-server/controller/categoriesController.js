@@ -146,14 +146,18 @@ const deletecartItem = async (req, res) => {
 
 const addComment = async (req, res) => {
     try {
-        const { content, userId, videoId } = req.body;
-        console.log("dy", { content, userId, videoId })
+      const { content,userId ,videos} = req.body;
+      console.log("dy",{ content,userId,videos})
+      
 
-        //   const newComment = new Comment({ content,userId,videos:videoId});
-        const newComment = await Comment.create({ content, userId, videos: videoId })
+    //   const newComment = new Comment({ content,userId,videos:videoId});
+      const newComment = await Comment.create({ content,userId,videos})
 
-        const savedComment = await newComment.save();
-        res.status(201).json(savedComment);
+        // //   const newComment = new Comment({ content,userId,videos:videoId});
+        // const newComment = await Comment.create({ content, userId, videos: videoId })
+
+    //   const savedComment = await newComment.save();
+      res.status(200).json(newComment);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });

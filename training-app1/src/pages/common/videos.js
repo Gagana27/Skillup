@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useLocation } from "react-router-dom";
 import ReactPlayer from "react-player";
 import React, { useRef } from "react";
 import axios from "axios";
@@ -33,6 +33,10 @@ function VideoList(props) {
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewData, setReviewData] = useState([]);
   const [comment, setCommentLists] = useState([]);
+
+  const location=useLocation();
+
+  console.log("111",location.state.video)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -132,6 +136,59 @@ function VideoList(props) {
               ))}
             </div>{" "}
           </div>
+          <br />
+          <br />
+          <br />
+        </div>
+        <div className="w-full">
+          {/* Course image */}
+          <div className="flex h-75v flex-col " ref={playerContainerRef}>
+            {videos.map((video) => (
+              <li key={video._id}>
+                <div className="flex-1 h-80v justify-end">
+                  <ReactPlayer
+                    width="100%"
+                    height="100%"
+                    ref={playerRef}
+                    url={video.url}
+                    controls={true}
+                    pip={pip}
+                    playing={playing}
+                    playbackRate={playbackRate}
+                    volume={volume}
+                    muted={muted}
+                  />
+                </div>
+                <div className="grid grid-cols-1">
+                  <h1 className="text-l font-semibold">
+                    <ListGroup.Item
+                      style={{ padding: 10 }}
+                      className="my-3"
+                      variant="secondary"
+                    >
+                      Course : {video.title}<br /><br />
+                      Author : {video.author}<br /><br />
+                      Description : {video.description}<br /><br />
+                      Ratings:{" "}
+                      <StarRating
+                        props={video.review}
+                        selectedRating={selectedRating}
+                        onStarClick={setSelectedRating}
+                      /><br /><br />
+                      <h1 className="text-l font-semibold">
+                        <ReviewComp reviews={reviewData} />
+                        <Comments
+                          comment={comment}
+                          refreshFunction={updateComment} 
+                          videoId={location.state.video}
+                        />
+                      </h1><br /><br />
+                    </ListGroup.Item>
+                  </h1>
+                </div>
+              </li>
+            ))}
+          </div>{" "}
         </div>
         <div className="flex border rounded-lg shadow-md"></div>
       </div>

@@ -10,14 +10,15 @@ const commentSchema = new mongoose.Schema({
         required: true,
 
     },
-    videos: [
+    videos: 
+        
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Video',
             required: true,
 
         },
-    ]
+        
    
     
   }, { timestamps: true });

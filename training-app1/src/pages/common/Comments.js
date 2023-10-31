@@ -5,20 +5,20 @@ import { useAuthContext } from "../../hooks/UserAuthContext";
 
 
 
-function Comments({ CommentLists, refreshFunction }) {
+function Comments({ CommentLists, refreshFunction,videoId }) {
   const [comment, setComment] = useState("");
   const { user } = useAuthContext();
-  const { videoId } = useParams();
+ 
 
   const userId = localStorage.getItem('user');
 
-
+console.log("videoid",videoId)
   const handleChange = (e) => {
     setComment(e.currentTarget.value);
   };
-  const onSubmit = async (e, userId,subCommData) => {
+  const onSubmit = async (e, userId,videoId) => {
     e.preventDefault();
-    console.log("rrr",  userId,comment,subCommData)
+    console.log("rrr",  userId,comment,videoId)
 
     try {
       const response = await axios.post(
@@ -26,7 +26,7 @@ function Comments({ CommentLists, refreshFunction }) {
         {
           content: comment,
           userId: userId,
-          // videos: [videoId],
+          videos: videoId,
          
 
           
@@ -34,9 +34,10 @@ function Comments({ CommentLists, refreshFunction }) {
         
       );
 
-      if (response.data && response.data.comment) {
+      if (response) {
         // Assuming Comment is the property you want to access
-        setComment([response.data.comment, ...comment]);
+        // setComment([response.data.comment, ...comment]);
+        console.log("resssss",response)
       } else {
         console.error('Invalid response data:', response.data);
         // Handle the error appropriately
@@ -61,7 +62,7 @@ function Comments({ CommentLists, refreshFunction }) {
           placeholder="Write a comment..."
         />
         <br />
-        <button style={{ width: "20%", height: "52px" }} onClick={(e)=>{onSubmit(e,user.loginUser._id)}}
+        <button style={{ width: "20%", height: "52px" }} onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId)}}
 >
           Submit
         </button>
