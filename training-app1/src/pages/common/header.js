@@ -171,12 +171,6 @@ export default function Header() {
                     </Dropdown.Item>
 
                     <Dropdown.Item
-                      href="/my-learning"
-                      className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
-                    >
-                      Learning
-                    </Dropdown.Item>
-                    <Dropdown.Item
                       href="/subscription"
                       className="  inline-flex items-center px-2 py-2 border  border-gray-500 text-base font-medium rounded-md text-black hover:bg-emerald-600"
                     >
