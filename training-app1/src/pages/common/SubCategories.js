@@ -86,14 +86,14 @@ function SubcategoryList() {
                       </Button> */}
                       <RazorPay amount={subcategory.priceDetails}/>
                      
-                        <Button
-                          className="w-1/1"
-                          variant="primary"
-                          active
-                          onClick={(event)=>{AddtoCart(event,subcategory, user.loginUser._id)}}
-                        >
-                          Add to Cart
-                        </Button>
+                      <Button
+    className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
+    variant="primary"
+    active
+    onClick={(event) => { AddtoCart(event, subcategory, user.loginUser._id) }}
+  >
+    Add to Cart
+  </Button>
                       
                     </div>
                   </Card.Body>
