@@ -15,12 +15,17 @@ const SubscriptionSchema=new Schema({
         required: true,
         unique: true,
     },
+    videoId:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'videos',
+        required: true,
+    },
     userId:
     {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'SignupUsers',
+        ref: 'signupusers',
         required: true,
-
     }, category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
