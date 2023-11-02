@@ -18,8 +18,8 @@ function SubcategoryList() {
   const { user } = useAuthContext();
   const [buttonClicked, setButtonClicked] = useState(false);
 
-  const navigate=useNavigate()
- 
+  const navigate = useNavigate()
+
   console.log("object", subcategories)
 
   const AddtoCart = async (event, subCatData, userId) => {
@@ -31,7 +31,7 @@ function SubcategoryList() {
       {
         courseName: subCatData.name,
         image: subCatData.videos[0].image,
-        description:subCatData.videos[0].description,
+        description: subCatData.videos[0].description,
         userId: userId,
         categoryId: subCatData.category,
         subcategoryId: subCatData._id,
@@ -58,8 +58,8 @@ function SubcategoryList() {
         {
           subcategories.map(subcategory => (
             <Col key={subcategory._id}>
-              <Link to={`/subcategories/${subcategory._id}/videos`} state={{video:subcategory.videos[0]._id}}>
-                <Card 
+              <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
+                <Card
                   className=" subcategory bg-secondary border-primary border-4 m-4 relative">
                   <Card.Img
                     variant="top"
@@ -86,24 +86,24 @@ function SubcategoryList() {
                         active>
                         Buy Now
                       </Button> */}
-                      <RazorPay 
-                      amount={subcategory.priceDetails}
-                      subcategory={subcategory}
+                      <RazorPay
+                        amount={subcategory.priceDetails}
+                        subcategory={subcategory}
                       />
-                     
+
                       <Button
-    className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
-    variant="primary"
-    active
-    onClick={(event) => {
-      AddtoCart(event, subcategory, user.loginUser._id);
-      setButtonClicked(true); 
-    }}
-    disabled={buttonClicked}
-  >
-    {buttonClicked ? "Added to Cart" : "Add to Cart"}
-  </Button>
-                      
+                        className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
+                        variant="primary"
+                        active
+                        onClick={(event) => {
+                          AddtoCart(event, subcategory, user.loginUser._id);
+                          setButtonClicked(true);
+                        }}
+                        disabled={buttonClicked}
+                      >
+                        {buttonClicked ? "Added to Cart" : "Add to Cart"}
+                      </Button>
+
                     </div>
                   </Card.Body>
                 </Card>

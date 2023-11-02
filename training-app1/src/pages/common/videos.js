@@ -34,8 +34,6 @@ function VideoList(props) {
   const [reviewData, setReviewData] = useState([]);
   const [comment, setCommentLists] = useState();
 
-
-
   const location=useLocation();
 
   console.log("111",location.state.video)
@@ -65,18 +63,6 @@ function VideoList(props) {
     fetchComments();             
   },[]);
   console.log("comment",comment)
-
-  
-  
-
-  
-  
-  
-
-  
-  
-
-  
   
   useEffect(() => {
     async function fetchVideos() {
