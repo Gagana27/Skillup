@@ -152,6 +152,7 @@ function VideoList(props) {
                           comment={comment}
                           refreshFunction={updateComment} 
                           videoId={location.state.video}
+                          reviewData={reviewData}
                         />
                       </h1><br /><br />
                     </ListGroup.Item>
