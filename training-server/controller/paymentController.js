@@ -29,7 +29,7 @@ const orders = async (req, res) => {
 
 const success = async (req, res) => {
     try {
-        const { orderCreationId, razorpayPaymentId, razorpayOrderId, razorpaySignature,details ,videos } = req.body.data
+        const { orderCreationId, razorpayPaymentId, razorpayOrderId, razorpaySignature,details ,videos,userId } = req.body.data
         console.log("first",details)
 
         const sign = razorpayOrderId + "|" + razorpayPaymentId
@@ -37,7 +37,7 @@ const success = async (req, res) => {
             .update(sign.toString()).digest("hex")
 
         if (razorpaySignature === expectedSign) {  
-            const subscriptionVideos = await SubscriptionSchema.create({ razorpay_order_id:orderCreationId, razorpay_payment_id:razorpayPaymentId, razorpay_signature:razorpaySignature, courseName:details.name, userId:details.videos[0]._id, category:details.category, subcategory:details.videos[0].subcategory, description:details.videos[0].description, price:details.priceDetails, image:details.videos[0].image
+            const subscriptionVideos = await SubscriptionSchema.create({ razorpay_order_id:orderCreationId, razorpay_payment_id:razorpayPaymentId, razorpay_signature:razorpaySignature, courseName:details.name, videoId:details.videos[0]._id, userId:userId, category:details.category, subcategory:details.videos[0].subcategory, description:details.videos[0].description, price:details.priceDetails, image:details.videos[0].image
             })
             return res.status(200).json({ message: "Payment verified successfully" ,subscriptionVideos})
         }
