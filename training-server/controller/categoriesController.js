@@ -146,8 +146,8 @@ const deletecartItem = async (req, res) => {
 
 const addComment = async (req, res) => {
     try {
-      const { content,userId ,videos , reviewRating} = req.body;
-      console.log("dy",{ content,userId,videos,reviewRating})
+      const { content,userId ,videos,username, reviewRating} = req.body;
+      console.log("dy",{ content,userId,videos,username,reviewRating})
 
     //   const newComment = new Comment({ content,userId,videos:videoId});
     //   const newComment = await Comment.create({ content,userId,videos,reviewRating})
@@ -155,8 +155,7 @@ const addComment = async (req, res) => {
         // //   const newComment = new Comment({ content,userId,videos:videoId});
         // const newComment = await Comment.create({ content, userId, videos: videoId })
 
-        console.log("dy", { content, userId, videos, username })
-        const newComment = await Comment.create({ content, userId, videos, username,createdAt: formattedDateTime,reviewRating })
+        const newComment = await Comment.create({ content, userId, videos, username,reviewRating })
         res.status(200).json(newComment);
     } catch (error) {
         console.error(error);
