@@ -38,7 +38,7 @@ function VideoList(props) {
 
   const location=useLocation();
 
-  console.log("111",location.state.video)
+ 
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -64,7 +64,7 @@ function VideoList(props) {
     
     fetchComments();             
   },[]);
-  console.log("comment",comment)
+
 
   
   
@@ -83,7 +83,7 @@ function VideoList(props) {
       const response = await axios.get(
         `http://localhost:5000/subcategories/${subcategoryId}/videos`
       );
-      console.log("ggg", response.data);
+     
       setVideos(response.data);
     }
     fetchVideos();
@@ -166,7 +166,6 @@ function VideoList(props) {
                           comment={comment}
                           refreshFunction={updateComment} 
                           videoId={location.state.video}
-                          reviewData={reviewData}
                         />
                       </h1><br /><br />
                     </ListGroup.Item>

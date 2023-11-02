@@ -2,21 +2,19 @@ import React, { useEffect,useState } from "react";
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { useNavigate } from "react-router";
-import { useAuthContext } from "../../hooks/UserAuthContext";
 
 const RazorPay = ({amount,subcategory}) => {
 
     const [width, setWidth] = React.useState(window.raz);
     const [height, setHeight] = React.useState(window.innerHeight);
     const [buttonClicked, setButtonClicked] = useState(false);
-    const {user}=useAuthContext()
 
     const navigate=useNavigate()
     
     const displayRazorPay=async (e,payment)=>{
         e.preventDefault();
        
-        console.log("first",amount)
+     
         const result=await axios.post("http://localhost:5000/order",{payment})
     if (!result) {
         alert("Server error. Are you online?");
@@ -40,8 +38,7 @@ const RazorPay = ({amount,subcategory}) => {
                 razorpayPaymentId: response.razorpay_payment_id,
                 razorpayOrderId: response.razorpay_order_id,
                 razorpaySignature: response.razorpay_signature,
-                details:subcategory,
-                userId:user?.loginUser._id
+                details:subcategory
             };
             const value=await axios.post("http://localhost:5000/success",{data})
             console.log("ggggg",value.data)
