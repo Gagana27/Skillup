@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import AddCartButton from './AddToCart';
 import Button from 'react-bootstrap/Button';
 import { useAuthContext } from "../../hooks/UserAuthContext";
+import {CartContextHook} from "../../hooks/CartContextHook"
 import RazorPay from './RazorPay';
 
 
@@ -18,9 +19,11 @@ function SubcategoryList() {
   const { user } = useAuthContext();
   const [buttonClicked, setButtonClicked] = useState(false);
 
-  const navigate = useNavigate()
-
-  console.log("object", subcategories)
+  const navigate=useNavigate()
+  const {dispatch,cartItems}=CartContextHook()
+ 
+  console.log("object")
+  
 
   const AddtoCart = async (event, subCatData, userId) => {
     event.preventDefault();
@@ -43,20 +46,34 @@ function SubcategoryList() {
     navigate("/my-cart")
   }
 
+  const buttonValidation=(id)=>{
+  return cartItems.some((items)=>{
+      return items.subcategory === id
+    })
+  }
+
 
   useEffect(() => {
     async function fetchSubcategories() {
       const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
       setSubcategories(response.data);
     }
+    
+    async function fetchCartSubcategories() {
+      const response = await axios.get("http://localhost:5000/cart");
+      dispatch({type:'GET_ALL_CARTS',payload:response.data})
+    }
     fetchSubcategories();
+    fetchCartSubcategories();
   }, [categoryId]);
 
   return (
     <Container>
       <Row xs={1} md={4} className="g-4">
         {
-          subcategories.map(subcategory => (
+          subcategories.map(subcategory => {
+            const hide=buttonValidation(subcategory._id)
+            return (
             <Col key={subcategory._id}>
               <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
                 <Card
@@ -90,26 +107,23 @@ function SubcategoryList() {
                         amount={subcategory.priceDetails}
                         subcategory={subcategory}
                       />
-
-                      <Button
-                        className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
-                        variant="primary"
-                        active
-                        onClick={(event) => {
-                          AddtoCart(event, subcategory, user.loginUser._id);
-                          setButtonClicked(true);
-                        }}
-                        disabled={buttonClicked}
-                      >
-                        {buttonClicked ? "Added to Cart" : "Add to Cart"}
-                      </Button>
-
+                      {!hide && <Button
+    className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
+    variant="primary"
+    active
+    onClick={(event) => {
+      AddtoCart(event, subcategory, user.loginUser._id);
+    }}
+  >
+  AddtoCart
+  </Button>}
+                      
                     </div>
                   </Card.Body>
                 </Card>
               </Link>
             </Col>
-          ))}
+          )})}
         {subcategories.map(subcategory => (
           <Col key={subcategory._id}>
             <Link to={`/subcategories/${subcategory._id}/videos`}>
