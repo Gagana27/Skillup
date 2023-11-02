@@ -7,6 +7,8 @@ import Rating from "./AddReview";
 import ReviewComp from "./Reviewcomp";
 import StarRating from "./AddReview";
 // import ReviewComp from "./AddReview";
+// import {useParams} from "react-router-dom"
+import { useAuthContext } from "../../hooks/UserAuthContext";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -23,6 +25,10 @@ function VideoList(props) {
     playbackRate: 1.0,
     volume: 1,
   });
+  const { user } = useAuthContext();
+ 
+
+  const userId = localStorage.getItem('user');
   const playerRef = useRef(null);
   const playerContainerRef = useRef(null);
   // const VideoControlsRef = useRef(null);
@@ -32,16 +38,43 @@ function VideoList(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewData, setReviewData] = useState([]);
-  const [comment, setCommentLists] = useState([]);
+  const [comment, setCommentLists] = useState();
+
+
 
   const location=useLocation();
 
-  console.log("111",location.state.video)
+  // console.log("111",location.state.video)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  useEffect(() => {
+    async function fetchComments() {
+      try {
+        const response = await axios.get(`http://localhost:5000/comments`, {
+          params: {
+           
+            userId: userId,
+            // videos: videoId,
+          },
+        });
+      
+        console.log("object",response)
+        setCommentLists(response.data);
+      } catch (error) {
+        console.error('Error fetching comments:', error);
+      }
+    }
+    
+    fetchComments();             
+  },[userId,videos]);
+  console.log("comment",comment)
 
+  
+  
+
+  
   
   useEffect(() => {
     async function fetchVideos() {
@@ -54,16 +87,7 @@ function VideoList(props) {
     fetchVideos();
   }, [categoryId, subcategoryId]);
 
-  // const handleMouseMove = () => {
-  //   // console.log("mousemove");
-  //   VideoControlsRef.current.style.visibility = "visible";
-  //   count = 0;
-  // };
 
-  // const hanldeMouseLeave = () => {
-  //   VideoControlsRef.current.style.visibility = "hidden";
-  //   count = 0;
-  // };
   const updateComment = (newComment) => {
     setCommentLists(comment.concat(newComment));
   };
@@ -126,6 +150,7 @@ function VideoList(props) {
                       Author : {video.author}<br /><br />
                       Description : {video.description}<br /><br />
                       Ratings:{" "}
+                      
                       <StarRating
                         props={video.review}
                         selectedRating={selectedRating}
@@ -133,22 +158,36 @@ function VideoList(props) {
                       /><br /><br />
                       <h1 className="text-l font-semibold">
                         <ReviewComp reviews={reviewData} />
+
                         <Comments
+
                           comment={comment}
                           refreshFunction={updateComment} 
                           videoId={location.state.video}
                         />
                       </h1><br /><br />
+                      
                     </ListGroup.Item>
+                 
                   </h1>
                 </div>
               </li>
             ))}
           </div>{" "}
+          {comment && comment.map((comment)=>{
+                        
+                    return    <div key={comment._id}>
+                        <p>{comment.content} </p>
+                       <p> {comment.username}</p>
+                       {/* <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p> */}
+          
+                    </div>
+                      })}
         </div>
       </div>
       <div className="flex border rounded-lg shadow-md"></div>
     </div>
+
   </>
   );
 }

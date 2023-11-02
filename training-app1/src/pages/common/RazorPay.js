@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { useNavigate } from "react-router";
@@ -7,10 +7,13 @@ const RazorPay = ({amount}) => {
 
     const [width, setWidth] = React.useState(window.raz);
     const [height, setHeight] = React.useState(window.innerHeight);
+    const [buttonClicked, setButtonClicked] = useState(false);
+
     const navigate=useNavigate()
     
     const displayRazorPay=async (e,payment)=>{
         e.preventDefault();
+       
         console.log("first",amount)
         const result=await axios.post("http://localhost:5000/order",{payment})
     if (!result) {
@@ -59,8 +62,7 @@ const RazorPay = ({amount}) => {
     var paymentObject = new window.Razorpay(options);
 
         paymentObject.open();
-       
-
+        console.log("Button clicked");
    
     }
 
@@ -73,12 +75,19 @@ const RazorPay = ({amount}) => {
 
     return (
         <>
-            <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={(e) => displayRazorPay(e,amount)}
-                variant="primary">
-                Buy Now
-            </button>
+       
+  <Button
+  className="w-1/1"
+  variant="primary"
+  active
+  onClick={(e) => {
+    displayRazorPay(e, amount);
+        setButtonClicked(true); 
+  }}
+  disabled={buttonClicked}
+>
+  {buttonClicked ? "Buy Now" : "Buy Now"}
+</Button>
         </>
     );
 };

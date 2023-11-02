@@ -28,6 +28,7 @@ import MyLearn from "./common/Mylearn";
 import Subscription from "./common/Subscription";
 import RazorPay from "./common/RazorPay";
 import Rating from "./common/AddReview";
+import Comments from "./common/Comments";
 
 export default function RoutePage() {
   /*  const getdata=(name)=>{
@@ -78,6 +79,7 @@ export default function RoutePage() {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/claim" element={<Claim />} />
             <Route path="/review" element={<Rating />} />
+            <Route path="/comments" element={<Comments/>}/>
           </Routes>
           <Footer />
         </div>

@@ -1,24 +1,34 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom"
 import { useAuthContext } from "../../hooks/UserAuthContext";
+import { format} from 'date-fns'
+import { Card } from "antd";
 
 
 
-function Comments({ CommentLists, refreshFunction,videoId }) {
+
+function Comments({ CommentLists,videoId }) {
   const [comment, setComment] = useState("");
+  const[comments,setCommentLists]=useState("");
+
   const { user } = useAuthContext();
  
 
   const userId = localStorage.getItem('user');
+  const firstname = user.loginUser.firstname;
 
-console.log("videoid",videoId)
+  
+
+// console.log("videoid",videoId)
   const handleChange = (e) => {
     setComment(e.currentTarget.value);
   };
-  const onSubmit = async (e, userId,videoId) => {
+  const onSubmit = async (e, userId,videoId,firstname) => {
     e.preventDefault();
-    console.log("rrr",  userId,comment,videoId)
+    const currentDateTime = new Date(); // Get the current date and time
+    const formattedDateTime = format(currentDateTime, "yyyy-MM-dd HH:mm:ss"); // Format it as per your requirement
+    console.log("rrr",  userId,comment,videoId,firstname)
 
     try {
       const response = await axios.post(
@@ -27,6 +37,8 @@ console.log("videoid",videoId)
           content: comment,
           userId: userId,
           videos: videoId,
+          username:firstname,
+          createdAt: formattedDateTime,
          
 
           
@@ -46,12 +58,18 @@ console.log("videoid",videoId)
       console.error('Error submitting comment:', error);
     }
   };
+  
+
+
   return (
     <div>
       {CommentLists &&
-        CommentLists.map((comment, index) => (
+        CommentLists.map((comment) => (
           <div key={comment._id}>
-          <p>{comment.content}</p>
+              <p>{content} </p>
+             <p> {username}</p>
+             <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p>
+
           </div>
         ))}
       <form style={{ display: "flex" }} onSubmit={onSubmit}>
@@ -62,12 +80,13 @@ console.log("videoid",videoId)
           placeholder="Write a comment..."
         />
         <br />
-        <button style={{ width: "20%", height: "52px" }} onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId)}}
+        <button style={{ width: "10%", height: "52px" }} onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId,user.loginUser.firstname)}}
 >
           Submit
         </button>
       </form>
     </div>
+    
   );
 }
 export default Comments;
