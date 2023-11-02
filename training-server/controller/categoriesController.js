@@ -149,11 +149,7 @@ const addComment = async (req, res) => {
       const { content,userId ,videos,username, reviewRating} = req.body;
       console.log("dy",{ content,userId,videos,username,reviewRating})
 
-    //   const newComment = new Comment({ content,userId,videos:videoId});
-    //   const newComment = await Comment.create({ content,userId,videos,reviewRating})
-
-        // //   const newComment = new Comment({ content,userId,videos:videoId});
-        // const newComment = await Comment.create({ content, userId, videos: videoId })
+    
 
         const newComment = await Comment.create({ content, userId, videos, username,reviewRating })
         res.status(200).json(newComment);
@@ -163,12 +159,12 @@ const addComment = async (req, res) => {
     }
 }
 const getallcomments = async (req, res) => {
-    // const { videos,userId } = req.params;
+    const { videos } = req.params;
 
     try {
-        // console.log(userId,videos)
+     console.log(videos)
 
-        const comment = await Comment.find();
+        const comment = await Comment.find({videos});
         res.json(comment);
     } catch (error) {
         console.error(error);
