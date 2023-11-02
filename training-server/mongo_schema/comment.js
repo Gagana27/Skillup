@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const commentSchema = new mongoose.Schema({
     content: { 
         type: String, 
@@ -20,17 +19,19 @@ const commentSchema = new mongoose.Schema({
         required: true,
     },
 
-    videos: 
-        
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Video',
-            required: true,
-
-        },
-        
    
-    
-  }, { timestamps: true });
+    videos:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Video',
+        required: true,
+    },
+    reviewRating:
+        [{
+            type: Array,
+            required: true,
+        }]
 
-  module.exports = mongoose.model('Comment', commentSchema);
+}, { timestamps: true });
+
+module.exports = mongoose.model('Comment', commentSchema);
