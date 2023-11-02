@@ -48,7 +48,6 @@ const AddCategory = () => {
         }
       );
 
-      console.log("category111", categoryResponse);
       const subcategoryId = categoryResponse.data.subcategories[0]._id;
       // Add the new video to the subcategory
       const videoResponse = await axios.post(

@@ -22,7 +22,7 @@ categoriesRouter.post("/comments", addComment);
 
 categoriesRouter.get("/comments/:videos", getallcomments);
 
-categoriesRouter.get('/cart',getallcart);
+categoriesRouter.get('/cart/:userId',getallcart);
 
 
 

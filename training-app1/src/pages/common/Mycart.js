@@ -17,21 +17,24 @@ function MyCart() {
   const { categoryId, subcategoryId } = useParams();
   const {user}=useAuthContext()
   const {dispatch,cartItems}=CartContextHook();
-  console.log("first",cartItems)
+  console.log("first",cart)
 
   const location = useLocation();
   const Data = location.state;
 
 
   useEffect(() => {
+   if(user)
+   {
     async function fetchSubcategories() {
-      const response = await axios.get("http://localhost:5000/cart");
+      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
       setCart(response.data);
       dispatch({type:'GET_ALL_CARTS',payload:response.data})
     }
     fetchSubcategories();
+   }
 
-  }, [categoryId, subcategoryId]);
+  }, [categoryId, subcategoryId,user]);
 
   return (
     <>
