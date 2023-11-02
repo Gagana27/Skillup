@@ -22,7 +22,7 @@ function SubcategoryList() {
   const navigate=useNavigate()
   const {dispatch,cartItems}=CartContextHook()
  
-  console.log("object")
+  console.log("object",user)
   
 
   const AddtoCart = async (event, subCatData, userId) => {
@@ -47,9 +47,9 @@ function SubcategoryList() {
   }
 
   const buttonValidation=(id)=>{
-  return cartItems.some((items)=>{
+  return cartItems ?( cartItems.some((items)=>{
       return items.subcategory === id
-    })
+    })):false
   }
 
 
@@ -59,13 +59,17 @@ function SubcategoryList() {
       setSubcategories(response.data);
     }
     
-    async function fetchCartSubcategories() {
-      const response = await axios.get("http://localhost:5000/cart");
-      dispatch({type:'GET_ALL_CARTS',payload:response.data})
+    if(user)
+    {
+      async function fetchCartSubcategories() {
+        const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser?._id}`);
+        dispatch({type:'GET_ALL_CARTS',payload:response.data})
+      }
+      fetchCartSubcategories();
     }
     fetchSubcategories();
-    fetchCartSubcategories();
-  }, [categoryId]);
+    
+  }, [categoryId,user]);
 
   return (
     <Container>
