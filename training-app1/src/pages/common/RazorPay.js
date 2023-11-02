@@ -2,14 +2,12 @@ import React, { useEffect,useState } from "react";
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { useNavigate } from "react-router";
-import { useAuthContext } from "../../hooks/UserAuthContext";
 
 const RazorPay = ({amount,subcategory}) => {
 
     const [width, setWidth] = React.useState(window.raz);
     const [height, setHeight] = React.useState(window.innerHeight);
     const [buttonClicked, setButtonClicked] = useState(false);
-    const {user}=useAuthContext()
 
     const navigate=useNavigate()
     
@@ -40,8 +38,7 @@ const RazorPay = ({amount,subcategory}) => {
                 razorpayPaymentId: response.razorpay_payment_id,
                 razorpayOrderId: response.razorpay_order_id,
                 razorpaySignature: response.razorpay_signature,
-                details:subcategory,
-                userId:user?.loginUser._id
+                details:subcategory
             };
             const value=await axios.post("http://localhost:5000/success",{data})
             console.log("ggggg",value.data)
@@ -79,8 +76,8 @@ const RazorPay = ({amount,subcategory}) => {
 
     return (
         <>
-           <button
-    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:py-2 sm:px-4 md:py-3 md:px-6 lg:py-4 lg:px-8 xl:py-4 xl:px-8"
+          <button
+    className="bg-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded sm:py-2 sm:px-4 md:py-3 md:px-6 lg:py-4 lg:px-8 xl:py-4 xl:px-8 w-auto "
     onClick={(e) => displayRazorPay(e, amount)}
     variant="primary"
   >

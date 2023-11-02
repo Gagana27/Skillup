@@ -9,6 +9,7 @@ import VideoList from './videos';
 
 function CategoryList() {
   const [categories, setCategories] = useState([]);
+  console.log("categ",categories)
 
   useEffect(() => {
     async function fetchCategories() {
@@ -25,11 +26,11 @@ function CategoryList() {
     <>
       <br /><Container>
         <br />
-        <Row xs={1} md={4} className=" categorycard g-4">
+        <Row xs={1} md={4} className=" categorycard g-5 ">
           {
             categories.map(category => (
               <Col key={category._id}>
-                <Link to={`/categories/${category._id}/subcategories`} state={category._id}>
+                <Link to={`/categories/${category._id}/subcategories`} state={category}>
                   <Card
                     className="bg-secondary border-primary border-4"
                     border="warning"
