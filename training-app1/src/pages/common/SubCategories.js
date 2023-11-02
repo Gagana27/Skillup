@@ -92,17 +92,17 @@ function SubcategoryList() {
                       />
                      
                       <Button
-  className="w-1/1"
-  variant="primary"
-  active
-  onClick={(event) => {
-    AddtoCart(event, subcategory, user.loginUser._id);
-    setButtonClicked(true); 
-  }}
-  disabled={buttonClicked}
->
-  {buttonClicked ? "Added to Cart" : "Add to Cart"}
-</Button>
+    className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
+    variant="primary"
+    active
+    onClick={(event) => {
+      AddtoCart(event, subcategory, user.loginUser._id);
+      setButtonClicked(true); 
+    }}
+    disabled={buttonClicked}
+  >
+    {buttonClicked ? "Added to Cart" : "Add to Cart"}
+  </Button>
                       
                     </div>
                   </Card.Body>
