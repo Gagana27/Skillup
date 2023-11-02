@@ -40,7 +40,6 @@ import Controls from "./components/Controls";
     };
   
     const handleMouseMove = () => {
-      console.log("mousemove");
       controlsRef.current.style.visibility = "visible";
       count = 0;
     };

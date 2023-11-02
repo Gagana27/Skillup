@@ -22,7 +22,7 @@ export const useEnterEmail = () => {
     if (response.ok) {
       // save the user to local storage
       // localStorage.setItem("user", JSON.stringify(json));
-      console.log("console",json);
+      
 
     //   navigate("/login");
 
