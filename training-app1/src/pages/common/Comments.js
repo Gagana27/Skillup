@@ -48,7 +48,21 @@ console.log("videoid",videoId)
           <p>{comment.content}</p>
           </div>
         ))}
-      <form style={{ display: "flex" }} onSubmit={onSubmit}>
+<form  onSubmit={onSubmit}>
+<div className="form-outline">
+                  <textarea placeholder="Write a Comment....." className="form-control" id="textAreaExample"  rows="4"  onChange={handleChange}
+          value={comment}></textarea>
+                 
+                </div>
+                <div className="d-flex justify-content-between mt-3">
+                 
+                  <button type="button" className="btn bg-yellow-500 hover:bg-green-700 " onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId)}}>
+                    Submit 
+                  </button>
+                </div>
+                </form>
+
+      {/* <form style={{ display: "flex" }} onSubmit={onSubmit}>
         <textarea
           style={{ width: "100%", borderRadius: "5px" }}
           onChange={handleChange}
@@ -60,7 +74,7 @@ console.log("videoid",videoId)
 >
           Submit
         </button>
-      </form>
+      </form> */}
     </div>
   );
 }

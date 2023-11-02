@@ -74,12 +74,13 @@ const RazorPay = ({amount,subcategory}) => {
 
     return (
         <>
-            <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={(e) => displayRazorPay(e,amount)}
-                variant="primary">
-                Buy Now
-            </button>
+           <button
+    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded sm:py-2 sm:px-4 md:py-3 md:px-6 lg:py-4 lg:px-8 xl:py-4 xl:px-8"
+    onClick={(e) => displayRazorPay(e, amount)}
+    variant="primary"
+  >
+    Buy Now
+  </button>
         </>
     );
 };
