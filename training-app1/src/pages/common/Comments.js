@@ -8,7 +8,7 @@ import { Card } from "antd";
 
 
 
-function Comments({ CommentLists,videoId }) {
+function Comments({ CommentLists,videoId,reviewData }) {
   const [comment, setComment] = useState("");
   const[comments,setCommentLists]=useState("");
 
@@ -38,10 +38,7 @@ function Comments({ CommentLists,videoId }) {
           videos: videoId,
           username:firstname,
           createdAt: formattedDateTime,
-         
-
-          
-          reviewRating: rating
+          reviewRating: rating,
         }
         
       );
@@ -80,7 +77,7 @@ function Comments({ CommentLists,videoId }) {
                 </div>
                 <div className="d-flex justify-content-between mt-3">
                  
-                  <button type="button" className="btn bg-yellow-500 hover:bg-green-700 " onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId)}}>
+                  <button type="button" className="btn bg-yellow-500 hover:bg-green-700 " onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId,firstname,reviewData)}}>
                     Submit 
                   </button>
                 </div>
