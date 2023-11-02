@@ -73,6 +73,7 @@ function VideoList(props) {
   
   useEffect(() => {
     fetchReviewData(selectedRating);
+    console.log("firstdew",selectedRating)
   }, [selectedRating]);
 
   return (
@@ -127,6 +128,8 @@ function VideoList(props) {
                           <Comments
                             comment={comment}
                             refreshFunction={updateComment}
+                            rating={reviewData}
+                            videoId={location.state.video}
                           />
                         </h1><br /><br />
                       </ListGroup.Item>
