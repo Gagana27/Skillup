@@ -146,12 +146,11 @@ const deletecartItem = async (req, res) => {
 
 const addComment = async (req, res) => {
     try {
-      const { content,userId ,videos} = req.body;
-      console.log("dy",{ content,userId,videos})
-      
+      const { content,userId ,videos , reviewRating} = req.body;
+      console.log("dy",{ content,userId,videos,reviewRating})
 
     //   const newComment = new Comment({ content,userId,videos:videoId});
-      const newComment = await Comment.create({ content,userId,videos})
+      const newComment = await Comment.create({ content,userId,videos,reviewRating})
 
         // //   const newComment = new Comment({ content,userId,videos:videoId});
         // const newComment = await Comment.create({ content, userId, videos: videoId })

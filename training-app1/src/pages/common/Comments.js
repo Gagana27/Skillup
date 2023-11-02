@@ -3,22 +3,18 @@ import axios from "axios";
 import {useParams} from "react-router-dom"
 import { useAuthContext } from "../../hooks/UserAuthContext";
 
-
-
-function Comments({ CommentLists, refreshFunction,videoId }) {
+function Comments({ CommentLists, refreshFunction,videoId , rating}) {
   const [comment, setComment] = useState("");
   const { user } = useAuthContext();
- 
-
   const userId = localStorage.getItem('user');
 
 console.log("videoid",videoId)
   const handleChange = (e) => {
     setComment(e.currentTarget.value);
   };
-  const onSubmit = async (e, userId,videoId) => {
+  const onSubmit = async (e, userId,videoId,rating) => {
     e.preventDefault();
-    console.log("rrr",  userId,comment,videoId)
+    console.log("rrr",  userId,comment,videoId,rating)
 
     try {
       const response = await axios.post(
@@ -27,9 +23,7 @@ console.log("videoid",videoId)
           content: comment,
           userId: userId,
           videos: videoId,
-         
-
-          
+          reviewRating: rating
         }
         
       );
@@ -76,7 +70,7 @@ console.log("videoid",videoId)
           placeholder="Write a comment..."
         />
         <br />
-        <button style={{ width: "20%", height: "52px" }} onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId)}}
+        <button style={{ width: "20%", height: "52px" }} onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId,rating)}}
 >
           Submit
         </button>

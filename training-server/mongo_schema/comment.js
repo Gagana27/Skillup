@@ -10,17 +10,18 @@ const commentSchema = new mongoose.Schema({
         required: true,
 
     },
-    videos: 
-        
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Video',
+    videos:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Video',
+        required: true,
+    },
+    reviewRating:
+        [{
+            type: Array,
             required: true,
+        }]
 
-        },
-        
-   
-    
-  }, { timestamps: true });
+}, { timestamps: true });
 
-  module.exports = mongoose.model('Comment', commentSchema);
+module.exports = mongoose.model('Comment', commentSchema);
