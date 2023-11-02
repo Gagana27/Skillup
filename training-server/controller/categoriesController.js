@@ -96,6 +96,9 @@ const getSubCategoriesVideo = async (req, res) => {
 
 const postCarts = async (req, res) => {
 
+    
+
+
     try {
         const { courseName, price, description, userId, image, subcategoryId, categoryId } = req.body;
 
@@ -115,9 +118,6 @@ const postCarts = async (req, res) => {
 
 const getallcart = async (req, res) => {
     try {
-        // const { categoryId } = req.params;
-        // const { subcategoryId } = req.params;
-
         const cart = await Cart.find();
         res.json(cart);
     } catch (err) {
@@ -150,20 +150,36 @@ const addComment = async (req, res) => {
       console.log("dy",{ content,userId,videos,reviewRating})
 
     //   const newComment = new Comment({ content,userId,videos:videoId});
-      const newComment = await Comment.create({ content,userId,videos,reviewRating})
+    //   const newComment = await Comment.create({ content,userId,videos,reviewRating})
 
         // //   const newComment = new Comment({ content,userId,videos:videoId});
         // const newComment = await Comment.create({ content, userId, videos: videoId })
 
-    //   const savedComment = await newComment.save();
-      res.status(200).json(newComment);
+        console.log("dy", { content, userId, videos, username })
+        const newComment = await Comment.create({ content, userId, videos, username,createdAt: formattedDateTime,reviewRating })
+        res.status(200).json(newComment);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
+const getallcomments = async (req, res) => {
+    // const { videos,userId } = req.params;
 
+    try {
+        // console.log(userId,videos)
+
+        const comment = await Comment.find();
+        res.json(comment);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+}
+
+  
 module.exports = {
     getAllCategories, postCategories, postVideosInSubcategories,
-    getAllSubcategories, getSubCategoriesVideo, postCarts, getallcart, deletecartItem, addComment
+    getAllSubcategories, getSubCategoriesVideo, postCarts, getallcart, deletecartItem, addComment,getallcomments
+
 }

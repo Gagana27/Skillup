@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
-    content: { type: String, required: true },
-    // rating: { type: Number, required: true },
+    content: { 
+        type: String, 
+        required: true 
+    },
+
     userId:
     {
         type: mongoose.Schema.Types.ObjectId,
@@ -10,6 +13,13 @@ const commentSchema = new mongoose.Schema({
         required: true,
 
     },
+    username:{
+
+        type: String,
+        required: true,
+    },
+
+   
     videos:
     {
         type: mongoose.Schema.Types.ObjectId,

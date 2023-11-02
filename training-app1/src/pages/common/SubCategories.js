@@ -16,6 +16,8 @@ function SubcategoryList() {
   const [subcategories, setSubcategories] = useState([]);
   const userId = localStorage.getItem('user');
   const { user } = useAuthContext();
+  const [buttonClicked, setButtonClicked] = useState(false);
+
   const navigate=useNavigate()
  
   console.log("object", subcategories)
@@ -62,7 +64,7 @@ function SubcategoryList() {
                   <Card.Img
                     variant="top"
                     // className="w-full h-40 object-cover"
-                    style={{ height: '135px', width: '100%' }}
+                    style={{ height: '150px', width: '100%' }}
                     src={subcategory?.image}
                   />
 
@@ -93,9 +95,13 @@ function SubcategoryList() {
     className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
     variant="primary"
     active
-    onClick={(event) => { AddtoCart(event, subcategory, user.loginUser._id) }}
+    onClick={(event) => {
+      AddtoCart(event, subcategory, user.loginUser._id);
+      setButtonClicked(true); 
+    }}
+    disabled={buttonClicked}
   >
-    Add to Cart
+    {buttonClicked ? "Added to Cart" : "Add to Cart"}
   </Button>
                       
                     </div>
