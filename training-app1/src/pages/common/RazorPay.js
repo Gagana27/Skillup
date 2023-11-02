@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { useNavigate } from "react-router";
 
-const RazorPay = ({amount}) => {
+const RazorPay = ({amount,subcategory}) => {
 
     const [width, setWidth] = React.useState(window.raz);
     const [height, setHeight] = React.useState(window.innerHeight);
@@ -38,6 +38,7 @@ const RazorPay = ({amount}) => {
                 razorpayPaymentId: response.razorpay_payment_id,
                 razorpayOrderId: response.razorpay_order_id,
                 razorpaySignature: response.razorpay_signature,
+                details:subcategory
             };
             const value=await axios.post("http://localhost:5000/success",{data})
             console.log("ggggg",value.data)

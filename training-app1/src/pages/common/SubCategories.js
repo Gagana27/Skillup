@@ -86,7 +86,10 @@ function SubcategoryList() {
                         active>
                         Buy Now
                       </Button> */}
-                      <RazorPay amount={subcategory.priceDetails}/>
+                      <RazorPay 
+                      amount={subcategory.priceDetails}
+                      subcategory={subcategory}
+                      />
                      
                       <Button
   className="w-1/1"
