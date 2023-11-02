@@ -7,12 +7,11 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useParams, useLocation } from 'react-router-dom';
 import DeleteButton from './Trash';
-import {useAuthContext} from "../../hooks/UserAuthContext"
-import {CartContextHook} from "../../hooks/CartContextHook"
+import { useAuthContext } from '../../hooks/UserAuthContext';
+import { CartContextHook } from '../../hooks/CartContextHook';
 
 function MyCart() {
   const [cart, setCart] = useState([]);
-
 
   const { categoryId, subcategoryId } = useParams();
   const {user}=useAuthContext()
@@ -22,14 +21,13 @@ function MyCart() {
   const location = useLocation();
   const Data = location.state;
 
-
   useEffect(() => {
    if(user)
    {
     async function fetchSubcategories() {
       const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
       setCart(response.data);
-      dispatch({type:'GET_ALL_CARTS',payload:response.data})
+      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
     }
     fetchSubcategories();
    }
@@ -38,46 +36,39 @@ function MyCart() {
 
   return (
     <>
-      <div>
-        <Row xs={1} md={3} className="g-6" style={{
-          height: 500,
-          background: "LightGrey",
-          // justifyContent: "center",
-
-        }}>
-          {cartItems?.map(cart => (
-            <Col key={cart._id}>
+      <div style={{ marginTop: '20px' }}>
+        <Row xs={1} md={3} className="g-4">
+          {cartItems?.map((cart) => (
+            <Col key={cart._id} className="mb-4">
               <Card
-                className="bg-secondary border-primary border-4 m-4 "
+                className="bg-secondary border-primary border-4"
                 border="warning"
-                style={{ width: '24rem', height: '12rem' }}>
-
+                style={{ minWidth: '18rem', maxWidth: '24rem', position: 'relative' }}
+              >
                 <Card.Img
                   variant="top"
-                  // className="w-full h-40 object-cover"
-                  style={{ height: '135px', width: '100%' }}
+                  style={{ height: '135px', width: '100%', objectFit: 'cover' }}
                   src={cart?.image}
                 />
-              
-                <Card.Body style={{ height: '60px' }}>
-                  <Card.Text className="text-white">
-                    {cart.courseName}
-                    <Card.Text className="text-white"
-                      style={{ height: '135px',
-                      width: '100%' ,
-                      marginTop: -25 , 
-                      marginLeft: 280}}>
-                        Rs . {cart.price}
-                    </Card.Text>
-
-                    <Card.Text className="text-white"
-                      style={{ height: '135px',
-                      width: '100%' ,
-                      marginTop: -280 , 
-                      marginLeft: 280}}>
-                      <DeleteButton cartId={cart._id} userId={user?.loginUser._id}/>
-                    </Card.Text>
-                  </Card.Text>&nbsp;
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '5px',
+                    right: '5px',
+                    zIndex: '1',
+                  }}
+                >
+                  <DeleteButton cartId={cart._id} userId={user?.loginUser._id} />
+                </div>
+                <Card.Body>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <div>
+                      <Card.Text className="text-white">{cart.courseName}</Card.Text>
+                    </div>
+                    <div>
+                      <Card.Text className="text-white">Rs. {cart.price}</Card.Text>
+                    </div>
+                  </div>
                 </Card.Body>
               </Card>
             </Col>
