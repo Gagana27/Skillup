@@ -10,6 +10,8 @@ import StarRating from "./AddReview";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
 import ListGroup from 'react-bootstrap/ListGroup';
+import { format} from 'date-fns'
+
 import { Avatar, List } from 'antd';
 
 function VideoList(props) {
@@ -36,9 +38,11 @@ function VideoList(props) {
 
 
 
+
+
   const location=useLocation();
 
-  console.log("111",location.state.video)
+ const videoId=location.state['video']
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -47,15 +51,9 @@ function VideoList(props) {
   useEffect(() => {
     async function fetchComments() {
       try {
-        const response = await axios.get(`http://localhost:5000/comments`, {
-          params: {
-           
-            // userId: userId,
-            // videos: videoId,
-          },
-        });
+        const response = await axios.get(`http://localhost:5000/comments/${videoId}`);
       
-        console.log("object",response)
+        console.log("objectjjjj",response)
         setCommentLists(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);
@@ -63,21 +61,9 @@ function VideoList(props) {
     }
     
     fetchComments();             
-  },[]);
+  },[videoId]);
   console.log("comment",comment)
 
-  
-  
-
-  
-  
-  
-
-  
-  
-
-  
-  
   useEffect(() => {
     async function fetchVideos() {
       const response = await axios.get(
@@ -125,7 +111,7 @@ function VideoList(props) {
         <div className="w-full">
           {/* Course image */}
           <div className="flex h-75v flex-col " ref={playerContainerRef}>
-            {videos.map((video) => (
+            {videos && videos.map((video) => (
               <li key={video._id}>
                 <div className="flex-1 h-80v justify-end">
                   <ReactPlayer
@@ -176,15 +162,16 @@ function VideoList(props) {
               </li>
             ))}
           </div>{" "}
-          {comment && comment.map((comment)=>{
+          {comment &&  comment.map((comment)=>(
                         
-                        return    <div key={comment._id}>
-                            <p>{comment.content} </p>
-                           <p> {comment.username}</p>
-                           {/* <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p> */}
-              
-                        </div>
-                          })}
+                        <div key={comment._id}>
+                        <p>{comment.content} </p>
+                       <p> {comment.username}</p>
+                       <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p>
+          
+                    </div>
+
+                          ))}
         </div>
       </div>
       <div className="flex border rounded-lg shadow-md"></div>
