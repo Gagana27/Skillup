@@ -84,7 +84,10 @@ function SubcategoryList() {
                         active>
                         Buy Now
                       </Button> */}
-                      <RazorPay amount={subcategory.priceDetails}/>
+                      <RazorPay 
+                      amount={subcategory.priceDetails}
+                      subcategory={subcategory}
+                      />
                      
                       <Button
     className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
