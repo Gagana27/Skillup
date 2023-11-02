@@ -7,8 +7,6 @@ import Rating from "./AddReview";
 import ReviewComp from "./Reviewcomp";
 import StarRating from "./AddReview";
 // import ReviewComp from "./AddReview";
-// import {useParams} from "react-router-dom"
-import { useAuthContext } from "../../hooks/UserAuthContext";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -25,10 +23,6 @@ function VideoList(props) {
     playbackRate: 1.0,
     volume: 1,
   });
-  const { user } = useAuthContext();
- 
-
-  const userId = localStorage.getItem('user');
   const playerRef = useRef(null);
   const playerContainerRef = useRef(null);
   // const VideoControlsRef = useRef(null);
@@ -44,40 +38,17 @@ function VideoList(props) {
 
   const location=useLocation();
 
-  // console.log("111",location.state.video)
+  console.log("111",location.state.video)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  useEffect(() => {
-    async function fetchComments() {
-      try {
-        const response = await axios.get(`http://localhost:5000/comments`, {
-          params: {
-           
-            userId: userId,
-            // videos: videoId,
-          },
-        });
-      
-        console.log("object",response)
-        setCommentLists(response.data);
-      } catch (error) {
-        console.error('Error fetching comments:', error);
-      }
-    }
-    
-    fetchComments();             
-  },[userId,videos]);
-  console.log("comment",comment)
 
   
   
 
   
   
-  }
-
   useEffect(() => {
     async function fetchVideos() {
       const response = await axios.get(
@@ -107,25 +78,17 @@ function VideoList(props) {
     const selectedReview = data.find((review) => review.rating === rating);
     setReviewData(selectedReview ? [selectedReview] : []);
   };
-  
   useEffect(() => {
     fetchReviewData(selectedRating);
-    console.log("firstdew",selectedRating)
   }, [selectedRating]);
-
   return (
     <>
-      <div className="added">
-        <div className="flex justify-between p-8">
-          <div className="w-96 pr-8">
-            <div className="relative inline-block text-left">
-              <DropDown name="ggggg" desc="reactjs" videos={videos} />
-            </div>
-            <br />
-            <br />
-            <br />
+    <div className="added">
+      <div className="flex justify-between p-8">
+        <div className="w-96 pr-8">
+          <div className="relative inline-block text-left">
+            <DropDown name="ggggg" desc="reactjs" videos={videos} />
           </div>
-         </div>
           <br />
           <br />
           <br />
@@ -176,7 +139,6 @@ function VideoList(props) {
                           videoId={location.state.video}
                         />
                       </h1><br /><br />
-                      
                     </ListGroup.Item>
                  
                   </h1>
@@ -184,25 +146,62 @@ function VideoList(props) {
               </li>
             ))}
           </div>{" "}
-          {comment && comment.map((comment)=>{
-                        
-                    return    <div key={comment._id}>
-                        <p>{comment.content} </p>
-                       <p> {comment.username}</p>
-                       {/* <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p> */}
-          
-                    </div>
-                      })}
         </div>
-      
+      </div>
       <div className="flex border rounded-lg shadow-md"></div>
-  
-
+    </div>
   </>
-        
-        
   );
-
-
-
+}
 export default VideoList;
+
+/* import React, { useState, useEffect } from 'react';
+
+function VideoList() {
+  const [videos, setVideos] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedSubcategory, setSelectedSubcategory] = useState('');
+
+  useEffect(() => {
+    fetch('http://localhost:5000/subcategories/${subcategoryId}/videos')
+      .then(response => response.json())
+      .then(data => {
+        setVideos(data);
+        setCategories([...new Set(categories.map(video => video.category))]);
+      })
+      .catch(error => console.error(error));
+  });
+
+  const handleCategoryChange = event => {
+    setSelectedCategory(event.target.value);
+    setSelectedSubcategory('');
+  };
+
+  const handleSubcategoryChange = event => {
+    setSelectedSubcategory(event.target.value);
+    const filteredVideos = videos.filteredVideos(video => 
+      video.category === selectedCategory && video.subcategory === selectedSubcategory
+    );
+    const selectedVideo = filteredVideos[0];
+    // update video player with selectedVideo URL
+setVideos(selectedVideo);
+  };
+
+  const subcategories = [...new Set(videos.filteredVideos(video => video.category === selectedCategory).map(video => video.subcategory))];
+
+  return (
+    <div>
+      <select value={selectedCategory} onChange={handleCategoryChange}>
+        <option value="">Select a category</option>
+        {categories.map(category => <option key={category.name} value={category}>{category.name}</option>)}
+      </select>
+      <select value={selectedSubcategory} onChange={handleSubcategoryChange}>
+        <option value="">Select a subcategory</option>
+        {subcategories.map(subcategory => <option key={subcategory.name} value={subcategory}>{subcategory.name}</option>)}
+      </select>
+  /*   </div>
+  );
+}
+
+export default VideoList; */
