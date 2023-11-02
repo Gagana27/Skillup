@@ -164,12 +164,12 @@ const addComment = async (req, res) => {
     }
 }
 const getallcomments = async (req, res) => {
-    const { videos,userId } = req.params;
+    // const { videos,userId } = req.params;
 
     try {
-        console.log(userId,videos)
+        // console.log(userId,videos)
 
-        const comment = await Comment.find({  userId: userId,videos });
+        const comment = await Comment.find();
         res.json(comment);
     } catch (error) {
         console.error(error);

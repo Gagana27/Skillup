@@ -44,6 +44,35 @@ function VideoList(props) {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    async function fetchComments() {
+      try {
+        const response = await axios.get(`http://localhost:5000/comments`, {
+          params: {
+           
+            // userId: userId,
+            // videos: videoId,
+          },
+        });
+      
+        console.log("object",response)
+        setCommentLists(response.data);
+      } catch (error) {
+        console.error('Error fetching comments:', error);
+      }
+    }
+    
+    fetchComments();             
+  },[]);
+  console.log("comment",comment)
+
+  
+  
+
+  
+  
+  
+
   
   
 
@@ -146,13 +175,22 @@ function VideoList(props) {
               </li>
             ))}
           </div>{" "}
+          {comment && comment.map((comment)=>{
+                        
+                        return    <div key={comment._id}>
+                            <p>{comment.content} </p>
+                           <p> {comment.username}</p>
+                           {/* <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p> */}
+              
+                        </div>
+                          })}
         </div>
       </div>
       <div className="flex border rounded-lg shadow-md"></div>
     </div>
   </>
   );
-}
+                        }
 export default VideoList;
 
 /* import React, { useState, useEffect } from 'react';
