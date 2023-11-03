@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useNavigate } from "react-router";
 import { useAuthContext } from "../../hooks/UserAuthContext";
 
-
 const RazorPay = ({ amount, subcategory }) => {
 
     const [width, setWidth] = React.useState(window.raz);
@@ -46,7 +45,7 @@ const RazorPay = ({ amount, subcategory }) => {
                     };
                     const value = await axios.post("http://localhost:5000/success", { data })
                     console.log("ggggg", value.data)
-                    navigate("/subscription")
+                    navigate("/subscription",{state: value.data});
                 } catch (error) {
                     console.log(error)
                 }

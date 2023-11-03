@@ -17,10 +17,10 @@ function Subscription() {
   const [cart, setCart] = useState([]);
   const {user}=useAuthContext()
   const {dispatch,cartItems}=CartContextHook();
+  const [subscribe, setSubscribe] = useState([]);
 
   const location = useLocation();
-  const Data = location.state;
-
+  const Data = location.state.subscriptionVideos;
   console.log("demo", Data);
   console.log("demmmmmm", cart);
 
@@ -35,6 +35,13 @@ function Subscription() {
     fetchSubcategories();
    }
 
+   async function fetchPaidVideos()
+   {
+    const response=await axios.get("http://localhost:5000/getAllPaidVideos");
+    setSubscribe(response.data);
+    console.log(response.data)
+   }
+   fetchPaidVideos()
   }, [categoryId, subcategoryId,user]);
 
   return (
@@ -45,7 +52,7 @@ function Subscription() {
         justifyContent: "center",
 
       }}>
-        {cart?.map(cart => (
+        {subscribe?.map(cart => (
           <Col key={cart._id}>
             {/* <Link to={`/categories/${cart._id}/subcategories`}> */}
 

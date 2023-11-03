@@ -25,7 +25,6 @@ function SubcategoryList() {
 
   console.log("object")
 
-
   const AddtoCart = async (event, subCatData, userId) => {
     event.preventDefault();
     console.log("ffff", subCatData, userId)
@@ -40,7 +39,6 @@ function SubcategoryList() {
         categoryId: subCatData.category,
         subcategoryId: subCatData._id,
         price: subCatData.priceDetails
-
       }
     );
     console.log("demos", categoryResponse.data);

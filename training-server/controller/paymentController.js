@@ -50,4 +50,16 @@ const success = async (req, res) => {
     }
 }
 
-module.exports = { orders, success }
+const getAllPaidVideos=async (req,res)=>{
+   try {
+    const videos=await SubscriptionSchema.find()
+    res.status(200).json(videos)
+   } catch (error) {
+    if(error)
+    {
+        res.status(400).json(error.message)
+    }
+   }
+}
+
+module.exports = { orders, success,getAllPaidVideos }
