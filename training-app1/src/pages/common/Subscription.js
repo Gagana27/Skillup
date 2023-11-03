@@ -9,6 +9,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/esm/Container';
 import { useAuthContext } from '../../hooks/UserAuthContext';
 import { CartContextHook } from '../../hooks/CartContextHook';
+import { SubscribedContextHook } from '../../hooks/SubscribedContextHook';
 
 function Subscription() {
 
@@ -17,28 +18,19 @@ function Subscription() {
   const [cart, setCart] = useState([]);
   const {user}=useAuthContext()
   const {dispatch,cartItems}=CartContextHook();
+  const subscribedContext=SubscribedContextHook();
   const [subscribe, setSubscribe] = useState([]);
 
   const location = useLocation();
-  const Data = location.state.subscriptionVideos;
-  console.log("demo", Data);
-  console.log("demmmmmm", cart);
+  // const Data = location.state.subscriptionVideos;
 
   useEffect(() => {
-    if(user)
-   {
-    async function fetchSubcategories() {
-      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
-      setCart(response.data);
-      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
-    }
-    fetchSubcategories();
-   }
 
    async function fetchPaidVideos()
    {
     const response=await axios.get("http://localhost:5000/getAllPaidVideos");
     setSubscribe(response.data);
+    subscribedContext.dispatch({type:'GET_ALL_SUBSCRIBED_VIDEOS',payload:response.data})
     console.log(response.data)
    }
    fetchPaidVideos()
@@ -52,7 +44,7 @@ function Subscription() {
         justifyContent: "center",
 
       }}>
-        {subscribe?.map(cart => (
+        {subscribedContext.subScribedItems?.map(cart => (
           <Col key={cart._id}>
             {/* <Link to={`/categories/${cart._id}/subcategories`}> */}
 

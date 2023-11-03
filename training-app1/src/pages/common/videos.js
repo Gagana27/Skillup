@@ -13,6 +13,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { format} from 'date-fns'
 
 import { Avatar, List } from 'antd';
+import { CommentContextHook } from "../../hooks/CommentContextHook";
+
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -35,6 +37,8 @@ function VideoList(props) {
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewData, setReviewData] = useState([]);
   const [comment, setCommentLists] = useState();
+  const CommentUseHook=CommentContextHook();
+ 
 
 
 
@@ -47,6 +51,8 @@ function VideoList(props) {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+console.log("first",CommentUseHook.Comments)
+
 
   useEffect(() => {
     async function fetchComments() {
@@ -54,6 +60,7 @@ function VideoList(props) {
         const response = await axios.get(`http://localhost:5000/comments/${videoId}`);
       
         console.log("objectjjjj",response)
+        CommentUseHook.dispatch({type:'GET_ALL_COMMENTS',payload:response.data})
         setCommentLists(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);
@@ -62,7 +69,7 @@ function VideoList(props) {
     
     fetchComments();             
   },[videoId]);
-  console.log("comment",comment)
+ 
   useEffect(() => {
     async function fetchVideos() {
       const response = await axios.get(
@@ -160,7 +167,7 @@ function VideoList(props) {
               </li>
             ))}
           </div>{" "}
-          {comment &&  comment.map((comment)=>(
+          {CommentUseHook.Comments &&  CommentUseHook.Comments.map((comment)=>(
                         
                         <div key={comment._id}>
                         <p>{comment.content} </p>
