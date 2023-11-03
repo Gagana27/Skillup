@@ -28,6 +28,11 @@ import MyLearn from "./common/Mylearn";
 import Subscription from "./common/Subscription";
 import RazorPay from "./common/RazorPay";
 import Rating from "./common/AddReview";
+import AdminUser_Signup from "./common/AdminUser_signup";
+import AdminUser_signin from "./common/AdminUser_Signin";
+import { AdminDashBoard } from "./common/AdminDashBoard";
+import UserDetails from "./common/UserData";
+
 
 export default function RoutePage() {
   /*  const getdata=(name)=>{
@@ -78,6 +83,14 @@ export default function RoutePage() {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/claim" element={<Claim />} />
             <Route path="/review" element={<Rating />} />
+
+
+
+            <Route path="/adminuser_signup" element={<AdminUser_Signup />} />
+            <Route path="/adminuser_signin" element={<AdminUser_signin />} />
+            <Route path="/admindashboard" element={<AdminDashBoard/>} />
+            <Route path="/userdata" element={< UserDetails/>} />
+          
           </Routes>
           <Footer />
         </div>
