@@ -72,7 +72,7 @@ const {dispatch,Comments}=CommentContextHook();
 
           </div>
         ))}
-      <form onSubmit={handleonSubmit}>
+      <form >
         <div className="form-outline">
           <textarea placeholder="Write a Comment....." className="form-control" id="textAreaExample" rows="4" onChange={handleChange}
             value={comment}></textarea>
