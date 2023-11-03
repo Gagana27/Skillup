@@ -8,7 +8,8 @@ import Container from 'react-bootstrap/Container';
 import AddCartButton from './AddToCart';
 import Button from 'react-bootstrap/Button';
 import { useAuthContext } from "../../hooks/UserAuthContext";
-import { CartContextHook } from "../../hooks/CartContextHook"
+import { CartContextHook } from "../../hooks/CartContextHook";
+import { SubscribedContextHook } from '../../hooks/SubscribedContextHook';
 import RazorPay from './RazorPay';
 
 function SubcategoryList() {
@@ -20,9 +21,10 @@ function SubcategoryList() {
   const [buttonClicked, setButtonClicked] = useState(false);
 
   const navigate = useNavigate()
-  const { dispatch, cartItems } = CartContextHook()
+  const { dispatch, cartItems } = CartContextHook();
+  const {dispatch:subScribedDispatch,subScribedItems}=SubscribedContextHook()
 
-  console.log("object")
+
 
   const AddtoCart = async (event, subCatData, userId) => {
     event.preventDefault();
@@ -48,20 +50,36 @@ function SubcategoryList() {
     })
   }
 
+  const buyNowValidation = (id) => {
+    return  subScribedItems && subScribedItems.some((items) => {
+      return items.subcategory === id
+    })
+  }
+
 
   useEffect(() => {
     async function fetchSubcategories() {
       const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
       setSubcategories(response.data);
     }
+fetchSubcategories()
 
-    async function fetchCartSubcategories() {
-      const response = await axios.get("http://localhost:5000/cart");
-      dispatch({ type: 'GET_ALL_CARTS', payload: response.data })
+    if(user)
+   {
+    async function fetchCartItems() {
+      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
+      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
     }
-    fetchSubcategories();
+    fetchCartItems();
+   }
 
-  }, [categoryId, user]);
+    async function fetchSubscribedVideos() {
+      const response = await axios.get("http://localhost:5000/getAllPaidVideos");
+      subScribedDispatch({ type: 'GET_ALL_SUBSCRIBED_VIDEOS', payload: response.data })
+    }
+    fetchSubscribedVideos();
+    
+  }, [categoryId,user]);
 
   return (
     <Container>
@@ -69,6 +87,7 @@ function SubcategoryList() {
         {
           subcategories.map(subcategory => {
             const hide = buttonValidation(subcategory._id)
+            const sunScribeButtonHide=buyNowValidation(subcategory._id)
             return (
               <Col key={subcategory._id}>
                 <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
@@ -92,11 +111,18 @@ function SubcategoryList() {
                       </div>
 
                       <div className="flex justify-between items-center mt-2">
-                        <RazorPay
+                        {/* <Button
+                        className="w-1/1"
+                        variant="primary"
+                        style={{ background: "orange" }}
+                        active>
+                        Buy Now
+                      </Button> */}
+                        {!sunScribeButtonHide && <RazorPay
                           amount={subcategory.priceDetails}
                           subcategory={subcategory}
-                        />
-                        {!hide && <Button
+                        />}
+                        {!hide && !sunScribeButtonHide && <Button
                           className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
                           variant="warning"
                           active
