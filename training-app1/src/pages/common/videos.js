@@ -10,7 +10,6 @@ import StarRating from "./AddReview";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
 import ListGroup from "react-bootstrap/ListGroup";
-import formatDistanceToNow from "date-fns/formatDistanceToNow"
 
 import { Avatar, List } from "antd";
 import { CommentContextHook } from "../../hooks/CommentContextHook";
