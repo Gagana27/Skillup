@@ -14,7 +14,9 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { Avatar, List } from "antd";
 import { CommentContextHook } from "../../hooks/CommentContextHook";
 import img from '../../assets/profilepic.svg';
-import formatDistanceToNow from "date-fns/formatDistanceToNow"
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import EditIcon from '../../assets/editicon.svg';
+import DeleteIcon from '../../assets/deleteicon.svg';
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -175,22 +177,28 @@ function VideoList(props) {
             </div>{" "}
             {CommentUseHook.Comments &&
               CommentUseHook.Comments.map((comment) => (
-                <div key={comment._id} style={{height:"200px",marginTop:"20px"}}>
-                  <div style={{display:"flex"}}>
-                  <div style={{height:"50px",width:"50px"}}><img src={img} alt="image"/></div>
+                <div key={comment._id} style={{ height: "200px", marginTop: "20px" }}>
+                  <div style={{ display: "flex" }}>
+                    <div style={{ height: "50px", width: "50px" }}><img src={img} alt="image" /></div>
 
-                  <div>
-                  <p style={{marginLeft:"20px",marginTop:"-4px",}}> {comment.username}</p>
-                  <p><Rating/></p>
-                  </div>
+                    <div>
+                      <p style={{ marginLeft: "20px", marginTop: "-4px", }}> {comment.username}</p>
+                      <p><Rating /></p>
+                    </div>
 
-                  <div style={{marginLeft:"550px"}}>  
-                  <p>{formatDistanceToNow(new Date(comment.createdAt),{addSuffix:true})}</p>
+                    <div style={{ marginLeft: "550px" }}>
+                        <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
+                    </div>
+
+                    <div style={{ marginLeft: "100px" }}>
+                      <img src={EditIcon}></img>
+                    </div>
+
+                    <div style={{ marginLeft: "20px" }}>
+                      <img src={DeleteIcon}></img>
+                    </div>
                   </div>
-                  </div>
-                  <p style={{marginTop:"10px"}}>{comment.content} </p>
-                
-          
+                  <p style={{ marginTop: "10px" }}>{comment.content} </p>
                 </div>
               ))}
           </div>
@@ -200,55 +208,5 @@ function VideoList(props) {
     </>
   );
 }
+
 export default VideoList;
-
-/* import React, { useState, useEffect } from 'react';
-
-function VideoList() {
-  const [videos, setVideos] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedSubcategory, setSelectedSubcategory] = useState('');
-
-  useEffect(() => {
-    fetch('http://localhost:5000/subcategories/${subcategoryId}/videos')
-      .then(response => response.json())
-      .then(data => {
-        setVideos(data);
-        setCategories([...new Set(categories.map(video => video.category))]);
-      })
-      .catch(error => console.error(error));
-  });
-
-  const handleCategoryChange = event => {
-    setSelectedCategory(event.target.value);
-    setSelectedSubcategory('');
-  };
-
-  const handleSubcategoryChange = event => {
-    setSelectedSubcategory(event.target.value);
-    const filteredVideos = videos.filteredVideos(video => 
-      video.category === selectedCategory && video.subcategory === selectedSubcategory
-    );
-    const selectedVideo = filteredVideos[0];
-    // update video player with selectedVideo URL
-setVideos(selectedVideo);
-  };
-
-  const subcategories = [...new Set(videos.filteredVideos(video => video.category === selectedCategory).map(video => video.subcategory))];
-
-  return (
-    <div>
-      <select value={selectedCategory} onChange={handleCategoryChange}>
-        <option value="">Select a category</option>
-        {categories.map(category => <option key={category.name} value={category}>{category.name}</option>)}
-      </select>
-      <select value={selectedSubcategory} onChange={handleSubcategoryChange}>
-        <option value="">Select a subcategory</option>
-        {subcategories.map(subcategory => <option key={subcategory.name} value={subcategory}>{subcategory.name}</option>)}
-      </select>
-  /*   </div>
-  );
-}
-
-export default VideoList; */
