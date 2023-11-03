@@ -89,7 +89,7 @@ const handleResendOtp=async ()=>{
                                     setOTP(e.target.value);
                                 }}
                             />
-                            <button className="otpbtn bg-green-700 hover:bg-red-700 text-white font-bold py-2 px-8 mb-2 ml-5 rounded-lg" onClick={handleOtpSubmit}>Submit</button>
+                            <button className="otpbtn bg-bright-orange hover:bg-green-500 text-white font-bold py-2 px-8 mb-2 ml-5 rounded-lg" onClick={handleOtpSubmit}>Submit</button>
 
 
                             <br />

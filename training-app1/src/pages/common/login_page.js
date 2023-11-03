@@ -5,8 +5,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert } from 'antd';
 import { Link } from 'react-router-dom';
+import ErrorHandling from './Error';
 
-function LoginPage() {
+function LoginPage(props) {
   const { login, error, isLoading } = useLogin()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -111,13 +112,14 @@ function LoginPage() {
                   </div>
                   <div>
                     {/* <Button disabled={isLoading} type="primary">Login</Button> */}
-                    <button className="w-full flex justify-center  mt-3 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bright-orange hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    <button className="w-full flex justify-center  mt-3 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bright-orange hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       disabled={isLoading}
                       type="primary">
                       Login
                     </button>
                     {error &&
                       <div>
+                        {/* <ErrorHandling errorMessage="Dead" dialogMessage="OhNO"/> */}
                         <Alert
                           message={error}
                           showIcon
