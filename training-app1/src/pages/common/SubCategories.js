@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 import AddCartButton from './AddToCart';
 import Button from 'react-bootstrap/Button';
 import { useAuthContext } from "../../hooks/UserAuthContext";
-import {CartContextHook} from "../../hooks/CartContextHook"
+import { CartContextHook } from "../../hooks/CartContextHook"
 import RazorPay from './RazorPay';
 
 
@@ -19,11 +19,11 @@ function SubcategoryList() {
   const { user } = useAuthContext();
   const [buttonClicked, setButtonClicked] = useState(false);
 
-  const navigate=useNavigate()
-  const {dispatch,cartItems}=CartContextHook()
- 
+  const navigate = useNavigate()
+  const { dispatch, cartItems } = CartContextHook()
+
   console.log("object")
-  
+
 
   const AddtoCart = async (event, subCatData, userId) => {
     event.preventDefault();
@@ -46,8 +46,8 @@ function SubcategoryList() {
     navigate("/my-cart")
   }
 
-  const buttonValidation=(id)=>{
-  return cartItems.some((items)=>{
+  const buttonValidation = (id) => {
+    return cartItems.some((items) => {
       return items.subcategory === id
     })
   }
@@ -58,10 +58,10 @@ function SubcategoryList() {
       const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
       setSubcategories(response.data);
     }
-    
+
     async function fetchCartSubcategories() {
       const response = await axios.get("http://localhost:5000/cart");
-      dispatch({type:'GET_ALL_CARTS',payload:response.data})
+      dispatch({ type: 'GET_ALL_CARTS', payload: response.data })
     }
     fetchSubcategories();
     fetchCartSubcategories();
@@ -72,58 +72,59 @@ function SubcategoryList() {
       <Row xs={1} md={4} className="g-4">
         {
           subcategories.map(subcategory => {
-            const hide=buttonValidation(subcategory._id)
+            const hide = buttonValidation(subcategory._id)
             return (
-            <Col key={subcategory._id}>
-              <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
-                <Card
-                  className=" subcategory bg-secondary border-primary border-4 m-4 relative">
-                  <Card.Img
-                    variant="top"
-                    // className="w-full h-40 object-cover"
-                    style={{ height: '150px', width: '100%' }}
-                    src={subcategory?.image}
-                  />
+              <Col key={subcategory._id}>
+                <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
+                  <Card
+                    className=" subcategory bg-secondary border-primary border-4 m-4 relative">
+                    <Card.Img
+                      variant="top"
+                      // className="w-full h-40 object-cover"
+                      style={{ height: '150px', width: '100%' }}
+                      src={subcategory?.image}
+                    />
 
-                  <Card.Body
-                    className="flex flex-col justify-between"
-                    style={{ minHeight: '2rem' }}
-                  >
-                    <div>
-                      <Card.Text className="text-white ">
-                        {subcategory.name} - Rs. {subcategory.priceDetails}
-                      </Card.Text>
-                    </div>
+                    <Card.Body
+                      className="flex flex-col justify-between"
+                      style={{ minHeight: '2rem' }}
+                    >
+                      <div>
+                        <Card.Text className="text-white ">
+                          {subcategory.name} - Rs. {subcategory.priceDetails}
+                        </Card.Text>
+                      </div>
 
-                    <div className="flex justify-between items-center mt-2">
-                      {/* <Button
+                      <div className="flex justify-between items-center mt-2">
+                        {/* <Button
                         className="w-1/1"
                         variant="primary"
                         style={{ background: "orange" }}
                         active>
                         Buy Now
                       </Button> */}
-                      <RazorPay
-                        amount={subcategory.priceDetails}
-                        subcategory={subcategory}
-                      />
-                      {!hide && <Button
-    className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
-    variant="primary"
-    active
-    onClick={(event) => {
-      AddtoCart(event, subcategory, user.loginUser._id);
-    }}
-  >
-  AddtoCart
-  </Button>}
-                      
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </Col>
-          )})}
+                        <RazorPay
+                          amount={subcategory.priceDetails}
+                          subcategory={subcategory}
+                        />
+                        {!hide && <Button
+                          className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
+                          variant="primary"
+                          active
+                          onClick={(event) => {
+                            AddtoCart(event, subcategory, user.loginUser._id);
+                          }}
+                        >
+                          AddtoCart
+                        </Button>}
+
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Link>
+              </Col>
+            )
+          })}
         {subcategories.map(subcategory => (
           <Col key={subcategory._id}>
             <Link to={`/subcategories/${subcategory._id}/videos`}>
