@@ -26,8 +26,8 @@ const {dispatch,Comments}=CommentContextHook();
   console.log("Second",Comments)
   const onSubmit = async (e, userId,videoId,firstname,rating) => {
     e.preventDefault();
-    const currentDateTime = new Date(); // Get the current date and time
-    const formattedDateTime = format(currentDateTime, "yyyy-MM-dd HH:mm:ss"); // Format it as per your requirement
+    const currentDateTime = new Date(); 
+    const formattedDateTime = format(currentDateTime, "yyyy-MM-dd HH:mm:ss"); 
     console.log("rrr", userId, comment, videoId, firstname, rating)
 
 

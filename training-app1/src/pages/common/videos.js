@@ -10,8 +10,7 @@ import StarRating from "./AddReview";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
 import ListGroup from 'react-bootstrap/ListGroup';
-import { format} from 'date-fns'
-
+import formatDistanceToNow from "date-fns/formatDistanceToNow"
 import { Avatar, List } from 'antd';
 import { CommentContextHook } from "../../hooks/CommentContextHook";
 
@@ -172,7 +171,12 @@ console.log("first",CommentUseHook.Comments)
                         <div key={comment._id}>
                         <p>{comment.content} </p>
                        <p> {comment.username}</p>
-                       <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p>
+                       <p>{formatDistanceToNow(new Date(comment.createdAt),{addSuffix:true})}</p>
+
+
+
+
+
           
                     </div>
 
