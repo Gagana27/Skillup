@@ -10,7 +10,7 @@ import StarRating from "./AddReview";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
 import ListGroup from "react-bootstrap/ListGroup";
-import { format } from "date-fns";
+import formatDistanceToNow from "date-fns/formatDistanceToNow"
 
 import { Avatar, List } from "antd";
 import { CommentContextHook } from "../../hooks/CommentContextHook";
@@ -186,8 +186,14 @@ function VideoList(props) {
 
                   <div style={{marginLeft:"550px"}}>  
                     <p>
-                    {format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}
-                  </p>
+                    <p>{formatDistanceToNow(new Date(comment.createdAt),{addSuffix:true})}</p>
+
+
+
+
+
+
+</p>
                   </div>
                   </div>
                   <p style={{marginTop:"10px"}}>{comment.content} </p>
