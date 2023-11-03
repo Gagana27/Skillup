@@ -12,6 +12,8 @@ export const AdminDashBoard = () => {
 
   const [activeNavItem, setActiveNavItem] = useState('Home');
 
+  
+
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
@@ -227,14 +229,14 @@ export const AdminDashBoard = () => {
     );
   };
 
+  
   return (
     <div style={{ height: "500px" }}>
       <Headers />
       <SideNavBar />
-      <h1
-        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70vh' ,
-        marginLeft:"150px",marginTop:"-570px"}}
-      >
+      <h1 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70vh' ,
+        marginLeft:"150px",marginTop:"-570px"}}>
+        {!showDashboard && !showOrder && !showProducts && !showCustomer && !showIntegrations && <p>Welcome To AdminDashBoard</p>}
         {showDashboard && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Admin DashBoard</h2>}
         {showOrder &&<h2 style={{fontSize:"2.5rem",color:"red"}}>Order</h2> }
         {showProducts && <h2 style={{fontSize:"2.5rem",color:"green"}}>Products</h2>}
