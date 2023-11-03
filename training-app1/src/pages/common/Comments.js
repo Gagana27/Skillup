@@ -3,14 +3,12 @@ import axios from "axios";
 import {useParams} from "react-router-dom"
 import { useAuthContext } from "../../hooks/UserAuthContext";
 import { format} from 'date-fns'
-import { Card } from "antd";
 
 
 
 
 function Comments({ CommentLists,videoId,reviewData }) {
   const [comment, setComment] = useState("");
-  const[comments,setCommentLists]=useState("");
 
   const { user } = useAuthContext();
   const userId = localStorage.getItem('user');

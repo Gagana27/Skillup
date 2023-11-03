@@ -7,12 +7,16 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useParams, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/esm/Container';
+import { useAuthContext } from '../../hooks/UserAuthContext';
+import { CartContextHook } from '../../hooks/CartContextHook';
 
 function Subscription() {
 
   const { categoryId, subcategoryId } = useParams();
   // const [subcategories, setSubcategories] = useState([]);
   const [cart, setCart] = useState([]);
+  const {user}=useAuthContext()
+  const {dispatch,cartItems}=CartContextHook();
 
   const location = useLocation();
   const Data = location.state;
@@ -21,14 +25,17 @@ function Subscription() {
   console.log("demmmmmm", cart);
 
   useEffect(() => {
+    if(user)
+   {
     async function fetchSubcategories() {
-      const response = await axios.get("http://localhost:5000/cart");
+      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
       setCart(response.data);
-      console.log("state", response.data)
+      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
     }
     fetchSubcategories();
+   }
 
-  }, [categoryId, subcategoryId]);
+  }, [categoryId, subcategoryId,user]);
 
   return (
     <Container>

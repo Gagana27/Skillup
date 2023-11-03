@@ -102,7 +102,6 @@ const postCarts = async (req, res) => {
     try {
         const { courseName, price, description, userId, image, subcategoryId, categoryId } = req.body;
 
-        console.log("dummy", { courseName, price, description, userId, image, subcategoryId, categoryId })
 
         const cart = await Cart.create({ courseName, price, description, userId, image, subcategory: subcategoryId, category: categoryId })
 
@@ -117,8 +116,9 @@ const postCarts = async (req, res) => {
 };
 
 const getallcart = async (req, res) => {
+    const {userId}=req.params
     try {
-        const cart = await Cart.find();
+        const cart = await Cart.find({userId:userId});
         res.json(cart);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -128,9 +128,8 @@ const getallcart = async (req, res) => {
 const deletecartItem = async (req, res) => {
     const { userId, cartId } = req.params
     try {
-        console.log(userId, cartId)
         const deletedItem = await Cart.findOneAndDelete({ userId: userId, _id: cartId })
-        console.log(deletedItem)
+        
         if (deletedItem) {
             res.status(200).json({
                 status: "Cart Deleted Successfully",
@@ -147,13 +146,9 @@ const deletecartItem = async (req, res) => {
 const addComment = async (req, res) => {
     try {
       const { content,userId ,videos,username, reviewRating} = req.body;
-      console.log("dy",{ content,userId,videos,username,reviewRating})
+     
 
-    //   const newComment = new Comment({ content,userId,videos:videoId});
-    //   const newComment = await Comment.create({ content,userId,videos,reviewRating})
-
-        // //   const newComment = new Comment({ content,userId,videos:videoId});
-        // const newComment = await Comment.create({ content, userId, videos: videoId })
+  
 
         const newComment = await Comment.create({ content, userId, videos, username,reviewRating })
         res.status(200).json(newComment);
@@ -163,17 +158,15 @@ const addComment = async (req, res) => {
     }
 }
 const getallcomments = async (req, res) => {
-    // const { videos,userId } = req.params;
-
-    try {
-        // console.log(userId,videos)
-
-        const comment = await Comment.find();
-        res.json(comment);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-      }
+    const { videos } = req.params;
+console.log(videos)
+  try {
+    const comments = await Comment.find({videos:videos});
+    res.json(comments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
   
