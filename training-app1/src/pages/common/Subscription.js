@@ -66,26 +66,6 @@ function Subscription() {
             {/* </Link> */}
           </Col>
         ))}
-
-        {/* {Array.from({ length: 4 }).map((_, idx) => (
-        <Col key={idx} style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-
-        }}>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-               {coursename}
-              </Card.Text>
-            </Card.Body>
-            <RazorPay />
-          </Card>
-        </Col>
-      ))} */}
       </Row>
     </Container>
   );
