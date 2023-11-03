@@ -23,7 +23,7 @@ export default function HeroSection() {
                          in order to explore new pathways.                      </p>
                       <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                         <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-                          <Link to="/freetrial" className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8">
+                          <Link to="/freetrial" className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:bg-green-500 bg-bright-orange sm:px-8">
                             Free Trial
                           </Link>
                         </div>
