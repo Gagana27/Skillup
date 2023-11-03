@@ -59,7 +59,7 @@ export default function Footer(props) {
                     </Link>
                   </li>
 
-                  <li>
+                  {/* <li>
                     <Link to="/" className="text-base text-gray-300 hover:text-white">
                       Commerce
                     </Link>
@@ -69,7 +69,7 @@ export default function Footer(props) {
                     <Link to="/" className="text-base text-gray-300 hover:text-white">
                       Insights
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
@@ -83,13 +83,13 @@ export default function Footer(props) {
                     </Link>
                   </li>
 
-                  <li>
+                  {/* <li>
                     <Link to="/" className="text-base text-gray-300 hover:text-white">
                       Documentation
                     </Link>
-                  </li>
+                  </li> */}
 
-                  <li>
+                  {/* <li>
                     <Link to="/" className="text-base text-gray-300 hover:text-white">
                       Guides
                     </Link>
@@ -99,7 +99,7 @@ export default function Footer(props) {
                     <Link to="/" className="text-base text-gray-300 hover:text-white">
                       API Status
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -121,7 +121,7 @@ export default function Footer(props) {
                     </Link>
                   </li>
 
-                  <li>
+                  {/* <li>
                     <Link to="/" className="text-base text-gray-300 hover:text-white">
                       Jobs
                     </Link>
@@ -137,7 +137,7 @@ export default function Footer(props) {
                     <Link to="/" className="text-base text-gray-300 hover:text-white">
                       Partners
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
@@ -145,18 +145,6 @@ export default function Footer(props) {
                   Legal
                 </h3>
                 <ul className="mt-4 space-y-4">
-                  <li>
-                    <Link to="/claim" className="text-base text-gray-300 hover:text-white">
-                      Claim
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link to="/" className="text-base text-gray-300 hover:text-white">
-                      Privacy
-                    </Link>
-                  </li>
-
                   <li>
                     <Link to="/" className="text-base text-gray-300 hover:text-white">
                       Terms
@@ -166,6 +154,7 @@ export default function Footer(props) {
               </div>
             </div>
           </div>
+
           <div className="mt-8 xl:mt-0">
             <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
               Subscribe to our newsletter
@@ -194,6 +183,7 @@ export default function Footer(props) {
             </form>
           </div>
         </div>
+
         <div className="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">
             <Link to="/" className="text-gray-400 hover:text-gray-300">
@@ -231,6 +221,7 @@ export default function Footer(props) {
               </svg>
             </Link>
           </div>
+          
           <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
             &copy; 2023 Training, Inc. All rights reserved.
           </p>

@@ -108,13 +108,13 @@ function SubcategoryList() {
                         />
                         {!hide && <Button
                           className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
-                          variant="primary"
+                          variant="warning"
                           active
                           onClick={(event) => {
                             AddtoCart(event, subcategory, user.loginUser._id);
                           }}
                         >
-                          AddtoCart
+                          Add To Cart
                         </Button>}
 
                       </div>
