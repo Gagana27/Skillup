@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link, useNavigate,useLocation } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -12,13 +12,12 @@ import { CartContextHook } from "../../hooks/CartContextHook";
 import { SubscribedContextHook } from '../../hooks/SubscribedContextHook';
 import RazorPay from './RazorPay';
 
-
 function SubcategoryList() {
   const { categoryId } = useParams();
   const [subcategories, setSubcategories] = useState([]);
   const userId = localStorage.getItem('user');
   const { user } = useAuthContext();
-  const value=useLocation()
+  const value = useLocation()
   const [buttonClicked, setButtonClicked] = useState(false);
 
   const navigate = useNavigate()
@@ -46,7 +45,7 @@ function SubcategoryList() {
   }
 
   const buttonValidation = (id) => {
-    return  cartItems && cartItems.some((items) => {
+    return cartItems && cartItems.some((items) => {
       return items.subcategory === id
     })
   }
@@ -125,13 +124,13 @@ fetchSubcategories()
                         />}
                         {!hide && !sunScribeButtonHide && <Button
                           className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
-                          variant="primary"
+                          variant="warning"
                           active
                           onClick={(event) => {
                             AddtoCart(event, subcategory, user.loginUser._id);
                           }}
                         >
-                          AddtoCart
+                          Add To Cart
                         </Button>}
 
                       </div>
@@ -144,7 +143,6 @@ fetchSubcategories()
         {subcategories.map(subcategory => (
           <Col key={subcategory._id}>
             <Link to={`/subcategories/${subcategory._id}/videos`}>
-
             </Link>
           </Col>
         ))}
