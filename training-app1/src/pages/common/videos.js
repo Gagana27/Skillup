@@ -14,7 +14,8 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow"
 
 import { Avatar, List } from "antd";
 import { CommentContextHook } from "../../hooks/CommentContextHook";
-import img from '../../assets/profilepic.svg'
+import img from '../../assets/profilepic.svg';
+import formatDistanceToNow from "date-fns/formatDistanceToNow"
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -185,15 +186,7 @@ function VideoList(props) {
                   </div>
 
                   <div style={{marginLeft:"550px"}}>  
-                    <p>
-                    <p>{formatDistanceToNow(new Date(comment.createdAt),{addSuffix:true})}</p>
-
-
-
-
-
-
-</p>
+                  <p>{formatDistanceToNow(new Date(comment.createdAt),{addSuffix:true})}</p>
                   </div>
                   </div>
                   <p style={{marginTop:"10px"}}>{comment.content} </p>
