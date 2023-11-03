@@ -101,7 +101,7 @@ export default function AdminUser_signin() {
             <Link to="/adminuser_signup">Register here</Link>
           </div>
           <div className="d-grid">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-secondry">
               Submit
             </button>
           </div>

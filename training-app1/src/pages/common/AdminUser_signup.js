@@ -98,7 +98,7 @@ return (
           <div className="mb-3">
             <label>Secret Key</label>
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="Secret Key"
               onChange={(e) => setSecretKey(e.target.value)}
