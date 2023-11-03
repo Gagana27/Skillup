@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link, useNavigate,useLocation } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -11,13 +11,12 @@ import { useAuthContext } from "../../hooks/UserAuthContext";
 import { CartContextHook } from "../../hooks/CartContextHook"
 import RazorPay from './RazorPay';
 
-
 function SubcategoryList() {
   const { categoryId } = useParams();
   const [subcategories, setSubcategories] = useState([]);
   const userId = localStorage.getItem('user');
   const { user } = useAuthContext();
-  const value=useLocation()
+  const value = useLocation()
   const [buttonClicked, setButtonClicked] = useState(false);
 
   const navigate = useNavigate()
@@ -27,7 +26,6 @@ function SubcategoryList() {
 
   const AddtoCart = async (event, subCatData, userId) => {
     event.preventDefault();
-    console.log("ffff", subCatData, userId)
     // navigate(`/subscription/${subCatData._id}`)
     const categoryResponse = await axios.post(
       "http://localhost:5000/cart",
@@ -41,12 +39,11 @@ function SubcategoryList() {
         price: subCatData.priceDetails
       }
     );
-    console.log("demos", categoryResponse.data);
     navigate("/my-cart")
   }
 
   const buttonValidation = (id) => {
-    return  cartItems && cartItems.some((items) => {
+    return cartItems && cartItems.some((items) => {
       return items.subcategory === id
     })
   }
@@ -63,8 +60,8 @@ function SubcategoryList() {
       dispatch({ type: 'GET_ALL_CARTS', payload: response.data })
     }
     fetchSubcategories();
-    
-  }, [categoryId,user]);
+
+  }, [categoryId, user]);
 
   return (
     <Container>
@@ -95,13 +92,6 @@ function SubcategoryList() {
                       </div>
 
                       <div className="flex justify-between items-center mt-2">
-                        {/* <Button
-                        className="w-1/1"
-                        variant="primary"
-                        style={{ background: "orange" }}
-                        active>
-                        Buy Now
-                      </Button> */}
                         <RazorPay
                           amount={subcategory.priceDetails}
                           subcategory={subcategory}
@@ -127,7 +117,6 @@ function SubcategoryList() {
         {subcategories.map(subcategory => (
           <Col key={subcategory._id}>
             <Link to={`/subcategories/${subcategory._id}/videos`}>
-
             </Link>
           </Col>
         ))}
