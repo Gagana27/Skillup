@@ -42,7 +42,7 @@ function MyCart() {
             <Col key={cart._id} className="mb-4">
               <Card
                 className="bg-secondary border-primary border-4"
-                border="warning"
+                border="blue"
                 style={{ minWidth: '18rem', maxWidth: '24rem', position: 'relative' }}
               >
                 <Card.Img
