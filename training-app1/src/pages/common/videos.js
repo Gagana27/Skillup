@@ -188,11 +188,15 @@ function VideoList(props) {
                     </div>
 
                     <div style={{ marginLeft: "550px" }}>
-                      <span>
                         <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
-                        <p><img src={EditIcon}></img></p>
-                        <p><img src={DeleteIcon}></img></p>
-                      </span>
+                    </div>
+
+                    <div style={{ marginLeft: "100px" }}>
+                      <img src={EditIcon}></img>
+                    </div>
+
+                    <div style={{ marginLeft: "20px" }}>
+                      <img src={DeleteIcon}></img>
                     </div>
                   </div>
                   <p style={{ marginTop: "10px" }}>{comment.content} </p>
