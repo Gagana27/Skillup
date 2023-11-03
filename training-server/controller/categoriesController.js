@@ -158,17 +158,15 @@ const addComment = async (req, res) => {
     }
 }
 const getallcomments = async (req, res) => {
-    // const { videos,userId } = req.params;
-
-    try {
-        // console.log(userId,videos)
-
-        const comment = await Comment.find();
-        res.json(comment);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-      }
+    const { videos } = req.params;
+console.log(videos)
+  try {
+    const comments = await Comment.find({videos:videos});
+    res.json(comments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
   

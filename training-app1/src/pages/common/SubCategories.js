@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate,useLocation } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -17,6 +17,7 @@ function SubcategoryList() {
   const [subcategories, setSubcategories] = useState([]);
   const userId = localStorage.getItem('user');
   const { user } = useAuthContext();
+  const value=useLocation()
   const [buttonClicked, setButtonClicked] = useState(false);
 
   const navigate = useNavigate()
