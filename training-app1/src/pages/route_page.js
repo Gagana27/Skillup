@@ -37,9 +37,6 @@ import Comments from "./common/Comments";
 import ErrorHandling from "./common/Error";
 
 export default function RoutePage() {
-  /*  const getdata=(name)=>{
-     console.log("from route",name)
-   } */
   return (
     <Router>
       <div className="min-h-screen">
@@ -51,24 +48,15 @@ export default function RoutePage() {
             <Route path="/signUp" element={<SignUpPage />} />
             <Route path="/homepage" element={<HomePage />} />
             <Route path="/video" element={<VideoPlayerSample />} />
-            {/* <VideoCoursePage/> */}
-            {/* <VideoPlayerSampleApp/> */}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/carees" element={<AboutPage />} />
             <Route path="/contactus" element={<ContactPage />} />
             <Route path="/category" element={<CategoryList />} />
-            <Route
-              path="/categories/:categoryId/subcategories"
-              element={<SubcategoryList />}
-            />
-            {/* <Route  path="/videos/:videoId/subcategories" element={<VideoList/>} /> */}
+            <Route path="/categories/:categoryId/subcategories" element={<SubcategoryList />}/>
             <Route path="/freetrial" element={<FreeTrail />} />
             <Route path="/Addcategories" element={<AddCategory />} />
             <Route path="/newvideo" element={<Addvideo />} />
-            <Route
-              path="/subcategories/:subcategoryId/videos"
-              element={<VideoList />}
-            />
+            <Route path="/subcategories/:subcategoryId/videos" element={<VideoList />}/>
             <Route path="/forgotPassword" element={<ForgotPassword />} />
             <Route path="/otp" element={<OTPPage />} />
             <Route path="/resetpassword" element={<ConfirmPassword />} />
@@ -85,16 +73,12 @@ export default function RoutePage() {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/claim" element={<Claim />} />
             <Route path="/review" element={<Rating />} />
-
-
-
             <Route path="/adminuser_signup" element={<AdminUser_Signup />} />
             <Route path="/adminuser_signin" element={<AdminUser_signin />} />
-            <Route path="/admindashboard" element={<AdminDashBoard/>} />
-            <Route path="/userdata" element={< UserDetails/>} />
-          
-            <Route path="/comments" element={<Comments/>}/>
-            <Route path="/errorPage" element={<ErrorHandling/>}/>
+            <Route path="/admindashboard" element={<AdminDashBoard />} />
+            <Route path="/userdata" element={< UserDetails />} />
+            <Route path="/comments" element={<Comments />} />
+            <Route path="/errorPage" element={<ErrorHandling />} />
           </Routes>
           <Footer />
         </div>

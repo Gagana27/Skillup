@@ -61,7 +61,7 @@ const ForgotPassword = () => {
               </div>
               <br />
               <div className="flex justify-center items-center">
-                <button className="bg-green-700 hover:bg-red-700 text-white font-bold py-2 px-4 mb-2 rounded-lg">
+                <button className="bg-bright-orange hover:bg-green-500 text-white font-bold py-2 px-4 mb-2 rounded-lg">
                   Click Me
                 </button>
               </div>

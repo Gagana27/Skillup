@@ -58,7 +58,7 @@ const handleConfirmPassword = async (e) => {
       />
     </div>
     <div class="mb-6 text-center">
-      <button class="bg-green-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+      <button class="bg-bright-orange hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
       onClick={handleConfirmPassword}
       type="submit">
         ConfirmPassword

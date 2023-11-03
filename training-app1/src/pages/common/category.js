@@ -33,7 +33,7 @@ function CategoryList() {
                 <Link to={`/categories/${category._id}/subcategories`} state={category}>
                   <Card
                     className="bg-secondary border-primary border-4"
-                    border="warning"
+                    border="blue"
                     style={{ width: '20rem', height: '12rem' }}>
                     <Card.Img
                       variant="top"
