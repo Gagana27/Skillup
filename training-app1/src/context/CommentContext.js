@@ -7,7 +7,7 @@ export const commentReducer = (state, action) => {
         case 'GET_ALL_COMMENTS':
             return { Comments: action.payload }
         case 'ADD_COMMENT':
-            return { Comments: null }
+            return { Comments:[action.payload,...state.Comments] }
         case 'DELETE_COMMENT':
             return { Comments:state.Comments.filter((value)=>(value._id !== action.payload.deletedItem._id)) }    
         default:
@@ -24,9 +24,9 @@ export const CommentContextProvider = ({ children }) => {
     console.log('CommentContext state:', state)
 
     return (
-        <CommentContextProvider.Provider value={{ ...state, dispatch }}>
+        <CommentContext.Provider value={{ ...state, dispatch }}>
             {children}
-        </CommentContextProvider.Provider>
+        </CommentContext.Provider>
     )
 
 }

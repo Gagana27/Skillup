@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom"
 import { useAuthContext } from "../../hooks/UserAuthContext";
-import { format } from 'date-fns'
+import { format} from 'date-fns'
+import { CommentContextHook } from "../../hooks/CommentContextHook";
+
 
 
 
@@ -11,16 +13,18 @@ function Comments({ CommentLists, videoId, reviewData }) {
   const [comment, setComment] = useState("");
 
   const { user } = useAuthContext();
+const {dispatch,Comments}=CommentContextHook();
   const userId = localStorage.getItem('user');
   const firstname = user.loginUser.firstname;
 
 
 
-  // console.log("videoid",videoId)
   const handleChange = (e) => {
     setComment(e.currentTarget.value);
   };
-  const handleonSubmit = async (e, userId, videoId, firstname, rating) => {
+
+  console.log("Second",Comments)
+  const onSubmit = async (e, userId,videoId,firstname,rating) => {
     e.preventDefault();
     const currentDateTime = new Date(); // Get the current date and time
     const formattedDateTime = format(currentDateTime, "yyyy-MM-dd HH:mm:ss"); // Format it as per your requirement
@@ -44,7 +48,8 @@ function Comments({ CommentLists, videoId, reviewData }) {
       if (response) {
         // Assuming Comment is the property you want to access
         // setComment([response.data.comment, ...comment]);
-        console.log("resssss", response)
+        dispatch({type:'ADD_COMMENT',payload:response.data})
+        console.log("resssss",response)
       } else {
         console.error('Invalid response data:', response.data);
         // Handle the error appropriately
@@ -81,19 +86,7 @@ function Comments({ CommentLists, videoId, reviewData }) {
         </div>
       </form>
 
-      {/* <form style={{ display: "flex" }} onSubmit={onSubmit}>
-        <textarea
-          style={{ width: "100%", borderRadius: "5px" }}
-          onChange={handleChange}
-          value={comment}
-          placeholder="Write a comment..."
-        />
-        <br />
-        <button style={{ width: "10%", height: "52px" }} onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId,user.loginUser.firstname,rating)}}
->
-          Submit
-        </button>
-      </form> */}
+    
     </div>
 
   );
