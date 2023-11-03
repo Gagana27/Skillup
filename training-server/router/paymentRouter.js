@@ -7,6 +7,6 @@ paymentRouter.post("/order",orders)
 
 paymentRouter.post("/success",success)
 
-paymentRouter.get("/getAllPaidVideos",getAllPaidVideos)
+paymentRouter.get("/getAllPaidVideos/:userId",getAllPaidVideos)
 
 module.exports=paymentRouter
