@@ -7,28 +7,42 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useParams, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/esm/Container';
+import { useAuthContext } from '../../hooks/UserAuthContext';
+import { CartContextHook } from '../../hooks/CartContextHook';
 
 function Subscription() {
 
   const { categoryId, subcategoryId } = useParams();
   // const [subcategories, setSubcategories] = useState([]);
   const [cart, setCart] = useState([]);
+  const {user}=useAuthContext()
+  const {dispatch,cartItems}=CartContextHook();
+  const [subscribe, setSubscribe] = useState([]);
 
   const location = useLocation();
-  const Data = location.state;
-
+  const Data = location.state.subscriptionVideos;
   console.log("demo", Data);
   console.log("demmmmmm", cart);
 
   useEffect(() => {
+    if(user)
+   {
     async function fetchSubcategories() {
-      const response = await axios.get("http://localhost:5000/cart");
+      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
       setCart(response.data);
-      console.log("state", response.data)
+      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
     }
     fetchSubcategories();
+   }
 
-  }, [categoryId, subcategoryId]);
+   async function fetchPaidVideos()
+   {
+    const response=await axios.get("http://localhost:5000/getAllPaidVideos");
+    setSubscribe(response.data);
+    console.log(response.data)
+   }
+   fetchPaidVideos()
+  }, [categoryId, subcategoryId,user]);
 
   return (
     <Container>
@@ -38,7 +52,7 @@ function Subscription() {
         justifyContent: "center",
 
       }}>
-        {cart?.map(cart => (
+        {subscribe?.map(cart => (
           <Col key={cart._id}>
             {/* <Link to={`/categories/${cart._id}/subcategories`}> */}
 
@@ -66,26 +80,6 @@ function Subscription() {
             {/* </Link> */}
           </Col>
         ))}
-
-        {/* {Array.from({ length: 4 }).map((_, idx) => (
-        <Col key={idx} style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-
-        }}>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-               {coursename}
-              </Card.Text>
-            </Card.Body>
-            <RazorPay />
-          </Card>
-        </Col>
-      ))} */}
       </Row>
     </Container>
   );
