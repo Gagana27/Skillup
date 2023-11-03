@@ -11,9 +11,9 @@ root.render(
   <React.StrictMode>
     <AuthContextProvider>
     <CartContextProvider>
-    <CommentContextProvider>
+   
     <App />
-    </CommentContextProvider>
+    
     </CartContextProvider>
     </AuthContextProvider>
   </React.StrictMode>

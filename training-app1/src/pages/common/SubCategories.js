@@ -47,9 +47,9 @@ function SubcategoryList() {
   }
 
   const buttonValidation = (id) => {
-    return cartItems.some((items) => {
+    return  cartItems && cartItems.some((items) => {
       return items.subcategory === id
-    })):false
+    })
   }
 
 
