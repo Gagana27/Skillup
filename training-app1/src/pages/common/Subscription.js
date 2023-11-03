@@ -10,7 +10,6 @@ import Container from 'react-bootstrap/esm/Container';
 import { useAuthContext } from '../../hooks/UserAuthContext';
 import { CartContextHook } from '../../hooks/CartContextHook';
 import { SubscribedContextHook } from '../../hooks/SubscribedContextHook';
-
 function Subscription() {
 
   const { categoryId, subcategoryId } = useParams();
@@ -28,7 +27,7 @@ function Subscription() {
 
    async function fetchPaidVideos()
    {
-    const response=await axios.get("http://localhost:5000/getAllPaidVideos");
+    const response=await axios.get(`http://localhost:5000/getAllPaidVideos/${user?.loginUser._id}`);
     setSubscribe(response.data);
     subscribedContext.dispatch({type:'GET_ALL_SUBSCRIBED_VIDEOS',payload:response.data})
     console.log(response.data)
