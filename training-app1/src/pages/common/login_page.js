@@ -5,8 +5,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert } from 'antd';
 import { Link } from 'react-router-dom';
+import ErrorHandling from './Error';
 
-function LoginPage() {
+function LoginPage(props) {
   const { login, error, isLoading } = useLogin()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -118,6 +119,7 @@ function LoginPage() {
                     </button>
                     {error &&
                       <div>
+                        {/* <ErrorHandling errorMessage="Dead" dialogMessage="OhNO"/> */}
                         <Alert
                           message={error}
                           showIcon

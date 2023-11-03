@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link, useNavigate,useLocation } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -8,26 +8,26 @@ import Container from 'react-bootstrap/Container';
 import AddCartButton from './AddToCart';
 import Button from 'react-bootstrap/Button';
 import { useAuthContext } from "../../hooks/UserAuthContext";
-import { CartContextHook } from "../../hooks/CartContextHook"
+import { CartContextHook } from "../../hooks/CartContextHook";
+import { SubscribedContextHook } from '../../hooks/SubscribedContextHook';
 import RazorPay from './RazorPay';
-
 
 function SubcategoryList() {
   const { categoryId } = useParams();
   const [subcategories, setSubcategories] = useState([]);
   const userId = localStorage.getItem('user');
   const { user } = useAuthContext();
-  const value=useLocation()
+  const value = useLocation()
   const [buttonClicked, setButtonClicked] = useState(false);
 
   const navigate = useNavigate()
-  const { dispatch, cartItems } = CartContextHook()
+  const { dispatch, cartItems } = CartContextHook();
+  const {dispatch:subScribedDispatch,subScribedItems}=SubscribedContextHook()
 
-  console.log("object")
+
 
   const AddtoCart = async (event, subCatData, userId) => {
     event.preventDefault();
-    console.log("ffff", subCatData, userId)
     // navigate(`/subscription/${subCatData._id}`)
     const categoryResponse = await axios.post(
       "http://localhost:5000/cart",
@@ -41,12 +41,17 @@ function SubcategoryList() {
         price: subCatData.priceDetails
       }
     );
-    console.log("demos", categoryResponse.data);
     navigate("/my-cart")
   }
 
   const buttonValidation = (id) => {
-    return  cartItems && cartItems.some((items) => {
+    return cartItems && cartItems.some((items) => {
+      return items.subcategory === id
+    })
+  }
+
+  const buyNowValidation = (id) => {
+    return  subScribedItems && subScribedItems.some((items) => {
       return items.subcategory === id
     })
   }
@@ -57,12 +62,22 @@ function SubcategoryList() {
       const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
       setSubcategories(response.data);
     }
+fetchSubcategories()
 
-    async function fetchCartSubcategories() {
-      const response = await axios.get("http://localhost:5000/cart");
-      dispatch({ type: 'GET_ALL_CARTS', payload: response.data })
+    if(user)
+   {
+    async function fetchCartItems() {
+      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
+      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
     }
-    fetchSubcategories();
+    fetchCartItems();
+   }
+
+    async function fetchSubscribedVideos() {
+      const response = await axios.get("http://localhost:5000/getAllPaidVideos");
+      subScribedDispatch({ type: 'GET_ALL_SUBSCRIBED_VIDEOS', payload: response.data })
+    }
+    fetchSubscribedVideos();
     
   }, [categoryId,user]);
 
@@ -72,6 +87,7 @@ function SubcategoryList() {
         {
           subcategories.map(subcategory => {
             const hide = buttonValidation(subcategory._id)
+            const sunScribeButtonHide=buyNowValidation(subcategory._id)
             return (
               <Col key={subcategory._id}>
                 <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
@@ -102,19 +118,19 @@ function SubcategoryList() {
                         active>
                         Buy Now
                       </Button> */}
-                        <RazorPay
+                        {!sunScribeButtonHide && <RazorPay
                           amount={subcategory.priceDetails}
                           subcategory={subcategory}
-                        />
-                        {!hide && <Button
+                        />}
+                        {!hide && !sunScribeButtonHide && <Button
                           className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
-                          variant="primary"
+                          variant="warning"
                           active
                           onClick={(event) => {
                             AddtoCart(event, subcategory, user.loginUser._id);
                           }}
                         >
-                          AddtoCart
+                          Add To Cart
                         </Button>}
 
                       </div>
@@ -127,7 +143,6 @@ function SubcategoryList() {
         {subcategories.map(subcategory => (
           <Col key={subcategory._id}>
             <Link to={`/subcategories/${subcategory._id}/videos`}>
-
             </Link>
           </Col>
         ))}

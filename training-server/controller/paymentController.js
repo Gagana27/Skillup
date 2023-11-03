@@ -51,8 +51,10 @@ const success = async (req, res) => {
 }
 
 const getAllPaidVideos=async (req,res)=>{
+    
    try {
-    const videos=await SubscriptionSchema.find()
+    const {userId}=req.params
+    const videos=await SubscriptionSchema.find({userId:userId})
     res.status(200).json(videos)
    } catch (error) {
     if(error)
