@@ -26,6 +26,12 @@ const handleResendOtp=async ()=>{
 
 
     useEffect(() => {
+        
+        setTimeout(() => {
+            setShowPopup(false);
+          }, 1000);
+
+
         if (userId) {
             const timeout = setInterval(() => {
                 if(seconds>0)
@@ -50,6 +56,8 @@ const handleResendOtp=async ()=>{
             console.log(response)
             if (response.data.Validate) {
                 setShowPopup(true);
+                
+                
 
                 navigate("/resetpassword", { state: { userId: response.data.userId } });
 

@@ -1,10 +1,10 @@
-const Category=require("../mongo_schema/categories")
-const Subcategory=require("../mongo_schema/subcategories")
-const Video=require("../mongo_schema/video")
-const Cart=require("../mongo_schema/cart")
+const Category = require("../mongo_schema/categories")
+const Subcategory = require("../mongo_schema/subcategories")
+const Video = require("../mongo_schema/video")
+const Cart = require("../mongo_schema/cart")
 const Comment = require("../mongo_schema/comment")
 
-const getAllCategories=async (req,res)=>{
+const getAllCategories = async (req, res) => {
     try {
         const categories = await Category.find().populate('subcategories');
         res.json(categories);
@@ -13,18 +13,18 @@ const getAllCategories=async (req,res)=>{
     }
 }
 
-const postCategories=async (req,res)=>{
+const postCategories = async (req, res) => {
     try {
-        const { name ,subcategories,img } = req.body;
+        const { name, subcategories, img } = req.body;
         const category = new Category({
             name,
             subcategories: [],
-            image:img
+            image: img
         });
         await category.save();
 
         const newSubcategories = [];
-        for (const  subcategoryData of subcategories) {
+        for (const subcategoryData of subcategories) {
             // const { images } = req.body;
 
             const subcategory = new Subcategory({
@@ -49,7 +49,7 @@ const postCategories=async (req,res)=>{
     }
 }
 
-const postVideosInSubcategories=async (req,res)=>{
+const postVideosInSubcategories = async (req, res) => {
     try {
         const { subcategoryId } = req.params;
         const subcategory = await Subcategory.findById(subcategoryId);
@@ -60,7 +60,7 @@ const postVideosInSubcategories=async (req,res)=>{
             description: req.body.description,
             // priceDetails: req.body.priceDetails,
             reviews: req.body.reviews,
-            ratings : req.body.ratings,
+            ratings: req.body.ratings,
             subcategory: subcategoryId,
             category: subcategory.category,
             image: req.body.image
@@ -74,7 +74,7 @@ const postVideosInSubcategories=async (req,res)=>{
     }
 }
 
-const getAllSubcategories=async (req,res)=>{
+const getAllSubcategories = async (req, res) => {
     try {
         const { categoryId } = req.params;
         const subcategories = await Subcategory.find({ category: categoryId }).populate('videos');
@@ -84,7 +84,7 @@ const getAllSubcategories=async (req,res)=>{
     }
 }
 
-const getSubCategoriesVideo=async (req,res)=>{
+const getSubCategoriesVideo = async (req, res) => {
     try {
         const { subcategoryId } = req.params;
         const videos = await Video.find({ subcategory: subcategoryId });
@@ -95,73 +95,83 @@ const getSubCategoriesVideo=async (req,res)=>{
 }
 
 const postCarts = async (req, res) => {
-    
-    try {
-      const { courseName , price , description ,userId ,image,subcategoryId,categoryId} = req.body;
 
-      console.log("dummy",{ courseName , price , description ,userId ,image,subcategoryId,categoryId})
     
-      const cart = await Cart.create({ courseName , price , description ,userId ,image,subcategory:subcategoryId,category:categoryId})
-  
-  
-      res.status(201).json({
-        message: 'Cart created successfully',
-        cart: cart,
-      });
+
+
+    try {
+        const { courseName, price, description, userId, image, subcategoryId, categoryId } = req.body;
+
+
+        const cart = await Cart.create({ courseName, price, description, userId, image, subcategory: subcategoryId, category: categoryId })
+
+
+        res.status(201).json({
+            message: 'Cart created successfully',
+            cart: cart,
+        });
     } catch (err) {
-      res.status(400).json({ message: err.message });
+        res.status(400).json({ message: err.message });
     }
-  };
+};
 
-  const getallcart=async (req,res)=>{
+const getallcart = async (req, res) => {
+    const {userId}=req.params
     try {
-        // const { categoryId } = req.params;
-        // const { subcategoryId } = req.params;
-
-        const cart = await Cart.find();
+        const cart = await Cart.find({userId:userId});
         res.json(cart);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 }
 
-const deletecartItem=async(req,res)=>{
-  const {userId,cartId}=req.params
- try {
-    console.log(userId,cartId)
-    const deletedItem=await Cart.findOneAndDelete({userId:userId,_id:cartId})
-    console.log(deletedItem)
-    if(deletedItem)
-    {
-        res.status(200).json({
-            status:"Cart Deleted Successfully",
-            deletedItem
-        })
+const deletecartItem = async (req, res) => {
+    const { userId, cartId } = req.params
+    try {
+        const deletedItem = await Cart.findOneAndDelete({ userId: userId, _id: cartId })
+        
+        if (deletedItem) {
+            res.status(200).json({
+                status: "Cart Deleted Successfully",
+                deletedItem
+            })
+        }
+    } catch (error) {
+        if (error) throw error
+        res.status(504).json(error.message)
     }
- } catch (error) {
-    if(error) throw error
-    res.status(504).json(error.message)
- }
-  
+
 }
 
-  const addComment = async (req, res) => {
+const addComment = async (req, res) => {
     try {
-      const { content,userId ,videoId} = req.body;
-      console.log("dy",{ content,userId,videoId})
-      
+      const { content,userId ,videos,username, reviewRating} = req.body;
+     
 
-    //   const newComment = new Comment({ content,userId,videos:videoId});
-      const newComment = await Comment.create({ content,userId,videos:videoId})
+  
 
-
-      const savedComment = await newComment.save();
-      res.status(201).json(savedComment);
+        const newComment = await Comment.create({ content, userId, videos, username,reviewRating })
+        res.status(200).json(newComment);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
+}
+const getallcomments = async (req, res) => {
+    const { videos } = req.params;
+console.log(videos)
+  try {
+    const comments = await Comment.find({videos:videos});
+    res.json(comments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
+}
 
-module.exports={getAllCategories,postCategories,postVideosInSubcategories,
-    getAllSubcategories,getSubCategoriesVideo,postCarts,getallcart,deletecartItem,addComment}
+  
+module.exports = {
+    getAllCategories, postCategories, postVideosInSubcategories,
+    getAllSubcategories, getSubCategoriesVideo, postCarts, getallcart, deletecartItem, addComment,getallcomments
+
+}

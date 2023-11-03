@@ -1,5 +1,6 @@
 const razorPay = require('razorpay')
 const crypto = require("crypto")
+const SubscriptionSchema = require("../mongo_schema/paymentModel")
 
 const orders = async (req, res) => {
 
@@ -28,14 +29,17 @@ const orders = async (req, res) => {
 
 const success = async (req, res) => {
     try {
-        const { orderCreationId, razorpayPaymentId, razorpayOrderId, razorpaySignature } = req.body.data
+        const { orderCreationId, razorpayPaymentId, razorpayOrderId, razorpaySignature,details ,videos,userId } = req.body.data
+        console.log("first",details)
 
         const sign = razorpayOrderId + "|" + razorpayPaymentId
         const expectedSign = crypto.createHmac("sha256", process.env.RAZORPAY_SECRET)
             .update(sign.toString()).digest("hex")
 
-        if (razorpaySignature === expectedSign) {
-            return res.status(200).json({ message: "Payment verified successfully" })
+        if (razorpaySignature === expectedSign) {  
+            const subscriptionVideos = await SubscriptionSchema.create({ razorpay_order_id:orderCreationId, razorpay_payment_id:razorpayPaymentId, razorpay_signature:razorpaySignature, courseName:details.name, videoId:details.videos[0]._id, userId:userId, category:details.category, subcategory:details.videos[0].subcategory, description:details.videos[0].description, price:details.priceDetails, image:details.videos[0].image
+            })
+            return res.status(200).json({ message: "Payment verified successfully" ,subscriptionVideos})
         }
         else {
             return res.status(200).json({ message: "Invalid signature sent" })
@@ -46,4 +50,16 @@ const success = async (req, res) => {
     }
 }
 
-module.exports = { orders, success }
+const getAllPaidVideos=async (req,res)=>{
+   try {
+    const videos=await SubscriptionSchema.find()
+    res.status(200).json(videos)
+   } catch (error) {
+    if(error)
+    {
+        res.status(400).json(error.message)
+    }
+   }
+}
+
+module.exports = { orders, success,getAllPaidVideos }

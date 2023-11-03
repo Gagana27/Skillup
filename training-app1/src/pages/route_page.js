@@ -33,6 +33,7 @@ import AdminUser_signin from "./common/AdminUser_Signin";
 import { AdminDashBoard } from "./common/AdminDashBoard";
 import UserDetails from "./common/UserData";
 
+import Comments from "./common/Comments";
 
 export default function RoutePage() {
   /*  const getdata=(name)=>{
@@ -91,6 +92,7 @@ export default function RoutePage() {
             <Route path="/admindashboard" element={<AdminDashBoard/>} />
             <Route path="/userdata" element={< UserDetails/>} />
           
+            <Route path="/comments" element={<Comments/>}/>
           </Routes>
           <Footer />
         </div>

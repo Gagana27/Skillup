@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useLocation } from "react-router-dom";
 import ReactPlayer from "react-player";
 import React, { useRef } from "react";
 import axios from "axios";
@@ -10,6 +10,8 @@ import StarRating from "./AddReview";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
 import ListGroup from 'react-bootstrap/ListGroup';
+import { format} from 'date-fns'
+
 import { Avatar, List } from 'antd';
 
 function VideoList(props) {
@@ -32,35 +34,47 @@ function VideoList(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewData, setReviewData] = useState([]);
-  const [comment, setCommentLists] = useState([]);
+  const [comment, setCommentLists] = useState();
 
+
+
+
+
+  const location=useLocation();
+
+ const videoId=location.state['video']
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  
+  useEffect(() => {
+    async function fetchComments() {
+      try {
+        const response = await axios.get(`http://localhost:5000/comments/${videoId}`);
+      
+        console.log("objectjjjj",response)
+        setCommentLists(response.data);
+      } catch (error) {
+        console.error('Error fetching comments:', error);
+      }
+    }
+    
+    fetchComments();             
+  },[videoId]);
+  console.log("comment",comment)
   useEffect(() => {
     async function fetchVideos() {
       const response = await axios.get(
         `http://localhost:5000/subcategories/${subcategoryId}/videos`
       );
-      console.log("ggg", response.data);
+     
       setVideos(response.data);
     }
     fetchVideos();
   }, [categoryId, subcategoryId]);
 
-  // const handleMouseMove = () => {
-  //   // console.log("mousemove");
-  //   VideoControlsRef.current.style.visibility = "visible";
-  //   count = 0;
-  // };
 
-  // const hanldeMouseLeave = () => {
-  //   VideoControlsRef.current.style.visibility = "hidden";
-  //   count = 0;
-  // };
   const updateComment = (newComment) => {
     setCommentLists(comment.concat(newComment));
   };
@@ -96,7 +110,7 @@ function VideoList(props) {
         <div className="w-full">
           {/* Course image */}
           <div className="flex h-75v flex-col " ref={playerContainerRef}>
-            {videos.map((video) => (
+            {videos && videos.map((video) => (
               <li key={video._id}>
                 <div className="flex-1 h-80v justify-end">
                   <ReactPlayer
@@ -123,6 +137,7 @@ function VideoList(props) {
                       Author : {video.author}<br /><br />
                       Description : {video.description}<br /><br />
                       Ratings:{" "}
+                      
                       <StarRating
                         props={video.review}
                         selectedRating={selectedRating}
@@ -130,24 +145,38 @@ function VideoList(props) {
                       /><br /><br />
                       <h1 className="text-l font-semibold">
                         <ReviewComp reviews={reviewData} />
+
                         <Comments
+
                           comment={comment}
                           refreshFunction={updateComment} 
+                          videoId={location.state.video}
                         />
                       </h1><br /><br />
                     </ListGroup.Item>
+                 
                   </h1>
                 </div>
               </li>
             ))}
           </div>{" "}
+          {comment &&  comment.map((comment)=>(
+                        
+                        <div key={comment._id}>
+                        <p>{comment.content} </p>
+                       <p> {comment.username}</p>
+                       <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p>
+          
+                    </div>
+
+                          ))}
         </div>
       </div>
       <div className="flex border rounded-lg shadow-md"></div>
     </div>
   </>
   );
-}
+                        }
 export default VideoList;
 
 /* import React, { useState, useEffect } from 'react';

@@ -5,90 +5,83 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { useParams , useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
+import Container from 'react-bootstrap/esm/Container';
+import { useAuthContext } from '../../hooks/UserAuthContext';
+import { CartContextHook } from '../../hooks/CartContextHook';
 
 function Subscription() {
 
-  const { categoryId,subcategoryId } = useParams();
+  const { categoryId, subcategoryId } = useParams();
   // const [subcategories, setSubcategories] = useState([]);
   const [cart, setCart] = useState([]);
+  const {user}=useAuthContext()
+  const {dispatch,cartItems}=CartContextHook();
+  const [subscribe, setSubscribe] = useState([]);
 
-  const location  = useLocation();
-  const Data = location.state;
-
-  console.log("demo",Data);
-  console.log("demmmmmm",cart);
+  const location = useLocation();
+  const Data = location.state.subscriptionVideos;
+  console.log("demo", Data);
+  console.log("demmmmmm", cart);
 
   useEffect(() => {
+    if(user)
+   {
     async function fetchSubcategories() {
-      const response = await axios.get("http://localhost:5000/cart");
+      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
       setCart(response.data);
-      console.log("state",response.data)
+      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
     }
     fetchSubcategories();
+   }
 
-  }, [categoryId,subcategoryId]);
+   async function fetchPaidVideos()
+   {
+    const response=await axios.get("http://localhost:5000/getAllPaidVideos");
+    setSubscribe(response.data);
+    console.log(response.data)
+   }
+   fetchPaidVideos()
+  }, [categoryId, subcategoryId,user]);
 
   return (
-    <>
-      <div>
-        <Row xs={1} md={4} className="g-4" style={{
-          height: 500,
-          background: "LightGrey",
-          justifyContent: "center",
-          
-        }}>
-           {cart?.map(cart => (
-            <Col key={cart._id}>
-              {/* <Link to={`/categories/${cart._id}/subcategories`}> */}
+    <Container>
+      <Row xs={1} md={4} className="g-6" style={{
+        height: 500,
+        background: "LightGrey",
+        justifyContent: "center",
 
-                 <Card
-                  className="bg-secondary border-primary border-4 m-4 "
-                  border="warning"
-                  style={{ width: '28rem', height: '12rem' }}>
+      }}>
+        {subscribe?.map(cart => (
+          <Col key={cart._id}>
+            {/* <Link to={`/categories/${cart._id}/subcategories`}> */}
 
-                   <Card.Img
-                    variant="top"
-                    // className="w-full h-40 object-cover"
-                    style={{ height: '135px', width: '100%' }}
-                    src={cart?.image}
-                  />
-                
-                  <Card.Body style={{ height: '50px' }}>
-                    <Card.Text className="text-white">
-                      {cart.courseName}
-                      {cart.priceDetails}
-                      {cart.description}
+            <Card
+              className="subcategory bg-secondary border-primary border-4 m-4 relative"
+              border="warning"
+            >
 
-                    </Card.Text>&nbsp;
-                  </Card.Body>
-                </Card>
-                {/* </Link> */}
-            </Col>
-          ))} 
+              <Card.Img
+                variant="top"
+                // className="w-full h-40 object-cover"
+                style={{ height: '135px', width: '100%' }}
+                src={cart?.image}
+              />
 
-          {/* {Array.from({ length: 4 }).map((_, idx) => (
-            <Col key={idx} style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              <Card.Body className="flex flex-col justify-between" style={{ height: '50px' }}>
+                <Card.Text className="text-white">
+                  {cart.courseName}
+                  {cart.priceDetails}
+                  {/* {cart.description} */}
 
-            }}>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                  <Card.Title>Card title</Card.Title>
-                  <Card.Text>
-                   {coursename}
-                  </Card.Text>
-                </Card.Body>
-                <RazorPay />
-              </Card>
-            </Col>
-          ))} */}
-        </Row>
-      </div>
-    </>
+                </Card.Text>&nbsp;
+              </Card.Body>
+            </Card>
+            {/* </Link> */}
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 
