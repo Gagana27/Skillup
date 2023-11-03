@@ -15,7 +15,9 @@ import { format } from "date-fns";
 import { Avatar, List } from "antd";
 import { CommentContextHook } from "../../hooks/CommentContextHook";
 import img from '../../assets/profilepic.svg';
-import formatDistanceToNow from "date-fns/formatDistanceToNow"
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import EditIcon from '../../assets/editicon.svg';
+import DeleteIcon from '../../assets/deleteicon.svg';
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -186,9 +188,15 @@ function VideoList(props) {
                   </div>
 
                   <div style={{marginLeft:"550px"}}>  
+                  <span>
                   <p>{formatDistanceToNow(new Date(comment.createdAt),{addSuffix:true})}</p>
+                  <p><img src={EditIcon}></img></p>
+                  <p><img src={DeleteIcon}></img></p>
+                  </span>
+                  
                   </div>
                   </div>
+                  
                   <p style={{marginTop:"10px"}}>{comment.content} </p>
                 
           
