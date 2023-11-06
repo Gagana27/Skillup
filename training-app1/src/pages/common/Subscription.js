@@ -15,25 +15,22 @@ function Subscription() {
   const { categoryId, subcategoryId } = useParams();
   // const [subcategories, setSubcategories] = useState([]);
   const [cart, setCart] = useState([]);
-  const {user}=useAuthContext()
-  const {dispatch,cartItems}=CartContextHook();
-  const subscribedContext=SubscribedContextHook();
+  const { user } = useAuthContext()
+  const { dispatch, cartItems } = CartContextHook();
+  const subscribedContext = SubscribedContextHook();
   const [subscribe, setSubscribe] = useState([]);
 
   const location = useLocation();
-  // const Data = location.state.subscriptionVideos;
 
   useEffect(() => {
 
-   async function fetchPaidVideos()
-   {
-    const response=await axios.get(`http://localhost:5000/getAllPaidVideos/${user?.loginUser._id}`);
-    setSubscribe(response.data);
-    subscribedContext.dispatch({type:'GET_ALL_SUBSCRIBED_VIDEOS',payload:response.data})
-    console.log(response.data)
-   }
-   fetchPaidVideos()
-  }, [categoryId, subcategoryId,user]);
+    async function fetchPaidVideos() {
+      const response = await axios.get(`http://localhost:5000/getAllPaidVideos/${user?.loginUser._id}`);
+      setSubscribe(response.data);
+      subscribedContext.dispatch({ type: 'GET_ALL_SUBSCRIBED_VIDEOS', payload: response.data })
+    }
+    fetchPaidVideos()
+  }, [categoryId, subcategoryId, user]);
 
   return (
     <Container className='mt-6'>

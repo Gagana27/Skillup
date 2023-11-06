@@ -20,7 +20,10 @@ function SubcategoryList() {
   const [buttonClicked, setButtonClicked] = useState(false);
   const navigate = useNavigate()
   const { dispatch, cartItems } = CartContextHook();
-  const {dispatch:subScribedDispatch,subScribedItems}=SubscribedContextHook()
+  const { dispatch: subScribedDispatch, subScribedItems } = SubscribedContextHook()
+
+
+
   const AddtoCart = async (event, subCatData, userId) => {
     event.preventDefault();
     // navigate(`/subscription/${subCatData._id}`)
@@ -44,7 +47,7 @@ function SubcategoryList() {
     })
   }
   const buyNowValidation = (id) => {
-    return  subScribedItems && subScribedItems.some((items) => {
+    return subScribedItems && subScribedItems.some((items) => {
       return items.subcategory === id
     })
   }
@@ -74,7 +77,7 @@ fetchSubcategories()
         {
           subcategories.map(subcategory => {
             const hide = buttonValidation(subcategory._id)
-            const sunScribeButtonHide=buyNowValidation(subcategory._id)
+            const sunScribeButtonHide = buyNowValidation(subcategory._id)
             return (
               <Col key={subcategory._id}>
                 <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
@@ -95,14 +98,8 @@ fetchSubcategories()
                           {subcategory.name} - Rs. {subcategory.priceDetails}
                         </Card.Text>
                       </div>
-                      <div className="flex justify-between items-center mt-2  ">
-                        {/* <Button
-                        className="w-1/1"
-                        variant="primary"
-                        style={{ background: "orange" }}
-                        active>
-                        Buy Now
-                      </Button> */}
+
+                      <div className="flex justify-between items-center mt-2">
                         {!sunScribeButtonHide && <RazorPay
                           amount={subcategory.priceDetails}
                           subcategory={subcategory}
