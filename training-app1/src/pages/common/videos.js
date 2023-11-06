@@ -187,19 +187,16 @@ function VideoList(props) {
 
                     <div>
                       <p style={{ marginLeft: "20px", marginTop: "-4px", }}> {comment.username}</p>
-                      {/* <p><Rating /></p> */}
+                      <p><Rating /></p>
                     </div>
 
                     <div style={{ marginLeft: "550px" }}>
                       <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
                     </div>
                     <div style={{ marginLeft: "20px" }}>
-    <DeleteButton commentId={comment._id} />
-</div>
-{/* 
-                    <div style={{ margin: "20px", marginRight: "10px" }}>
                       <DeleteButton commentId={comment._id} />
-                    </div> */}
+                    </div>
+
                   </div>
                   <p style={{ marginTop: "10px" }} >{comment.content} </p>
 
