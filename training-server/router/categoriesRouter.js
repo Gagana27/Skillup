@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllCategories, postCategories, postVideosInSubcategories, getAllSubcategories, getSubCategoriesVideo,postCarts, getallcart, deletecartItem ,addComment,getallcomments} = require('../controller/categoriesController');
+const { getAllCategories, postCategories, postVideosInSubcategories, getAllSubcategories, getSubCategoriesVideo,postCarts, getallcart, deletecartItem ,addComment,getallcomments,deletecommentItem, editcommentItem} = require('../controller/categoriesController');
 const categoriesRouter=express.Router();
 
 categoriesRouter.get('/categories',getAllCategories);
@@ -21,6 +21,11 @@ categoriesRouter.delete("/deleteCartItem/:userId/:cartId",deletecartItem)
 categoriesRouter.post("/comments", addComment);
 
 categoriesRouter.get("/comments/:videos", getallcomments);
+
+categoriesRouter.delete("/deletecommentItem/:commentId",deletecommentItem);
+
+categoriesRouter.put("/comments/edit/:commentId",editcommentItem)
+
 
 categoriesRouter.get('/cart/:userId',getallcart);
 
