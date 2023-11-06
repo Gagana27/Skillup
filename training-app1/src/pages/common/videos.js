@@ -10,7 +10,6 @@ import StarRating from "./AddReview";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
 import ListGroup from "react-bootstrap/ListGroup";
-import { format } from "date-fns";
 
 import { Avatar, List } from "antd";
 import { CommentContextHook } from "../../hooks/CommentContextHook";
@@ -18,6 +17,8 @@ import img from '../../assets/profilepic.svg';
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import EditIcon from '../../assets/editicon.svg';
 import DeleteIcon from '../../assets/deleteicon.svg';
+import DeleteButton from './commentTrash';
+
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -42,6 +43,7 @@ function VideoList(props) {
   const [comment, setCommentLists] = useState();
   const CommentUseHook = CommentContextHook();
 
+
   const location = useLocation();
 
   const videoId = location.state["video"];
@@ -55,7 +57,8 @@ function VideoList(props) {
     async function fetchComments() {
       try {
         const response = await axios.get(
-          `http://localhost:5000/comments/${videoId}`
+          `http://localhost:5000/comments/${videoId}`,
+
         );
 
         console.log("objectjjjj", response);
@@ -184,22 +187,22 @@ function VideoList(props) {
 
                     <div>
                       <p style={{ marginLeft: "20px", marginTop: "-4px", }}> {comment.username}</p>
-                      <p><Rating /></p>
+                      {/* <p><Rating /></p> */}
                     </div>
 
                     <div style={{ marginLeft: "550px" }}>
-                        <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
+                      <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
                     </div>
-
-                    <div style={{ marginLeft: "100px" }}>
-                      <img src={EditIcon}></img>
-                    </div>
-
                     <div style={{ marginLeft: "20px" }}>
-                      <img src={DeleteIcon}></img>
-                    </div>
+    <DeleteButton commentId={comment._id} />
+</div>
+{/* 
+                    <div style={{ margin: "20px", marginRight: "10px" }}>
+                      <DeleteButton commentId={comment._id} />
+                    </div> */}
                   </div>
-                  <p style={{ marginTop: "10px" }}>{comment.content} </p>
+                  <p style={{ marginTop: "10px" }} >{comment.content} </p>
+
                 </div>
               ))}
           </div>

@@ -9,8 +9,10 @@ export const commentReducer = (state, action) => {
         case 'ADD_COMMENT':
             return { Comments:[action.payload,...state.Comments] }
         case 'DELETE_COMMENT':
-            return { Comments:state.Comments.filter((value)=>(value._id !== action.payload.deletedItem._id)) }    
-        default:
+            return { Comments:state.Comments.filter((value)=>(value._id !== action.payload.deletedItem._id)) }
+               
+            
+            default:
             return state
     }
 }

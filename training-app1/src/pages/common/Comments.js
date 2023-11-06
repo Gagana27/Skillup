@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useAuthContext } from "../../hooks/UserAuthContext";
 import { format} from 'date-fns'
 import { CommentContextHook } from "../../hooks/CommentContextHook";
@@ -9,7 +9,7 @@ import { CommentContextHook } from "../../hooks/CommentContextHook";
 
 
 
-function Comments({ CommentLists,videoId,reviewData }) {
+function Comments({ CommentLists, videoId, reviewData }) {
   const [comment, setComment] = useState("");
 
   const { user } = useAuthContext();
@@ -17,7 +17,6 @@ const {dispatch,Comments}=CommentContextHook();
   const userId = localStorage.getItem('user');
   const firstname = user.loginUser.firstname;
 
-  
 
 
   const handleChange = (e) => {
@@ -27,10 +26,10 @@ const {dispatch,Comments}=CommentContextHook();
   console.log("Second",Comments)
   const onSubmit = async (e, userId,videoId,firstname,rating) => {
     e.preventDefault();
-    const currentDateTime = new Date(); // Get the current date and time
-    const formattedDateTime = format(currentDateTime, "yyyy-MM-dd HH:mm:ss"); // Format it as per your requirement
-    console.log("rrr",  userId,comment,videoId,firstname,rating)
-  
+    const currentDateTime = new Date(); 
+    const formattedDateTime = format(currentDateTime, "yyyy-MM-dd HH:mm:ss"); 
+    console.log("rrr", userId, comment, videoId, firstname, rating)
+
 
     try {
       const response = await axios.post(
@@ -39,11 +38,11 @@ const {dispatch,Comments}=CommentContextHook();
           content: comment,
           userId: userId,
           videos: videoId,
-          username:firstname,
+          username: firstname,
           createdAt: formattedDateTime,
           reviewRating: rating,
         }
-        
+
       );
 
       if (response) {
@@ -59,7 +58,7 @@ const {dispatch,Comments}=CommentContextHook();
       console.error('Error submitting comment:', error);
     }
   };
-  
+
 
 
   return (
@@ -67,29 +66,29 @@ const {dispatch,Comments}=CommentContextHook();
       {CommentLists &&
         CommentLists.map((comment) => (
           <div key={comment._id}>
-              <p>{content} </p>
-             <p> {username}</p>
-             <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p>
+            <p>{content} </p>
+            <p> {username}</p>
+            <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p>
 
           </div>
         ))}
-<form  onSubmit={onSubmit}>
-<div className="form-outline">
-                  <textarea placeholder="Write a Comment....." className="form-control" id="textAreaExample"  rows="4"  onChange={handleChange}
-          value={comment}></textarea>
-                 
-                </div>
-                <div className="d-flex justify-content-between mt-3">
-                 
-                  <button type="button" className="btn bg-yellow-500 hover:bg-green-700 " onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId,firstname,reviewData)}}>
-                    Submit 
-                  </button>
-                </div>
-                </form>
+      <form >
+        <div className="form-outline">
+          <textarea placeholder="Write a Comment....." className="form-control" id="textAreaExample" rows="4" onChange={handleChange}
+            value={comment}></textarea>
+
+        </div>
+        <div className="d-flex justify-content-between mt-3">
+
+          <button type="button" className="btn bg-yellow-500 hover:bg-green-700 " onClick={(e) => { onSubmit(e, user.loginUser._id, videoId, firstname, reviewData) }}>
+            Submit
+          </button>
+        </div>
+      </form>
 
     
     </div>
-    
+
   );
 }
 export default Comments;

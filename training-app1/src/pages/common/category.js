@@ -26,7 +26,7 @@ function CategoryList() {
     <>
       <br /><Container>
         <br />
-        <Row xs={1} md={4} className=" categorycard g-5 ">
+        <Row xs={1} md={4} className=" categorycard g-5  mb-5 ">
           {
             categories.map(category => (
               <Col key={category._id}>
