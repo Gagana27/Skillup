@@ -109,8 +109,8 @@ function VideoList(props) {
   return (
     <>
       <div className="added">
-        <div className="flex justify-between p-8">
-          <div className="w-96 pr-8">
+        <div className="flex justify-between p-8 ">
+          <div className="w-96 pr-8 ">
             <div className="relative inline-block text-left">
               <DropDown name="ggggg" desc="reactjs" videos={videos} />
             </div>
@@ -189,6 +189,7 @@ function VideoList(props) {
                       <p style={{ marginLeft: "20px", marginTop: "-4px", }}> {comment.username}</p>
                       <p><Rating /></p>
                     </div>
+                    
 
                     <div style={{ marginLeft: "550px" }}>
                       <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>

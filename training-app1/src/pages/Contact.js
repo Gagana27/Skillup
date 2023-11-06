@@ -1,5 +1,6 @@
 import React from 'react';
 import ContactImage from '../assets/contactus.svg';
+import Googlemap from '../pages/common/Googlemap'
 // import { useSignup } from "../../hooks/UserSignup";
 
 function ContactPage() {
@@ -19,6 +20,7 @@ function ContactPage() {
     //   }
 
     return (
+        <>
         <div className="  g-8 flex h-full flex-wrap items-center justify-center lg:justify-between  ">
 
             <div className="flex-1 flex flex-col py-12 px-4 sm:px-4 lg:flex-none lg:px-20 xl:px-24">
@@ -97,6 +99,10 @@ function ContactPage() {
                     {/* <img className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/cloud-illustration-indigo-400.svg" alt /> */}
                 </div>
             </div>
+            <Googlemap/>
+          
+
+            </>
        
     );
 }
