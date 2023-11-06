@@ -22,7 +22,7 @@ function SubcategoryList() {
 
   const navigate = useNavigate()
   const { dispatch, cartItems } = CartContextHook();
-  const {dispatch:subScribedDispatch,subScribedItems}=SubscribedContextHook()
+  const { dispatch: subScribedDispatch, subScribedItems } = SubscribedContextHook()
 
 
 
@@ -51,7 +51,7 @@ function SubcategoryList() {
   }
 
   const buyNowValidation = (id) => {
-    return  subScribedItems && subScribedItems.some((items) => {
+    return subScribedItems && subScribedItems.some((items) => {
       return items.subcategory === id
     })
   }
@@ -62,24 +62,23 @@ function SubcategoryList() {
       const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
       setSubcategories(response.data);
     }
-fetchSubcategories()
+    fetchSubcategories()
 
-    if(user)
-   {
-    async function fetchCartItems() {
-      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
-      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
+    if (user) {
+      async function fetchCartItems() {
+        const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
+        dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
+      }
+      fetchCartItems();
     }
-    fetchCartItems();
-   }
 
     async function fetchSubscribedVideos() {
       const response = await axios.get("http://localhost:5000/getAllPaidVideos");
       subScribedDispatch({ type: 'GET_ALL_SUBSCRIBED_VIDEOS', payload: response.data })
     }
     fetchSubscribedVideos();
-    
-  }, [categoryId,user]);
+
+  }, [categoryId, user]);
 
   return (
     <Container>
@@ -87,7 +86,7 @@ fetchSubcategories()
         {
           subcategories.map(subcategory => {
             const hide = buttonValidation(subcategory._id)
-            const sunScribeButtonHide=buyNowValidation(subcategory._id)
+            const sunScribeButtonHide = buyNowValidation(subcategory._id)
             return (
               <Col key={subcategory._id}>
                 <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
@@ -111,13 +110,6 @@ fetchSubcategories()
                       </div>
 
                       <div className="flex justify-between items-center mt-2">
-                        {/* <Button
-                        className="w-1/1"
-                        variant="primary"
-                        style={{ background: "orange" }}
-                        active>
-                        Buy Now
-                      </Button> */}
                         {!sunScribeButtonHide && <RazorPay
                           amount={subcategory.priceDetails}
                           subcategory={subcategory}
