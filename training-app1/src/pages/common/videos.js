@@ -43,7 +43,6 @@ function VideoList(props) {
   const [comment, setCommentLists] = useState();
   const CommentUseHook = CommentContextHook();
 
-
   const location = useLocation();
 
   const videoId = location.state["video"];
@@ -181,7 +180,7 @@ function VideoList(props) {
             </div>{" "}
             {CommentUseHook.Comments &&
               CommentUseHook.Comments.map((comment) => (
-                <div key={comment._id} style={{ height: "200px", marginTop: "20px" }}>
+                <div key={comment._id} style={{ height: "100px", marginTop: "20px" }}>
                   <div style={{ display: "flex" }}>
                     <div style={{ height: "50px", width: "50px" }}><img src={img} alt="image" /></div>
 
@@ -194,9 +193,9 @@ function VideoList(props) {
                       <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
                     </div>
                     <div style={{ marginLeft: "20px" }}>
-    <DeleteButton commentId={comment._id} />
-</div>
-{/* 
+                      <DeleteButton commentId={comment._id} />
+                    </div>
+                    {/* 
                     <div style={{ margin: "20px", marginRight: "10px" }}>
                       <DeleteButton commentId={comment._id} />
                     </div> */}
