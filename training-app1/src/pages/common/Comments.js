@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useAuthContext } from "../../hooks/UserAuthContext";
 import { format} from 'date-fns'
 import { CommentContextHook } from "../../hooks/CommentContextHook";
@@ -17,7 +17,6 @@ const {dispatch,Comments}=CommentContextHook();
   const userId = localStorage.getItem('user');
   const firstname = user.loginUser.firstname;
 
-  
 
 
   const handleChange = (e) => {
@@ -39,11 +38,11 @@ const {dispatch,Comments}=CommentContextHook();
           content: comment,
           userId: userId,
           videos: videoId,
-          username:firstname,
+          username: firstname,
           createdAt: formattedDateTime,
           reviewRating: selectedRating,
         }
-        
+
       );
 
       if (response) {
@@ -59,7 +58,7 @@ const {dispatch,Comments}=CommentContextHook();
       console.error('Error submitting comment:', error);
     }
   };
-  
+
 
 
   return (
@@ -67,9 +66,9 @@ const {dispatch,Comments}=CommentContextHook();
       {CommentLists &&
         CommentLists.map((comment) => (
           <div key={comment._id}>
-              <p>{content} </p>
-             <p> {username}</p>
-             <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p>
+            <p>{content} </p>
+            <p> {username}</p>
+            <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p>
 
           </div>
         ))}
@@ -89,7 +88,7 @@ const {dispatch,Comments}=CommentContextHook();
 
     
     </div>
-    
+
   );
 }
 export default Comments;

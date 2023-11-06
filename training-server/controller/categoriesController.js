@@ -169,9 +169,30 @@ console.log(videos)
   }
 }
 
+const deletecommentItem = async (req, res) => {
+    const { commentId } = req.params
+    try {
+        const deletedItem = await Comment.findOneAndDelete({  _id: commentId })
+        
+        if (deletedItem) {
+            res.status(200).json({
+                status: "Comment Deleted Successfully",
+                deletedItem
+            })
+        }
+    } catch (error) {
+        if (error) throw error
+        res.status(504).json(error.message)
+    }
+
+}
+
+
+
+
   
 module.exports = {
     getAllCategories, postCategories, postVideosInSubcategories,
-    getAllSubcategories, getSubCategoriesVideo, postCarts, getallcart, deletecartItem, addComment,getallcomments
+    getAllSubcategories, getSubCategoriesVideo, postCarts, getallcart, deletecartItem, addComment,getallcomments,deletecommentItem
 
 }

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import RazorPay from './RazorPay';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -14,25 +12,23 @@ function MyCart() {
   const [cart, setCart] = useState([]);
 
   const { categoryId, subcategoryId } = useParams();
-  const {user}=useAuthContext()
-  const {dispatch,cartItems}=CartContextHook();
-  console.log("first",cart)
+  const { user } = useAuthContext()
+  const { dispatch, cartItems } = CartContextHook();
 
   const location = useLocation();
   const Data = location.state;
 
   useEffect(() => {
-   if(user)
-   {
-    async function fetchSubcategories() {
-      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
-      setCart(response.data);
-      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
+    if (user) {
+      async function fetchSubcategories() {
+        const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
+        setCart(response.data);
+        dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
+      }
+      fetchSubcategories();
     }
-    fetchSubcategories();
-   }
 
-  }, [categoryId, subcategoryId,user]);
+  }, [categoryId, subcategoryId, user]);
 
   return (
     <>
