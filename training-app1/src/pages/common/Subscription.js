@@ -49,7 +49,7 @@ function Subscription() {
 
             <Card
               className="subcategory bg-secondary border-primary border-4 m-4 relative"
-              border="warning"
+              border="blue"
             >
 
               <Card.Img

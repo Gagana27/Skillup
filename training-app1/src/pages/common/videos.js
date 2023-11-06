@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams,useLocation } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import ReactPlayer from "react-player";
 import React, { useRef } from "react";
 import axios from "axios";
@@ -9,12 +9,15 @@ import StarRating from "./AddReview";
 // import ReviewComp from "./AddReview";
 import DropDown from "./DropDown";
 import Comments from "./Comments";
-import ListGroup from 'react-bootstrap/ListGroup';
-import { format} from 'date-fns'
+import ListGroup from "react-bootstrap/ListGroup";
+import { format } from "date-fns";
 
-import { Avatar, List } from 'antd';
+import { Avatar, List } from "antd";
 import { CommentContextHook } from "../../hooks/CommentContextHook";
-
+import img from '../../assets/profilepic.svg';
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import EditIcon from '../../assets/editicon.svg';
+import DeleteIcon from '../../assets/deleteicon.svg';
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -37,50 +40,48 @@ function VideoList(props) {
   const [selectedRating, setSelectedRating] = useState(0);
   const [reviewData, setReviewData] = useState([]);
   const [comment, setCommentLists] = useState();
-  const CommentUseHook=CommentContextHook();
- 
+  const CommentUseHook = CommentContextHook();
 
+  const location = useLocation();
 
-
-
-
-  const location=useLocation();
-
- const videoId=location.state['video']
+  const videoId = location.state["video"];
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-console.log("first",CommentUseHook.Comments)
-
+  console.log("first", CommentUseHook.Comments);
 
   useEffect(() => {
     async function fetchComments() {
       try {
-        const response = await axios.get(`http://localhost:5000/comments/${videoId}`);
-      
-        console.log("objectjjjj",response)
-        CommentUseHook.dispatch({type:'GET_ALL_COMMENTS',payload:response.data})
+        const response = await axios.get(
+          `http://localhost:5000/comments/${videoId}`
+        );
+
+        console.log("objectjjjj", response);
+        CommentUseHook.dispatch({
+          type: "GET_ALL_COMMENTS",
+          payload: response.data,
+        });
         setCommentLists(response.data);
       } catch (error) {
-        console.error('Error fetching comments:', error);
+        console.error("Error fetching comments:", error);
       }
     }
-    
-    fetchComments();             
-  },[videoId]);
- 
+
+    fetchComments();
+  }, [videoId]);
+
   useEffect(() => {
     async function fetchVideos() {
       const response = await axios.get(
         `http://localhost:5000/subcategories/${subcategoryId}/videos`
       );
-     
+
       setVideos(response.data);
     }
     fetchVideos();
   }, [categoryId, subcategoryId]);
-
 
   const updateComment = (newComment) => {
     setCommentLists(comment.concat(newComment));
@@ -104,135 +105,109 @@ console.log("first",CommentUseHook.Comments)
   }, [selectedRating]);
   return (
     <>
-    <div className="added">
-      <div className="flex justify-between p-8">
-        <div className="w-96 pr-8">
-          <div className="relative inline-block text-left">
-            <DropDown name="ggggg" desc="reactjs" videos={videos} />
+      <div className="added">
+        <div className="flex justify-between p-8">
+          <div className="w-96 pr-8">
+            <div className="relative inline-block text-left">
+              <DropDown name="ggggg" desc="reactjs" videos={videos} />
+            </div>
+            <br />
+            <br />
+            <br />
           </div>
-          <br />
-          <br />
-          <br />
-        </div>
-        <div className="w-full">
-          {/* Course image */}
-          <div className="flex h-75v flex-col " ref={playerContainerRef}>
-            {videos && videos.map((video) => (
-              <li key={video._id}>
-                <div className="flex-1 h-80v justify-end">
-                  <ReactPlayer
-                    width="100%"
-                    height="100%"
-                    ref={playerRef}
-                    url={video.url}
-                    controls={true}
-                    pip={pip}
-                    playing={playing}
-                    playbackRate={playbackRate}
-                    volume={volume}
-                    muted={muted}
-                  />
-                </div>
-                <div className="grid grid-cols-1">
-                  <h1 className="text-l font-semibold">
-                    <ListGroup.Item
-                      style={{ padding: 10 }}
-                      className="my-3"
-                      variant="secondary"
-                    >
-                      Course : {video.title}<br /><br />
-                      Author : {video.author}<br /><br />
-                      Description : {video.description}<br /><br />
-                      Ratings:{" "}
-                      
-                      <StarRating
-                        props={video.review}
-                        selectedRating={selectedRating}
-                        onStarClick={setSelectedRating}
-                      /><br /><br />
+          <div className="w-full">
+            {/* Course image */}
+            <div className="flex h-75v flex-col " ref={playerContainerRef}>
+              {videos &&
+                videos.map((video) => (
+                  <li key={video._id}>
+                    <div className="flex-1 h-80v justify-end">
+                      <ReactPlayer
+                        width="100%"
+                        height="100%"
+                        ref={playerRef}
+                        url={video.url}
+                        controls={true}
+                        pip={pip}
+                        playing={playing}
+                        playbackRate={playbackRate}
+                        volume={volume}
+                        muted={muted}
+                      />
+                    </div>
+                    <div className="grid grid-cols-1">
                       <h1 className="text-l font-semibold">
-                        <ReviewComp reviews={reviewData} />
+                        <ListGroup.Item
+                          style={{ padding: 10 }}
+                          className="my-3"
+                          variant="secondary"
+                        >
+                          Course : {video.title}
+                          <br />
+                          <br />
+                          Author : {video.author}
+                          <br />
+                          <br />
+                          Description : {video.description}
+                          <br />
+                          <br />
+                          Ratings:{" "}
+                          <StarRating
+                            props={video.review}
+                            selectedRating={selectedRating}
+                            onStarClick={setSelectedRating}
+                          />
+                          <br />
+                          <br />
+                          <h1 className="text-l font-semibold">
+                            <ReviewComp reviews={reviewData} />
 
-                        <Comments
+                            <Comments
+                              comment={comment}
+                              refreshFunction={updateComment}
+                              videoId={location.state.video}
+                            />
+                          </h1>
+                          <br />
+                          <br />
+                        </ListGroup.Item>
+                      </h1>
+                    </div>
+                  </li>
+                ))}
+            </div>{" "}
+            {CommentUseHook.Comments &&
+              CommentUseHook.Comments.map((comment) => (
+                <div key={comment._id} style={{ height: "200px", marginTop: "20px" }}>
+                  <div style={{ display: "flex" }}>
+                    <div style={{ height: "50px", width: "50px" }}><img src={img} alt="image" /></div>
 
-                          comment={comment}
-                          refreshFunction={updateComment} 
-                          videoId={location.state.video}
-                        />
-                      </h1><br /><br />
-                    </ListGroup.Item>
-                 
-                  </h1>
-                </div>
-              </li>
-            ))}
-          </div>{" "}
-          {CommentUseHook.Comments &&  CommentUseHook.Comments.map((comment)=>(
-                        
-                        <div key={comment._id}>
-                        <p>{comment.content} </p>
-                       <p> {comment.username}</p>
-                       <p>{format(new Date(comment.createdAt), "yyyy-MM-dd HH:mm:ss")}</p>
-          
+                    <div>
+                      <p style={{ marginLeft: "20px", marginTop: "-4px", }}> {comment.username}</p>
+                      <p><Rating /></p>
                     </div>
 
-                          ))}
+                    <div style={{ marginLeft: "550px" }}>
+                        <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
+                    </div>
+
+                    <div style={{ marginLeft: "100px" }}>
+                      <img src={EditIcon}></img>
+                    </div>
+
+                    <div style={{ marginLeft: "20px" }}>
+                      <img src={DeleteIcon}></img>
+                    </div>
+                  </div>
+                  <p style={{ marginTop: "10px" }}>{comment.content} </p>
+                </div>
+              ))}
+          </div>
         </div>
+        <div className="flex border rounded-lg shadow-md"></div>
       </div>
-      <div className="flex border rounded-lg shadow-md"></div>
-    </div>
-  </>
-  );
-                        }
-export default VideoList;
-
-/* import React, { useState, useEffect } from 'react';
-
-function VideoList() {
-  const [videos, setVideos] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedSubcategory, setSelectedSubcategory] = useState('');
-
-  useEffect(() => {
-    fetch('http://localhost:5000/subcategories/${subcategoryId}/videos')
-      .then(response => response.json())
-      .then(data => {
-        setVideos(data);
-        setCategories([...new Set(categories.map(video => video.category))]);
-      })
-      .catch(error => console.error(error));
-  });
-
-  const handleCategoryChange = event => {
-    setSelectedCategory(event.target.value);
-    setSelectedSubcategory('');
-  };
-
-  const handleSubcategoryChange = event => {
-    setSelectedSubcategory(event.target.value);
-    const filteredVideos = videos.filteredVideos(video => 
-      video.category === selectedCategory && video.subcategory === selectedSubcategory
-    );
-    const selectedVideo = filteredVideos[0];
-    // update video player with selectedVideo URL
-setVideos(selectedVideo);
-  };
-
-  const subcategories = [...new Set(videos.filteredVideos(video => video.category === selectedCategory).map(video => video.subcategory))];
-
-  return (
-    <div>
-      <select value={selectedCategory} onChange={handleCategoryChange}>
-        <option value="">Select a category</option>
-        {categories.map(category => <option key={category.name} value={category}>{category.name}</option>)}
-      </select>
-      <select value={selectedSubcategory} onChange={handleSubcategoryChange}>
-        <option value="">Select a subcategory</option>
-        {subcategories.map(subcategory => <option key={subcategory.name} value={subcategory}>{subcategory.name}</option>)}
-      </select>
-  /*   </div>
+    </>
   );
 }
 
-export default VideoList; */
+export default VideoList;
