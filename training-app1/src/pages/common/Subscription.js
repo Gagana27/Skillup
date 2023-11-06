@@ -33,39 +33,41 @@ function Subscription() {
   }, [categoryId, subcategoryId, user]);
 
   return (
-    <>
-      <div style={{ marginTop: '20px' }}>
-        <Row xs={1} md={3} className="g-4">
-          {subscribedContext.subScribedItems?.map(cart => (
-            <Col key={cart._id}>
-              <Card
-                style={{ width: '80%' }}
-                className="subcategory bg-secondary border-primary border-4 m-4 relative"
-                border="blue"
-              >
+    <Container className='mt-6'>
+       <Row xs={1} md={2} lg={3} xl={4} className="g-5 mb-5" 
 
-                <Card.Img
-                  variant="top"
-                  // className="w-full h-40 object-cover"
-                  style={{ height: '135px', width: '100%' }}
-                  src={cart?.image}
-                />
+      >
+        {subscribedContext.subScribedItems?.map(cart => (
+          <Col  className="mb-4" key={cart._id}>
+            {/* <Link to={`/categories/${cart._id}/subcategories`}> */}
 
-                <Card.Body className="flex flex-col justify-between" style={{ height: '50px' }}>
-                  <Card.Text className="text-white">
-                    {cart.courseName}
-                    {cart.priceDetails}
-                    {/* {cart.description} */}
+            <Card
+               className="bg-secondary border-primary border-4"
+               border="blue"
+               style={{ width: '100%' }}>
+               
+            
 
-                  </Card.Text>&nbsp;
-                </Card.Body>
-              </Card>
-              {/* </Link> */}
-            </Col>
-          ))}
-        </Row>
-      </div>
-    </>
+              <Card.Img
+                 variant="top"
+                 style={{ height: '135px', width: '100%', objectFit: 'cover' }}
+                src={cart?.image}
+              />
+
+              <Card.Body className="flex flex-col justify-between" style={{ height: '50px' }}>
+                <Card.Text className="text-white">
+                  {cart.courseName}
+                  {cart.priceDetails}
+                  {/* {cart.description} */}
+
+                </Card.Text>&nbsp;
+              </Card.Body>
+            </Card>
+            {/* </Link> */}
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 

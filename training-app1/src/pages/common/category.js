@@ -15,45 +15,38 @@ function CategoryList() {
     async function fetchCategories() {
       const response = await axios.get('http://localhost:5000/categories');
       setCategories(response.data);
-
     }
     fetchCategories();
   }, []);
 
-
-
   return (
     <>
-      <br /><Container>
+      <br />
+      <Container>
         <br />
-        <Row xs={1} md={4} className=" categorycard g-5  mb-5 ">
-          {
-            categories.map(category => (
-              <Col key={category._id}>
-                <Link to={`/categories/${category._id}/subcategories`} state={category}>
-                  <Card
-                    className="bg-secondary border-primary border-4"
-                    border="blue"
-                    style={{ width: '20rem', height: '12rem' }}>
-                    <Card.Img
-                      variant="top"
-                      style={{ height: '135px', width: '100%' }}
-                      src={category?.image}
-                    />
-                    <Card.Body
-                      style={{ height: '50px' }}>
-                      <Card.Text
-                        className="text-white">
-                        {category.name}
-                      </Card.Text>
-
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Col>
-            ))}
+        <Row xs={1} md={2} lg={3} xl={4} className="g-5 mb-5">
+          {categories.map((category) => (
+            <Col key={category._id} className="mb-4">
+              <Link to={`/categories/${category._id}/subcategories`} state={category}>
+                <Card
+                  className="bg-secondary border-primary border-4"
+                  border="blue"
+                  style={{ width: '100%' }}>
+                  <Card.Img
+                    variant="top"
+                    style={{ height: '135px', width: '100%', objectFit: 'cover' }}
+                    src={category?.image}
+                  />
+                  <Card.Body>
+                    <Card.Text className="text-white">
+                      {category.name}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Link>
+            </Col>
+          ))}
         </Row>
-
       </Container>
     </>
   );
