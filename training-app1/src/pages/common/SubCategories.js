@@ -11,7 +11,6 @@ import { useAuthContext } from "../../hooks/UserAuthContext";
 import { CartContextHook } from "../../hooks/CartContextHook";
 import { SubscribedContextHook } from '../../hooks/SubscribedContextHook';
 import RazorPay from './RazorPay';
-
 function SubcategoryList() {
   const { categoryId } = useParams();
   const [subcategories, setSubcategories] = useState([]);
@@ -19,13 +18,9 @@ function SubcategoryList() {
   const { user } = useAuthContext();
   const value = useLocation()
   const [buttonClicked, setButtonClicked] = useState(false);
-
   const navigate = useNavigate()
   const { dispatch, cartItems } = CartContextHook();
   const {dispatch:subScribedDispatch,subScribedItems}=SubscribedContextHook()
-
-
-
   const AddtoCart = async (event, subCatData, userId) => {
     event.preventDefault();
     // navigate(`/subscription/${subCatData._id}`)
@@ -43,27 +38,22 @@ function SubcategoryList() {
     );
     navigate("/my-cart")
   }
-
   const buttonValidation = (id) => {
     return cartItems && cartItems.some((items) => {
       return items.subcategory === id
     })
   }
-
   const buyNowValidation = (id) => {
     return  subScribedItems && subScribedItems.some((items) => {
       return items.subcategory === id
     })
   }
-
-
   useEffect(() => {
     async function fetchSubcategories() {
       const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
       setSubcategories(response.data);
     }
 fetchSubcategories()
-
     if(user)
    {
     async function fetchCartItems() {
@@ -72,18 +62,15 @@ fetchSubcategories()
     }
     fetchCartItems();
    }
-
     async function fetchSubscribedVideos() {
       const response = await axios.get("http://localhost:5000/getAllPaidVideos");
       subScribedDispatch({ type: 'GET_ALL_SUBSCRIBED_VIDEOS', payload: response.data })
     }
     fetchSubscribedVideos();
-    
   }, [categoryId,user]);
-
   return (
     <Container>
-      <Row xs={1} md={4} className="g-4">
+      <Row xs={1} md={4} className="g-4 ">
         {
           subcategories.map(subcategory => {
             const hide = buttonValidation(subcategory._id)
@@ -92,14 +79,13 @@ fetchSubcategories()
               <Col key={subcategory._id}>
                 <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
                   <Card
-                    className=" subcategory bg-secondary border-primary border-4 m-4 relative">
+                    className=" subcategory bg-secondary border-primary border-4 m-2 relative">
                     <Card.Img
                       variant="top"
                       // className="w-full h-40 object-cover"
                       style={{ height: '150px', width: '100%' }}
                       src={subcategory?.image}
                     />
-
                     <Card.Body
                       className="flex flex-col justify-between"
                       style={{ minHeight: '2rem' }}
@@ -109,8 +95,7 @@ fetchSubcategories()
                           {subcategory.name} - Rs. {subcategory.priceDetails}
                         </Card.Text>
                       </div>
-
-                      <div className="flex justify-between items-center mt-2">
+                      <div className="flex justify-between items-center mt-2  ">
                         {/* <Button
                         className="w-1/1"
                         variant="primary"
@@ -123,7 +108,7 @@ fetchSubcategories()
                           subcategory={subcategory}
                         />}
                         {!hide && !sunScribeButtonHide && <Button
-                          className="w-auto ml-4"  // Adjust the ml (margin-left) value as needed
+                          className="  py-2 px-2 rounded sm:py-2 sm:px-4 ml-5 md:py-3 md:px-6 lg:py-4 lg:px-2 xl:py-2 xl:px-8 "  // Adjust the ml (margin-left) value as needed
                           variant="warning"
                           active
                           onClick={(event) => {
@@ -132,7 +117,6 @@ fetchSubcategories()
                         >
                           Add To Cart
                         </Button>}
-
                       </div>
                     </Card.Body>
                   </Card>
@@ -150,9 +134,4 @@ fetchSubcategories()
     </Container>
   );
 }
-
 export default SubcategoryList;
-
-
-
-

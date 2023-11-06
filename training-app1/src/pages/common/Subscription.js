@@ -36,26 +36,24 @@ function Subscription() {
   }, [categoryId, subcategoryId,user]);
 
   return (
-    <Container>
-      <Row xs={1} md={4} className="g-6" style={{
-        height: 500,
-        background: "LightGrey",
-        justifyContent: "center",
+    <Container className='mt-6'>
+       <Row xs={1} md={2} lg={3} xl={4} className="g-5 mb-5" 
 
-      }}>
+      >
         {subscribedContext.subScribedItems?.map(cart => (
-          <Col key={cart._id}>
+          <Col  className="mb-4" key={cart._id}>
             {/* <Link to={`/categories/${cart._id}/subcategories`}> */}
 
             <Card
-              className="subcategory bg-secondary border-primary border-4 m-4 relative"
-              border="blue"
-            >
+               className="bg-secondary border-primary border-4"
+               border="blue"
+               style={{ width: '100%' }}>
+               
+            
 
               <Card.Img
-                variant="top"
-                // className="w-full h-40 object-cover"
-                style={{ height: '135px', width: '100%' }}
+                 variant="top"
+                 style={{ height: '135px', width: '100%', objectFit: 'cover' }}
                 src={cart?.image}
               />
 

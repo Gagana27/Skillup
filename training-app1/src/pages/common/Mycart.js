@@ -9,37 +9,29 @@ import { useParams, useLocation } from 'react-router-dom';
 import DeleteButton from './Trash';
 import { useAuthContext } from '../../hooks/UserAuthContext';
 import { CartContextHook } from '../../hooks/CartContextHook';
-
 function MyCart() {
   const [cart, setCart] = useState([]);
-
   const { categoryId, subcategoryId } = useParams();
-  const {user}=useAuthContext()
-  const {dispatch,cartItems}=CartContextHook();
-  console.log("first",cart)
-
+  const { user } = useAuthContext();
+  const { dispatch, cartItems } = CartContextHook();
   const location = useLocation();
   const Data = location.state;
-
   useEffect(() => {
-   if(user)
-   {
-    async function fetchSubcategories() {
-      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
-      setCart(response.data);
-      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
+    if (user) {
+      async function fetchSubcategories() {
+        const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
+        setCart(response.data);
+        dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
+      }
+      fetchSubcategories();
     }
-    fetchSubcategories();
-   }
-
-  }, [categoryId, subcategoryId,user]);
-
+  }, [categoryId, subcategoryId, user]);
   return (
     <>
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px',marginLeft:'14px', marginRight:'10px' }}>
         <Row xs={1} md={3} className="g-4">
           {cartItems?.map((cart) => (
-            <Col key={cart._id} className="mb-4">
+            <Col key={cart._id} xs={12} md={6} lg={4} className="mb-4">
               <Card
                 className="bg-secondary border-primary border-4"
                 border="blue"
@@ -78,5 +70,8 @@ function MyCart() {
     </>
   );
 }
-
 export default MyCart;
+
+
+
+
