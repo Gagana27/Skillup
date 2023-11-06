@@ -10,22 +10,7 @@ export const commentReducer = (state, action) => {
             return { Comments:[action.payload,...state.Comments] }
         case 'DELETE_COMMENT':
             return { Comments:state.Comments.filter((value)=>(value._id !== action.payload.deletedItem._id)) }
-         case 'EDIT_COMMENT':
-            const commentIdToEdit = action.payload.commentId;
-            const editedContent = action.payload.newContent;
-
-            const updatedComments = state.Comments.map((comment) => {
-                if (comment._id === commentIdToEdit) {
-                    // Create a new comment object with the updated content
-                    return {
-                        ...comment,
-                        content: editedContent,
-                    };
-                }
-                return comment;
-            });
-
-            return { Comments: updatedComments };        
+               
             
             default:
             return state

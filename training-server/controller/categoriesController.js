@@ -186,39 +186,13 @@ const deletecommentItem = async (req, res) => {
     }
 
 }
-const editcommentItem = async (req, res) => {
-    const { commentId } = req.params;
-    const { newContent } = req.body; // Assuming the new content is sent in the request body
 
-    try {
-        // Find the comment by its ID and update the content
-        const editedItem = await Comment.findOneAndUpdate(
-            { _id: commentId },
-            { content: newContent },
-            { new: true } // Return the updated document
-        );
-
-        if (editedItem) {
-            return res.status(200).json({
-                status: "Comment Edited Successfully",
-                editedItem
-            });
-        } else {
-            return res.status(404).json({
-                status: "Comment not found"
-            });
-        }
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: "Server error" });
-    }
-};
 
 
 
   
 module.exports = {
     getAllCategories, postCategories, postVideosInSubcategories,
-    getAllSubcategories, getSubCategoriesVideo, postCarts, getallcart, deletecartItem, addComment,getallcomments,deletecommentItem,editcommentItem
+    getAllSubcategories, getSubCategoriesVideo, postCarts, getallcart, deletecartItem, addComment,getallcomments,deletecommentItem
 
 }

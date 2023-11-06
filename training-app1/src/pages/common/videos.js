@@ -17,8 +17,7 @@ import img from '../../assets/profilepic.svg';
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import EditIcon from '../../assets/editicon.svg';
 import DeleteIcon from '../../assets/deleteicon.svg';
-import DeleteButton from './commentcrud';
-import EditCommentButton from "./Editcomment";
+import DeleteButton from './commentTrash';
 
 
 function VideoList(props) {
@@ -194,16 +193,15 @@ function VideoList(props) {
                     <div style={{ marginLeft: "550px" }}>
                       <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
                     </div>
-
-                    <div style={{ marginLeft: '50px' }}>
-                      <EditCommentButton commentId={comment._id} initialContent={comment.content} />
-                    </div>
-
-                    <div style={{ margin: "15px", marginRight: "30px" }}>
+                    <div style={{ marginLeft: "20px" }}>
+    <DeleteButton commentId={comment._id} />
+</div>
+{/* 
+                    <div style={{ margin: "20px", marginRight: "10px" }}>
                       <DeleteButton commentId={comment._id} />
-                    </div>
+                    </div> */}
                   </div>
-                  <p style={{ marginTop: "10px" }}>{comment.content} </p>
+                  <p style={{ marginTop: "10px" }} >{comment.content} </p>
 
                 </div>
               ))}
