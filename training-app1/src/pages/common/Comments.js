@@ -5,19 +5,13 @@ import { useAuthContext } from "../../hooks/UserAuthContext";
 import { format} from 'date-fns'
 import { CommentContextHook } from "../../hooks/CommentContextHook";
 
-
-
-
-
 function Comments({ CommentLists, videoId, reviewData }) {
   const [comment, setComment] = useState("");
 
   const { user } = useAuthContext();
-const {dispatch,Comments}=CommentContextHook();
+  const {dispatch,Comments}=CommentContextHook();
   const userId = localStorage.getItem('user');
   const firstname = user.loginUser.firstname;
-
-
 
   const handleChange = (e) => {
     setComment(e.currentTarget.value);
