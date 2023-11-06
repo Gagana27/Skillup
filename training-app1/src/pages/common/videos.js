@@ -166,6 +166,7 @@ function VideoList(props) {
                               comment={comment}
                               refreshFunction={updateComment}
                               videoId={location.state.video}
+                              selectedRating={selectedRating}
                             />
                           </h1>
                           <br />
@@ -184,7 +185,7 @@ function VideoList(props) {
 
                     <div>
                       <p style={{ marginLeft: "20px", marginTop: "-4px", }}> {comment.username}</p>
-                      <p><Rating /></p>
+                      <p><Rating selectedRating={comment.reviewRating[0]}/></p>
                     </div>
 
                     <div style={{ marginLeft: "550px" }}>

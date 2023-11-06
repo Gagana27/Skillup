@@ -9,7 +9,7 @@ import { CommentContextHook } from "../../hooks/CommentContextHook";
 
 
 
-function Comments({ CommentLists,videoId,reviewData }) {
+function Comments({ CommentLists,videoId,selectedRating }) {
   const [comment, setComment] = useState("");
 
   const { user } = useAuthContext();
@@ -25,11 +25,11 @@ const {dispatch,Comments}=CommentContextHook();
   };
 
   console.log("Second",Comments)
-  const onSubmit = async (e, userId,videoId,firstname,rating) => {
+  const onSubmit = async (e, userId,videoId,firstname,selectedRating) => {
     e.preventDefault();
     const currentDateTime = new Date(); // Get the current date and time
     const formattedDateTime = format(currentDateTime, "yyyy-MM-dd HH:mm:ss"); // Format it as per your requirement
-    console.log("rrr",  userId,comment,videoId,firstname,rating)
+    console.log("rrr",  userId,comment,videoId,firstname,selectedRating)
   
 
     try {
@@ -41,7 +41,7 @@ const {dispatch,Comments}=CommentContextHook();
           videos: videoId,
           username:firstname,
           createdAt: formattedDateTime,
-          reviewRating: rating,
+          reviewRating: selectedRating,
         }
         
       );
@@ -81,7 +81,7 @@ const {dispatch,Comments}=CommentContextHook();
                 </div>
                 <div className="d-flex justify-content-between mt-3">
                  
-                  <button type="button" className="btn bg-yellow-500 hover:bg-green-700 " onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId,firstname,reviewData)}}>
+                  <button type="button" className="btn bg-yellow-500 hover:bg-green-700 " onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId,firstname,selectedRating)}}>
                     Submit 
                   </button>
                 </div>
