@@ -15,64 +15,57 @@ function Subscription() {
   const { categoryId, subcategoryId } = useParams();
   // const [subcategories, setSubcategories] = useState([]);
   const [cart, setCart] = useState([]);
-  const {user}=useAuthContext()
-  const {dispatch,cartItems}=CartContextHook();
-  const subscribedContext=SubscribedContextHook();
+  const { user } = useAuthContext()
+  const { dispatch, cartItems } = CartContextHook();
+  const subscribedContext = SubscribedContextHook();
   const [subscribe, setSubscribe] = useState([]);
 
   const location = useLocation();
-  // const Data = location.state.subscriptionVideos;
 
   useEffect(() => {
 
-   async function fetchPaidVideos()
-   {
-    const response=await axios.get(`http://localhost:5000/getAllPaidVideos/${user?.loginUser._id}`);
-    setSubscribe(response.data);
-    subscribedContext.dispatch({type:'GET_ALL_SUBSCRIBED_VIDEOS',payload:response.data})
-    console.log(response.data)
-   }
-   fetchPaidVideos()
-  }, [categoryId, subcategoryId,user]);
+    async function fetchPaidVideos() {
+      const response = await axios.get(`http://localhost:5000/getAllPaidVideos/${user?.loginUser._id}`);
+      setSubscribe(response.data);
+      subscribedContext.dispatch({ type: 'GET_ALL_SUBSCRIBED_VIDEOS', payload: response.data })
+    }
+    fetchPaidVideos()
+  }, [categoryId, subcategoryId, user]);
 
   return (
-    <Container>
-      <Row xs={1} md={4} className="g-6" style={{
-        height: 500,
-        background: "LightGrey",
-        justifyContent: "center",
+    <>
+      <div style={{ marginTop: '20px' }}>
+        <Row xs={1} md={3} className="g-4">
+          {subscribedContext.subScribedItems?.map(cart => (
+            <Col key={cart._id}>
+              <Card
+                style={{ width: '80%' }}
+                className="subcategory bg-secondary border-primary border-4 m-4 relative"
+                border="blue"
+              >
 
-      }}>
-        {subscribedContext.subScribedItems?.map(cart => (
-          <Col key={cart._id}>
-            {/* <Link to={`/categories/${cart._id}/subcategories`}> */}
+                <Card.Img
+                  variant="top"
+                  // className="w-full h-40 object-cover"
+                  style={{ height: '135px', width: '100%' }}
+                  src={cart?.image}
+                />
 
-            <Card
-              className="subcategory bg-secondary border-primary border-4 m-4 relative"
-              border="blue"
-            >
+                <Card.Body className="flex flex-col justify-between" style={{ height: '50px' }}>
+                  <Card.Text className="text-white">
+                    {cart.courseName}
+                    {cart.priceDetails}
+                    {/* {cart.description} */}
 
-              <Card.Img
-                variant="top"
-                // className="w-full h-40 object-cover"
-                style={{ height: '135px', width: '100%' }}
-                src={cart?.image}
-              />
-
-              <Card.Body className="flex flex-col justify-between" style={{ height: '50px' }}>
-                <Card.Text className="text-white">
-                  {cart.courseName}
-                  {cart.priceDetails}
-                  {/* {cart.description} */}
-
-                </Card.Text>&nbsp;
-              </Card.Body>
-            </Card>
-            {/* </Link> */}
-          </Col>
-        ))}
-      </Row>
-    </Container>
+                  </Card.Text>&nbsp;
+                </Card.Body>
+              </Card>
+              {/* </Link> */}
+            </Col>
+          ))}
+        </Row>
+      </div>
+    </>
   );
 }
 
