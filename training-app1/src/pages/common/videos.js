@@ -181,7 +181,7 @@ function VideoList(props) {
             </div>{" "}
             {CommentUseHook?.Comments &&
               CommentUseHook?.Comments.map((comment) =>{
-                // console.log('stars....',comment.reviewRating[0][0]['rating'])
+                console.log('stars....',comment.reviewRating[0][0]['rating'])
                 return (
                 <div key={comment._id} style={{ height: "100px", marginTop: "20px" }}>
                   <div style={{ display: "flex" }}>
