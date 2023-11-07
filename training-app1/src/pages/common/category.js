@@ -29,8 +29,8 @@ function CategoryList() {
 
   return (
     <>
-
-      <Container className="text-center">
+      
+      <Container >
         <br />
         <Row className="justify-content-center mb-3">
           <Col xs={12} md={6}>
