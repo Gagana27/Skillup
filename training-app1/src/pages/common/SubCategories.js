@@ -77,10 +77,10 @@ fetchSubcategories()
         {
           subcategories.map(subcategory => {
             const hide = buttonValidation(subcategory._id)
-            const sunScribeButtonHide = buyNowValidation(subcategory._id)
+            const isSubscribed = buyNowValidation(subcategory._id)
             return (
               <Col key={subcategory._id}>
-                <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
+                <Link to={isSubscribed?`/subcategories/${subcategory._id}/videos`:null} state={isSubscribed?{ video: subcategory.videos[0]._id }:null}>
                   <Card
                     className=" subcategory bg-secondary border-primary border-4 m-2 relative">
                     <Card.Img
@@ -100,11 +100,24 @@ fetchSubcategories()
                       </div>
 
                       <div className="flex justify-between items-center mt-2">
-                        {!sunScribeButtonHide && <RazorPay
+                        {/* {!sunScribeButtonHide && <RazorPay
                           amount={subcategory.priceDetails}
                           subcategory={subcategory}
-                        />}
-                        {!hide && !sunScribeButtonHide && <Button
+                        />} */}
+                        {isSubscribed ? (
+                      <Button
+                        className="  py-2 px-2 rounded sm:py-2 sm:px-4 ml-5 md:py-3 md:px-6 lg:py-4 lg:px-2 xl:py-2 xl:px-8"
+                        variant="success" // Render a different style for subscribed content
+                      >
+                        Watch Now
+                      </Button>
+                    ) : (
+                      <RazorPay
+                        amount={subcategory.priceDetails}
+                        subcategory={subcategory}
+                      />
+                    )}
+                        {!hide && !isSubscribed && <Button
                           className="  py-2 px-2 rounded sm:py-2 sm:px-4 ml-5 md:py-3 md:px-6 lg:py-4 lg:px-2 xl:py-2 xl:px-8 "  // Adjust the ml (margin-left) value as needed
                           variant="warning"
                           active

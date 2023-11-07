@@ -12,7 +12,7 @@ import VideoList from './videos';
 function CategoryList() {
   const [categories, setCategories] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  console.log("categ",categories)
+  console.log("categ", categories)
 
   useEffect(() => {
     async function fetchCategories() {
@@ -51,33 +51,33 @@ function CategoryList() {
         <br />
         <br />
         <Row xs={1} md={2} lg={3} xl={4} className="g-5 mb-5">
-          
-        {categories
-           .filter((category) =>
-           category.name.toLowerCase().includes(searchInput.toLowerCase())
-           )
-          
-          .map((category) => (
-            <Col key={category._id} className="mb-4">
-              <Link to={`/categories/${category._id}/subcategories`} state={category}>
-                <Card
-                  className="bg-secondary border-primary border-4"
-                  border="blue"
-                  style={{ width: '100%' }}>
-                  <Card.Img
-                    variant="top"
-                    style={{ height: '135px', width: '100%', objectFit: 'cover' }}
-                    src={category?.image}
-                  />
-                  <Card.Body>
-                    <Card.Text className="text-white">
-                      {category.name}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </Col>
-          ))}
+
+          {categories
+            .filter((category) =>
+              category.name.toLowerCase().includes(searchInput.toLowerCase())
+            )
+
+            .map((category) => (
+              <Col key={category._id} className="mb-4">
+                <Link to={`/categories/${category._id}/subcategories`} state={category}>
+                  <Card
+                    className="bg-secondary border-primary border-4"
+                    border="blue"
+                    style={{ width: '100%' }}>
+                    <Card.Img
+                      variant="top"
+                      style={{ height: '135px', width: '100%', objectFit: 'cover' }}
+                      src={category?.image}
+                    />
+                    <Card.Body>
+                      <Card.Text className="text-white">
+                        {category.name}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Link>
+              </Col>
+            ))}
         </Row>
       </Container>
     </>
