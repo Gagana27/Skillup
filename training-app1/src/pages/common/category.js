@@ -7,8 +7,11 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import VideoList from './videos';
 
+
+
 function CategoryList() {
   const [categories, setCategories] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
   console.log("categ",categories)
 
   useEffect(() => {
@@ -19,13 +22,42 @@ function CategoryList() {
     fetchCategories();
   }, []);
 
+  const handleSearchInputChange = (event) => {
+    setSearchInput(event.target.value);
+  };
+
+
   return (
     <>
-      <br />
-      <Container>
+      
+      <Container className="text-center">
+        <br />
+        <Row className="justify-content-center mb-3">
+          <Col xs={12} md={6}>
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder="Search categories"
+                value={searchInput}
+                onChange={handleSearchInputChange}
+                className="form-control rounded"
+              />
+              <span className="input-group-text search-icon">
+                <i className="bi bi-search"></i>
+              </span>
+            </div>
+          </Col>
+        </Row>
+        <br />
         <br />
         <Row xs={1} md={2} lg={3} xl={4} className="g-5 mb-5">
-          {categories.map((category) => (
+          
+        {categories
+           .filter((category) =>
+           category.name.toLowerCase().includes(searchInput.toLowerCase())
+           )
+          
+          .map((category) => (
             <Col key={category._id} className="mb-4">
               <Link to={`/categories/${category._id}/subcategories`} state={category}>
                 <Card
