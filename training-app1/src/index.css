@@ -120,6 +120,12 @@
   color: #fff;
 }
 
+
  
+
+.search-icon {
+  order: 2; 
+  cursor: pointer;
+}
 
 

@@ -65,14 +65,11 @@ fetchSubcategories()
     }
     fetchCartItems();
    }
-   if(user)
-   {
     async function fetchSubscribedVideos() {
       const response = await axios.get(`http://localhost:5000/getAllPaidVideos/${user?.loginUser._id}`);
       subScribedDispatch({ type: 'GET_ALL_SUBSCRIBED_VIDEOS', payload: response.data })
     }
     fetchSubscribedVideos();
-   }
   }, [categoryId,user]);
   return (
     <Container>
@@ -80,10 +77,10 @@ fetchSubcategories()
         {
           subcategories.map(subcategory => {
             const hide = buttonValidation(subcategory._id)
-            const isSubScribed = buyNowValidation(subcategory._id)
+            const sunScribeButtonHide = buyNowValidation(subcategory._id)
             return (
               <Col key={subcategory._id}>
-                <Link to={isSubScribed?`/subcategories/${subcategory._id}/videos`:null} state={isSubScribed?{ video: subcategory.videos[0]._id }:null}>
+                <Link to={`/subcategories/${subcategory._id}/videos`} state={{ video: subcategory.videos[0]._id }}>
                   <Card
                     className=" subcategory bg-secondary border-primary border-4 m-2 relative">
                     <Card.Img
@@ -103,24 +100,11 @@ fetchSubcategories()
                       </div>
 
                       <div className="flex justify-between items-center mt-2">
-                        {/* {!isSubScribed && <RazorPay
+                        {!sunScribeButtonHide && <RazorPay
                           amount={subcategory.priceDetails}
                           subcategory={subcategory}
-                        />} */}
-                        {isSubScribed ? (
-                      <Button
-                        className="  py-2 px-2 rounded sm:py-2 sm:px-4 ml-5 md:py-3 md:px-6 lg:py-4 lg:px-2 xl:py-2 xl:px-8"
-                        variant="success" 
-                      >
-                        Watch Now
-                      </Button>
-                    ) : (
-                      <RazorPay
-                        amount={subcategory.priceDetails}
-                        subcategory={subcategory}
-                      />
-                    )}
-                        {!hide && !isSubScribed && <Button
+                        />}
+                        {!hide && !sunScribeButtonHide && <Button
                           className="  py-2 px-2 rounded sm:py-2 sm:px-4 ml-5 md:py-3 md:px-6 lg:py-4 lg:px-2 xl:py-2 xl:px-8 "  // Adjust the ml (margin-left) value as needed
                           variant="warning"
                           active
