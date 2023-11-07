@@ -45,7 +45,7 @@ const RazorPay = ({ amount, subcategory }) => {
                     };
                     const value = await axios.post("http://localhost:5000/success", { data })
                     console.log("ggggg", value.data)
-                    navigate("/subscription",{state: value.data});
+                    navigate("/subscription",)
                 } catch (error) {
                     console.log(error)
                 }

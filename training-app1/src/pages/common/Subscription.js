@@ -46,8 +46,6 @@ function Subscription() {
                border="blue"
                style={{ width: '100%' }}>
                
-            
-
               <Card.Img
                  variant="top"
                  style={{ height: '135px', width: '100%', objectFit: 'cover' }}
