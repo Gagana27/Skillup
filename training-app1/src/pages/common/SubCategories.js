@@ -11,6 +11,7 @@ import { useAuthContext } from "../../hooks/UserAuthContext";
 import { CartContextHook } from "../../hooks/CartContextHook";
 import { SubscribedContextHook } from '../../hooks/SubscribedContextHook';
 import RazorPay from './RazorPay';
+
 function SubcategoryList() {
   const { categoryId } = useParams();
   const [subcategories, setSubcategories] = useState([]);
@@ -21,8 +22,6 @@ function SubcategoryList() {
   const navigate = useNavigate()
   const { dispatch, cartItems } = CartContextHook();
   const { dispatch: subScribedDispatch, subScribedItems } = SubscribedContextHook()
-
-
 
   const AddtoCart = async (event, subCatData, userId) => {
     event.preventDefault();
@@ -40,37 +39,40 @@ function SubcategoryList() {
       }
     );
     navigate("/my-cart")
-  }
+  };
+
   const buttonValidation = (id) => {
     return cartItems && cartItems.some((items) => {
       return items.subcategory === id
     })
-  }
+  };
+
   const buyNowValidation = (id) => {
     return subScribedItems && subScribedItems.some((items) => {
       return items.subcategory === id
     })
-  }
+  };
+
   useEffect(() => {
     async function fetchSubcategories() {
       const response = await axios.get(`http://localhost:5000/categories/${categoryId}/subcategories`);
       setSubcategories(response.data);
     }
-fetchSubcategories()
-    if(user)
-   {
-    async function fetchCartItems() {
-      const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
-      dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
+    fetchSubcategories()
+    if (user) {
+      async function fetchCartItems() {
+        const response = await axios.get(`http://localhost:5000/cart/${user?.loginUser._id}`);
+        dispatch({ type: 'GET_ALL_CARTS', payload: response.data });
+      }
+      fetchCartItems();
     }
-    fetchCartItems();
-   }
     async function fetchSubscribedVideos() {
       const response = await axios.get(`http://localhost:5000/getAllPaidVideos/${user?.loginUser._id}`);
       subScribedDispatch({ type: 'GET_ALL_SUBSCRIBED_VIDEOS', payload: response.data })
     }
     fetchSubscribedVideos();
-  }, [categoryId,user]);
+  }, [categoryId, user]);
+
   return (
     <Container>
       <Row xs={1} md={4} className="g-4 ">
