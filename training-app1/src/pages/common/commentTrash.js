@@ -1,10 +1,10 @@
-import{CommentContextHook} from "../../hooks/CommentContextHook"
+import { CommentContextHook } from "../../hooks/CommentContextHook"
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import DeleteIcon from '../../assets/deleteicon.svg';
 
 
-const DeletecommentButton = ({  commentId }) => {
+const DeletecommentButton = ({ commentId }) => {
 
     const { dispatch } = CommentContextHook()
     const deleteComments = async () => {
@@ -14,9 +14,9 @@ const DeletecommentButton = ({  commentId }) => {
     }
     return (
         <>
-   <button className="delete-button" onClick={() => deleteComments()}>
-            <img src={DeleteIcon} alt="Delete Icon" />
-        </button>        </>
+            <button className="delete-button" onClick={() => deleteComments()}>
+                <img src={DeleteIcon} alt="Delete Icon" width="30" height="5"/>
+            </button>        </>
     );
 }
 

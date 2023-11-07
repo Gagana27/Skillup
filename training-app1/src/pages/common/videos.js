@@ -42,7 +42,6 @@ function VideoList(props) {
   const [comment, setCommentLists] = useState();
   const CommentUseHook = CommentContextHook();
 
-
   const location = useLocation();
 
   const videoId = location.state["video"];
@@ -109,18 +108,18 @@ function VideoList(props) {
   return (
     <>
       <div className="added">
-        <div className="flex justify-between p-8">
-          <div className="w-96 pr-8">
-            <div className="relative inline-block text-left">
+      <div className="flex flex-col md:flex-row justify-between p-8 md:p-8 ">
+          <div className= "w-full md:w-1/4 pr-0 md:pr-8 mb-4 md:mb-0">
+            <div className=" inline-block text-left ">
               <DropDown name="ggggg" desc="reactjs" videos={videos} />
             </div>
             <br />
             <br />
             <br />
           </div>
-          <div className="w-full">
+          <div className="w-full md:w-3/4">
             {/* Course image */}
-            <div className="flex h-75v flex-col " ref={playerContainerRef}>
+            <div className="  flex h-75v flex-col mt-5  " ref={playerContainerRef}>
               {videos &&
                 videos.map((video) => (
                   <li key={video._id}>
@@ -182,7 +181,7 @@ function VideoList(props) {
             </div>{" "}
             {CommentUseHook.Comments &&
               CommentUseHook.Comments.map((comment) => (
-                <div key={comment._id} style={{ height: "200px", marginTop: "20px" }}>
+                <div key={comment._id} style={{ height: "100px", marginTop: "20px" }}>
                   <div style={{ display: "flex" }}>
                     <div style={{ height: "50px", width: "50px" }}><img src={img} alt="image" /></div>
 
@@ -195,9 +194,9 @@ function VideoList(props) {
                       <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
                     </div>
                     <div style={{ marginLeft: "20px" }}>
-    <DeleteButton commentId={comment._id} />
-</div>
-{/* 
+                      <DeleteButton commentId={comment._id} />
+                    </div>
+                    {/* 
                     <div style={{ margin: "20px", marginRight: "10px" }}>
                       <DeleteButton commentId={comment._id} />
                     </div> */}
