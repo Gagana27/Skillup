@@ -3,7 +3,6 @@ import { useParams, useLocation } from "react-router-dom";
 import ReactPlayer from "react-player";
 import React, { useRef } from "react";
 import axios from "axios";
-import Rating from "./AddReview";
 import ReviewComp from "./Reviewcomp";
 import StarRating from "./AddReview";
 // import ReviewComp from "./AddReview";
@@ -52,6 +51,7 @@ function VideoList(props) {
     setIsOpen(!isOpen);
   };
   console.log("first", CommentUseHook.Comments);
+  console.log("CheckStarRating", selectedRating);
 
   useEffect(() => {
     async function fetchComments() {
@@ -169,7 +169,7 @@ function VideoList(props) {
                               comment={comment}
                               refreshFunction={updateComment}
                               videoId={location.state.video}
-                              selectedRating={selectedRating}
+                              selectedRating={reviewData}
                             />
                           </h1>
                           <br />
@@ -188,7 +188,7 @@ function VideoList(props) {
 
                     <div>
                       <p style={{ marginLeft: "20px", marginTop: "-4px", }}> {comment.username}</p>
-                      <p><Rating selectedRating={comment.reviewRating[0]}/></p>
+                      <p><StarRating selectedRating={comment.reviewRating[0][0]['rating']} disableClick={true}/></p>
                     </div>
 
                     <div style={{ marginLeft: "550px" }}>
