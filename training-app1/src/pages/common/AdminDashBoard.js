@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../../index.css'
 import UserDetails from "./UserData";
+import Subscription from "./Subscription";
 
 export const AdminDashBoard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -146,7 +147,7 @@ export const AdminDashBoard = () => {
                       <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
                       <polyline points="13 2 13 9 20 9"></polyline>
                     </svg>
-                    <span className="mx-2">Order</span>
+                    <span className="mx-2">Subscription</span>
                 </p>
               </li>
 
@@ -238,9 +239,9 @@ export const AdminDashBoard = () => {
         marginLeft:"150px",marginTop:"-570px"}}>
         {!showDashboard && !showOrder && !showProducts && !showCustomer && !showIntegrations && <p>Welcome To AdminDashBoard</p>}
         {showDashboard && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Admin DashBoard</h2>}
-        {showOrder &&<h2 style={{fontSize:"2.5rem",color:"red"}}>Order</h2> }
+        {showOrder &&<div><Subscription /></div>}
         {showProducts && <h2 style={{fontSize:"2.5rem",color:"green"}}>Products</h2>}
-        {showCustomer && <UserDetails/>}
+        {showCustomer && <div><UserDetails/></div>}
         {showIntegrations && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Integrations</h2>}
 
       </h1>
