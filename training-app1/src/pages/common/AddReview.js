@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ReactStarRating from "react-star-ratings-component";
 
-function StarRating({ selectedRating, onStarClick }) {
+function StarRating({ selectedRating, onStarClick,disableClick }) {
+    console.log("StarRating1",selectedRating)
+ 
     return (
         <ReactStarRating
             rating={selectedRating}
@@ -12,7 +14,7 @@ function StarRating({ selectedRating, onStarClick }) {
             starSize="30px"
             spaceBetweenStar="10px"
             onSelectStar={onStarClick}
-            disableOnSelect={false}
+            disableOnSelect={disableClick?disableClick:false}
         />
     );
 }

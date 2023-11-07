@@ -18,12 +18,12 @@ function Comments({ CommentLists, videoId, reviewData }) {
   };
 
   console.log("Second",Comments)
-  const onSubmit = async (e, userId,videoId,firstname,rating) => {
+  const onSubmit = async (e, userId,videoId,firstname,selectedRating) => {
     e.preventDefault();
-    const currentDateTime = new Date(); 
-    const formattedDateTime = format(currentDateTime, "yyyy-MM-dd HH:mm:ss"); 
-    console.log("rrr", userId, comment, videoId, firstname, rating)
-
+    const currentDateTime = new Date(); // Get the current date and time
+    const formattedDateTime = format(currentDateTime, "yyyy-MM-dd HH:mm:ss"); // Format it as per your requirement
+    console.log("rrr",  userId,comment,videoId,firstname,selectedRating)
+  
 
     try {
       const response = await axios.post(
@@ -34,7 +34,7 @@ function Comments({ CommentLists, videoId, reviewData }) {
           videos: videoId,
           username: firstname,
           createdAt: formattedDateTime,
-          reviewRating: rating,
+          reviewRating: selectedRating,
         }
 
       );
@@ -66,19 +66,19 @@ function Comments({ CommentLists, videoId, reviewData }) {
 
           </div>
         ))}
-      <form >
-        <div className="form-outline">
-          <textarea placeholder="Write a Comment....." className="form-control" id="textAreaExample" rows="4" onChange={handleChange}
-            value={comment}></textarea>
-
-        </div>
-        <div className="d-flex justify-content-between mt-3">
-
-          <button type="button" className="btn bg-yellow-500 hover:bg-green-700 " onClick={(e) => { onSubmit(e, user.loginUser._id, videoId, firstname, reviewData) }}>
-            Submit
-          </button>
-        </div>
-      </form>
+<form  onSubmit={onSubmit}>
+<div className="form-outline">
+                  <textarea placeholder="Write a Comment....." className="form-control" id="textAreaExample"  rows="4"  onChange={handleChange}
+          value={comment}></textarea>
+                 
+                </div>
+                <div className="d-flex justify-content-between mt-3">
+                 
+                  <button type="button" className="btn bg-yellow-500 hover:bg-green-700 " onClick={(e)=>{onSubmit(e,user.loginUser._id,videoId,firstname,selectedRating)}}>
+                    Submit 
+                  </button>
+                </div>
+                </form>
 
     
     </div>

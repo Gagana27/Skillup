@@ -66,7 +66,7 @@ fetchSubcategories()
     fetchCartItems();
    }
     async function fetchSubscribedVideos() {
-      const response = await axios.get("http://localhost:5000/getAllPaidVideos");
+      const response = await axios.get(`http://localhost:5000/getAllPaidVideos/${user?.loginUser._id}`);
       subScribedDispatch({ type: 'GET_ALL_SUBSCRIBED_VIDEOS', payload: response.data })
     }
     fetchSubscribedVideos();
