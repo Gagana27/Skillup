@@ -17,7 +17,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import EditIcon from '../../assets/editicon.svg';
 import DeleteIcon from '../../assets/deleteicon.svg';
 import DeleteButton from './commentTrash';
-
+import StarRatings from 'react-star-ratings';
 
 function VideoList(props) {
   const [state, setState] = useState({
@@ -179,16 +179,26 @@ function VideoList(props) {
                   </li>
                 ))}
             </div>{" "}
-            {CommentUseHook.Comments &&
-              CommentUseHook.Comments.map((comment) => (
+            {CommentUseHook?.Comments &&
+              CommentUseHook?.Comments.map((comment) =>{
+                // console.log('stars....',comment.reviewRating[0][0]['rating'])
+                return (
                 <div key={comment._id} style={{ height: "100px", marginTop: "20px" }}>
                   <div style={{ display: "flex" }}>
                     <div style={{ height: "50px", width: "50px" }}><img src={img} alt="image" /></div>
 
-                    <div>
+                   {comment?.reviewRating && <div>
                       <p style={{ marginLeft: "20px", marginTop: "-4px", }}> {comment.username}</p>
-                      <p><StarRating selectedRating={comment.reviewRating[0]['rating']} disableClick={true}/></p>
-                    </div>
+                      {/* <p><StarRating selectedRating={comment.reviewRating[0]['rating']} disableClick={true}/></p> */}
+                      <p>
+                      <StarRatings
+                      rating={comment?.reviewRating[0]?.[0]?.['rating']}
+                      starRatedColor="red"
+                      colorEmptyStar="black"
+                      starDimension="20px"
+                     />
+                      </p>
+                    </div>}
 
                     <div style={{ marginLeft: "550px" }}>
                       <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
@@ -204,7 +214,7 @@ function VideoList(props) {
                   <p style={{ marginTop: "10px" }} >{comment.content} </p>
 
                 </div>
-              ))}
+              )})}
           </div>
         </div>
         <div className="flex border rounded-lg shadow-md"></div>
