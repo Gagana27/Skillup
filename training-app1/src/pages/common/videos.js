@@ -187,7 +187,7 @@ function VideoList(props) {
 
                     <div>
                       <p style={{ marginLeft: "20px", marginTop: "-4px", }}> {comment.username}</p>
-                      <p><StarRating selectedRating={comment.reviewRating[0][0]['rating']} disableClick={true}/></p>
+                      <p><StarRating selectedRating={comment.reviewRating[0]['rating']} disableClick={true}/></p>
                     </div>
 
                     <div style={{ marginLeft: "550px" }}>
