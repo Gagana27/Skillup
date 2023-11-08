@@ -1,8 +1,9 @@
 import React from 'react';
 import { InboxOutlined, CloudUploadOutlined } from '@ant-design/icons';
-import { message, Upload } from 'antd';
+import { message, Upload , Input } from 'antd';
 
 const { Dragger } = Upload;
+const { TextArea } = Input;
 
 const props = {
     name: 'file',
@@ -19,13 +20,15 @@ const props = {
             message.error(`${info.file.name} file upload failed.`);
         }
     },
+    
     onDrop(e) {
         console.log('Dropped files', e.dataTransfer.files);
     },
 };
 
 const UploadFile = () => (
-    <div className='file-upload h-64'>
+    <div >
+         <div className='file-upload h-64'>
         <Dragger {...props}>
             <p >
                 <CloudUploadOutlined />
@@ -35,7 +38,10 @@ const UploadFile = () => (
                 Support for a single or bulk upload.
             </p>
         </Dragger>
+        <Input placeholder="Enter Course Name" />
     </div>
+    </div>
+   
 
 );
 export default UploadFile;
