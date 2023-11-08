@@ -3,6 +3,7 @@ import '../../index.css'
 import UserDetails from "./UserData";
 
 import Subscription_Data from "./Subscription_Data";
+import UploadFile from "./UploadVideo";
 
 export const AdminDashBoard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -241,7 +242,7 @@ export const AdminDashBoard = () => {
         {!showDashboard && !showOrder && !showProducts && !showCustomer && !showIntegrations && <p>Welcome To AdminDashBoard</p>}
         {showDashboard && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Admin DashBoard</h2>}
         {showOrder &&<div style={{marginTop:"-100px"}}><Subscription_Data/></div>}
-        {showProducts && <h2 style={{fontSize:"2.5rem",color:"green"}}>Products</h2>}
+        {showProducts && <h2 style={{fontSize:"2.5rem",color:"green"}}><UploadFile/></h2>}
         {showCustomer && <div style={{marginTop:"-350px"}}><UserDetails/></div>}
         {showIntegrations && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Logout</h2>}
 
