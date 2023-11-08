@@ -40,7 +40,7 @@ function Subscription() {
         {subscribedContext.subScribedItems?.map(cart => (
           <Col  className="mb-4" key={cart._id}>
             {/* <Link to={`/categories/${cart._id}/subcategories`}> */}
-
+            {user && user.loginUser && user.loginUser.firstname}
             <Card
                className="bg-secondary border-primary border-4"
                border="blue"
