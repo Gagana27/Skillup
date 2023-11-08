@@ -81,7 +81,7 @@ export default function RoutePage() {
             <Route path="/comments" element={<Comments />} />
             <Route path="/errorPage" element={<ErrorHandling />} />
 
-            <Route path="/subscription_data" element={<Subscription_Data />} />
+            <Route path="/Subscription_Data" element={<Subscription_Data />} />
           </Routes>
           <Footer />
         </div>

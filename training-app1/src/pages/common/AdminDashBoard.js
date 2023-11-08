@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../../index.css'
 import UserDetails from "./UserData";
-import Subscription from "./Subscription";
+
 import Subscription_Data from "./Subscription_Data";
 
 export const AdminDashBoard = () => {

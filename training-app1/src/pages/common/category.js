@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import VideoList from './videos';
+import NoDataFound from './NoDataFound';
 
 
 
@@ -25,6 +26,10 @@ function CategoryList() {
   const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value);
   };
+
+  const filteredCategories = categories.filter((category) =>
+    category.name.toLowerCase().includes(searchInput.toLowerCase())
+  );
 
 
   return (
@@ -51,15 +56,14 @@ function CategoryList() {
         <br />
         <br />
         <Row xs={1} md={2} lg={3} xl={4} className="g-5 mb-5">
-
-          {categories
-            .filter((category) =>
-              category.name.toLowerCase().includes(searchInput.toLowerCase())
-            )
-
-            .map((category) => (
-              <Col key={category._id} className="mb-4">
-                <Link to={`/categories/${category._id}/subcategories`} state={category}>
+        {filteredCategories.length === 0 ? (
+        <Col >
+        <NoDataFound />
+      </Col>
+    ):(
+      filteredCategories.map((category) => (
+        <Col key={category._id} className="mb-4">
+          <Link to={`/categories/${category._id}/subcategories`} state={category}>
                   <Card
                     className="bg-secondary border-primary border-4"
                     border="blue"
@@ -77,7 +81,8 @@ function CategoryList() {
                   </Card>
                 </Link>
               </Col>
-            ))}
+            ))
+    )}
         </Row>
       </Container>
     </>
