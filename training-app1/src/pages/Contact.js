@@ -23,16 +23,8 @@ function ContactPage() {
 
     return (
         <>
-
-
             <h1 class="text-center mb-5 mt-2 text-xl text-black">Contact us</h1>
-
-
-
             <section class="text-center ml-52 mb-3">
-
-
-
                 <div class="row">
                     <div class="col-lg-4">
                         <iframe
@@ -106,15 +98,8 @@ function ContactPage() {
                         </div>
                     </div>
                 </div>
-               
-            
-
-
-
             </section>
-
         </>
-
     );
 }
 export default ContactPage;
