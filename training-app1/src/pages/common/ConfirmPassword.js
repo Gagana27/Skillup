@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios'
 import { useLocation } from "react-router";
 import { Button, message } from 'antd';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -9,7 +10,7 @@ const ConfirmPassword = () => {
 
     const[resetPassword,setConfirm]=useState();
     const location=useLocation();
-
+    const navigate = useNavigate();
     const {userId}=location.state
 
 
@@ -19,7 +20,7 @@ const handleConfirmPassword = async (e) => {
         resetPassword
      })
      message.success('Password Created Successfully', 4); // '3' is the duration in seconds
-
+     navigate('/login'); 
     console.log("yyyy",response);
     // const result = window.confirm('Are you sure you want to confirm your password?');
     // if (result) {
