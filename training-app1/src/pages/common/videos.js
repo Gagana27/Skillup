@@ -206,10 +206,12 @@ function VideoList(props) {
                     <div style={{ marginLeft: "20px" }}>
                       <DeleteButton commentId={comment._id} />
                     </div>
-                    {/* 
-                    <div style={{ margin: "20px", marginRight: "10px" }}>
+                    
+                    {/* <div style={{ margin: "20px", marginRight: "10px" }}>
                       <DeleteButton commentId={comment._id} />
                     </div> */}
+
+
                   </div>
                   <p style={{ marginTop: "10px" }} >{comment.content} </p>
 
