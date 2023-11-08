@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import '../../index.css'
 import UserDetails from "./UserData";
 import Subscription from "./Subscription";
+import UploadFile from "./UploadVideo";
+import DragDropFile from "./UploadVideo";
 
 export const AdminDashBoard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -13,13 +15,10 @@ export const AdminDashBoard = () => {
 
   const [activeNavItem, setActiveNavItem] = useState('Home');
 
-  
-
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
- 
   const Headers = () => {
     return (
       <div className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -240,7 +239,7 @@ export const AdminDashBoard = () => {
         {!showDashboard && !showOrder && !showProducts && !showCustomer && !showIntegrations && <p>Welcome To AdminDashBoard</p>}
         {showDashboard && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Admin DashBoard</h2>}
         {showOrder &&<div><Subscription /></div>}
-        {showProducts && <h2 style={{fontSize:"2.5rem",color:"green"}}>Products</h2>}
+        {showProducts && <h2 style={{fontSize:"2.5rem",color:"green"}}><UploadFile/></h2>}
         {showCustomer && <div><UserDetails/></div>}
         {showIntegrations && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Integrations</h2>}
 
