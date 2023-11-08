@@ -3,9 +3,9 @@ import { Empty } from 'antd';
 
 const NoDataFound = () => {
     return (
-        <>
-            <Empty />;
-        </>
+        <div style={{ position: 'relative', left: '550px' , marginBottom: '50px'}}>
+            <Empty />
+        </div>
     )
 }
 
