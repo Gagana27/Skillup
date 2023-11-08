@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import '../../index.css'
 import UserDetails from "./UserData";
 import Subscription from "./Subscription";
+import Subscription_Data from "./Subscription_Data";
 
 export const AdminDashBoard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -102,7 +103,7 @@ export const AdminDashBoard = () => {
         
         <nav id="sidebarMenu" className={`${isSidebarOpen ? "active" : ""} 
         col-md-3 col-lg-2 d-md-block bg-light sidebar`}
-          style={{ height: "500px"}}>
+          style={{ height: "650px"}}>
 
           <div className="position-sticky pt-3">
 
@@ -218,7 +219,7 @@ export const AdminDashBoard = () => {
                       <polyline points="2 17 12 22 22 17"></polyline>
                       <polyline points="2 12 12 17 22 12"></polyline>
                     </svg>
-                    <span className="mx-2">Integrations</span>
+                    <span className="mx-2">Logout</span>
                 </p>
               </li>
 
@@ -232,17 +233,17 @@ export const AdminDashBoard = () => {
 
   
   return (
-    <div style={{ height: "500px" }}>
+    <div style={{ height: "600px",width:"1360px" }}>
       <Headers />
       <SideNavBar />
       <h1 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70vh' ,
         marginLeft:"150px",marginTop:"-570px"}}>
         {!showDashboard && !showOrder && !showProducts && !showCustomer && !showIntegrations && <p>Welcome To AdminDashBoard</p>}
         {showDashboard && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Admin DashBoard</h2>}
-        {showOrder &&<div><Subscription /></div>}
+        {showOrder &&<div style={{marginTop:"-100px"}}><Subscription_Data/></div>}
         {showProducts && <h2 style={{fontSize:"2.5rem",color:"green"}}>Products</h2>}
-        {showCustomer && <div><UserDetails/></div>}
-        {showIntegrations && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Integrations</h2>}
+        {showCustomer && <div style={{marginTop:"-350px"}}><UserDetails/></div>}
+        {showIntegrations && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Logout</h2>}
 
       </h1>
     </div>
