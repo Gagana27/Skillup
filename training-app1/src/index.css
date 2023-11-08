@@ -120,12 +120,15 @@
   color: #fff;
 }
 
-
- 
-
 .search-icon {
   order: 2; 
   cursor: pointer;
 }
+
+.file-upload {
+  width: 50rem;
+  background-color: darkgrey;
+}
+
 
 
