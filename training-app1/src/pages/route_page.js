@@ -35,7 +35,7 @@ import UserDetails from "./common/UserData";
 
 import Comments from "./common/Comments";
 import ErrorHandling from "./common/Error";
-import NoDataFound from "./common/NoDataFound";
+import Subscription_Data from "./common/Subscription_Data";
 
 export default function RoutePage() {
   return (
@@ -80,7 +80,8 @@ export default function RoutePage() {
             <Route path="/userdata" element={< UserDetails />} />
             <Route path="/comments" element={<Comments />} />
             <Route path="/errorPage" element={<ErrorHandling />} />
-            <Route path="/noDataFound" element={<NoDataFound />} />
+
+            <Route path="/Subscription_Data" element={<Subscription_Data />} />
           </Routes>
           <Footer />
         </div>
