@@ -33,7 +33,7 @@ import { Link } from 'react-router-dom';
   };
 
   return (
-    <div >
+    <div style={{height:"400px"}} >
       <div className="col-md-6" >
         <div style={{ fontSize: "1.5rem", textAlign: "center",color:"blue" }}>
       <h1 >User Data</h1>

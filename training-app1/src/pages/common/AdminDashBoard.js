@@ -4,6 +4,7 @@ import UserDetails from "./UserData";
 
 import Subscription_Data from "./Subscription_Data";
 import UploadFile from "./UploadVideo";
+import DashBoard from "./DashBoard";
 
 export const AdminDashBoard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -24,7 +25,7 @@ export const AdminDashBoard = () => {
  
   const Headers = () => {
     return (
-      <div className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <div className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" >
         <a className="navbar-brand col-md-3 col-lg-2 me-0 px-2" href="#">
           iPrimoFocus Technologies
         </a>
@@ -100,11 +101,12 @@ export const AdminDashBoard = () => {
     };
   
     return (
-      <div>
+      <div style={{ height: "200px", width: "220px" }}>
         
         <nav id="sidebarMenu" className={`${isSidebarOpen ? "active" : ""} 
-        col-md-3 col-lg-2 d-md-block bg-light sidebar`}
-          style={{ height: "650px"}}>
+        col-md-2 col-lg-2 d-md-block bg-light sidebar`}
+           style={{ height: "1200px", width: "220px", top: "140px" }}>
+
 
           <div className="position-sticky pt-3">
 
@@ -234,17 +236,18 @@ export const AdminDashBoard = () => {
 
   
   return (
-    <div style={{ height: "600px",width:"1360px" }}>
+    <div>
       <Headers />
       <SideNavBar />
-      <h1 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70vh' ,
-        marginLeft:"150px",marginTop:"-570px"}}>
-        {!showDashboard && !showOrder && !showProducts && !showCustomer && !showIntegrations && <p>Welcome To AdminDashBoard</p>}
-        {showDashboard && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Admin DashBoard</h2>}
-        {showOrder &&<div style={{marginTop:"-100px"}}><Subscription_Data/></div>}
-        {showProducts && <h2 style={{fontSize:"2.5rem",color:"green"}}><UploadFile/></h2>}
-        {showCustomer && <div style={{marginTop:"-350px"}}><UserDetails/></div>}
-        {showIntegrations && <h2 style={{fontSize:"2.5rem",color:"blue"}}>Logout</h2>}
+      <h1 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' ,
+        marginLeft:"230px"}}>
+        {!showDashboard && !showOrder && !showProducts && !showCustomer && !showIntegrations && <p style={{height:"200px",
+        color:"blue",fontWeight:"bold"}}>Welcome To AdminDashBoard</p>}
+        {showDashboard && <div style={{marginTop:"-300px"}}><DashBoard/></div>}
+        {showOrder &&<div style={{marginTop:"-130px"}}><Subscription_Data/></div>}
+        {showProducts && <h2 style={{fontSize:"2.5rem",color:"green" ,marginTop:"-130px"}}><UploadFile/></h2>}
+        {showCustomer && <div style={{marginTop:"-130px"}}><UserDetails/></div>}
+        {showIntegrations && <h2 style={{fontSize:"2.5rem",color:"blue",height:"200px",marginTop:"-100px"}}>Logout</h2>}
 
       </h1>
     </div>

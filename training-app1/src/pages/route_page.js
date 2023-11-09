@@ -36,6 +36,7 @@ import UserDetails from "./common/UserData";
 import Comments from "./common/Comments";
 import ErrorHandling from "./common/Error";
 import Subscription_Data from "./common/Subscription_Data";
+import DashBoard from "./common/DashBoard";
 
 export default function RoutePage() {
   return (
@@ -82,6 +83,7 @@ export default function RoutePage() {
             <Route path="/errorPage" element={<ErrorHandling />} />
 
             <Route path="/Subscription_Data" element={<Subscription_Data />} />
+            <Route path="/dashboard" element={<DashBoard />} />
           </Routes>
           <Footer />
         </div>

@@ -22,8 +22,9 @@ function Subscription_Data() {
 
   return (
     <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center"}}>
-      {subscribe.map((category) => (
-        <div className="card" style={{ width: '18rem',margin:"10px" }} key={category._id}>
+      {subscribe.map((category) => (<div>
+         <div style={{marginLeft:"15px" ,fontWeight:"bold"}}>{category.user.firstname}</div> 
+        <div className="card" style={{ width: '18rem',margin:"10px",backgroundColor:"lightgrey" }} key={category._id}>
           <img src={category.image} className="card-img-top" alt="Subscription Image" />
           <div className="card-body" style={{height:"40px",display:"flex"}}>
             <h5 className="card-title" style={{ margin: "auto 0",  flex: "1" ,}}>{category.courseName}</h5>
@@ -31,7 +32,7 @@ function Subscription_Data() {
            
           </div>
         </div>
-      ))}
+        </div>))}
     </div>
   );
 }
