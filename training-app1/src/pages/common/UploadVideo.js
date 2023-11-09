@@ -28,8 +28,8 @@ const props = {
 };
 
 const UploadFile = () => (
-    <div >
-        <div className='file-upload h-64'>
+    <div  style={{height:"400px"}}>
+        <div className='file-upload h-64' style={{marginTop:"20px"}}>
             <Dragger {...props}>
                 <p >
                     <CloudUploadOutlined />
