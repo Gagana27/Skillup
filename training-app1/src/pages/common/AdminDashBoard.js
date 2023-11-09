@@ -5,6 +5,8 @@ import UserDetails from "./UserData";
 import Subscription_Data from "./Subscription_Data";
 import UploadFile from "./UploadVideo";
 import DashBoard from "./DashBoard";
+import { Link } from 'react-router-dom';
+import LogOut from '../../assets/logout.svg'
 
 export const AdminDashBoard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -247,7 +249,12 @@ export const AdminDashBoard = () => {
         {showOrder &&<div style={{marginTop:"-130px"}}><Subscription_Data/></div>}
         {showProducts && <h2 style={{fontSize:"2.5rem",color:"green" ,marginTop:"-130px"}}><UploadFile/></h2>}
         {showCustomer && <div style={{marginTop:"-130px"}}><UserDetails/></div>}
-        {showIntegrations && <h2 style={{fontSize:"2.5rem",color:"blue",height:"200px",marginTop:"-100px"}}>Logout</h2>}
+        {showIntegrations && 
+         <Link to="/login">
+            <h2 style={{fontSize:"1.5rem",color:"blue",height:"200px",marginTop:"-120px",marginLeft: "10px"}}>
+              <img src={LogOut} width="200" height="200"/>Logout
+            </h2>
+        </Link>}
 
       </h1>
     </div>
