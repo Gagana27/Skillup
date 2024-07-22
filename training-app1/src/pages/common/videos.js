@@ -180,32 +180,36 @@ function VideoList(props) {
                 ))}
             </div>{" "}
             {CommentUseHook?.Comments &&
-              CommentUseHook?.Comments.map((comment) =>{
-                console.log('stars....',comment?.reviewRating[0]?.[0]?.['rating'])
-                return (
-                <div key={comment._id} style={{ height: "100px", marginTop: "20px" }}>
-                  <div style={{ display: "flex" }}>
-                    <div style={{ height: "50px", width: "50px" }}><img src={img} alt="image" /></div>
+  CommentUseHook?.Comments.map((comment) => {
+    console.log('stars....', comment?.reviewRating[0]?.[0]?.['rating']);
+    return (
+      <div key={comment._id} className="mb-4 md:mb-8">
+        <div className="flex flex-col md:flex-row items-center md:items-start md:space-x-4">
+          <div className="h-12 w-12 md:h-50 md:w-50">
+            <img src={img} alt="image" className="w-full h-full object-cover" />
+          </div>
 
-                   {comment?.reviewRating && <div>
-                      <p style={{ marginLeft: "20px", marginTop: "-4px", }}> {comment.username}</p>
-                      {/* <p><StarRating selectedRating={comment.reviewRating[0]['rating']} disableClick={true}/></p> */}
-                      <p>
-                      <StarRatings
-                      rating={comment?.reviewRating[0]?.[0]?.['rating']}
-                      starRatedColor="red"
-                      colorEmptyStar="black"
-                      starDimension="20px"
-                     />
-                      </p>
-                    </div>}
+          {comment?.reviewRating && (
+            <div className="md:ml-4 flex flex-col items-center md:items-start">
+              <p className="mt-2 md:mt-0 text-sm md:text-base">{comment.username}</p>
+              <p>
+                <StarRatings
+                  rating={comment?.reviewRating[0]?.[0]?.['rating']}
+                  starRatedColor="red"
+                  colorEmptyStar="black"
+                  starDimension="20px"
+                />
+              </p>
+            </div>
+          )}
 
-                    <div style={{ marginLeft: "550px" }}>
-                      <p>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
-                    </div>
-                    <div style={{ marginLeft: "20px" }}>
-                      <DeleteButton commentId={comment._id} />
-                    </div>
+
+                    <div className="md:flex items-center justify-between text-xs md:text-sm flex-grow">
+  <p className="mb-2">{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
+  <div className="flex items-center space-x-2">
+    <DeleteButton commentId={comment._id} />
+  </div>
+</div>
                     
                     {/* <div style={{ margin: "20px", marginRight: "10px" }}>
                       <DeleteButton commentId={comment._id} />

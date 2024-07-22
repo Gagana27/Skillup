@@ -108,6 +108,7 @@ function SignUpPage() {
                     </div>
                   </div>
                   <div className="space-y-1">
+
                     <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
                       Last Name
                     </label>
